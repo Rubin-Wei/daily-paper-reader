@@ -27,21 +27,21 @@ subscriptions:
   keyword_recall_mode: or
   intent_profiles:
     - tag: Parametric Memory
-      description: 请帮我查找参数化记忆和大模型当中记忆有关的论文
+      description: 请帮我去查找参数化记忆和大模型当中记忆相关的论文
       enabled: true
       paper_sources:
         - arxiv
       keywords:
         - keyword: parametric memory
           keyword_cn: 参数化记忆
-          query: o
+          query: p
       intent_queries:
         - query: Please help me find papers related to parametric memory and memory in large language models.
           query_cn: 请帮我查找参数化记忆和大模型当中记忆有关的论文
           enabled: true
           source: manual
           note: ''
-      updated_at: '2026-03-30T02:52:51.102Z'
+      updated_at: '2026-03-30T02:54:36.571Z'
 source_backends:
   arxiv:
     papers_table: arxiv_papers
