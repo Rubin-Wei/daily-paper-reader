@@ -140,12 +140,6 @@ subscriptions:
       paper_sources:
         - arxiv
       keywords:
-        - keyword: Continued Pretraining
-          keyword_cn: 持续预训练
-          query: Continued Pretraining
-        - keyword: Transformer Variants
-          keyword_cn: Transformer 变体
-          query: Transformer Variants
         - keyword: Model Architecture
           keyword_cn: 模型架构
           query: Model Architecture
@@ -153,11 +147,6 @@ subscriptions:
           keyword_cn: 预训练
           query: Pretraining
       intent_queries:
-        - query: continued pretraining methods for large language models
-          query_cn: 大语言模型的持续预训练方法
-          enabled: true
-          source: manual
-          note: ''
         - query: efficient model architectures for foundation models
           query_cn: 面向基础模型的高效模型架构设计
           enabled: true
@@ -173,7 +162,7 @@ subscriptions:
           enabled: true
           source: manual
           note: ''
-      updated_at: '2026-04-01T03:05:00.372Z'
+      updated_at: '2026-04-01T10:05:33.651Z'
       paused: true
     - tag: LCP
       description: 长上下文处理
@@ -208,18 +197,7 @@ subscriptions:
         - keyword: Agentic RAG
           keyword_cn: 智能体式 RAG
           query: Agentic RAG
-        - keyword: Multi-hop Retrieval
-          keyword_cn: 多跳检索
-          query: Multi-hop Retrieval
-        - keyword: Retrieval-Augmented Generation
-          keyword_cn: 检索增强生成
-          query: Retrieval-Augmented Generation
       intent_queries:
-        - query: multi hop retrieval for knowledge grounded generation
-          query_cn: 面向知识增强生成的多跳检索方法
-          enabled: true
-          source: manual
-          note: ''
         - query: agentic RAG for complex question answering
           query_cn: 用于复杂问答的智能体式 RAG 方法
           enabled: true
@@ -230,7 +208,7 @@ subscriptions:
           enabled: true
           source: manual
           note: ''
-      updated_at: '2026-04-01T03:08:36.187Z'
+      updated_at: '2026-04-01T10:05:17.024Z'
       paused: true
 source_backends:
   arxiv:
