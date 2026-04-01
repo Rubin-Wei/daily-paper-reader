@@ -295,6 +295,7 @@ subscriptions:
           source: manual
           note: ''
       updated_at: '2026-04-01T03:08:36.187Z'
+      paused: true
 source_backends:
   arxiv:
     papers_table: arxiv_papers
