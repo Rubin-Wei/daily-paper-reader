@@ -223,6 +223,7 @@ subscriptions:
           source: manual
           note: ''
       updated_at: '2026-04-01T03:05:00.372Z'
+      paused: true
     - tag: LCP
       description: 长上下文处理
       enabled: true
