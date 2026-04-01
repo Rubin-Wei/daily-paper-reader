@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.04751v1/fig-001.webp",
+      "caption": "Table 5: Performance of locally-deployed models under Setting C (End-to-End ReAct).",
+      "page": 11,
+      "index": 1,
+      "width": 631,
+      "height": 871
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04751v1/fig-002.webp",
+      "caption": "Table 4: Performance comparison of all models under Setting B (Fewshot and Guidance prompts) across difficulty levels. E: Easy, M: Medium, H: Hard, O: Overall. Pass@1, FCR, and Hit Rate are reported in percentages (%).",
+      "page": 10,
+      "index": 2,
+      "width": 835,
+      "height": 803
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04751v1/fig-003.webp",
+      "caption": "Figure 3: Relationship between FCR and Pass@1. The curve shows sample-level correlation from 4,824 samples across Setting B and C. Scatter points represent model-level performance: Setting B Guidance, Setting B Few-shot, and Setting C. The dashed line indicates Setting A performance (FCR=1.0). Shadow band width reflects sample density.",
+      "page": 14,
+      "index": 3,
+      "width": 816,
+      "height": 234
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04751v1/fig-004.webp",
+      "caption": "Figure 1: Overview of Mind-ParaWorld Framework.",
+      "page": 3,
+      "index": 4,
+      "width": 798,
+      "height": 442
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04751v1/fig-005.webp",
+      "caption": "Figure 2: Process-level analysis under Setting C on the relationship between tool-call budget and evidence coverage for three representative search agents (GPT-5, MindWatcher, and MiniMax-m2.1). Upper: mean marginal newly covered atomic facts at the k-th tool call (left axis) and cohort size n(k) (right axis), computed over trajectories with ToolCalls ≥ kcohort; regions with n(k)<50 are shown with reduced opacity. Lower: truncated cumulative curves of factual coverage FCR(k) (solid, left axis) and cumulative hit precision HitPrec(k) (dashed, right axis) computed over trajectories with ToolCalls ≥ ktrunc, revealing diminishing marginal gains and saturation under longer interactions.",
+      "page": 13,
+      "index": 5,
+      "width": 800,
+      "height": 419
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04751v1/fig-006.webp",
+      "caption": "Table 6: Performance of commercial API models under Setting C (End-to-End ReAct).",
+      "page": 12,
+      "index": 6,
+      "width": 589,
+      "height": 637
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04751v1/fig-007.webp",
+      "caption": "Table 3: Performance of all models under Setting A (Pass@1 %). E: Easy, M: Medium, H: Hard, O: Overall.",
+      "page": 9,
+      "index": 7,
+      "width": 650,
+      "height": 301
+    }
+  ]
+}

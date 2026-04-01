@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.03379v1/fig-001.webp",
+      "caption": "Figure 7: Case study for the reasoning trajectory on WebDancer.",
+      "page": 15,
+      "index": 1,
+      "width": 1056,
+      "height": 1246
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03379v1/fig-002.webp",
+      "caption": "Table 1: Main Results of MemSifter evaluated by F1 score. The best and second best of each model are in bold and underlined.",
+      "page": 7,
+      "index": 2,
+      "width": 998,
+      "height": 527
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03379v1/fig-003.webp",
+      "caption": "Figure 6: Case study for the reasoning trajectory on LongMemEval.",
+      "page": 14,
+      "index": 3,
+      "width": 1056,
+      "height": 954
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03379v1/fig-004.webp",
+      "caption": "Figure 1: Top: the RL algorithm for MemSifter. Bottom: the inference pipeline for MemSifter.",
+      "page": 3,
+      "index": 4,
+      "width": 1050,
+      "height": 290
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03379v1/fig-005.webp",
+      "caption": "Figure 5: Case study for the reasoning trajectory on LoCoMo.",
+      "page": 13,
+      "index": 5,
+      "width": 1056,
+      "height": 954
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03379v1/fig-006.webp",
+      "caption": "Figure 4: RL training curves of MemSifter compared with Rearank on two datasets (Datasets Aligned).",
+      "page": 8,
+      "index": 6,
+      "width": 447,
+      "height": 294
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03379v1/fig-007.webp",
+      "caption": "Figure 2: The prompt for the memory proxy model, describing the task in detail.",
+      "page": 4,
+      "index": 7,
+      "width": 1056,
+      "height": 498
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03379v1/fig-008.webp",
+      "caption": "Figure 3: Task-oriented reward design.",
+      "page": 5,
+      "index": 8,
+      "width": 992,
+      "height": 258
+    }
+  ]
+}

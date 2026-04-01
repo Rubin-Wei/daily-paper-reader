@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.22329v1/fig-001.webp",
+      "caption": "Figure 7: M.5: A gated memory branch reads from P and contributes through a content-dependent gate. At initialisation bg < 0 keeps the gate nearly closed, preserving the frozen self-attention path.",
+      "page": 7,
+      "index": 1,
+      "width": 678,
+      "height": 181
+    },
+    {
+      "url": "assets/figures/arxiv/2603.22329v1/fig-002.webp",
+      "caption": "Figure 10: Absolute forgetting curves on LoCoMo for the GPT-2 (124M) backbone at 1× capacity. Three methods (M.2, M.4, M.6) produce substantial retained-memory scores; three (M.1, M.3, M.5) are indistinguishable from the baseline. Higher and flatter curves indicate stronger memory.",
+      "page": 10,
+      "index": 2,
+      "width": 771,
+      "height": 322
+    },
+    {
+      "url": "assets/figures/arxiv/2603.22329v1/fig-003.webp",
+      "caption": "Figure 9: Two learning phases. Type 1 trains the memory adapter parameters offline by backpropagation through the frozen decoder. Type 2 updates the persistent memory online at each conversation turn with all model weights frozen.",
+      "page": 8,
+      "index": 3,
+      "width": 486,
+      "height": 361
+    },
+    {
+      "url": "assets/figures/arxiv/2603.22329v1/fig-004.webp",
+      "caption": "Figure 2: Three decoder-only injection strategies. (a) KV prefix prepends memory-derived keys and values to the self-attention cache. (b) Parallel cross-attention inserts a new attention pathway alongside the existing self-attention. (c) Gated branch computes a memory readout and adds it through a learned content-dependent gate.",
+      "page": 4,
+      "index": 4,
+      "width": 553,
+      "height": 427
+    },
+    {
+      "url": "assets/figures/arxiv/2603.22329v1/fig-005.webp",
+      "caption": "Figure 12: Cumulative knowledge score Ks over 30 sessions at 1× capacity. Successful methods (M.2, M.4, M.6) accumulate knowledge substantially above the baseline; failing methods (M.1, M.3, M.5, not shown for clarity) produce ∆K < 0.2.",
+      "page": 12,
+      "index": 5,
+      "width": 701,
+      "height": 253
+    },
+    {
+      "url": "assets/figures/arxiv/2603.22329v1/fig-006.webp",
+      "caption": "Figure 11: Absolute forgetting curves at 10× capacity. All six methods now produce substantial retained-memory scores. Methods that failed at 1× (M.1, M.3, M.5) converge to comparable performance with the strong-bias methods, demonstrating that the 1× gap is architectural, not fundamental.",
+      "page": 12,
+      "index": 6,
+      "width": 764,
+      "height": 322
+    }
+  ]
+}

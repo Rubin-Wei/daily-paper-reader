@@ -1,0 +1,700 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-04-01T02:19:38.655438+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 17,
+    "deep_cap": 6,
+    "deep_selected": 12,
+    "quick_candidates": 6,
+    "quick_skim_target": 11,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2603.09654v1",
+      "source": "arxiv",
+      "title": "Understanding the Interplay between LLMs' Utilisation of Parametric and Contextual Knowledge: A keynote at ECIR 2025",
+      "abstract": "Language Models (LMs) acquire parametric knowledge from their training process, embedding it within their weights. The increasing scalability of LMs, however, poses significant challenges for understanding a model's inner workings and further for updating or correcting this embedded knowledge without the significant cost of retraining. Moreover, when using these language models for knowledge-intensive language understanding tasks, LMs have to integrate relevant context, mitigating their inherent weaknesses, such as incomplete or outdated knowledge. Nevertheless, studies indicate that LMs often ignore the provided context as it can be in conflict with the pre-existing LM's memory learned during pre-training. Conflicting knowledge can also already be present in the LM's parameters, termed intra-memory conflict. This underscores the importance of understanding the interplay between how a language model uses its parametric knowledge and the retrieved contextual knowledge. In this talk, I will aim to shed light on this important issue by presenting our research on evaluating the knowledge present in LMs, diagnostic tests that can reveal knowledge conflicts, as well as on understanding the characteristics of successfully used contextual knowledge.",
+      "authors": [
+        "Isabelle Augenstein"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.IR"
+      ],
+      "published": "2026-03-10T13:30:21+00:00",
+      "link": "https://arxiv.org/pdf/2603.09654v1",
+      "tags": [
+        "keyword:Parametric Memory",
+        "query:Parametric Memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "interplay between parametric and contextual knowledge in LLMs",
+      "llm_evidence_cn": "大模型中参数化知识与上下文知识的相互作用",
+      "llm_evidence": "大模型中参数化知识与上下文知识的相互作用",
+      "canonical_evidence": "大模型中参数化知识与上下文知识的相互作用",
+      "llm_tldr_en": "Explores how LLMs integrate parametric memory from training with external contextual information.",
+      "llm_tldr_cn": "探讨了大模型如何将预训练中的参数化记忆与外部上下文信息相结合。",
+      "llm_tldr": "探讨了大模型如何将预训练中的参数化记忆与外部上下文信息相结合。",
+      "llm_tags": [
+        "query:parametric-memory:composite"
+      ],
+      "matched_query_tag": "query:parametric-memory:composite",
+      "matched_query_text": "Papers central to 请帮我去查找参数化记忆和大模型当中记忆相关的论文, especially work that connects or combines: p; Please help me find papers related to parametric memory and memory in large language models..",
+      "matched_requirement_id": "req-composite-parametric-memory",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.15421v1",
+      "source": "arxiv",
+      "title": "CLAG: Adaptive Memory Organization via Agent-Driven Clustering for Small Language Model Agents",
+      "abstract": "Large language model agents heavily rely on external memory to support knowledge reuse and complex reasoning tasks. Yet most memory systems store experiences in a single global retrieval pool which can gradually dilute or corrupt stored knowledge. This problem is especially pronounced for small language models (SLMs), which are highly vulnerable to irrelevant context. We introduce CLAG, a CLustering-based AGentic memory framework where an SLM agent actively organizes memory by clustering. CLAG employs an SLM-driven router to assign incoming memories to semantically coherent clusters and autonomously generates cluster-specific profiles, including topic summaries and descriptive tags, to establish each cluster as a self-contained functional unit. By performing localized evolution within these structured neighborhoods, CLAG effectively reduces cross-topic interference and enhances internal memory density. During retrieval, the framework utilizes a two-stage process that first filters relevant clusters via their profiles, thereby excluding distractors and reducing the search space. Experiments on multiple QA datasets with three SLM backbones show that CLAG consistently improves answer quality and robustness over prior memory systems for agents, remaining lightweight and efficient.",
+      "authors": [
+        "Taeyun Roh",
+        "Wonjune Jang",
+        "Junha Jung",
+        "Jaewoo Kang"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-03-16T15:30:20+00:00",
+      "link": "https://arxiv.org/pdf/2603.15421v1",
+      "tags": [
+        "query:Parametric Memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "agentic memory framework via clustering",
+      "llm_evidence_cn": "基于聚类的智能体记忆框架",
+      "llm_evidence": "基于聚类的智能体记忆框架",
+      "canonical_evidence": "基于聚类的智能体记忆框架",
+      "llm_tldr_en": "Proposes CLAG, a clustering-based memory organization framework for small language model agents.",
+      "llm_tldr_cn": "提出了CLAG，一种针对小语言模型智能体的基于聚类的记忆组织框架。",
+      "llm_tldr": "提出了CLAG，一种针对小语言模型智能体的基于聚类的记忆组织框架。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 请帮我去查找Agent Memory相关的论文, especially work that connects or combines: A; Please help me find papers related to Agent Memory..",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.21564v1",
+      "source": "arxiv",
+      "title": "Toward a Theory of Hierarchical Memory for Language Agents",
+      "abstract": "Many recent long-context and agentic systems address context-length limitations by adding hierarchical memory: they extract atomic units from raw data, build multi-level representatives by grouping and compression, and traverse this structure to retrieve content under a token budget. Despite recurring implementations, there is no shared formalism for comparing design choices. We propose a unifying theory in terms of three operators. Extraction ($α$) maps raw data to atomic information units; coarsening ($C = (π, ρ)$) partitions units and assigns a representative to each group; and traversal ($τ$) selects which units to include in context given a query and budget. We identify a self-sufficiency spectrum for the representative function $ρ$ and show how it constrains viable retrieval strategies (a coarsening-traversal coupling). Finally, we instantiate the decomposition on eleven existing systems spanning document hierarchies, conversational memory, and agent execution traces, showcasing its generality.",
+      "authors": [
+        "Yashar Talebirad",
+        "Ali Parsaee",
+        "Csongor Y. Szepesvari",
+        "Amirhossein Nadiri",
+        "Osmar Zaiane"
+      ],
+      "primary_category": "cs.IR",
+      "categories": [
+        "cs.IR",
+        "cs.AI",
+        "cs.IT",
+        "cs.SI"
+      ],
+      "published": "2026-03-23T04:35:13+00:00",
+      "link": "https://arxiv.org/pdf/2603.21564v1",
+      "tags": [
+        "keyword:Parametric Memory",
+        "query:Parametric Memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "hierarchical memory for language agents",
+      "llm_evidence_cn": "语言智能体的分层记忆理论",
+      "llm_evidence": "语言智能体的分层记忆理论",
+      "canonical_evidence": "语言智能体的分层记忆理论",
+      "llm_tldr_en": "Develops a unifying theory for hierarchical memory systems in long-context and agentic LLMs.",
+      "llm_tldr_cn": "为长上下文和智能体大模型中的分层记忆系统开发了一个统一理论。",
+      "llm_tldr": "为长上下文和智能体大模型中的分层记忆系统开发了一个统一理论。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 请帮我去查找Agent Memory相关的论文, especially work that connects or combines: A; Please help me find papers related to Agent Memory..",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.22241v1",
+      "source": "arxiv",
+      "title": "MemDLM: Memory-Enhanced DLM Training",
+      "abstract": "Diffusion Language Models (DLMs) offer attractive advantages over Auto-Regressive (AR) models, such as full-attention parallel decoding and flexible generation. However, they suffer from a notable train-inference mismatch: DLMs are trained with a static, single-step masked prediction objective, but deployed through a multi-step progressive denoising trajectory. We propose MemDLM (Memory-Enhanced DLM), which narrows this gap by embedding a simulated denoising process into training via Bi-level Optimization. An inner loop updates a set of fast weights, forming a Parametric Memory that captures the local trajectory experience of each sample, while an outer loop updates the base model conditioned on this memory. By offloading memorization pressure from token representations to parameters, MemDLM yields faster convergence and lower training loss. Moreover, the inner loop can be re-enabled at inference time as an adaptation step, yielding additional gains on long-context understanding. We find that, when activated at inference time, this Parametric Memory acts as an emergent in-weight retrieval mechanism, helping MemDLM further reduce token-level attention bottlenecks on challenging Needle-in-a-Haystack retrieval tasks. Code: https://github.com/JarvisPei/MemDLM.",
+      "authors": [
+        "Zehua Pei",
+        "Hui-Ling Zhen",
+        "Weizhe Lin",
+        "Sinno Jialin Pan",
+        "Yunhe Wang",
+        "Mingxuan Yuan",
+        "Bei Yu"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-03-23T17:39:56+00:00",
+      "link": "https://arxiv.org/pdf/2603.22241v1",
+      "tags": [
+        "keyword:Parametric Memory",
+        "query:Parametric Memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "parametric memory in diffusion language models",
+      "llm_evidence_cn": "扩散语言模型中的参数化记忆",
+      "llm_evidence": "扩散语言模型中的参数化记忆",
+      "canonical_evidence": "扩散语言模型中的参数化记忆",
+      "llm_tldr_en": "Introduces MemDLM which uses parametric memory to capture local trajectory experience during training.",
+      "llm_tldr_cn": "引入MemDLM，利用参数化记忆在训练期间捕获局部轨迹经验。",
+      "llm_tldr": "引入MemDLM，利用参数化记忆在训练期间捕获局部轨迹经验。",
+      "llm_tags": [
+        "query:parametric-memory:composite"
+      ],
+      "matched_query_tag": "query:parametric-memory:composite",
+      "matched_query_text": "Papers central to 请帮我去查找参数化记忆和大模型当中记忆相关的论文, especially work that connects or combines: p; Please help me find papers related to parametric memory and memory in large language models..",
+      "matched_requirement_id": "req-composite-parametric-memory",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.24080v1",
+      "source": "arxiv",
+      "title": "LLMpedia: A Transparent Framework to Materialize an LLM's Encyclopedic Knowledge at Scale",
+      "abstract": "Benchmarks such as MMLU suggest flagship language models approach factuality saturation, with scores above 90\\%. We show this picture is incomplete. \\emph{LLMpedia} generates encyclopedic articles entirely from parametric memory, producing ${\\sim}$1M articles across three model families without retrieval. For gpt-5-mini, the verifiable true rate on Wikipedia-covered subjects is only 74.7\\% -- more than 15 percentage points below the benchmark-based picture, consistent with the availability bias of fixed-question evaluation. Beyond Wikipedia, frontier subjects verifiable only through curated web evidence fall further to 63.2\\% true rate. Wikipedia covers just 61\\% of surfaced subjects, and three model families overlap by only 7.3\\% in subject choice. In a capture-trap benchmark inspired by prior analysis of Grokipedia, LLMpedia achieves substantially higher factuality at roughly half the textual similarity to Wikipedia. Unlike Grokipedia, every prompt, artifact, and evaluation verdict is publicly released, making LLMpedia the first fully open parametric encyclopedia -- bridging factuality evaluation and knowledge materialization. All data, code, and a browsable interface are at https://llmpedia.net.",
+      "authors": [
+        "Muhammed Saeed",
+        "Simon Razniewski"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.DB"
+      ],
+      "published": "2026-03-25T08:37:26+00:00",
+      "link": "https://arxiv.org/pdf/2603.24080v1",
+      "tags": [
+        "keyword:Parametric Memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "encyclopedic knowledge from parametric memory",
+      "llm_evidence_cn": "来自参数化记忆的百科全书知识",
+      "llm_evidence": "来自参数化记忆的百科全书知识",
+      "canonical_evidence": "来自参数化记忆的百科全书知识",
+      "llm_tldr_en": "Evaluates the factual accuracy of encyclopedic articles generated entirely from an LLM's parametric memory.",
+      "llm_tldr_cn": "评估完全由大模型参数化记忆生成的百科文章的事实准确性。",
+      "llm_tldr": "评估完全由大模型参数化记忆生成的百科文章的事实准确性。",
+      "llm_tags": [
+        "query:parametric-memory:composite"
+      ],
+      "matched_query_tag": "query:parametric-memory:composite",
+      "matched_query_text": "Papers central to 请帮我去查找参数化记忆和大模型当中记忆相关的论文, especially work that connects or combines: p; Please help me find papers related to parametric memory and memory in large language models..",
+      "matched_requirement_id": "req-composite-parametric-memory",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.03269v1",
+      "source": "arxiv",
+      "title": "LoGeR: Long-Context Geometric Reconstruction with Hybrid Memory",
+      "abstract": "Feedforward geometric foundation models achieve strong short-window reconstruction, yet scaling them to minutes-long videos is bottlenecked by quadratic attention complexity or limited effective memory in recurrent designs. We present LoGeR (Long-context Geometric Reconstruction), a novel architecture that scales dense 3D reconstruction to extremely long sequences without post-optimization. LoGeR processes video streams in chunks, leveraging strong bidirectional priors for high-fidelity intra-chunk reasoning. To manage the critical challenge of coherence across chunk boundaries, we propose a learning-based hybrid memory module. This dual-component system combines a parametric Test-Time Training (TTT) memory to anchor the global coordinate frame and prevent scale drift, alongside a non-parametric Sliding Window Attention (SWA) mechanism to preserve uncompressed context for high-precision adjacent alignment. Remarkably, this memory architecture enables LoGeR to be trained on sequences of 128 frames, and generalize up to thousands of frames during inference. Evaluated across standard benchmarks and a newly repurposed VBR dataset with sequences of up to 19k frames, LoGeR substantially outperforms prior state-of-the-art feedforward methods--reducing ATE on KITTI by over 74%--and achieves robust, globally consistent reconstruction over unprecedented horizons.",
+      "authors": [
+        "Junyi Zhang",
+        "Charles Herrmann",
+        "Junhwa Hur",
+        "Chen Sun",
+        "Ming-Hsuan Yang",
+        "Forrester Cole",
+        "Trevor Darrell",
+        "Deqing Sun"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-03-03T18:55:37+00:00",
+      "link": "https://arxiv.org/pdf/2603.03269v1",
+      "tags": [
+        "keyword:Parametric Memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "parametric Test-Time Training (TTT) memory for long sequences",
+      "llm_evidence_cn": "用于长序列的参数化测试时训练（TTT）记忆",
+      "llm_evidence": "用于长序列的参数化测试时训练（TTT）记忆",
+      "canonical_evidence": "用于长序列的参数化测试时训练（TTT）记忆",
+      "llm_tldr_en": "Uses hybrid memory and TTT to scale geometric reconstruction to long video sequences.",
+      "llm_tldr_cn": "利用混合记忆和测试时训练（TTT）将几何重建扩展到长视频序列。",
+      "llm_tldr": "利用混合记忆和测试时训练（TTT）将几何重建扩展到长视频序列。",
+      "llm_tags": [
+        "query:ttt:composite"
+      ],
+      "matched_query_tag": "query:ttt:composite",
+      "matched_query_text": "Papers central to 请帮我去查找大模型当中测试时训练和长上下文处理相关的论文, especially work that connects or combines: L; Please help me find papers related to test time training and long context processing..",
+      "matched_requirement_id": "req-composite-ttt",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.03379v1",
+      "source": "arxiv",
+      "title": "MemSifter: Offloading LLM Memory Retrieval via Outcome-Driven Proxy Reasoning",
+      "abstract": "As Large Language Models (LLMs) are increasingly used for long-duration tasks, maintaining effective long-term memory has become a critical challenge. Current methods often face a trade-off between cost and accuracy. Simple storage methods often fail to retrieve relevant information, while complex indexing methods (such as memory graphs) require heavy computation and can cause information loss. Furthermore, relying on the working LLM to process all memories is computationally expensive and slow. To address these limitations, we propose MemSifter, a novel framework that offloads the memory retrieval process to a small-scale proxy model. Instead of increasing the burden on the primary working LLM, MemSifter uses a smaller model to reason about the task before retrieving the necessary information. This approach requires no heavy computation during the indexing phase and adds minimal overhead during inference. To optimize the proxy model, we introduce a memory-specific Reinforcement Learning (RL) training paradigm. We design a task-outcome-oriented reward based on the working LLM's actual performance in completing the task. The reward measures the actual contribution of retrieved memories by mutiple interactions with the working LLM, and discriminates retrieved rankings by stepped decreasing contributions. Additionally, we employ training techniques such as Curriculum Learning and Model Merging to improve performance. We evaluated MemSifter on eight LLM memory benchmarks, including Deep Research tasks. The results demonstrate that our method meets or exceeds the performance of existing state-of-the-art approaches in both retrieval accuracy and final task completion. MemSifter offers an efficient and scalable solution for long-term LLM memory. We have open-sourced the model weights, code, and training data to support further research.",
+      "authors": [
+        "Jiejun Tan",
+        "Zhicheng Dou",
+        "Liancheng Zhang",
+        "Yuyang Hu",
+        "Yiruo Cheng",
+        "Ji-Rong Wen"
+      ],
+      "primary_category": "cs.IR",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "published": "2026-03-03T02:57:38+00:00",
+      "link": "https://arxiv.org/pdf/2603.03379v1",
+      "tags": [
+        "query:Parametric Memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "long-term memory retrieval for LLMs",
+      "llm_evidence_cn": "大语言模型的长期记忆检索",
+      "llm_evidence": "大语言模型的长期记忆检索",
+      "canonical_evidence": "大语言模型的长期记忆检索",
+      "llm_tldr_en": "Offloads memory retrieval to a proxy model to maintain effective long-term memory in long-duration tasks.",
+      "llm_tldr_cn": "将记忆检索卸载到代理模型，以在长时任务中维持有效的长期记忆。",
+      "llm_tldr": "将记忆检索卸载到代理模型，以在长时任务中维持有效的长期记忆。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 请帮我去查找Agent Memory相关的论文, especially work that connects or combines: A; Please help me find papers related to Agent Memory..",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.09297v1",
+      "source": "arxiv",
+      "title": "TA-Mem: Tool-Augmented Autonomous Memory Retrieval for LLM in Long-Term Conversational QA",
+      "abstract": "Large Language Model (LLM) has exhibited strong reasoning ability in text-based contexts across various domains, yet the limitation of context window poses challenges for the model on long-range inference tasks and necessitates a memory storage system. While many current storage approaches have been proposed with episodic notes and graph representations of memory, retrieval methods still primarily rely on predefined workflows or static similarity top-k over embeddings. To address this inflexibility, we introduced a novel tool-augmented autonomous memory retrieval framework (TA-Mem), which contains: (1) a memory extraction LLM agent which is prompted to adaptively chuck an input into sub-context based on semantic correlation, and extract information into structured notes, (2) a multi-indexed memory database designed for different types of query methods including both key-based lookup and similarity-based retrieval, (3) a tool-augmented memory retrieval agent which explores the memory autonomously by selecting appropriate tools provided by the database based on the user input, and decides whether to proceed to the next iteration or finalizing the response after reasoning on the fetched memories. The TA-Mem is evaluated on the LoCoMo dataset, achieving significant performance improvements over existing baseline approaches. In addition, an analysis of tool use across different question types also demonstrates the adaptivity of the proposed method.",
+      "authors": [
+        "Mengwei Yuan",
+        "Jianan Liu",
+        "Jing Yang",
+        "Xianyou Li",
+        "Weiran Yan",
+        "Yichao Wu",
+        "Penghao Liang"
+      ],
+      "primary_category": "cs.IR",
+      "categories": [
+        "cs.IR",
+        "cs.CL"
+      ],
+      "published": "2026-03-10T07:27:01+00:00",
+      "link": "https://arxiv.org/pdf/2603.09297v1",
+      "tags": [
+        "keyword:Parametric Memory",
+        "query:Parametric Memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "autonomous memory retrieval agent",
+      "llm_evidence_cn": "自主记忆检索智能体",
+      "llm_evidence": "自主记忆检索智能体",
+      "canonical_evidence": "自主记忆检索智能体",
+      "llm_tldr_en": "Introduces a tool-augmented autonomous memory retrieval framework for long-term conversational QA.",
+      "llm_tldr_cn": "引入了一种用于长期对话问答的工具增强型自主记忆检索框架。",
+      "llm_tldr": "引入了一种用于长期对话问答的工具增强型自主记忆检索框架。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 请帮我去查找Agent Memory相关的论文, especially work that connects or combines: A; Please help me find papers related to Agent Memory..",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.13875v1",
+      "source": "arxiv",
+      "title": "GradMem: Learning to Write Context into Memory with Test-Time Gradient Descent",
+      "abstract": "Many large language model applications require conditioning on long contexts. Transformers typically support this by storing a large per-layer KV-cache of past activations, which incurs substantial memory overhead. A desirable alternative is ompressive memory: read a context once, store it in a compact state, and answer many queries from that state. We study this in a context removal setting, where the model must generate an answer without access to the original context at inference time. We introduce GradMem, which writes context into memory via per-sample test-time optimization. Given a context, GradMem performs a few steps of gradient descent on a small set of prefix memory tokens while keeping model weights frozen. GradMem explicitly optimizes a model-level self-supervised context reconstruction loss, resulting in a loss-driven write operation with iterative error correction, unlike forward-only methods. On associative key--value retrieval, GradMem outperforms forward-only memory writers with the same memory size, and additional gradient steps scale capacity much more effectively than repeated forward writes. We further show that GradMem transfers beyond synthetic benchmarks: with pretrained language models, it attains competitive results on natural language tasks including bAbI and SQuAD variants, relying only on information encoded in memory.",
+      "authors": [
+        "Yuri Kuratov",
+        "Matvey Kairov",
+        "Aydar Bulatov",
+        "Ivan Rodkin",
+        "Mikhail Burtsev"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-03-14T10:17:33+00:00",
+      "link": "https://arxiv.org/pdf/2603.13875v1",
+      "tags": [
+        "query:Parametric Memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "test-time gradient descent for writing context into memory",
+      "llm_evidence_cn": "通过测试时梯度下降将上下文写入记忆",
+      "llm_evidence": "通过测试时梯度下降将上下文写入记忆",
+      "canonical_evidence": "通过测试时梯度下降将上下文写入记忆",
+      "llm_tldr_en": "GradMem uses test-time optimization to compress long context into prefix memory tokens.",
+      "llm_tldr_cn": "GradMem利用测试时优化将长上下文压缩为前缀记忆令牌。",
+      "llm_tldr": "GradMem利用测试时优化将长上下文压缩为前缀记忆令牌。",
+      "llm_tags": [
+        "query:ttt:composite"
+      ],
+      "matched_query_tag": "query:ttt:composite",
+      "matched_query_text": "Papers central to 请帮我去查找大模型当中测试时训练和长上下文处理相关的论文, especially work that connects or combines: L; Please help me find papers related to test time training and long context processing..",
+      "matched_requirement_id": "req-composite-ttt",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.16413v1",
+      "source": "arxiv",
+      "title": "Trained Persistent Memory for Frozen Encoder--Decoder LLMs: Six Architectural Methods",
+      "abstract": "Frozen encoder--decoder language models are stateless: the latent representation is discarded after every forward pass, so no information persists across sessions. This paper presents a \\textbf{proof-of-concept pilot study} showing that persistent memory in the \\emph{continuous latent space} of a frozen LLM is feasible -- even under severe resource constraints (a single frozen Flan-T5-XL backbone, small trainable adapters, a single dataset). We implement six architectural methods spanning three injection points and four write mechanisms; unlike text-level memory systems, every write and read is a differentiable operation on dense vectors. After training only the adapter, the memory bank continues to accumulate at inference time without gradients, enabling \\emph{conversational learning}. Under a forgetting-curve evaluation on LoCoMo at two capacity scales (1$\\times$ and 10$\\times$), the stateless baseline scores exactly zero; at 10$\\times$ all six trained adapters produce positive memory-recall curves; at 1$\\times$ three methods collapse, revealing capacity as a critical design parameter. Because the memory bank is a compact numerical array, it can be scaled to arbitrarily large capacity without altering the backbone. We argue that full end-to-end training with larger models, larger data, and orders-of-magnitude larger memory will yield substantially stronger results; this pilot study establishes the feasibility baseline and design-space taxonomy that such efforts require.",
+      "authors": [
+        "Hong Jeong"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-03-17T11:51:21+00:00",
+      "link": "https://arxiv.org/pdf/2603.16413v1",
+      "tags": [
+        "query:Parametric Memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "persistent memory in continuous latent space of LLMs",
+      "llm_evidence_cn": "大模型连续潜空间中的持久记忆",
+      "llm_evidence": "大模型连续潜空间中的持久记忆",
+      "canonical_evidence": "大模型连续潜空间中的持久记忆",
+      "llm_tldr_en": "Proposes architectural methods for persistent memory in frozen encoder-decoder LLMs via adapters.",
+      "llm_tldr_cn": "提出了通过适配器在冻结的编解码大模型中实现持久记忆的架构方法。",
+      "llm_tldr": "提出了通过适配器在冻结的编解码大模型中实现持久记忆的架构方法。",
+      "llm_tags": [
+        "query:parametric-memory:composite"
+      ],
+      "matched_query_tag": "query:parametric-memory:composite",
+      "matched_query_text": "Papers central to 请帮我去查找参数化记忆和大模型当中记忆相关的论文, especially work that connects or combines: p; Please help me find papers related to parametric memory and memory in large language models..",
+      "matched_requirement_id": "req-composite-parametric-memory",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.17781v1",
+      "source": "arxiv",
+      "title": "Facts as First Class Objects: Knowledge Objects for Persistent LLM Memory",
+      "abstract": "Large language models increasingly serve as persistent knowledge workers, with in-context memory - facts stored in the prompt - as the default strategy. We benchmark in-context memory against Knowledge Objects (KOs), discrete hash-addressed tuples with O(1) retrieval. Within the context window, Claude Sonnet 4.5 achieves 100% exact-match accuracy from 10 to 7,000 facts (97.5% of its 200K window). However, production deployment reveals three failure modes: capacity limits (prompts overflow at 8,000 facts), compaction loss (summarization destroys 60% of facts), and goal drift (cascading compaction erodes 54% of project constraints while the model continues with full confidence). KOs achieve 100% accuracy across all conditions at 252x lower cost. On multi-hop reasoning, KOs reach 78.9% versus 31.6% for in-context. Cross-model replication across four frontier models confirms compaction loss is architectural, not model-specific. We additionally show that embedding retrieval fails on adversarial facts (20% precision at 1) and that neural memory (Titans) stores facts but fails to retrieve them on demand. We introduce density-adaptive retrieval as a switching mechanism and release the benchmark suite.",
+      "authors": [
+        "Oliver Zahn",
+        "Simran Chana"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-03-18T14:45:54+00:00",
+      "link": "https://arxiv.org/pdf/2603.17781v1",
+      "tags": [
+        "query:Parametric Memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "persistent LLM memory and in-context facts",
+      "llm_evidence_cn": "持久大模型记忆与上下文事实",
+      "llm_evidence": "持久大模型记忆与上下文事实",
+      "canonical_evidence": "持久大模型记忆与上下文事实",
+      "llm_tldr_en": "Benchmarks in-context memory against Knowledge Objects for persistent and accurate LLM memory.",
+      "llm_tldr_cn": "将上下文记忆与知识对象进行基准测试，以实现持久且准确的大模型记忆。",
+      "llm_tldr": "将上下文记忆与知识对象进行基准测试，以实现持久且准确的大模型记忆。",
+      "llm_tags": [
+        "query:parametric-memory:composite"
+      ],
+      "matched_query_tag": "query:parametric-memory:composite",
+      "matched_query_text": "Papers central to 请帮我去查找参数化记忆和大模型当中记忆相关的论文, especially work that connects or combines: p; Please help me find papers related to parametric memory and memory in large language models..",
+      "matched_requirement_id": "req-composite-parametric-memory",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.22329v1",
+      "source": "arxiv",
+      "title": "Trained Persistent Memory for Frozen Decoder-Only LLMs",
+      "abstract": "Decoder-only language models are stateless: hidden representations are discarded after every forward pass and nothing persists across sessions. Jeong (2026a) showed that trained memory adapters give a frozen encoder-decoder backbone persistent latent-space memory, building on the lateral-memory framework of Jeong (2026b,c). Here we ask whether the same principle transfers to the decoder-only setting, where no cross-attention pathway exists and memory must enter through self-attention alone. We adapt six methods -- prefix, parallel cross-attention, KV extension, Hebbian memory, context-gated branch, and slot-based sparse write -- to a frozen GPT-2, training only a small adapter $θ_{mem}$. The write rule is shared; only the read injection changes from decoder cross-attention to self-attention KV prefix or parallel branch. On LoCoMo we find a striking inductive-bias dichotomy: at $1\\times$ capacity, three methods with strong architectural priors -- cross-attention (M.2), Hebbian (M.4), and slot write (M.6) -- achieve retained-memory scores of $7-18\\%$ and knowledge gains $ΔK$ of $7-10$, while the other three fail ($< 0.4\\%$). At $10\\times$ capacity all six converge, showing the gap is architectural, not fundamental. Together with the encoder-decoder results of Jeong (2026a) and the brain-inspired modules of Jeong (2026b,c), these findings establish persistent latent-space memory as a general paradigm spanning major transformer families.",
+      "authors": [
+        "Hong Jeong"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-03-20T19:11:02+00:00",
+      "link": "https://arxiv.org/pdf/2603.22329v1",
+      "tags": [
+        "query:Parametric Memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "persistent latent-space memory for frozen LLMs",
+      "llm_evidence_cn": "冻结大语言模型的持久潜空间记忆",
+      "llm_evidence": "冻结大语言模型的持久潜空间记忆",
+      "canonical_evidence": "冻结大语言模型的持久潜空间记忆",
+      "llm_tldr_en": "Explores methods to give frozen decoder-only LLMs persistent memory through trained adapters.",
+      "llm_tldr_cn": "探索通过训练适配器为冻结的仅解码器大模型提供持久记忆的方法。",
+      "llm_tldr": "探索通过训练适配器为冻结的仅解码器大模型提供持久记忆的方法。",
+      "llm_tags": [
+        "query:parametric-memory:composite"
+      ],
+      "matched_query_tag": "query:parametric-memory:composite",
+      "matched_query_text": "Papers central to 请帮我去查找参数化记忆和大模型当中记忆相关的论文, especially work that connects or combines: p; Please help me find papers related to parametric memory and memory in large language models..",
+      "matched_requirement_id": "req-composite-parametric-memory",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2603.04751v1",
+      "source": "arxiv",
+      "title": "Evaluating the Search Agent in a Parallel World",
+      "abstract": "Integrating web search tools has significantly extended the capability of LLMs to address open-world, real-time, and long-tail problems. However, evaluating these Search Agents presents formidable challenges. First, constructing high-quality deep search benchmarks is prohibitively expensive, while unverified synthetic data often suffers from unreliable sources. Second, static benchmarks face dynamic obsolescence: as internet information evolves, complex queries requiring deep research often degrade into simple retrieval tasks due to increased popularity, and ground truths become outdated due to temporal shifts. Third, attribution ambiguity confounds evaluation, as an agent's performance is often dominated by its parametric memory rather than its actual search and reasoning capabilities. Finally, reliance on specific commercial search engines introduces variability that hampers reproducibility. To address these issues, we propose a novel framework, Mind-ParaWorld, for evaluating Search Agents in a Parallel World. Specifically, MPW samples real-world entity names to synthesize future scenarios and questions situated beyond the model's knowledge cutoff. A ParaWorld Law Model then constructs a set of indivisible Atomic Facts and a unique ground-truth for each question. During evaluation, instead of retrieving real-world results, the agent interacts with a ParaWorld Engine Model that dynamically generates SERPs grounded in these inviolable Atomic Facts. We release MPW-Bench, an interactive benchmark spanning 19 domains with 1,608 instances. Experiments across three evaluation settings show that, while search agents are strong at evidence synthesis given complete information, their performance is limited not only by evidence collection and coverage in unfamiliar search environments, but also by unreliable evidence sufficiency judgment and when-to-stop decisions-bottlenecks.",
+      "authors": [
+        "Jiawei Chen",
+        "Xintian Shen",
+        "Lihao Zheng",
+        "Lifu Mu",
+        "Haoyi Sun",
+        "Ning Mao",
+        "Hao Ma",
+        "Tao Wei",
+        "Pan Zhou",
+        "Kun Zhan"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-03-05T02:56:42+00:00",
+      "link": "https://arxiv.org/pdf/2603.04751v1",
+      "tags": [
+        "keyword:Parametric Memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "parametric memory vs search in agents",
+      "llm_evidence_cn": "智能体中的参数化记忆与搜索对比",
+      "llm_evidence": "智能体中的参数化记忆与搜索对比",
+      "canonical_evidence": "智能体中的参数化记忆与搜索对比",
+      "llm_tldr_en": "Discusses how parametric memory can confound the evaluation of search agents' reasoning capabilities.",
+      "llm_tldr_cn": "讨论了参数化记忆如何干扰对搜索智能体推理能力的评估。",
+      "llm_tldr": "讨论了参数化记忆如何干扰对搜索智能体推理能力的评估。",
+      "llm_tags": [
+        "query:parametric-memory:composite"
+      ],
+      "matched_query_tag": "query:parametric-memory:composite",
+      "matched_query_text": "Papers central to 请帮我去查找参数化记忆和大模型当中记忆相关的论文, especially work that connects or combines: p; Please help me find papers related to parametric memory and memory in large language models..",
+      "matched_requirement_id": "req-composite-parametric-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2603.26557v1",
+      "source": "arxiv",
+      "title": "MemBoost: A Memory-Boosted Framework for Cost-Aware LLM Inference",
+      "abstract": "Large Language Models (LLMs) deliver strong performance but incur high inference cost in real-world services, especially under workloads with repeated or near-duplicate queries across users and sessions. In this work, we propose MemBoost, a memory-boosted LLM serving framework that enables a lightweight model to reuse previously generated answers and retrieve relevant supporting information for cheap inference, while selectively escalating difficult or uncertain queries to a stronger model. Unlike standard retrieval-augmented generation, which primarily grounds a single response, MemBoost is designed for interactive settings by supporting answer reuse, continual memory growth, and cost-aware routing. Experiments across multiple models under simulated workloads show that MemBoost substantially reduces expensive large-model invocations and overall inference cost, while maintaining high answer quality comparable to the strong model baseline.",
+      "authors": [
+        "Joris Köster",
+        "Zixuan Liu",
+        "Siavash Khajavi",
+        "Zizhan Zheng"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-03-27T16:16:48+00:00",
+      "link": "https://arxiv.org/pdf/2603.26557v1",
+      "tags": [
+        "keyword:Parametric Memory",
+        "query:Parametric Memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "memory-boosted framework for LLM inference and answer reuse",
+      "llm_evidence_cn": "用于大模型推理和答案复用的记忆增强框架",
+      "llm_evidence": "用于大模型推理和答案复用的记忆增强框架",
+      "canonical_evidence": "用于大模型推理和答案复用的记忆增强框架",
+      "llm_tldr_en": "MemBoost enables lightweight models to reuse memory and retrieve info for cost-aware inference.",
+      "llm_tldr_cn": "MemBoost使轻量级模型能够复用记忆并检索信息，实现成本感知的推理。",
+      "llm_tldr": "MemBoost使轻量级模型能够复用记忆并检索信息，实现成本感知的推理。",
+      "llm_tags": [
+        "query:parametric-memory:composite"
+      ],
+      "matched_query_tag": "query:parametric-memory:composite",
+      "matched_query_text": "Papers central to 请帮我去查找参数化记忆和大模型当中记忆相关的论文, especially work that connects or combines: p; Please help me find papers related to parametric memory and memory in large language models..",
+      "matched_requirement_id": "req-composite-parametric-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2603.15994v1",
+      "source": "arxiv",
+      "title": "Selective Memory for Artificial Intelligence: Write-Time Gating with Hierarchical Archiving",
+      "abstract": "Retrieval-augmented generation stores all content indiscriminately, degrading accuracy as noise accumulates. Parametric approaches compress knowledge into weights, precluding selective updates. Neither mirrors biological memory, which gates encoding based on salience and archives rather than deletes superseded information. We introduce write-time gating that filters incoming knowledge objects using composite salience scores (source reputation, novelty, reliability) while maintaining version chains that preserve prior states. Using real LLM evaluation without oracle access to quality labels, write gating achieves 100 percent accuracy versus 13 percent for ungated stores. The critical finding emerges under distractor scaling: at 8:1 distractor ratios, read-time filtering (Self-RAG) collapses to 0 percent while write gating maintains 100 percent, revealing a structural advantage of write-time over read-time curation. Validation on Wikipedia (20 entities), procedurally generated pharmacology data, and 2026 arXiv papers confirms these findings. The gating advantage scales inversely with parametric memory support: +25pp for Wikipedia, +48pp for post-cutoff arXiv, +65pp for procedural data with zero training knowledge. Signal ablation confirms the method does not depend on oracle-correlated metadata. Write gating matches Self-RAG accuracy at one-ninth the query-time cost.",
+      "authors": [
+        "Oliver Zahn",
+        "Simran Chana"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-03-16T23:06:44+00:00",
+      "link": "https://arxiv.org/pdf/2603.15994v1",
+      "tags": [
+        "keyword:Parametric Memory",
+        "query:Parametric Memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "parametric approaches vs retrieval memory",
+      "llm_evidence_cn": "参数化方法与检索记忆的对比",
+      "llm_evidence": "参数化方法与检索记忆的对比",
+      "canonical_evidence": "参数化方法与检索记忆的对比",
+      "llm_tldr_en": "Compares parametric and retrieval-augmented memory, introducing write-time gating for better accuracy.",
+      "llm_tldr_cn": "对比了参数化和检索增强记忆，引入写时门控以提高准确性。",
+      "llm_tldr": "对比了参数化和检索增强记忆，引入写时门控以提高准确性。",
+      "llm_tags": [
+        "query:parametric-memory:composite"
+      ],
+      "matched_query_tag": "query:parametric-memory:composite",
+      "matched_query_text": "Papers central to 请帮我去查找参数化记忆和大模型当中记忆相关的论文, especially work that connects or combines: p; Please help me find papers related to parametric memory and memory in large language models..",
+      "matched_requirement_id": "req-composite-parametric-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2603.22910v1",
+      "source": "arxiv",
+      "title": "EchoKV: Efficient KV Cache Compression via Similarity-Based Reconstruction",
+      "abstract": "The increasing memory demand of the Key-Value (KV) cache poses a significant bottleneck for Large Language Models (LLMs) in long-context applications. Existing low-rank compression methods often rely on irreversible parameter transformations, sacrificing the flexibility to switch back to full-precision inference when memory is abundant. In this paper, we propose EchoKV, a flexible KV cache compression scheme that enables on-demand transitions between standard and compressed inference. Unlike traditional compression-decompression paradigms, EchoKV utilizes a lightweight network to reconstruct the residual KV components from a partial subset, leveraging intrinsic inter-layer and intra-layer similarities among attention heads. We further introduce a two-stage fine-tuning strategy that allows for rapid, low-cost training (e.g., ~1 A100 GPU-hour for a 7B model). Experimental results on LongBench and RULER demonstrate that EchoKV consistently outperforms existing methods across various compression ratios while maintaining high throughput for short-context scenarios.",
+      "authors": [
+        "Yixuan Wang",
+        "Shiyu Ji",
+        "Yijun Liu",
+        "Qingfu Zhu",
+        "Wanxiang Che"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-03-24T07:58:42+00:00",
+      "link": "https://arxiv.org/pdf/2603.22910v1",
+      "tags": [
+        "query:Parametric Memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "KV cache compression for long-context applications",
+      "llm_evidence_cn": "长上下文应用中的KV缓存压缩",
+      "llm_evidence": "长上下文应用中的KV缓存压缩",
+      "canonical_evidence": "长上下文应用中的KV缓存压缩",
+      "llm_tldr_en": "EchoKV enables flexible KV cache compression and reconstruction for efficient long-context inference.",
+      "llm_tldr_cn": "EchoKV实现了灵活的KV缓存压缩与重构，用于高效的长上下文推理。",
+      "llm_tldr": "EchoKV实现了灵活的KV缓存压缩与重构，用于高效的长上下文推理。",
+      "llm_tags": [
+        "query:ttt:composite"
+      ],
+      "matched_query_tag": "query:ttt:composite",
+      "matched_query_text": "Papers central to 请帮我去查找大模型当中测试时训练和长上下文处理相关的论文, especially work that connects or combines: L; Please help me find papers related to test time training and long context processing..",
+      "matched_requirement_id": "req-composite-ttt",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2603.26554v1",
+      "source": "arxiv",
+      "title": "Sharp Capacity Scaling of Spectral Optimizers in Learning Associative Memory",
+      "abstract": "Spectral optimizers such as Muon have recently shown strong empirical performance in large-scale language model training, but the source and extent of their advantage remain poorly understood. We study this question through the linear associative memory problem, a tractable model for factual recall in transformer-based models. In particular, we go beyond orthogonal embeddings and consider Gaussian inputs and outputs, which allows the number of stored associations to greatly exceed the embedding dimension. Our main result sharply characterizes the recovery rates of one step of Muon and SGD on the logistic regression loss under a power law frequency distribution. We show that the storage capacity of Muon significantly exceeds that of SGD, and moreover Muon saturates at a larger critical batch size. We further analyze the multi-step dynamics under a thresholded gradient approximation and show that Muon achieves a substantially faster initial recovery rate than SGD, while both methods eventually converge to the information-theoretic limit at comparable speeds. Experiments on synthetic tasks validate the predicted scaling laws. Our analysis provides a quantitative understanding of the signal amplification of Muon and lays the groundwork for establishing scaling laws across more practical language modeling tasks and optimizers.",
+      "authors": [
+        "Juno Kim",
+        "Eshaan Nichani",
+        "Denny Wu",
+        "Alberto Bietti",
+        "Jason D. Lee"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "stat.ML"
+      ],
+      "published": "2026-03-27T16:13:18+00:00",
+      "link": "https://arxiv.org/pdf/2603.26554v1",
+      "tags": [
+        "query:Parametric Memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "factual recall in transformer-based models",
+      "llm_evidence_cn": "Transformer模型中的事实召回",
+      "llm_evidence": "Transformer模型中的事实召回",
+      "canonical_evidence": "Transformer模型中的事实召回",
+      "llm_tldr_en": "Studies the capacity of spectral optimizers in learning associative memory for factual recall in LLMs.",
+      "llm_tldr_cn": "研究了光谱优化器在学习大模型事实召回关联记忆方面的容量。",
+      "llm_tldr": "研究了光谱优化器在学习大模型事实召回关联记忆方面的容量。",
+      "llm_tags": [
+        "query:parametric-memory:composite"
+      ],
+      "matched_query_tag": "query:parametric-memory:composite",
+      "matched_query_text": "Papers central to 请帮我去查找参数化记忆和大模型当中记忆相关的论文, especially work that connects or combines: p; Please help me find papers related to parametric memory and memory in large language models..",
+      "matched_requirement_id": "req-composite-parametric-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2603.27127v1",
+      "source": "arxiv",
+      "title": "Red-MIRROR: Agentic LLM-based Autonomous Penetration Testing with Reflective Verification and Knowledge-augmented Interaction",
+      "abstract": "Web applications remain the dominant attack surface in cybersecurity, where vulnerabilities such as SQL injection, XSS, and business logic flaws continue to cause significant data breaches. While penetration testing is effective for identifying these weaknesses, traditional manual approaches are time-consuming and heavily dependent on scarce expert knowledge. Recent Large Language Models (LLM)-based multi-agent systems have shown promise in automating penetration testing, yet they still suffer from critical limitations: over-reliance on parametric knowledge, fragmented session memory, and insufficient validation of attack payloads and responses. This paper proposes Red-MIRROR, a novel multi-agent automated penetration testing system that introduces a tightly coupled memory-reflection backbone to explicitly govern inter-agent reasoning. By synthesizing Retrieval-Augmented Generation (RAG) for external knowledge augmentation, a Shared Recurrent Memory Mechanism (SRMM) for persistent state management, and a Dual-Phase Reflection mechanism for adaptive validation, Red-MIRROR provides a robust solution for complex web exploitation. Empirical evaluation on the XBOW benchmark and Vulhub CVEs shows that Red-MIRROR achieves performance comparable to state-of-the-art agents on Vulhub scenarios, while demonstrating a clear advantage on the XBOW benchmark. On the XBOW benchmark, Red-MIRROR attains an overall success rate of 86.0 percent, outperforming PentestAgent (50.0 percent), AutoPT (46.0 percent), and the VulnBot baseline (6.0 percent). Furthermore, the system achieves a 93.99 percent subtask completion rate, indicating strong long-horizon reasoning and payload refinement capability. Finally, we discuss ethical implications and propose safeguards to mitigate misuse risks.",
+      "authors": [
+        "Tran Vy Khang",
+        "Nguyen Dang Nguyen Khang",
+        "Nghi Hoang Khoa",
+        "Do Thi Thu Hien",
+        "Van-Hau Pham",
+        "Phan The Duy"
+      ],
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR"
+      ],
+      "published": "2026-03-28T04:34:09+00:00",
+      "link": "https://arxiv.org/pdf/2603.27127v1",
+      "tags": [
+        "keyword:Parametric Memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "multi-agent systems with session memory and parametric knowledge",
+      "llm_evidence_cn": "多智能体系统中的会话记忆与参数化知识",
+      "llm_evidence": "多智能体系统中的会话记忆与参数化知识",
+      "canonical_evidence": "多智能体系统中的会话记忆与参数化知识",
+      "llm_tldr_en": "Red-MIRROR uses reflective verification and knowledge interaction to improve agentic penetration testing.",
+      "llm_tldr_cn": "Red-MIRROR通过反射验证和知识增强交互改进了智能体渗透测试。",
+      "llm_tldr": "Red-MIRROR通过反射验证和知识增强交互改进了智能体渗透测试。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 请帮我去查找Agent Memory相关的论文, especially work that connects or combines: A; Please help me find papers related to Agent Memory..",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    }
+  ]
+}

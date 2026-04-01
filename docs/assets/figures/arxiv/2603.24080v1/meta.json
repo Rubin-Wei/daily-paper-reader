@@ -1,0 +1,86 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.24080v1/fig-001.webp",
+      "caption": "Figure 1: LLMpedia generates entirely from parametric memory with full auditability. Grokipedia’s opaque pipeline shows evidence of retrieval-shaped generation (Yasseri, 2025).",
+      "page": 1,
+      "index": 1,
+      "width": 458,
+      "height": 270
+    },
+    {
+      "url": "assets/figures/arxiv/2603.24080v1/fig-002.webp",
+      "caption": "Figure 6: Three concurrent NER workers independently accept [[Niels Bohr]] from different parent articles. Within-wave deduplication collapses the three proposals to one before any commit.",
+      "page": 15,
+      "index": 2,
+      "width": 448,
+      "height": 556
+    },
+    {
+      "url": "assets/figures/arxiv/2603.24080v1/fig-003.webp",
+      "caption": "Table 5: Cross-model comparison at 120K. Factuality is computed over Wikipedia-covered subjects only. Supplementary figures appear in Appendix G.",
+      "page": 7,
+      "index": 3,
+      "width": 410,
+      "height": 325
+    },
+    {
+      "url": "assets/figures/arxiv/2603.24080v1/fig-004.webp",
+      "caption": "Figure 16: Internal tool-calling traces visible in Grokipedia output, indicating section-level retrieval.",
+      "page": 22,
+      "index": 4,
+      "width": 458,
+      "height": 517
+    },
+    {
+      "url": "assets/figures/arxiv/2603.24080v1/fig-005.webp",
+      "caption": "Figure 17: Politician and basketball player conflated into one article.",
+      "page": 22,
+      "index": 5,
+      "width": 458,
+      "height": 302
+    },
+    {
+      "url": "assets/figures/arxiv/2603.24080v1/fig-006.webp",
+      "caption": "Table 13: Explicitly scored domains in the Tier 2 web-evidence pipeline (Part II). Together with Table 12, this yields 133 explicitly scored domains. scholar.google.com is explicitly scored in code but still excluded at runtime because google.com is blocked by root-domain matching.",
+      "page": 14,
+      "index": 6,
+      "width": 843,
+      "height": 490
+    },
+    {
+      "url": "assets/figures/arxiv/2603.24080v1/fig-007.webp",
+      "caption": "Table 12: Explicitly scored domains in the Tier 2 web-evidence pipeline (Part I).",
+      "page": 13,
+      "index": 7,
+      "width": 844,
+      "height": 550
+    },
+    {
+      "url": "assets/figures/arxiv/2603.24080v1/fig-008.webp",
+      "caption": "Figure 2: LLMpedia pipeline. Each subject flows through optional self-grounding, dynamic outline generation, and article elicitation. Extracted [[wikilinks]] undergo canonical normalization, LLM-based encyclopedic filtering, and embedding-based deduplication before surviving children enter the BFS queue. Details in Appendix E.",
+      "page": 4,
+      "index": 8,
+      "width": 931,
+      "height": 327
+    },
+    {
+      "url": "assets/figures/arxiv/2603.24080v1/fig-009.webp",
+      "caption": "Table 15: Full per-persona factuality for the 27 topic-focused runs. Here n is the number of Wikipedia-covered subjects entering Tier 1 evaluation for that run; W% is Wikipedia coverage over all generated subjects; Wds is mean word count. Judged by gpt-4.1-nano.",
+      "page": 17,
+      "index": 9,
+      "width": 371,
+      "height": 538
+    },
+    {
+      "url": "assets/figures/arxiv/2603.24080v1/fig-010.webp",
+      "caption": "Table 10: Full capture-trap results on 1,000 shared titles. Factuality values are macro-averaged per article and reported as mean ± standard deviation. Similarity is computed against Wikipedia only.",
+      "page": 12,
+      "index": 10,
+      "width": 448,
+      "height": 269
+    }
+  ]
+}

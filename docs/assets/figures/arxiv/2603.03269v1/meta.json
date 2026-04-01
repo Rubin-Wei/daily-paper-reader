@@ -1,0 +1,118 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.03269v1/fig-001.webp",
+      "caption": "Figure 4. Quantitative results on our proposed VBR (Brizi et al., 2024) evaluation showing results on very long sequences spanning from 1,000 to 19,000 frames. Our methods achieve 30.8% more accurate results than prior methods.",
+      "page": 6,
+      "index": 1,
+      "width": 398,
+      "height": 312
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03269v1/fig-002.webp",
+      "caption": "Figure 12. 3D reconstruction results on the 7-Scenes dataset, uniformly sampling 100, 500, and 1k frames. For the evluation of 1k frames, our method achieves a 90.3% and 72.1% performance boost (error reduction) with comparable runtimes against concurrent works TTT3R (Chen et al., 2026) and VGG-T3 (Elflein et al., 2026), respectively. LoGeR also achieves 84.1% faster inference speed compared to VGGT with 31.0% better performance.",
+      "page": 15,
+      "index": 2,
+      "width": 492,
+      "height": 268
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03269v1/fig-003.webp",
+      "caption": "Table 6. Comparison of Absolute Trajectory Error (ATE↓, m) on VBR. The top and bottom blocks denote optimization-based and feedforward methods, respectively. Bold and underline indicate the best and second-best performance among feedforward methods.",
+      "page": 15,
+      "index": 3,
+      "width": 1019,
+      "height": 275
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03269v1/fig-004.webp",
+      "caption": "Figure 11. Quantitative results of video depth estimation on the Bonn dataset. Both our proposed baseline (Pi3-Chunk) and LoGeR significantly outperform prior works. Note that VGGT and StreamVGGT are omitted after certain frames due to out-of-memory (OOM).",
+      "page": 15,
+      "index": 4,
+      "width": 856,
+      "height": 320
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03269v1/fig-005.webp",
+      "caption": "Figure 5. Qualitative camera trajectories on the VBR dataset. LoGeR accurately preserves global scale and trajectory over very long sequences, closely matching the ground truth where prior methods suffer from severe drift.",
+      "page": 7,
+      "index": 5,
+      "width": 991,
+      "height": 256
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03269v1/fig-006.webp",
+      "caption": "Figure 7. Qualitative results on 3D reconstruction for the 7scenes dataset demonstrating the LoGeR outperforms both our baseline and prior work TTT3R. LoGeR accurately reconstructs the bookshelf, while both our proposed strong baseline and TTT3R cause large distortions.",
+      "page": 7,
+      "index": 6,
+      "width": 631,
+      "height": 222
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03269v1/fig-007.webp",
+      "caption": "Table 4. Training data mixture. We list the datasets used in our final training configuration along with their relative sampling percentages. Navigation and large-scale scene datasets are heavily weighted to encourage long-range geometric reconstruction.",
+      "page": 13,
+      "index": 7,
+      "width": 483,
+      "height": 333
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03269v1/fig-008.webp",
+      "caption": "Figure 8. Qualitative results on ScanNet and TUM-Dynamics. While the proposed Pi3-Chunk baseline yields slightly better pose metrics on small-scale TUM sequences (unlike its severe drift on longer trajectories), LoGeR produces visually superior reconstructions. As highlighted, LoGeR accurately recovers structural details, avoiding the severe distortions and geometric artifacts present in baselines.",
+      "page": 8,
+      "index": 8,
+      "width": 889,
+      "height": 435
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03269v1/fig-009.webp",
+      "caption": "Figure 9. Quantitative results on camera pose evaluation, demonstrating that both our proposed baseline and LoGeR substantially outperform prior work, with 80.0% and 66.1% relative gains on ScanNet and TUM datasets, respectively.",
+      "page": 8,
+      "index": 9,
+      "width": 804,
+      "height": 260
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03269v1/fig-010.webp",
+      "caption": "Figure 2. Overview of a single block of our hybrid memory module. We process the input sequence in consecutive chunks of frames. While each block utilizes frame and bidirectional attention from prior work, we introduce new components to effectively propagate information across the entire sequence. Specifically, we incorporate Sliding Window Attention to improve consistency between neighboring chunks, and Test-Time Training layers to maintain long-range, global consistency across all chunks.",
+      "page": 4,
+      "index": 10,
+      "width": 492,
+      "height": 379
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03269v1/fig-011.webp",
+      "caption": "Figure 14. Qualitative results on large-scale outdoor and indoor scenes, showing minutes-long long-horizon reconstruction results.",
+      "page": 17,
+      "index": 11,
+      "width": 1017,
+      "height": 1340
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03269v1/fig-012.webp",
+      "caption": "Table 3. Comparison of baseline and ablation results across ScanNet (subset) and TUM datasets. We report the results of ATE (↓) on both 500 and 1000 frames of sequences.",
+      "page": 9,
+      "index": 12,
+      "width": 448,
+      "height": 294
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03269v1/fig-013.webp",
+      "caption": "Figure 3. Comparison of different methods across varying sequence lengths and scene scales. Although FastVGGT is able to process a larger number of frames during inference, it fails completely on large-scale scenes, highlighting the inherent “data wall” of models trained strictly on short-context bubbles. In contrast, LoGeR breaks both the context and data walls by pairing a hybrid memory architecture with diverse long-horizon training data.",
+      "page": 5,
+      "index": 13,
+      "width": 510,
+      "height": 290
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03269v1/fig-014.webp",
+      "caption": "Figure 13. Qualitative results on KITTI. Ours shows more accurate long trajectory estimation.",
+      "page": 16,
+      "index": 14,
+      "width": 925,
+      "height": 1096
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.16413v1/fig-001.webp",
+      "caption": "Table 3: Memory recall rate (%) by lag bucket on LoCoMo (smoothed, non-increasing isotonic fit) at two capacity scales. The baseline is identically zero by construction. n gives the number of QA pairs per bucket. Higher→ stronger memory retention.",
+      "page": 13,
+      "index": 1,
+      "width": 552,
+      "height": 461
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16413v1/fig-002.webp",
+      "caption": "Figure 9: Forgetting curves on LoCoMo at two memory-capacity scales. Each point is the memory recall rate from Eq. (40), smoothed by a weighted non-increasing isotonic fit. Left (1×): three methods (M.1, M.3, M.5) collapse; M.2 XAttn and M.6 Slot dominate. Right (10×): all six methods produce non-trivial curves; M.4 Hebbian is strongest at long lag. Higher and flatter curves indicate stronger memory.",
+      "page": 12,
+      "index": 2,
+      "width": 494,
+      "height": 780
+    }
+  ]
+}

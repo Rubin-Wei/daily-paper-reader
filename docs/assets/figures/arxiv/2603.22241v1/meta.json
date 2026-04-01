@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.22241v1/fig-001.webp",
+      "caption": "Figure 2: Overview of MemDLM. Left: standard MDLM training uses a static single-step denoising objective from xt to x0. Right: MemDLM uses Bi-level Optimization in which an inner loop updates fast weights ϕ along an anchor-consistent local trajectory (xtpre → xt → x0), and the outer loop updates the base model θ on the anchor state xt conditioned on this parametric memory. Legend: dark tokens denote mask tokens, light tokens denote observed tokens, straight arrows denote forward or reverse prediction flow, and blue curved arrows denote inner-loop fast-weight updates.",
+      "page": 3,
+      "index": 1,
+      "width": 826,
+      "height": 352
+    }
+  ]
+}

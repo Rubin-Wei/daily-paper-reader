@@ -1,0 +1,102 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.17781v1/fig-001.webp",
+      "caption": "Table 4: Goal preservation under cascading compaction (20 constraints, 5-seed mean)",
+      "page": 15,
+      "index": 1,
+      "width": 636,
+      "height": 196
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17781v1/fig-002.webp",
+      "caption": "Figure 2: Fact retrieval accuracy after 36.7× compaction. In-context memory loses 60% of facts; KO maintains 100%.",
+      "page": 15,
+      "index": 2,
+      "width": 686,
+      "height": 484
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17781v1/fig-003.webp",
+      "caption": "Figure 6: Production economics. Left: Per-query cost (log-log). In-context cost grows linearly with N ; KO cost is flat. Vertical dashed lines mark context window limits. Right: Annual cost for a researcher (25,000 queries/year).",
+      "page": 21,
+      "index": 3,
+      "width": 881,
+      "height": 305
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17781v1/fig-004.webp",
+      "caption": "Table 7: Summary: accuracy across all experimental conditions. N/A indicates the failure mode does not apply to that architecture.",
+      "page": 18,
+      "index": 4,
+      "width": 560,
+      "height": 301
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17781v1/fig-005.webp",
+      "caption": "Figure 7: Titans neural memory vs. KO across corpus sizes. While Titans achieves near-perfect memorization (light blue), retrieval accuracy degrades substantially on both forced-choice (red) and free-form completion (orange) tasks. KO maintains 100% accuracy regardless of corpus size.",
+      "page": 23,
+      "index": 5,
+      "width": 686,
+      "height": 484
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17781v1/fig-006.webp",
+      "caption": "Figure 1: Scaling curve: exact-match accuracy vs. corpus size (N=10 to N=10,000). Claude Sonnet 4.5 maintains 100% accuracy through N=7,000 (97.5% of context window), then overflows. GPT-4o drops to 0% by N=3,000. KO maintains 100% at all N . The dashed line marks the 200K token context window boundary.",
+      "page": 13,
+      "index": 6,
+      "width": 881,
+      "height": 619
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17781v1/fig-007.webp",
+      "caption": "Figure 4: Multi-hop reasoning accuracy on 2-hop queries over a 500-fact corpus. KO-grounded retrieval achieves 78.9% accuracy, a 47.3 percentage point improvement over full in-context presentation (31.6%).",
+      "page": 19,
+      "index": 7,
+      "width": 590,
+      "height": 377
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17781v1/fig-008.webp",
+      "caption": "Table 6: KO parsing robustness across input conditions",
+      "page": 17,
+      "index": 8,
+      "width": 872,
+      "height": 181
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17781v1/fig-009.webp",
+      "caption": "Table 2: Scaling results: exact-match accuracy at each corpus size (30 queries per N for N ≥ 1,000; 10–20 for smaller N). Claude IC and KO results replicated across 5 seeds with identical results except seed 123 (97% at N=3,000 and N=5,000). RAG uses all-MiniLM-L6-v2 embeddings with top-5 retrieval.",
+      "page": 12,
+      "index": 9,
+      "width": 760,
+      "height": 373
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17781v1/fig-010.webp",
+      "caption": "Figure 5: Cross-domain synthesis quality scores (1–5 scale) across four dimensions. The largest improvement is in groundedness (+118%), where KO retrieval enables claims traceable to specific stored facts.",
+      "page": 20,
+      "index": 10,
+      "width": 686,
+      "height": 440
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17781v1/fig-011.webp",
+      "caption": "Table 10: Per-query cost and annual cost comparison (25,000 queries/year)",
+      "page": 20,
+      "index": 11,
+      "width": 652,
+      "height": 198
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17781v1/fig-012.webp",
+      "caption": "Figure 3: Goal drift under cascading compaction. Left: Stacked bars showing correct, partial, and lost constraints after each round. Right: Accuracy decay vs. compression ratio. KO maintains 100% regardless of compaction.",
+      "page": 16,
+      "index": 12,
+      "width": 881,
+      "height": 302
+    }
+  ]
+}
