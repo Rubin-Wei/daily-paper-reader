@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.03544v1/fig-001.webp",
+      "caption": "Figure 4: Retrieval results (Recall@K) for the key evaluation tasks of PinText, Related Pins, and Search.",
+      "page": 6,
+      "index": 1,
+      "width": 356,
+      "height": 1104
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03544v1/fig-002.webp",
+      "caption": "Figure 1: Overview of the PinCLIP fusion model architecture, highlighting the design of the Hybrid Vision Transformer backbone and the multimodal contrastive objectives for jointly learning image-text alignment and Pin-to-Pin alignment.",
+      "page": 3,
+      "index": 2,
+      "width": 1056,
+      "height": 417
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03544v1/fig-003.webp",
+      "caption": "Figure 7: Qualitative comparison of PinCLIP and OmniSearchSage [1] retrieved candidates on production-scale search corpus. Relevant candidates are highlighted in blue, whereas irrelevant candidates are highlighted in red. PinCLIP produces more semantically similar results compared to competitive baselines for both using text queries or image as inputs.",
+      "page": 8,
+      "index": 3,
+      "width": 740,
+      "height": 486
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.07023v1/fig-001.webp",
+      "caption": "Fig. 2: The Hit-RAG optimization pipeline. (0) Dataset Building: Retrieving TopK documents and scaling K to augment long context for enhanced robustness. (1) Supervised Fine-Tuning: Training the model to ignore irrelevant documents and locate gold evidence. (2) Reinforcement Learning Optimization: Implementing DPO to mitigate blind reliance on noisy context and GRPO to resolve reasoning collapse through outcome veracity rewards.",
+      "page": 6,
+      "index": 1,
+      "width": 723,
+      "height": 415
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07023v1/fig-002.webp",
+      "caption": "Table 2: Performance comparison (%) on ScienceQA benchmark. #T-Params denotes trainable parameters. Categories: NAT (natural science), SOC (social science), LAN (language), TXT (text context), IMG-Cap (image caption), NO (no context), G1-6 (grades 1-6), G7-12 (grades 7-12). Method groups: (1) Human performance baseline, (2) Zero/Few-shot text-only LLMs, (3) Zero/Few-shot Multimodal VLMs, (4) (M)LLMs enhanced with RAG.",
+      "page": 11,
+      "index": 2,
+      "width": 714,
+      "height": 454
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07023v1/fig-003.webp",
+      "caption": "Fig. 1: A comparison of reasoning paradigms under long-context RAG. Traditional models often suffer from reasoning collapse due to passive reliance on noisy distractors. In contrast, our Hit-RAG achieves reflective contextual reasoning, enabling the model to critically discern information through multi-stage optimization.",
+      "page": 2,
+      "index": 3,
+      "width": 725,
+      "height": 331
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07023v1/fig-004.webp",
+      "caption": "Table 1: Performance comparison (%) on multiple question-answering datasets. We compare Hit-RAG against proprietary models, non-retrieval baselines, and standard open-source models. Metrics: Accuracy (Acc), F1, Exact Match (EM), ROUGE (RG), and MAUVE (Mau). “-” indicates results not reported in original papers.",
+      "page": 10,
+      "index": 4,
+      "width": 735,
+      "height": 615
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07023v1/fig-005.webp",
+      "caption": "Table 5: Impact of context length K on Qwen3-32B and Llama3.1-70B. We compare our default configuration (K = 20) against a significantly reduced context (K = 5). ↑/↓ denotes performance gain/loss relative to the default.",
+      "page": 13,
+      "index": 5,
+      "width": 725,
+      "height": 227
+    }
+  ]
+}

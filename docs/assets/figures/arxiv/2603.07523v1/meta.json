@@ -1,0 +1,86 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.07523v1/fig-001.webp",
+      "caption": "Figure 1: (a) Five different-scaled models initialized from the same DeiT are fine-tuned on the same downstream tasks. (b) A pre-trained DeiT is fine-tuned on five different downstream tasks. We plot the cosine similarity between the low-frequency components of the fine-tuned weights and their original pre-trained state over the training process. Each dashed line represents an individual fine-tuned model, while the solid line indicates their average.",
+      "page": 2,
+      "index": 1,
+      "width": 1050,
+      "height": 191
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07523v1/fig-002.webp",
+      "caption": "Table 1: Performance of models initialized with different depths on ImageNet-1K for 10 epochs. Para.(M) denotes the number of parameters, specified per model size (rows) and as the average transferred during initialization (columns). “Epoch” indicates the extra training epochs for knowledge merging or pre-training. “ / ” denotes failed initialization, and “N/A” indicates that the metric is not applicable. The best result in each column is highlighted in bold, while the second-best is underlined.",
+      "page": 7,
+      "index": 2,
+      "width": 827,
+      "height": 304
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07523v1/fig-003.webp",
+      "caption": "Figure 3: Comparison of different direct initialization methods during full training on DeiT-Ti and DeiT-S.",
+      "page": 7,
+      "index": 3,
+      "width": 538,
+      "height": 291
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07523v1/fig-004.webp",
+      "caption": "Figure 10: Results of cross-architecture and cross-size initialization. (a) FRONT(GPT-B→BERT-S) saves 15.4% FLOPs. (b) FRONT(BERT-B→GPT-S) saves 27.0% FLOPs. (c) FRONT(DeiTB→Mega-ViT-S) saves 33.6% computational cost. All results are compared to training from Scratch.",
+      "page": 29,
+      "index": 4,
+      "width": 827,
+      "height": 297
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07523v1/fig-005.webp",
+      "caption": "Table 8: Hyper-parameters for FRONT’s Retraining on ImageNet-1K.",
+      "page": 22,
+      "index": 5,
+      "width": 660,
+      "height": 362
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07523v1/fig-006.webp",
+      "caption": "Figure 9: Performance comparisons on ImageNet-1K about depth expansion among FRONT and other learngene methods.",
+      "page": 28,
+      "index": 6,
+      "width": 826,
+      "height": 1226
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07523v1/fig-007.webp",
+      "caption": "Table 3: Performance of models on downstream datasets. “Para.(M)” is the average parameter transferred during model initialization.",
+      "page": 8,
+      "index": 7,
+      "width": 827,
+      "height": 290
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07523v1/fig-008.webp",
+      "caption": "Figure 2: The overview of FRONT and FRONT+. The learngenes are obtained from either FRONT via the open available pre-trained models or FRONT+ using source models refined with our frequency regularization. The core process involves transforming weight modules via DCT to extract taskagnostic knowledge. Finally, these learngenes are used to initialize diverse target models through the IDCT, which flexibly accommodate varying architectures via zero-padding or truncation.",
+      "page": 4,
+      "index": 8,
+      "width": 816,
+      "height": 361
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07523v1/fig-009.webp",
+      "caption": "Figure 7: Analysis of Module-wise Similarity Distribution and Average Scores for QKV, FC1, and FC2 Across Downstream Tasks",
+      "page": 27,
+      "index": 9,
+      "width": 844,
+      "height": 277
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07523v1/fig-010.webp",
+      "caption": "Figure 4: Results of pretraining BRET-S, RoBERTa-S and GPT-S. FRONT can achieve the highest savings in FLOPs with 47.5% for BERT-S, 42.9% for RoBERTa-S, and 31.0% for GPT-S from the Scratch models.",
+      "page": 9,
+      "index": 10,
+      "width": 826,
+      "height": 275
+    }
+  ]
+}

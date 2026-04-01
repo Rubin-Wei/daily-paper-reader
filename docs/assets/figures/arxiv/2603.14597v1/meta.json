@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.14597v1/fig-001.webp",
+      "caption": "Figure 5: D-MEM Memory Manifold (UMAP). Each point represents a memory entry, colored by Turn Number (purple → yellow) and shaped by routing tier: CONSTRUCT (star), EVOLVE (circle), SKIP (cross). Blue diamonds mark LTM (final) nodes retained in the persistent knowledge graph; gray dots mark STM (final) buffer entries. LTM nodes occupy dense, well-separated topical clusters across the manifold, while STM entries form a compact, isolated region—indicating that the hierarchical routing produces a structurally stable latent space rather than representation collapse.",
+      "page": 14,
+      "index": 1,
+      "width": 578,
+      "height": 502
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14597v1/fig-002.webp",
+      "caption": "Figure 1: LoCoMo-Noise benchmark construction pipeline. An LLM-based noise generator synthesizes three categories of noise—Filler (40%), Status (30%), and Tangent (30%)—and interleaves them with the original session at a target noise ratio of 75%. The core factual turns (“needles”) are preserved at their original positions, while synthetic noise is injected at random intervals to simulate real-world conversational dynamics.",
+      "page": 3,
+      "index": 2,
+      "width": 771,
+      "height": 590
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14597v1/fig-003.webp",
+      "caption": "Figure 4: Attention heatmap: cosine similarity between query turns and memory slots. Each row corresponds to a dialogue turn (y-axis) and each column to a memory slot index (x-axis). The characteristic staircase-diagonal structure confirms that the active memory frontier advances monotonically as the session progresses. Vertical high-similarity bands (deep red) indicate memory slots that remain persistently salient across hundreds of subsequent turns—the physical substrate of Multi-hop reasoning. The left-side tier strip encodes the routing decision for each turn: gray (SKIP), blue (CONSTRUCT_ONLY), red (FULL_EVOLUTION).",
+      "page": 13,
+      "index": 3,
+      "width": 336,
+      "height": 1079
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14597v1/fig-004.webp",
+      "caption": "Figure 2: RPE component decomposition over 700 turns. The top panel shows the RPE signal (black) overlaid with its Surprise (orange) and Utility (purple) components, along with the routing thresholds θlow = 0.3 and θhigh = 0.7. The bottom panel visualizes the resulting routing tier assignment per turn: SKIP (gray), CONSTRUCT_ONLY (blue), and FULL_EVOLUTION (red). The dominance of blue and the sparsity of red confirm that expensive memory evolution is reserved for genuinely paradigm-shifting inputs.",
+      "page": 8,
+      "index": 4,
+      "width": 816,
+      "height": 339
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14597v1/fig-005.webp",
+      "caption": "Table 2: Full baseline comparison on the clean LoCoMo Benchmark. Metrics are F1 / BLEU-1 (%). Bold indicates the best result among memory-augmented methods per column. D-MEM leads on Overall F1 and Multi-hop by a substantial margin; the Single-hop gap relative to A-MEM is discussed in Section 6.1 and Section 7.",
+      "page": 12,
+      "index": 5,
+      "width": 830,
+      "height": 206
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14597v1/fig-006.webp",
+      "caption": "Figure 3: Routing analysis on the LoCoMo-Noise benchmark. (a) Scatter plot of all turns in the Surprise–Utility space, colored by the routing tier assigned by the Critic Router. All SKIP decisions are tightly concentrated in the “Early cutoff” region (Utility < 0.3, yellow dashed line), confirming that the routing is governed by Utility rather than Surprise. (b) Routing distribution stratified by input type (Noise vs. Real). Counter-intuitively, real turns are skipped at a higher rate (53.9%) than noise turns (43.2%), revealing a calibration asymmetry discussed in the text.",
+      "page": 9,
+      "index": 6,
+      "width": 817,
+      "height": 339
+    }
+  ]
+}

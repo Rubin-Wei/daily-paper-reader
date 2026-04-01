@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.16415v1/fig-001.webp",
+      "caption": "Figure 1: (a) Comparison of different RAG approaches during offline indexing. IndexRAG shifts reasoning to index time, generating bridging facts stored alongside AKUs in a unified vector store. (b) Example from 2WikiMultiHopQA (Ho et al., 2020). The query “Where was the director of the film Aylwin born?” requires two-",
+      "page": 1,
+      "index": 1,
+      "width": 458,
+      "height": 314
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16415v1/fig-002.webp",
+      "caption": "Table 4: Multi-hop QA performance (%) on three multi-hop QA benchmarks. IndexRAG uses kb = 3. Best single-call results per dataset are in bold. Best multi-call results are in bold gray. Methods requiring multiple LLM calls at inference time are greyed out.",
+      "page": 6,
+      "index": 2,
+      "width": 865,
+      "height": 215
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16415v1/fig-003.webp",
+      "caption": "Table 1: Qualitative comparison of different RAG approaches. IndexRAG is the only method that achieves crossdocument reasoning with single-pass retrieval and a single LLM call at inference time.",
+      "page": 2,
+      "index": 3,
+      "width": 850,
+      "height": 211
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16415v1/fig-004.webp",
+      "caption": "Table 6: Case study from 2WikiMultiHopQA. Naive RAG retrieves the correct film passage but fails to retrieve the passage containing the director’s biographical information within its top-k results, producing an incorrect answer (“Henry Edwards”). IndexRAG retrieves two bridging facts within its top-k that directly connect the film to the director’s career and birthplace, producing the correct answer (“Weston-super-Mare”). The key bridging fact is",
+      "page": 7,
+      "index": 4,
+      "width": 921,
+      "height": 264
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16415v1/fig-005.webp",
+      "caption": "Figure 2: Overview of IndexRAG. (a) Offline Indexing: In Stage 1, the LLM extracts AKUs and associated entities from each document. In Stage 2, documents sharing the same entity are identified and used to generate bridging facts. The resulting AKUs and bridging facts are encoded and stored in a unified vector store. (b) Online Inference: the user query q is encoded and used to retrieve relevant context. After applying balanced context selection with kb, the selected context (a mix of AKUs and bridging facts) is fed to the LLM to generate the answer a.",
+      "page": 3,
+      "index": 5,
+      "width": 950,
+      "height": 305
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16415v1/fig-006.webp",
+      "caption": "Figure 3: Fine-grained EM (%) on 2WikiMultiHopQA by question type. Results are shown with and without bridging facts.",
+      "page": 8,
+      "index": 6,
+      "width": 417,
+      "height": 292
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16415v1/fig-007.webp",
+      "caption": "Figure 8: Prompt template for IRCoT chain-of-thought reasoning, following Trivedi et al. (2023).",
+      "page": 12,
+      "index": 7,
+      "width": 950,
+      "height": 216
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16415v1/fig-008.webp",
+      "caption": "Figure 6: Prompt template for Stage 2 bridging fact generation.",
+      "page": 12,
+      "index": 8,
+      "width": 950,
+      "height": 238
+    }
+  ]
+}

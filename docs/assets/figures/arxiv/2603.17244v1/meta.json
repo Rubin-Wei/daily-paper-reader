@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.17244v1/fig-001.webp",
+      "caption": "Table 15: LoCoMo-Plus: Kumiho vs. published baselines (n=401).",
+      "page": 43,
+      "index": 1,
+      "width": 506,
+      "height": 320
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17244v1/fig-002.webp",
+      "caption": "Table 8: Comparative analysis across nine evaluation dimensions.",
+      "page": 38,
+      "index": 2,
+      "width": 1036,
+      "height": 257
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17244v1/fig-003.webp",
+      "caption": "Table 9: Feature comparison with concurrent agent memory systems (as of Feb 2026). ✓ = present, (✓) = partial, × = absent.",
+      "page": 38,
+      "index": 3,
+      "width": 1054,
+      "height": 319
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17244v1/fig-004.webp",
+      "caption": "Table 1: Architectural comparison with selected concurrent systems.",
+      "page": 7,
+      "index": 4,
+      "width": 748,
+      "height": 188
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17244v1/fig-005.webp",
+      "caption": "Table 4: Postulate satisfaction in the graph-native architecture (Hansson belief base).",
+      "page": 22,
+      "index": 5,
+      "width": 505,
+      "height": 1042
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17244v1/fig-006.webp",
+      "caption": "Table 7: Threat model and mitigations for the memory privacy boundary.",
+      "page": 35,
+      "index": 6,
+      "width": 479,
+      "height": 806
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17244v1/fig-007.webp",
+      "caption": "Figure 1: Kumiho dashboard showing the AI Cognitive Memory browser. The selected node (kumiho.io dashboard Memory page redesign with graph visualization) displays its summary, kref URI, revision tag (r=1, latest), and creation date. The forcedirected graph on the right visualizes typed edges to related memories. Stats cards show total memories (19), spaces (9), connections for the selected memory (3), and Dream State recency (4 days ago). The same graph, SDK, and API that agents use to manage work products is exposed here for human inspection.",
+      "page": 40,
+      "index": 7,
+      "width": 506,
+      "height": 510
+    }
+  ]
+}

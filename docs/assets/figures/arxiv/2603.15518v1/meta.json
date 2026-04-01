@@ -1,0 +1,94 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.15518v1/fig-001.webp",
+      "caption": "Figure 1: Our work reveals that the current same-subject knowledge editing method MEMIT-Merge fails to generalize to instructed queries because Activation Deviation exceeds the edited model’s Tolerance Radius (D > R) in the activation space. We unlock robustness by reshaping the geometry towards the safe condition D ≤ R.",
+      "page": 1,
+      "index": 1,
+      "width": 458,
+      "height": 350
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15518v1/fig-002.webp",
+      "caption": "Figure 5: The RoSE framework. We expand the tolerance radius R via Hierarchical Knowledge Integration (HKI) and shrink the activation deviation D via Isotropic Geometric Alignment (IGA) towards the ideal condition D ≤ R.",
+      "page": 6,
+      "index": 2,
+      "width": 910,
+      "height": 292
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15518v1/fig-003.webp",
+      "caption": "Figure 13: Layer sensitivity analysis for k similarity.",
+      "page": 15,
+      "index": 3,
+      "width": 436,
+      "height": 404
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15518v1/fig-004.webp",
+      "caption": "Table 4: Experimental instruction-following QA results on S2RKE using the Qwen2.5-14B-Instruct model. RoSE successfully scales and maintains its optimal performance at a larger parameter size. Standard deviations are shown in parentheses.",
+      "page": 21,
+      "index": 4,
+      "width": 717,
+      "height": 200
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15518v1/fig-005.webp",
+      "caption": "Figure 20: Instruction-following performance across sequences of 5, 10, 20, and 40 consecutive edits. The metrics evaluated are Efficacy, Paraphrase, Locality, and the Overall score. RoSE demonstrates superior stability and performance in short-to-medium length sequential editing scenarios.",
+      "page": 21,
+      "index": 5,
+      "width": 449,
+      "height": 802
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15518v1/fig-006.webp",
+      "caption": "Table 1: Experimental instruction-following QA results on S2RKE across two models. Our method (RoSE) achieves the optimal performance across most key metrics. Standard deviations are shown in parentheses.",
+      "page": 7,
+      "index": 6,
+      "width": 950,
+      "height": 356
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15518v1/fig-007.webp",
+      "caption": "Figure 16: Performance on S2RKE with initial declarative prompts. RoSE enhances Paraphrase accuracy while preserving Locality, indicating better generalization capability.",
+      "page": 18,
+      "index": 7,
+      "width": 447,
+      "height": 270
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15518v1/fig-008.webp",
+      "caption": "Table 5: A case study on S2RKE. RoSE robustly recalls the edited fact (Merthyr Tydfil) under a complex instruction where MEMIT-Merge fails, while both methods preserve unrelated knowledge (Bavaria).",
+      "page": 23,
+      "index": 8,
+      "width": 927,
+      "height": 725
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15518v1/fig-009.webp",
+      "caption": "Table 6: A case study on LoCoMo-Edit. RoSE successfully consolidates disjointed conversational updates into retrievable parametric memory, whereas MEMIT-Merge fails to answer.",
+      "page": 23,
+      "index": 9,
+      "width": 927,
+      "height": 432
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15518v1/fig-010.webp",
+      "caption": "Table 2: Experimental instruction-following QA performance on LoCoMo-Edit across two models. Our method (RoSE) achieves the best performance across all crucial metrics. Standard deviations are shown in parentheses.",
+      "page": 8,
+      "index": 10,
+      "width": 950,
+      "height": 352
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15518v1/fig-011.webp",
+      "caption": "Figure 4: Average pairwise cosine similarity of k. The high similarity in the diagonal blocks (S1 vs. S1 QForm, S1 vs. S1 Instruction-Form) shows that subject representation is stable across prompt formats. The nearzero similarity in the off-diagonal blocks (S1 vs. S2) reveals that keys of distinct subjects are orthogonal.",
+      "page": 5,
+      "index": 11,
+      "width": 416,
+      "height": 325
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.05353v1/fig-001.webp",
+      "caption": "Figure 1. Context chunks are prefetched independently using chunk-local RoPE. At inference time, retrieved chunks are concatenated with the prompt, global RoPE positions are reconstructed, and prompt-conditioned attention norms are used to select high-impact tokens for full-context KV recomputation. The recomputed KV states are concatenated with cached chunks, restoring cross-chunk interactions. An optional chunk reordering step places more informative chunks closer to the prompt.",
+      "page": 2,
+      "index": 1,
+      "width": 1017,
+      "height": 340
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05353v1/fig-002.webp",
+      "caption": "Table 4. Performance comparison on Qwen3-VL-8B across multiple vision–language QA benchmarks under different recomputation budgets k. We compare our method with prior recomputation strategies while keeping the number of recomputed tokens fixed. The k = 0 setting corresponds to standard inference without recomputation.",
+      "page": 7,
+      "index": 2,
+      "width": 1017,
+      "height": 315
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05353v1/fig-003.webp",
+      "caption": "Figure 4. Needle-in-a-Haystack accuracy heatmaps on Qwen3-14B under varying context lengths and needle depths, using attention norms extracted from different Transformer layers.",
+      "page": 13,
+      "index": 3,
+      "width": 1017,
+      "height": 458
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05353v1/fig-004.webp",
+      "caption": "Table 5. TTFT latency and speedup comparison under different sequence lengths with sequence parallel on 4 NVIDIA H100 GPUs. Speedup is reported relative to single-GPU prefilling.",
+      "page": 8,
+      "index": 4,
+      "width": 492,
+      "height": 285
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05353v1/fig-005.webp",
+      "caption": "Figure 2. Speed–accuracy trade-off on LLaMA and Qwen across long-context QA benchmarks. Each curve corresponds to a recomputation budget sweep. Upper-left indicates a better trade-off.",
+      "page": 8,
+      "index": 5,
+      "width": 1025,
+      "height": 258
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05353v1/fig-006.webp",
+      "caption": "Figure 3. Needle-in-a-Haystack accuracy heatmaps on Qwen3-14B under varying context lengths and needle depths.",
+      "page": 12,
+      "index": 6,
+      "width": 1017,
+      "height": 346
+    }
+  ]
+}

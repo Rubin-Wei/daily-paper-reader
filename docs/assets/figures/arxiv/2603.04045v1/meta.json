@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.04045v1/fig-001.webp",
+      "caption": "Figure 1: LDA reduces predicted toxicity across taxa. Percentage of generated sequences classified as toxic by ToxDL2 (lower is better) for four taxonomic finetunes. Baseline denotes the corresponding taxon finetune, Toxic denotes models finetuned on toxin-enriched data from within that taxon and LDA denotes the intervened models at inference time. Bars report mean ± s.e.m. across three independent generation runs under identical sampling and perplexity filtering.",
+      "page": 3,
+      "index": 1,
+      "width": 826,
+      "height": 326
+    }
+  ]
+}

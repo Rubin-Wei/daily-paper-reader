@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.16862v1/fig-001.webp",
+      "caption": "Table 3: Ablation results grouped by model configuration on a 116-question sample of the benchmark.",
+      "page": 11,
+      "index": 1,
+      "width": 826,
+      "height": 482
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16862v1/fig-002.webp",
+      "caption": "Table 4: Model comparison on LongMemEvalSacross 500 total questions. Numbers in parentheses indicate total questions per category. Bold indicates best or tied-best performance in each category.",
+      "page": 15,
+      "index": 2,
+      "width": 967,
+      "height": 240
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16862v1/fig-003.webp",
+      "caption": "Figure 1: An overview of the Chronos Architecture. Event Extraction, Dual Indexing, and Query Processing result in a generated answer.",
+      "page": 2,
+      "index": 3,
+      "width": 664,
+      "height": 621
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16862v1/fig-004.webp",
+      "caption": "Figure 3: Category-wise Error rate comparison across Chronos variations. Chronos High demonstrates marked improvement on nearly every category.",
+      "page": 10,
+      "index": 4,
+      "width": 664,
+      "height": 302
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16862v1/fig-005.webp",
+      "caption": "Table 1: Comparison of Chronos Low with state-of-the-art conversational memory systems on LongMemEval.",
+      "page": 8,
+      "index": 5,
+      "width": 790,
+      "height": 270
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16862v1/fig-006.webp",
+      "caption": "Table 2: Comparison of systems with more advanced LLMs on LongMemEval.",
+      "page": 8,
+      "index": 6,
+      "width": 786,
+      "height": 200
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16862v1/fig-007.webp",
+      "caption": "Figure 2: Overall Benchmark Accuracy on both High and Low Configurations. Note: High configurations refer to evaluations with advanced frontier models, such as Opus 4.6 and Gemini 3 Pro. Standard configurations refer to the traditional evaluated model, GPT-4o, or similar models.",
+      "page": 9,
+      "index": 7,
+      "width": 829,
+      "height": 429
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.07179v1/fig-001.webp",
+      "caption": "Figure 1: Challenges in subgraph-based RAG.",
+      "page": 1,
+      "index": 1,
+      "width": 506,
+      "height": 396
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07179v1/fig-002.webp",
+      "caption": "Figure 2: An overview of the Gfm-Retriever framework. (1) Pre-training: A query-conditioned GFM is trained as a cross-domain",
+      "page": 3,
+      "index": 2,
+      "width": 1053,
+      "height": 409
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07179v1/fig-003.webp",
+      "caption": "Figure 5: Visualizations of the retrieved subgraph.",
+      "page": 8,
+      "index": 3,
+      "width": 508,
+      "height": 253
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07179v1/fig-004.webp",
+      "caption": "Figure 3: Cross-domain generalizability analysis. 0.0 1.0 2.0 3.0 Time (s)",
+      "page": 8,
+      "index": 4,
+      "width": 1042,
+      "height": 250
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07179v1/fig-005.webp",
+      "caption": "Figure D.1: Metadata of the case study from HotpotQA.",
+      "page": 27,
+      "index": 5,
+      "width": 926,
+      "height": 1277
+    }
+  ]
+}

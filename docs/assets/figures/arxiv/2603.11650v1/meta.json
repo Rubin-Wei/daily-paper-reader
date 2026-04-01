@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.11650v1/fig-001.webp",
+      "caption": "Figure 2: Correlation analysis between ChunkScore and ROUGE-L performance on the CRUD Benchmark.",
+      "page": 8,
+      "index": 1,
+      "width": 476,
+      "height": 311
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11650v1/fig-002.webp",
+      "caption": "Figure 3: Trends in perplexity variations between original and rewritten text chunks across different LLMs.",
+      "page": 8,
+      "index": 2,
+      "width": 498,
+      "height": 414
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11650v1/fig-003.webp",
+      "caption": "Table 1: Main experimental results are presented in four domain QA datasets. ROU. and MET. represent ROUGE-L and METEOR, respectively. The best result is in bold, and the second best result is underlined.",
+      "page": 7,
+      "index": 3,
+      "width": 1056,
+      "height": 333
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11650v1/fig-004.webp",
+      "caption": "Figure 1: Overview of the QChunker framework’s multi-agent debate process. The workflow comprises four key stages: question outline generation, text segmentation, integrity review, and knowledge completion, followed by a concrete example.",
+      "page": 4,
+      "index": 4,
+      "width": 1050,
+      "height": 607
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11650v1/fig-005.webp",
+      "caption": "Figure 4: Output example of the QChunker framework when processing chemical documents.",
+      "page": 12,
+      "index": 5,
+      "width": 1056,
+      "height": 1044
+    }
+  ]
+}

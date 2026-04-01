@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.06902v1/fig-001.webp",
+      "caption": "Fig. 2. Failure mode distribution and performance improvement analysis. (a)–(c) Each stacked bar decomposes all 300 tasks into four mutually exclusive outcomes: Correct (task completed with the correct answer), Incorrect (task completed but with a wrong answer), Invalid Action (terminated due to an invalid API call), and Task Limit (terminated after exceeding the maximum number of interaction turns) for GLM4-32B, Qwen3-30B-A3B, and Qwen3-32B, respectively. (d) Absolute improvement of our method over the Baseline in percentage points (pp) across three metrics: Overall Success Rate, Query Success Rate, and Action Success Rate.",
+      "page": 7,
+      "index": 1,
+      "width": 1071,
+      "height": 322
+    },
+    {
+      "url": "assets/figures/arxiv/2603.06902v1/fig-002.webp",
+      "caption": "Fig. 3. Conversation efficiency analysis. (a)–(c) One-Shot Correct Rate (OSR; Eq. 14) for each method on GLM4-32B, Qwen3-30B-A3B, and Qwen3-32B, respectively. (d) Average number of conversation turns per task across all three backbone models.",
+      "page": 7,
+      "index": 2,
+      "width": 1037,
+      "height": 312
+    },
+    {
+      "url": "assets/figures/arxiv/2603.06902v1/fig-003.webp",
+      "caption": "Fig. 1. Overview of the SELSM framework. (Top-left) Cross-institutional deployment context: heterogeneous hospital systems (EHR, LIS, PACS, etc.) operate under institution-specific protocols, while a locally deployed LLM, guided by medical professionals, issues privacy-preserving operational queries. (Top-right) Logical Skill Distillation (Phase 1): the agent interacts with a system simulator in a closed loop, where it observes the current state s, executes an action a via the policy p = π(a | s), and receives the system response o. The Logical Skill Generator G parses each trajectory τ = (s, a, o) through a context encoder and experience decoder to produce entity-agnostic logical skills e = G(τ | θ), comprising Operational Logic, canonical examples, and reasoning traces. (Bottom) Query-Anchored Two-Stage Retrieval (Phase 3): upon receiving a new task, the system first performs Task-Level Query Filtering by scoring stored records R = (q,T ) via query similarity pq , then executes TransitionLevel State Ranking over candidate internal states via state similarity ps, and finally integrates the retrieved skill with the current state to guide the agent toward a better operational action.",
+      "page": 3,
+      "index": 3,
+      "width": 1074,
+      "height": 589
+    },
+    {
+      "url": "assets/figures/arxiv/2603.06902v1/fig-004.webp",
+      "caption": "Fig. 4. Multi-dimensional comparison of four methods on the Qwen330B-A3B backbone. Five normalized dimensions are shown: Success Rate (SR/100; Eq. 11), Completion Rate (TC/100; Eq. 10), Error Robustness (ER; Eq. 15), Efficiency (OSR/100; Eq. 14), and QueryAction Balance (QAB; Eq. 16). A larger enclosed area indicates better overall performance.",
+      "page": 8,
+      "index": 4,
+      "width": 471,
+      "height": 473
+    },
+    {
+      "url": "assets/figures/arxiv/2603.06902v1/fig-005.webp",
+      "caption": "Fig. 5. Token efficiency analysis. Each point represents one method– model configuration, with the x-axis showing C̄tok (Eq. 17) and the y-axis showing SR (Eq. 11). Colors denote methods (Baseline, AMem, ExpeL, Ours) and marker shapes denote backbone models (square: GLM4-32B, circle: Qwen3-30B-A3B, triangle: Qwen3-32B). Points closer to the upper-left corner indicate higher accuracy at lower token cost.",
+      "page": 8,
+      "index": 5,
+      "width": 498,
+      "height": 348
+    },
+    {
+      "url": "assets/figures/arxiv/2603.06902v1/fig-006.webp",
+      "caption": "Fig. 6. Cross-model generalization analysis. (a)–(c) Overall, Query, and Action Success Rates of each method across three backbone models. (d) Standard deviation of conversation turn counts per task (given comparable completion rates, lower values indicate more consistent agent behavior). All methods are evaluated on the same 300-task benchmark.",
+      "page": 9,
+      "index": 6,
+      "width": 1070,
+      "height": 357
+    }
+  ]
+}

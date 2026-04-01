@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.20105v1/fig-001.webp",
+      "caption": "Table 1: A compact combinator library L and examples of task-specific execution plans.",
+      "page": 6,
+      "index": 1,
+      "width": 827,
+      "height": 480
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20105v1/fig-002.webp",
+      "caption": "Table 2: Model families and strength tiers.",
+      "page": 11,
+      "index": 2,
+      "width": 631,
+      "height": 192
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20105v1/fig-003.webp",
+      "caption": "Figure 1: A summary of our results comparing λ-RLMs to base LLMs and recursive LLMs. Those results demonstrate improvements reaching +21.9 in accuracy, with 4.1× in latency reductions.",
+      "page": 2,
+      "index": 3,
+      "width": 826,
+      "height": 397
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20105v1/fig-004.webp",
+      "caption": "Table 10: Ablation study on Qwen3-8B × OOLONG (O(n) task, 131K tokens).",
+      "page": 14,
+      "index": 4,
+      "width": 740,
+      "height": 181
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20105v1/fig-005.webp",
+      "caption": "Table 8: The 7 cells where Normal RLM outperforms λ-RLM.",
+      "page": 13,
+      "index": 5,
+      "width": 677,
+      "height": 193
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20105v1/fig-006.webp",
+      "caption": "Table 4: Accuracy (%) across all paradigms, models, and tasks. Macro-averaged across context-",
+      "page": 12,
+      "index": 6,
+      "width": 810,
+      "height": 519
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20105v1/fig-007.webp",
+      "caption": "Table 5: Latency (seconds) across all configurations. Macro-averaged across context-length buckets. Direct LLM is fastest (single call, no scaffold) but has the lowest accuracy (Table 4). Among the two recursive paradigms, λ-RLM is faster than Normal RLM in every cell.",
+      "page": 12,
+      "index": 7,
+      "width": 814,
+      "height": 467
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-001.webp",
+      "caption": "Table 1: Performance comparison on LongBench and ZeroSCROLLS benchmarks with a 2,000 and 3,000-token budget. Best results are bolded, and second best are underlined. \"Tokens\" reports the average number of tokens remaining after compression, and \"1/τ\" is the average compression ratio. \"Lat.\" and \"Spd.\" denote Latency and Speedup, respectively.",
+      "page": 6,
+      "index": 1,
+      "width": 941,
+      "height": 652
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-002.webp",
+      "caption": "Table 10: Out-of-domain evaluation on general long-context scenarios (L-Eval) using Qwen3-8B. All methods operate under a 2,000-token input budget constraint. Highest scores are bolded, and second highest are underlined.",
+      "page": 15,
+      "index": 2,
+      "width": 939,
+      "height": 182
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-003.webp",
+      "caption": "Figure 6: Visualization of Single-Needle Retrieval Accuracy.",
+      "page": 15,
+      "index": 3,
+      "width": 704,
+      "height": 225
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-004.webp",
+      "caption": "Figure 11: Qualitative comparison on CodeU under a 1000 token budget.",
+      "page": 21,
+      "index": 4,
+      "width": 939,
+      "height": 1173
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-005.webp",
+      "caption": "Figure 1: Comparison of different prompt compression paradigms for long-context LLMs.",
+      "page": 2,
+      "index": 5,
+      "width": 831,
+      "height": 438
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-006.webp",
+      "caption": "Figure 4: Comparison of inference latency versus context length for different compression methods.",
+      "page": 7,
+      "index": 6,
+      "width": 450,
+      "height": 320
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-007.webp",
+      "caption": "Table 2: Performance of BEAVER and baselines on RULER (16k context, 3k budget). \"S\": Single-needle; \"Multi\": Multi-needle (Keys/Values) & Variable Tracking (VT); \"FWE\": Frequent Word Extraction; \"QA\": Question Answering.",
+      "page": 7,
+      "index": 7,
+      "width": 846,
+      "height": 181
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-008.webp",
+      "caption": "Table 9: Detailed evaluation on ZeroSCROLLS datasets. We report the performance on individual sub-tasks: GovReport (GvRp), SummScreenFD (SSFD), QMSum (QMsm), SQuALITY (SQAL), Quality (QALT), NarrativeQA (Nrtv), Qasper (Qspr), MuSiQue (MuSQ), SpaceDigest (SpDg), and BookSumSort (BkSS). \"Lat.\" and \"Spd.\" denote Latency and Speedup, and \"-\" indicates that the results were not available from the original paper.",
+      "page": 14,
+      "index": 8,
+      "width": 939,
+      "height": 759
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-009.webp",
+      "caption": "Figure 8: Qualitative comparison on Financial QA under a 500 token budget.",
+      "page": 18,
+      "index": 9,
+      "width": 950,
+      "height": 1031
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-010.webp",
+      "caption": "Figure 5: Scalability and robustness analysis on RULER (16k context). Performance is normalized against the Dense upper bound (dashed line represents 100%).",
+      "page": 8,
+      "index": 10,
+      "width": 454,
+      "height": 333
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-011.webp",
+      "caption": "Table 4: Ablation study on LongBench QA (2K budget). ∆ denotes the performance drop relative to BEAVER.",
+      "page": 8,
+      "index": 11,
+      "width": 451,
+      "height": 381
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-012.webp",
+      "caption": "Figure 2: Overall pipeline of BEAVER. It comprises a Segmenter, a PageEncoder, and a QueryPlanner.",
+      "page": 4,
+      "index": 12,
+      "width": 879,
+      "height": 517
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-013.webp",
+      "caption": "Figure 9: Qualitative comparison on GovReport summarization under a 500 token budget.",
+      "page": 19,
+      "index": 13,
+      "width": 940,
+      "height": 1397
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-014.webp",
+      "caption": "Table 11: Main Results on RULER benchmark (16k context). Highest scores are bolded, and second highest are underlined.",
+      "page": 17,
+      "index": 14,
+      "width": 939,
+      "height": 822
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-015.webp",
+      "caption": "Table 5: Statistics of LongBench six major task categories. Here, \"En\" denotes English datasets, and \"Zh\" denotes Chinese datasets.",
+      "page": 12,
+      "index": 15,
+      "width": 946,
+      "height": 181
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-016.webp",
+      "caption": "Figure 10: Qualitative comparison on GSM100 under a 1500 token budget.",
+      "page": 20,
+      "index": 16,
+      "width": 950,
+      "height": 1135
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19635v1/fig-017.webp",
+      "caption": "Figure 7: Visualization of Multi-Needle Retrieval Accuracy.",
+      "page": 16,
+      "index": 17,
+      "width": 704,
+      "height": 225
+    }
+  ]
+}

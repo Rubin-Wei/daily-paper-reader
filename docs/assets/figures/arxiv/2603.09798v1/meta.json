@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.09798v1/fig-001.webp",
+      "caption": "Table 1. Quantitative results on the EgoMe-anti and EgoExoLearn benchmarks under the Exo2Ego and Ego2Exo settings.",
+      "page": 6,
+      "index": 1,
+      "width": 936,
+      "height": 309
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09798v1/fig-002.webp",
+      "caption": "Table 3. Analysis of the number of assigned pseudo labels K.",
+      "page": 7,
+      "index": 2,
+      "width": 433,
+      "height": 440
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09798v1/fig-003.webp",
+      "caption": "Table 2. Ablation results under the Exo2Ego and Ego2Exo benchmarks on the EgoMe-anti and EgoExoLearn benchmarks. LC is the dual-clue consistency loss. “VC” and “TC” denote the visual clues and textual clues, respectively. “Conf” represents the confidence-based reweighting, and “ML” denotes the multi-label assignment. “S” means only assign a single class as the pseudo label for the representation.",
+      "page": 7,
+      "index": 3,
+      "width": 952,
+      "height": 298
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09798v1/fig-004.webp",
+      "caption": "Figure 2. Overview of our DCPGN. The model is trained using the source-view data. During testing, the ML-PGM assigns each representation to multiple labels, then performs confidence-based reweighting under an entropy priority queue strategy to balance multiple positive classes. Moreover, to complement the visual clue containing various objects, the DCCM incorporates a lightweight narrator to generate descriptions for action progressions with nouns (green) and verbs (purple). We integrate cross-modality clues by constraining their logits for temporally and spatially bridging the view gap. Finally, the prototype, visual, and textual logits are added for target-view anticipation.",
+      "page": 3,
+      "index": 4,
+      "width": 948,
+      "height": 474
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.14468v1/fig-001.webp",
+      "caption": "Table 7: Human evaluation criteria for the multi-hop question cross three dimensions.",
+      "page": 11,
+      "index": 1,
+      "width": 982,
+      "height": 183
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14468v1/fig-002.webp",
+      "caption": "Table 6: Average retrieval cost by model, category, and hop level.",
+      "page": 11,
+      "index": 2,
+      "width": 972,
+      "height": 413
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14468v1/fig-003.webp",
+      "caption": "Figure 1: Overview of LongVidSearch. We illustrate the end-to-end pipeline with a representative 2-hop example: the agent",
+      "page": 2,
+      "index": 3,
+      "width": 1014,
+      "height": 562
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14468v1/fig-004.webp",
+      "caption": "Figure 2: Two types of failure analysis.",
+      "page": 7,
+      "index": 4,
+      "width": 947,
+      "height": 520
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14468v1/fig-005.webp",
+      "caption": "Figure 3: Data examples of different hop. Each block lists the question, answer, golden clips, reasoning chain,category,hop-level,",
+      "page": 10,
+      "index": 5,
+      "width": 948,
+      "height": 875
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14468v1/fig-006.webp",
+      "caption": "Table 2: General (majority-vote) accuracy (%) by model, category, and hop level.",
+      "page": 4,
+      "index": 6,
+      "width": 1058,
+      "height": 425
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14468v1/fig-007.webp",
+      "caption": "Table 3: Average tool use by hop level among all categories.",
+      "page": 5,
+      "index": 7,
+      "width": 508,
+      "height": 375
+    }
+  ]
+}

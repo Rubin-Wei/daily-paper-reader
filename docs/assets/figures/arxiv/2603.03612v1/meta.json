@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.03612v1/fig-001.webp",
+      "caption": "Figure 1. Main results, summarized as a hierarchy of increasingly expressive RNN classes with popular models within each class. Each RNN shown is “tight” for the respective complexity class C (PNC1, L, etc.) in the sense that both falls in C and can solve a C-complete problem. LRNNs are in PNC1, implying they can be nearly as efficiently parallelized as transformers, incurring only a small O(log∗(n)) depth overhead in terms of bounded fan-in boolean circuits. Nonlinear RNNs, in contrast, can solve L-complete and even P-complete problems, but this comes at the cost of being less parallelizable, requiring notably deeper circuits. Bottom row lists the classes of automata that each RNN model class can simulate, where WFA stands for weighted finite automaton and DWFA stands for deterministic WFA.",
+      "page": 2,
+      "index": 1,
+      "width": 981,
+      "height": 292
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03612v1/fig-002.webp",
+      "caption": "Table 1. Training hyperparameters for deterministic graph connectivity (DGC) and iterated matrix multiplication (IMM). dm, L, dh, h, dstate, and LR denote the model dimension, number of layers, hidden size, number of attention heads, SSM state expansion factor, and learning rate, respectively. All models are trained with AdamW, batch size 128, and gradient clipping at 1.0.",
+      "page": 30,
+      "index": 2,
+      "width": 541,
+      "height": 279
+    }
+  ]
+}

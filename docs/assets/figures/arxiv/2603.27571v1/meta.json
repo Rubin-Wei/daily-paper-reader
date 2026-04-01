@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.27571v1/fig-001.webp",
+      "caption": "Figure 13: Robustness and generalization of RAGent across different LLM backends and distribution-shift settings.",
+      "page": 11,
+      "index": 1,
+      "width": 1004,
+      "height": 199
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27571v1/fig-002.webp",
+      "caption": "Figure 8: Council-of-Experts reasoning. Historian, Observer, and Physicist produce role-specific reports from retrieval, semantic, and physical evidence, and the Judge resolves the final activity label under physics-gated arbitration.",
+      "page": 7,
+      "index": 2,
+      "width": 490,
+      "height": 304
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27571v1/fig-003.webp",
+      "caption": "Figure 3: RAGent overview. The framework follows an offline-to-online workflow with three stages: (1) Knowledge-Base Construction, (2) Physics-Driven Numerical Retrieval, and (3) Council-of-Experts Reasoning.",
+      "page": 3,
+      "index": 3,
+      "width": 1038,
+      "height": 245
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27571v1/fig-004.webp",
+      "caption": "Figure 10: Activities in the dataset. 2,568 radar segments are collected from 8 participants performing 12 activities across 3 environments.",
+      "page": 8,
+      "index": 4,
+      "width": 464,
+      "height": 284
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27571v1/fig-005.webp",
+      "caption": "Figure 11: Overall performance. RAGent achieves 93.39% accuracy without per-domain retraining or target-domain adaptation.",
+      "page": 9,
+      "index": 5,
+      "width": 996,
+      "height": 189
+    }
+  ]
+}

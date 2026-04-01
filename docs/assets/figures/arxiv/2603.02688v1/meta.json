@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.02688v1/fig-001.webp",
+      "caption": "Figure 1: Parts overview image for Chair_applaro. Each 3D part is rendered and labeled (part_0, part_1, etc.) to enable the LLM to map abstract identifiers to physical components.",
+      "page": 3,
+      "index": 1,
+      "width": 456,
+      "height": 281
+    }
+  ]
+}

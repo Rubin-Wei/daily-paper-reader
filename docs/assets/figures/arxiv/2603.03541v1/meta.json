@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.03541v1/fig-001.webp",
+      "caption": "TABLE III: Comprehensive retrieval performance across all three datasets and retriever configurations. Each block corresponds to a retriever model, with rows indicating the hybrid search weight (α). We report four key retrieval metrics: MRR (Mean Reciprocal Rank), Recall@3, Ctx Rel. (LLM-judged Context Relevancy score), and EHR@1 (Exclusive hit rate for Context1).",
+      "page": 6,
+      "index": 1,
+      "width": 1076,
+      "height": 228
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03541v1/fig-002.webp",
+      "caption": "Fig. 1: Overview of RAG System and RAG-X Diagnostics. This figure illustrates the workflow of an RAG system, where external knowledge is indexed into a vector database. A user query interacts with the retriever to fetch relevant information, which is then passed to a generator to produce a response. The RAG-X framework adds diagnostic modules for both retrieval (e.g., ranking, semantic relevance, fine-grained evaluation) and generation (e.g., surface-level similarity, structured output, semantic similarity, and LLM-based judgment) to provide detailed performance analysis.",
+      "page": 2,
+      "index": 2,
+      "width": 1052,
+      "height": 456
+    }
+  ]
+}

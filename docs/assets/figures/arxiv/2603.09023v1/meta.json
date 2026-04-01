@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.09023v1/fig-001.webp",
+      "caption": "Figure 1. Tool adoption rate across 801 active sessions. The median session uses 3 of 18 available tools. Seven tools see zero or near-zero adoption, yet their full schemas (collectively ∼24,500 bytes) are sent on every API call.",
+      "page": 7,
+      "index": 1,
+      "width": 472,
+      "height": 434
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09023v1/fig-002.webp",
+      "caption": "Figure 2. Cumulative input tokens processed over an 88- turn session. Without context management, every turn reprocesses all prior content, producing superlinear cumulative cost. Pichay’s eviction reduces cumulative token spend by 45% ($11.67 at Opus pricing). The shaded area represents wasted computation.",
+      "page": 12,
+      "index": 2,
+      "width": 461,
+      "height": 309
+    }
+  ]
+}

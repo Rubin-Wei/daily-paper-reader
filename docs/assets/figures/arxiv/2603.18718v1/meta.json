@@ -1,0 +1,94 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.18718v1/fig-001.webp",
+      "caption": "Table 11: The prompt template used for Meta-Thinker answerability checking (Part 2).",
+      "page": 21,
+      "index": 1,
+      "width": 462,
+      "height": 648
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18718v1/fig-002.webp",
+      "caption": "Table 10: The prompt template used for Meta-Thinker answerability checking (Part 1).",
+      "page": 21,
+      "index": 2,
+      "width": 465,
+      "height": 974
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18718v1/fig-003.webp",
+      "caption": "Table 2: Results on LoCoMo across four question categories (multi-hop, temporal, open-domain, single-hop). We report F1, B1, and ACC (%). Best results are in bold. GPT-4o-mini and Claude-Haiku-4.5 are backbones; GPT-4o-mini is the answer agent. MEMMALM uses LightMem as storage backend.",
+      "page": 7,
+      "index": 3,
+      "width": 945,
+      "height": 270
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18718v1/fig-004.webp",
+      "caption": "Table 13: The prompt template used for evidencegrounded repair in self-evolution (Part 1).",
+      "page": 22,
+      "index": 4,
+      "width": 462,
+      "height": 1082
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18718v1/fig-005.webp",
+      "caption": "Table 12: The prompt template used for Query Reasoner πr to generate orthogonal query uh+1.",
+      "page": 22,
+      "index": 5,
+      "width": 465,
+      "height": 1160
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18718v1/fig-006.webp",
+      "caption": "Table 8: Representative probe QA pairs from the same dialogue session. Sonnet’s single-word answer tests only keyword presence, while Haiku and Opus require multi-attribute recall.",
+      "page": 18,
+      "index": 6,
+      "width": 800,
+      "height": 281
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18718v1/fig-007.webp",
+      "caption": "Table 15: The prompt template used for semantic consolidation (deduplication) in self-evolution.",
+      "page": 23,
+      "index": 7,
+      "width": 462,
+      "height": 918
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18718v1/fig-008.webp",
+      "caption": "Table 14: The prompt template used for evidencegrounded repair in self-evolution (Part 2: output format and examples).",
+      "page": 23,
+      "index": 8,
+      "width": 465,
+      "height": 802
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18718v1/fig-009.webp",
+      "caption": "Table 4: The prompt template used for LLM-as-a-Judge evaluation.",
+      "page": 13,
+      "index": 9,
+      "width": 462,
+      "height": 741
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18718v1/fig-010.webp",
+      "caption": "Table 9: The prompt template used for Meta-Thinker construction guidance.",
+      "page": 20,
+      "index": 10,
+      "width": 462,
+      "height": 986
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18718v1/fig-011.webp",
+      "caption": "Table 5: Synthetic QA probe types used during probe generation in LoCoMo, with representative examples from the generated probe data.",
+      "page": 16,
+      "index": 11,
+      "width": 823,
+      "height": 260
+    }
+  ]
+}

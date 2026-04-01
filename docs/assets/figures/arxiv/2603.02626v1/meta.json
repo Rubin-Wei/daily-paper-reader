@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.02626v1/fig-001.webp",
+      "caption": "Figure 4: The comparison in type and domain.",
+      "page": 6,
+      "index": 1,
+      "width": 401,
+      "height": 786
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02626v1/fig-002.webp",
+      "caption": "Figure 5: Three methods’ contribution in different task",
+      "page": 7,
+      "index": 2,
+      "width": 410,
+      "height": 506
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02626v1/fig-003.webp",
+      "caption": "Figure 7: A comprehensive workflow demonstration.",
+      "page": 18,
+      "index": 3,
+      "width": 898,
+      "height": 1471
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02626v1/fig-004.webp",
+      "caption": "Figure 1: The framework of V-GEMS. Our system augments the dual-agent architecture (Explorer and Critic) with a specialized Tools suite consisting of a Counter, URL Stack, and US Calculator. The US Calculator adaptively scores page content to decide between LLM and VLM processing. The URL Stack enables stateful backtracking, while the Counter ensures arithmetic precision across multiple navigation steps.For a comprehensive visualization of the end-to-end execution workflow, please refer to Appendix B.",
+      "page": 4,
+      "index": 4,
+      "width": 943,
+      "height": 392
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02626v1/fig-005.webp",
+      "caption": "Figure 8: Operational flowchart of the Symbolic Counter.",
+      "page": 19,
+      "index": 5,
+      "width": 433,
+      "height": 998
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02626v1/fig-006.webp",
+      "caption": "Table 4: Case study of a Missing Key Info error on a multi-source query.",
+      "page": 17,
+      "index": 6,
+      "width": 944,
+      "height": 217
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02626v1/fig-007.webp",
+      "caption": "Table 5: Case study of an Imprecise error.",
+      "page": 17,
+      "index": 7,
+      "width": 944,
+      "height": 216
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02626v1/fig-008.webp",
+      "caption": "Table 3: Case study comparing Hallucination and Totally Incorrect errors on the FIBA Asia Cup task.",
+      "page": 16,
+      "index": 8,
+      "width": 944,
+      "height": 624
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.14828v1/fig-001.webp",
+      "caption": "Table 1. Main results (EM:%/F1:%) on multi-hop QA datasets with GPT-4o-mini. All baselines are evaluated by us by following their released code. Each configuration is run three times and the mean performance is reported. The best results are in bold and the second best are underlined.",
+      "page": 6,
+      "index": 1,
+      "width": 958,
+      "height": 329
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14828v1/fig-002.webp",
+      "caption": "Figure 5. A case study trace for C2RAG (two-hop). Each block reports initial 1-hop top-K candidates (before rerank), the constraint-aware reranked distribution, the solvability signal (N eff vs. threshold γ), and the hop decision (Resolved / Unresolved) with optional textual recovery and final answer generation.",
+      "page": 15,
+      "index": 2,
+      "width": 1013,
+      "height": 1045
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14828v1/fig-003.webp",
+      "caption": "Figure 3. Robustness on MuSiQue (100 queries) under degraded KG quality. (a,b) QA performance as spurious noise is injected or incomplete information is introduced at increasing ratios around query-critical entities. (c) Hop-wise diffusion of KG quality issues measured by the proportion of unsupported evidence across hops under different control settings.",
+      "page": 7,
+      "index": 3,
+      "width": 956,
+      "height": 204
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14828v1/fig-004.webp",
+      "caption": "Figure 2. The Overview of C2RAG’s workflow. (i) Constraint-based retrieval: the query is decomposed into an ordered sequence of atomic constraint triples with relation variants and placeholders, and each constraint is executed via anchor matching, relation filtering, and contextual reranking to produce candidates; (ii) sufficiency check: a hop-wise score determines whether to propagate induced bindings for the next hop or activate textual recovery when structural evidence is insufficient; (iii) the resulting evidences are consolidated and fed to the LLM for answer generation.",
+      "page": 3,
+      "index": 4,
+      "width": 960,
+      "height": 354
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14828v1/fig-005.webp",
+      "caption": "Table 5. Retrieval recall (R@2/R@5) on multi-hop QA datasets with GPT-4o-mini. All baselines are evaluated by us following their released code. Each configuration is run three times and we report the mean recall. The best results are in bold and the second best are underlined.",
+      "page": 13,
+      "index": 5,
+      "width": 810,
+      "height": 325
+    }
+  ]
+}

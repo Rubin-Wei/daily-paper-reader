@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.08075v1/fig-001.webp",
+      "caption": "Table 1. Comparison with other SOTA methods. “DiffGRE+S” and “DiffGRE+P” represent the integration of DiffGRE with SMILE and PHE, respectively. The best results are highlighted in bold, while the second-best results are underlined. Blue numbers indicate results not reported in the original papers but reproduced using the official code.",
+      "page": 7,
+      "index": 1,
+      "width": 1026,
+      "height": 386
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08075v1/fig-002.webp",
+      "caption": "Table 7. Comparison with State-of-the-Art Methods Using Different Backbones",
+      "page": 14,
+      "index": 2,
+      "width": 1026,
+      "height": 294
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08075v1/fig-003.webp",
+      "caption": "Figure 4. Hyperparameter analysis on CUB-200-2011, Stanford Cars, and Oxford Pets datasets. Each column corresponds to one dataset, showing the effects of adaptation batch size, angular margin m, and similarity threshold τ on accuracy (All, Old, New) and the number of newly discovered categories (NDC).",
+      "page": 8,
+      "index": 3,
+      "width": 489,
+      "height": 318
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08075v1/fig-004.webp",
+      "caption": "Figure 2. Overview of the proposed TALON framework. (a) During the offline stage, we introduce margin-aware logit calibration to enlarge inter-class margins and enhance intra-class compactness, reserving embedding space for future category discovery. (b) At test-time, we jointly update the encoder and class prototypes, enabling the model to learn through discovery rather than static inference.",
+      "page": 4,
+      "index": 4,
+      "width": 874,
+      "height": 437
+    }
+  ]
+}

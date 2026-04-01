@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.16856v1/fig-001.webp",
+      "caption": "Figure 12: The prompt wrapper for new problem solving with accumulated experiential knowledge.",
+      "page": 15,
+      "index": 1,
+      "width": 829,
+      "height": 360
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16856v1/fig-002.webp",
+      "caption": "Figure 11: The unstructured prompt wrapper for experiential knowledge extraction on text games.",
+      "page": 15,
+      "index": 2,
+      "width": 829,
+      "height": 634
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16856v1/fig-003.webp",
+      "caption": "Figure 4: By iterating over experiential knowledge extraction and consolidation stages of OEL, the model can progressively improve pass rate, achieving online learning.",
+      "page": 7,
+      "index": 3,
+      "width": 775,
+      "height": 302
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16856v1/fig-004.webp",
+      "caption": "Figure 10: The prompt wrapper for structured experiential knowledge extraction on text games.",
+      "page": 14,
+      "index": 4,
+      "width": 829,
+      "height": 811
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16856v1/fig-005.webp",
+      "caption": "Figure 2: Offline training vs. online experiential learning. Left: The prevailing offline paradigm trains models at the server side using human annotations (SFT) or simulated environments (RL), operating in a closed world with pre-constructed data. Right: Online experiential learning forms a virtuous cycle during deployment. The model interacts with real environments on the user side, and the resulting test-time experience is used to update the model on the server side, requiring no annotations, no simulated environments, and enabling open-world learning from text feedback.",
+      "page": 3,
+      "index": 5,
+      "width": 788,
+      "height": 429
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16856v1/fig-006.webp",
+      "caption": "Figure 8: The game environment provides no explicit rules to simulate real-world scenarios where models receive minimal prior information about new environments. We process initial prompt of Frozen Lake from TextArena to replace explicit rules.",
+      "page": 13,
+      "index": 6,
+      "width": 829,
+      "height": 338
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16856v1/fig-007.webp",
+      "caption": "Figure 9: We process initial prompt of Sokoban from TextArena to replace explicit rules.",
+      "page": 13,
+      "index": 7,
+      "width": 829,
+      "height": 363
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16856v1/fig-008.webp",
+      "caption": "Figure 6: On-policy context distillation in OEL consolidation stage can achieve higher indistribution (game pass rate) performance while better preserving out-of-distribution (IF-Eval accuracy) performance compared to off-policy context distillation.",
+      "page": 8,
+      "index": 8,
+      "width": 789,
+      "height": 306
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16856v1/fig-009.webp",
+      "caption": "Figure 7: Performance scaling with model size across OEL rounds on Qwen3 models.",
+      "page": 8,
+      "index": 9,
+      "width": 405,
+      "height": 323
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16856v1/fig-010.webp",
+      "caption": "Figure 3: Overview of OEL. On the user side, the model interacts with the real environment to collect multi-turn trajectories. On the server side, transferable experiential knowledge is first extracted from the collected trajectories, then consolidated into model weights via on-policy context distillation. During training, the model performs single-turn rollouts from partial rollout prefixes and is optimized to match a knowledge-conditioned teacher through reverse KL divergence, eliminating the need for user-side environment access. The entire process relies solely on textual environment feedback, requiring no reward model or verifiable reward.",
+      "page": 4,
+      "index": 10,
+      "width": 786,
+      "height": 421
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16856v1/fig-011.webp",
+      "caption": "Figure 13: Some experiential knowledge examples for Sokoban game.",
+      "page": 17,
+      "index": 11,
+      "width": 829,
+      "height": 836
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16856v1/fig-012.webp",
+      "caption": "Table 4: Hyperparameters used for each model and task configuration. All values are fixed across OEL rounds for a single model-task pair.",
+      "page": 16,
+      "index": 12,
+      "width": 750,
+      "height": 182
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16856v1/fig-013.webp",
+      "caption": "Table 3: Hyperparameter search ranges for the extraction and consolidation stages.",
+      "page": 16,
+      "index": 13,
+      "width": 829,
+      "height": 254
+    }
+  ]
+}

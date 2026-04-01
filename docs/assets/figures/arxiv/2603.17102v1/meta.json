@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.17102v1/fig-001.webp",
+      "caption": "Figure 1: Overview of our knowledge localization framework for MoEs that uses Cross-Lingual Inconsistency for Contrastive Identification (XICI)",
+      "page": 1,
+      "index": 1,
+      "width": 475,
+      "height": 885
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17102v1/fig-002.webp",
+      "caption": "Table 2: Results from our causal ablation of attributed experts. Row 1 is the number of questions we apply XICI to, while Row 4 is the number of questions where experts were actually identified.",
+      "page": 6,
+      "index": 2,
+      "width": 925,
+      "height": 565
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17102v1/fig-003.webp",
+      "caption": "Figure 4: Location of experts identified for Qwen3-30B-A3B.",
+      "page": 15,
+      "index": 3,
+      "width": 770,
+      "height": 425
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17102v1/fig-004.webp",
+      "caption": "Figure 3: Location of experts identified for GLM-4.5-Air.",
+      "page": 15,
+      "index": 4,
+      "width": 762,
+      "height": 423
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17102v1/fig-005.webp",
+      "caption": "Table 3: Table comparing the use of English paraphrases (Eng) rather than Cross-lingual translations (X-ling).",
+      "page": 7,
+      "index": 5,
+      "width": 464,
+      "height": 452
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17102v1/fig-006.webp",
+      "caption": "Figure 2: Impact of different “max experts” values for our method, when applied to GLM-4.5-Air on MultiLoKo questions.",
+      "page": 14,
+      "index": 6,
+      "width": 687,
+      "height": 375
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17102v1/fig-007.webp",
+      "caption": "Table 1: Prevalence of cross-lingual inconsistency (“Mixed Results”). We abbreviate ECLeKTic to E, MultiLoKo to M, and Global MMLU prehistory to G. Accuracy displayed is averaged over all languages and questions. Statistically, (1) more languages and (2) accuracy closer to 50% increases the chances of inconsistency.",
+      "page": 4,
+      "index": 7,
+      "width": 461,
+      "height": 482
+    }
+  ]
+}

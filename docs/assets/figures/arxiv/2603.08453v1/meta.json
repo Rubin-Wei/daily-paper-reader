@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.08453v1/fig-001.webp",
+      "caption": "Figure 11: Each point represents a chunk. Colors denote coarse units, while shaded polygons indicate fine clusters.",
+      "page": 15,
+      "index": 1,
+      "width": 454,
+      "height": 368
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08453v1/fig-002.webp",
+      "caption": "Figure 9: Stability analysis during long-context generation. The blue represents the step-to-step Jaccard Similarity, and the green represents the Window Hit rate (w = 32). Stability remains robust initially but shows signs of decay after 6k decode steps.",
+      "page": 15,
+      "index": 2,
+      "width": 832,
+      "height": 386
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08453v1/fig-003.webp",
+      "caption": "Table 1: Performance comparison on LongBench V2 using Llama-3.1-8B-Instruct. Bold denotes the best sparse method; Blue highlights cases where LycheeCluster outperforms Full Attention.",
+      "page": 7,
+      "index": 3,
+      "width": 850,
+      "height": 263
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08453v1/fig-004.webp",
+      "caption": "Table 4: Hierarchical classification of text separators for recursive chunking, ordered by semantic priority from structural delimiters to whitespace.",
+      "page": 13,
+      "index": 4,
+      "width": 829,
+      "height": 300
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08453v1/fig-005.webp",
+      "caption": "Figure 5: Kernel-level latency breakdown. (a) Prefill Phase: Latency comparison across varying context lengths. The colored top sections represent the index construction overhead. While LycheeCluster incurs a slightly higher construction cost (10–15%) than ClusterKV, it remains a minor fraction of the total prefill time. (b) Decoding Phase: Breakdown of total latency for generating 1,024 tokens at 72k context. The combined overhead of retrieval and lazy updates in LycheeCluster is minimal compared to the massive computation reduction.",
+      "page": 8,
+      "index": 5,
+      "width": 935,
+      "height": 276
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08453v1/fig-006.webp",
+      "caption": "Figure 3: The overall pipeline of LycheeCluster. The left panel illustrates the bottom-up index construction during the prefill phase, where variable-length chunks are hierarchically clustered. The right panel demonstrates the top-down retrieval and incremental update during the decoding phase.",
+      "page": 4,
+      "index": 6,
+      "width": 863,
+      "height": 486
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08453v1/fig-007.webp",
+      "caption": "Table 6: Performance comparison on RULER benchmark. Note that LycheeCluster achieves comparable or even superior average performance compared to Full Attention, especially at 16k length.",
+      "page": 17,
+      "index": 7,
+      "width": 800,
+      "height": 290
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08453v1/fig-008.webp",
+      "caption": "Figure 8: Memory usage comparison between the full KV cache (left axis, GB) and index overhead of LycheeCluster (right axis, MB). The percentages annotate the relative size of the index compared to the full KV cache, showing a consistent ∼1% overhead.",
+      "page": 12,
+      "index": 8,
+      "width": 446,
+      "height": 307
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08453v1/fig-009.webp",
+      "caption": "Figure 12: Statistical distribution of data length ranges in the LONGBENCH V2 dataset, using the Llama3.18B-instruct tokenizer.",
+      "page": 16,
+      "index": 9,
+      "width": 447,
+      "height": 306
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.14045v2/fig-001.webp",
+      "caption": "Table 3: Results (%) on 500 paired questions per dataset. “Covered” = gold answer present in context (count in parentheses). Bold = best per column. GW = graph-walk compression. F1/EM use SQuAD normalization; 8B outputs are LLM-normalized to short answers (§4).",
+      "page": 6,
+      "index": 1,
+      "width": 925,
+      "height": 269
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14045v2/fig-002.webp",
+      "caption": "Table 11: LightRAG generality experiment (%) on 500 paired questions per dataset. “Covered” = gold answer present in LightRAG context (count in parentheses). Bold = best per model group. GW = graph-walk compression. F1/EM use SQuAD normalization; 8B outputs are LLM-normalized to short answers (§4).",
+      "page": 11,
+      "index": 2,
+      "width": 900,
+      "height": 269
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.16171v1/fig-001.webp",
+      "caption": "Table 6: Hit@5 and MRR by LongMemEval ability type across three storage granularities.",
+      "page": 11,
+      "index": 1,
+      "width": 737,
+      "height": 201
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16171v1/fig-002.webp",
+      "caption": "Table 4: Threshold sweep results (averaged across both scenarios, 43 queries).",
+      "page": 10,
+      "index": 2,
+      "width": 821,
+      "height": 180
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16171v1/fig-003.webp",
+      "caption": "Table 11: Rejection rule simulation on four representative queries. FN = false negatives (valid queries rejected); FP = false positives (miss queries accepted). Counts are from the original 24-query subset where per-query vector scores were recorded.",
+      "page": 14,
+      "index": 3,
+      "width": 754,
+      "height": 250
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16171v1/fig-004.webp",
+      "caption": "Table 10: Five candidate rejection rules. vmax is the top vector similarity score, kw indicates non-empty keyword recall, and τ is the rejection threshold.",
+      "page": 14,
+      "index": 4,
+      "width": 612,
+      "height": 325
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16171v1/fig-005.webp",
+      "caption": "Table 9: Ablation study: cumulative effect of pipeline components averaged over both scenarios. 95% Wilson confidence intervals are shown for binary metrics. nrel and nmiss denote the number of relevant and miss queries respectively.",
+      "page": 13,
+      "index": 5,
+      "width": 743,
+      "height": 184
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16171v1/fig-006.webp",
+      "caption": "Figure 2: Vector vs. keyword search latency across custom and LongMemEval scenarios (log scale). At 100k records, LIKE-based keyword search dominates total latency (3,305 ms); FTS5 indexing reduces it to 2.9 ms (1,100× speedup).",
+      "page": 13,
+      "index": 6,
+      "width": 902,
+      "height": 475
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16171v1/fig-007.webp",
+      "caption": "Figure 1: MemX search pipeline. A query is embedded by Qwen3-0.6B (1024-dim) and routed to two parallel recall paths: DiskANN/brute-force vector search and FTS5 keyword matching. Results are fused via RRF (k=60), re-ranked by four weighted factors (semantic similarity, recency, importance, frequency), and filtered by a rejection gate that returns ∅ when similarity falls below threshold τ. After deduplication the top-k results are returned and retrieval statistics are written back to the database.",
+      "page": 4,
+      "index": 7,
+      "width": 902,
+      "height": 504
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16171v1/fig-008.webp",
+      "caption": "Table 8: Latency breakdown (milliseconds) across custom and LongMemEval scenarios. Custom scenarios use the remote embedding API; LongMemEval scenarios use cached embeddings (query_embed ≈ 0 ms). Rows marked (LIKE) use LIKE substring search; rows marked (FTS5) use FTS5 full-text indexing. All runs use DiskANN vector indexing where supported.",
+      "page": 12,
+      "index": 8,
+      "width": 641,
+      "height": 344
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16171v1/fig-009.webp",
+      "caption": "Table 3: Retrieval quality and latency across the two benchmark scenarios (τ = 0.50). 95% Wilson confidence intervals are shown in brackets for binary metrics.",
+      "page": 9,
+      "index": 9,
+      "width": 731,
+      "height": 619
+    }
+  ]
+}

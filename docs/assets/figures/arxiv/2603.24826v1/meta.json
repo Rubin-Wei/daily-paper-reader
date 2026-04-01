@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.24826v1/fig-001.webp",
+      "caption": "Figure 3: Average NPM in PoETa V2 for the 1.1B model across four experimental conditions as a function of training tokens.",
+      "page": 8,
+      "index": 1,
+      "width": 805,
+      "height": 533
+    },
+    {
+      "url": "assets/figures/arxiv/2603.24826v1/fig-002.webp",
+      "caption": "Figure 2: 7B model: average NPM across task subcategories as a function of training tokens. The nine subcategories shown are those with the largest number of tasks in PoETa V2.",
+      "page": 7,
+      "index": 2,
+      "width": 833,
+      "height": 641
+    },
+    {
+      "url": "assets/figures/arxiv/2603.24826v1/fig-003.webp",
+      "caption": "Figure 1: Average NPM in PoETa V2 for the 7B model across four experimental conditions as a function of training tokens.",
+      "page": 6,
+      "index": 3,
+      "width": 813,
+      "height": 533
+    },
+    {
+      "url": "assets/figures/arxiv/2603.24826v1/fig-004.webp",
+      "caption": "Figure 4: 1.1B model: average NPM across task subcategories as a function of training tokens. The nine subcategories shown are those with the largest number of tasks in PoETa V2.",
+      "page": 9,
+      "index": 4,
+      "width": 833,
+      "height": 641
+    }
+  ]
+}

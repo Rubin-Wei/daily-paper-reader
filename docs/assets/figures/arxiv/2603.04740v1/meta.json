@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.04740v1/fig-001.webp",
+      "caption": "Figure 3: Four-layer governance hierarchy. Each layer has binding force over the layers below it; lower layers cannot violate upper-layer rules.",
+      "page": 11,
+      "index": 1,
+      "width": 754,
+      "height": 359
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04740v1/fig-002.webp",
+      "caption": "Figure 1: Triangular relationship among the three axioms. A1 defines what to protect, A2 defines what changes, and A3 defines how to protect.",
+      "page": 8,
+      "index": 2,
+      "width": 667,
+      "height": 300
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04740v1/fig-003.webp",
+      "caption": "Table 1: Implicit assumptions shared by current agent memory systems.",
+      "page": 4,
+      "index": 3,
+      "width": 950,
+      "height": 203
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04740v1/fig-004.webp",
+      "caption": "Table 2: Paradigm-level comparison across four key dimensions. “Continuity” refers specifically to a structured identity inheritance protocol (as defined in §5.2), not merely the ability to persist and reload data across sessions. Additional dimensions addressed in the full architecture (rights framework, cognitive capabilities, etc.) are omitted here for brevity.",
+      "page": 17,
+      "index": 4,
+      "width": 950,
+      "height": 322
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04740v1/fig-005.webp",
+      "caption": "Figure 2: Architectural overview of the Memory-as-Ontology paradigm and CMA. Three axioms (§3) ground the design; four governance layers (§4.2) organize rules by binding force; semantic storage tiers (§4.3) organize memory by stability and identity significance; five lifecycle stages (§5) model temporal evolution. Dashed boxes indicate optional stages.",
+      "page": 9,
+      "index": 5,
+      "width": 614,
+      "height": 537
+    }
+  ]
+}

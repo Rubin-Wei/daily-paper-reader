@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.19733v1/fig-001.webp",
+      "caption": "Figure 1: Overview of Performance-oriented Context Compression (PoC). PoC is a novel context compression paradigm that moves away from budget-driven compression toward performance-driven compression. Unlike Budget-oriented Context Compression (BoC), PoC compresses context to the minimum length required to meet a given performance constraint. This approach mitigates the unpredictable performance degradation inherent in BoC, thus enhancing the reliability and applicability of context compression.",
+      "page": 2,
+      "index": 1,
+      "width": 686,
+      "height": 271
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19733v1/fig-002.webp",
+      "caption": "Figure 2: Overview of the PoC pipeline: (1) A performance predictor first estimates the performancecompression curve for the input context. (2) Given a target performance retention, PoC then searches for the minimum compression ratio that meets the constraint. (3) Finally, an off-the-shelf compressor compresses the context using the selected ratio.",
+      "page": 3,
+      "index": 2,
+      "width": 425,
+      "height": 510
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19733v1/fig-003.webp",
+      "caption": "Figure 4: The performance-compression curve interpolated by the context-agnostic predictor. To illustrate the sample-specific variability, we randomly plot the performance-compression curves of 3 samples. (a)–(f) present the performance-compression curves for the QA and summarization tasks, while (h) shows the unnormalized performance-compression curve (where the y-axis represents the F1 score) on TriviaQA. The unnormalized performance-compression curves for the other datasets are provided in Appendix A.",
+      "page": 8,
+      "index": 3,
+      "width": 942,
+      "height": 567
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19733v1/fig-004.webp",
+      "caption": "Table 3: Latency evaluation of the framework components. The predictor and compressor latencies represent the overhead, measured on 512-token chunks. The Reader latency demonstrates the inference speedup on a 32,768-token context compressed at different ratios.",
+      "page": 8,
+      "index": 4,
+      "width": 435,
+      "height": 310
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19733v1/fig-005.webp",
+      "caption": "Figure 3: Context-aware predictor. It takes the context and multiple compression ratios as input to simultaneously predict multiple performance retentions. This parallel prediction approach enables the prediction of multiple performance retentions in a single forward pass, significantly accelerating the prediction speed.",
+      "page": 4,
+      "index": 5,
+      "width": 448,
+      "height": 409
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19733v1/fig-006.webp",
+      "caption": "Figure 5: The unnormalized performance-compression curves interpolated by the context-agnostic predictor. In subfigures (a)–(e), the y-axis represents the F1 score, while in (f) and (g), the y-axis represents the geometric mean of ROUGE-1, ROUGE-2, and ROUGE-L.",
+      "page": 12,
+      "index": 6,
+      "width": 942,
+      "height": 567
+    }
+  ]
+}

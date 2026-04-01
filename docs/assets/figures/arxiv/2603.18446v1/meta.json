@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.18446v1/fig-001.webp",
+      "caption": "Table 9: Representative samples from the training, validation, and test splits.",
+      "page": 15,
+      "index": 1,
+      "width": 933,
+      "height": 393
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18446v1/fig-002.webp",
+      "caption": "Figure 5: Latency breakdown of UT-ACA under varying MaxBudget settings (block size = 16). LSTM forward time values are annotated above the corresponding bars.",
+      "page": 7,
+      "index": 2,
+      "width": 442,
+      "height": 296
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18446v1/fig-003.webp",
+      "caption": "Table 3: Comparison of context management methods on the test set. The symbol † indicates methods for which long-context samples either triggered GPU out-of-memory errors on a single NVIDIA H100 or produced incoherent outputs; such samples are excluded from the evaluation of the corresponding methods. Note that Llama-3-8B-it-262k is a long-context adaptation of the original Llama-3-8B-it; substituting it with Llama-3.1-8B-it would unfairly disadvantage the corresponding baselines.",
+      "page": 7,
+      "index": 3,
+      "width": 908,
+      "height": 248
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18446v1/fig-004.webp",
+      "caption": "Table 8: Source Wikipedia articles used in the test set.",
+      "page": 14,
+      "index": 4,
+      "width": 447,
+      "height": 960
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18446v1/fig-005.webp",
+      "caption": "Figure 6: The LLM prompt for generating naturalistic biography with ground truth summary.",
+      "page": 14,
+      "index": 5,
+      "width": 946,
+      "height": 369
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18446v1/fig-006.webp",
+      "caption": "Figure 2: Main workflow of UT-ACA. (a) The user prompt contains the long-context input information. (b) The system instruction specifies the questions or instructions. (c) The uncertainty detector takes the output logits and semantic embeddings to estimate the generation difficulty metric. (d) The adaptive context window receives the detector signal, expands the context window when needed, and triggers regeneration.",
+      "page": 3,
+      "index": 6,
+      "width": 946,
+      "height": 398
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18446v1/fig-007.webp",
+      "caption": "Table 12: Case study comparison. Case #3 demonstrates semantic robustness despite format variations, whereas Case #17 illustrates prediction failures that are accurately identified by our conceptual accuracy score. (✔=correct, ✘=incorrect)",
+      "page": 18,
+      "index": 7,
+      "width": 927,
+      "height": 251
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18446v1/fig-008.webp",
+      "caption": "Table 7: Data samples from our synthetic dataset.",
+      "page": 13,
+      "index": 8,
+      "width": 937,
+      "height": 713
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18446v1/fig-009.webp",
+      "caption": "Figure 3: Overview of token-generation scenarios. The axes delineate the sufficiency of contextual versus intrinsic knowledge, while the logit plots depict the corresponding LLM outputs under varying conditions.",
+      "page": 4,
+      "index": 9,
+      "width": 450,
+      "height": 340
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18446v1/fig-010.webp",
+      "caption": "Table 11: Evaluation results on 30 test samples using String matching (Str), Conceptual accuracy score (CAS), and Human annotation (Hum). Cor denotes the correct number of six attributes, which is count by human.",
+      "page": 17,
+      "index": 10,
+      "width": 839,
+      "height": 393
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18446v1/fig-011.webp",
+      "caption": "Figure 9: The LLM prompt for evaluating conceptual accuracy score with the input LLM prediction, ground truth answer, and question from each subtask.",
+      "page": 17,
+      "index": 11,
+      "width": 946,
+      "height": 213
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18446v1/fig-012.webp",
+      "caption": "Table 10: Hyperparameter configuration for the Llama3.1-8B uncertainty detector.",
+      "page": 16,
+      "index": 12,
+      "width": 443,
+      "height": 271
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18446v1/fig-013.webp",
+      "caption": "Figure 8: Illustration of extraction points for semantic embeddings. We evaluate features from the final layer (e.g., Layer 32 of Llama-3.1-8B) at three distinct positions: the attention output, the MLP output, and the residual stream.",
+      "page": 16,
+      "index": 13,
+      "width": 452,
+      "height": 277
+    }
+  ]
+}

@@ -1,0 +1,2315 @@
+Title: Retrieving Minimal and Sufficient Reasoning Subgraphs with Graph Foundation Models for Path-aware GraphRAG
+
+URL Source: https://arxiv.org/pdf/2603.07179v1
+
+Published Time: Tue, 10 Mar 2026 00:43:33 GMT
+
+Number of Pages: 27
+
+Markdown Content:
+# Retrieving Minimal and Sufficient Reasoning Subgraphs with Graph Foundation Models for Path-aware GraphRAG 
+
+# Haonan Yuan 1, Qingyun Sun 1, Junhua Shi 1, Mingjun Liu 2, Jiaqi Yuan 1, Ziwei Zhang 1,Xingcheng Fu 3, Jianxin Li 1
+
+> 1
+
+Beihang University 2University of Electronic Science and Technology of China 3Guangxi Normal University 
+
+## Abstract 
+
+Graph-based retrieval-augmented generation (GraphRAG) exploits structured knowledge to support knowledge-intensive reasoning. However, most existing methods treat graphs as intermediate ar-tifacts, and the few subgraph-based retrieval methods depend on heuristic rules coupled with domain-specific distributions. They fail in typical cold-start scenarios where data in target domains is scarce, thus yielding reasoning contexts that are either information-ally incomplete or structurally redundant. In this work, we revisit retrieval from a structural perspective, and propose Gfm -Retriever 
+
+that directly responds to user queries with a subgraph, where a pre-trained Graph Foundation Model acts as a cross-domain Retriever 
+
+for multi-hop path-aware reasoning. Building on this perspective, we repurpose a pre-trained GFM from an entity ranking function into a generalized retriever to support cross-domain retrieval. On top of the retrieved graph, we further derive a label-free subgraph selector optimized by a principled Information Bottleneck objective to identify the query-conditioned subgraph, which contains infor-mationally sufficient and structurally minimal golden evidence in a self-contained “core set”. To connect structure with generation, we explicitly extract and reorganize relational paths as in-context prompts, enabling interpretable reasoning. Extensive experiments on multi-hop question answering benchmarks demonstrate that 
+
+Gfm -Retriever achieves state-of-the-art performance in both re-trieval quality and answer generation, while maintaining efficiency. 
+
+## 1 Introduction 
+
+Retrieval-augmented generation (RAG) has emerged as a central paradigm for enabling large language models (LLMs) to access and reason over external knowledge in a wide range of real-world ap-plications [ 13 , 89 , 91 , 95 ]. To better facilitate multi-hop reasoning in knowledge-intensive question answering, recent works extend the RAG paradigm by incorporating knowledge graphs, giving rise to graph-based retrieval-augmented generation (GraphRAG) [ 109 ]. Despite this motivation, most GraphRAG systems ultimately reduce retrieval outputs to ranked lists of entities and documents [ 21 , 66 ]. Such ranking-based retrieval abstracts away relational dependen-cies, forcing downstream answer generation to implicitly recon-struct reasoning paths from isolated evidence. We demonstrate a case study in Figure 1, which presents a user question whose answer depends on tracing multiple relational de-pendencies across entities [ 16 ]. While the entity ranking can tra-verse nodes that are individually relevant, it does not indicate how these entities interact or which relational paths are critical for infer-ence. As a result, the reasoning process remains implicit and fragile. In contrast, a query-specific subgraph explicitly preserves relational structure, making multi-hop dependencies observable and provid-ing the core structural context for generation [ 46 ]. This comparison Challenge I: Retrieving Cross -domain Subgraph    
+
+> Challenge II: Identifying Minimal & Sufficient Subgraph
+> Challenge III: Bridging Structure and Reasoning
+> Academic
+> Biologic
+> Financial
+> Pre -trained GFM
+> Query q
+> Retrieved Entities Subgraph Selector
+
+# ?            
+
+> Reasoning Subgraph
+> <path>
+> Entity_A --[relation] -->
+> Entity_B --[relation] -->
+> Entity_C --[relation] -->
+> Entity_D --[relation] -->
+> </path>
+> Path -aware Reasoning LLM Answer Generation
+> Query q: What is the
+> relation between Aand D?
+> Answer y:Ais a great -
+> grandparent node of D.
+
+# ?
+
+# ?
+
+> Target Domain
+> “Core Set” Subgraph
+> Cold -start
+> A
+> B
+> C
+> D
+
+Figure 1: Challenges in subgraph-based RAG. 
+
+suggests that responding to a subgraph rather than a flat ranking offers a more informative retrieval interface for complex reasoning. Motivated by this key observation, a growing line of GraphRAG methods has started to incorporate subgraph-level retrieval to bet-ter support complex reasoning [ 14 , 48 ]. Instead of returning isolated entities or documents, these works aim to construct query-relevant substructures that expose relational dependencies. However, they typically rely on heuristic rules that determine which entities and re-lations to include [ 108 ]. Crucially, these heuristics are often implic-itly coupled to domain-specific distributions, making them fragile in typical cold-start scenarios where target-domain data are scarce. Without sufficient supervision, they lack a principled mechanism to balance informative sufficiency with structural minimality. Con-sequently, they risk producing reasoning contexts that are either informationally incomplete or structurally redundant. The aforementioned observations suggest that: although sub-graphs offer a more faithful intermediate representation than ranked entities, several fundamental challenges remain unaddressed: 
+
+Challenge I: Retrieving Cross-domain subgraph. In existing GraphRAG systems, retrieval is tightly coupled with query-specific propagation on a fixed knowledge graph [ 24 , 57 ]. While effective in closed settings, such designs struggle to generalize to unseen domains characterized by distinct distributions. In typical cold-start scenarios, training a domain-specific retriever is often infeasible due to data scarcity, and directly applying a pre-trained retriever tends to fail because of distribution misalignment. A key challenge is therefore to establish a generalized retrieval paradigm that de-couples learned retrieval patterns from specific domains. 
+
+> arXiv:2603.07179v1 [cs.IR] 7 Mar 2026 Preprint. Under review.
+
+Challenge II: Identifying the minimal yet sufficient sub-graph. Retrieving subgraphs introduces a fundamental trade-off between sufficiency and redundancy. Larger subgraphs increase the chance of containing all relevant evidence, but also introduce substantial redundancy, whereas smaller subgraphs risk missing critical reasoning paths. Existing methods typically constrain this trade-off through heuristic budgets, fixed hop limits, or manually tuned pruning strategies [48], which are insensitive to query diffi-culty and hard to generalize. Without explicit supervision on what constitutes a “ground-truth subgraph”, it remains challenging to learn a principled, query-adaptive notion of sufficiency. 
+
+Challenge III: Bridging structure and reasoning. Even when a query-relevant subgraph is retrieved, its structural information is often underutilized by downstream generators. Standard practices frequently collapse the retrieved subgraph into document sets or flattened triple lists, which inadvertently discard the relational de-pendencies essential for multi-hop inference [ 111 ]. Consequently, LLM is forced to implicitly reconstruct reasoning chains from a fragmented context, rendering the process uninterpretable. A prac-tical challenge is to preserve and reorganize these relational paths to explicitly guide the reasoning process of the LLM. To address the challenges identified above, we propose Gfm -Retriever , a subgraph-based RAG framework that revisits retrieval from a structural perspective by directly responding to user queries with subgraphs. In contrast to existing methods that tightly couple retrieval with query-time graph traversal or heuristic expansion, 
+
+Gfm -Retriever elevates subgraphs to the retrieval interface itself and learns to retrieve them in a principled manner. At the core of 
+
+Gfm -Retriever is a pre-trained Graph Foundation Model acting as a generalized Retriever , which enables efficient and transferable subgraph retrieval across domains. To address the lack of princi-pled subgraph selection, we derive a label-free subgraph selector optimized under an Information Bottleneck objective, explicitly bal-ancing informative sufficiency and structural minimality. Finally, to make retrieved structures actionable for answer generation, Gfm -Retriever extracts and reorganizes relational paths from subgraph into structured in-context prompts, allowing the graph structure to directly guide multi-hop reasoning. Our contributions: 
+
+• We propose Gfm -Retriever, a subgraph-based RAG that retrieves query-specific subgraphs. To the best of our knowledge, Gfm -Retriever is the first work that leverages a cross-domain GFM to learn minimal yet sufficient subgraphs for answer generation. 
+
+• We introduce a label-free Information Bottleneck formulation for subgraph selection and derive a tractable optimization objective, enabling principled identification of query-relevant structure that explicitly supports multi-hop, path-aware reasoning. 
+
+• Extensive experiments demonstrate Gfm -Retriever consistently improves both retrieval quality and end-to-end answer genera-tion against state-of-the-art baselines. 
+
+## 2 Related Work 2.1 Graph-based RAG 
+
+Retrieval-augmented generation (RAG) grounds the large language models in externally retrieved knowledge to improve the factual-ity in knowledge-intensive tasks [ 28 , 114 ]. Most methods follow a “retrieve-then-generate” paradigm that incorporates retrieved text as context [ 13 ], but typically treat evidence as unstructured. Graph-based retrieval-augmented generation (GraphRAG) intro-duces graphs as knowledge structures that explicitly encode rela-tional information [ 109 ]. By organizing entities as nodes connected by edges, GraphRAG enables relation-aware retrieval and reasoning and has shown benefits for multi-step reasoning [ 12 , 22 , 66 ]. How-ever, existing GraphRAG methods rely on large or fixed structures that introduce redundant or task-irrelevant information, highlight-ing the challenge of constructing task-relevant graphs. 
+
+## 2.2 Graph Foundation Models 
+
+Graph foundation models (GFMs) aim to learn transferable graph representations via large-scale self-supervised pre-training [ 52 , 93 ]. While effective within the limited domains, most methods under-estimate distribution shifts between pre-training and downstream, leading to degraded transferability [ 29 ]. Recent work explores cross-domain graph learning and LLM-enhanced alignment to improve generalization [ 25 , 81 , 113 ], but often relies on implicit represen-tation similarity or restricted graph assumptions. Though some studies apply graph foundation models as retrievers for RAG sys-tems [ 54 ], their pre-training remains a semantic “black box” without explicit cross-domain alignment, limiting its generalizability. 
+
+## 2.3 Critical Subgraph Mining 
+
+Although graph structure encodes rich relational semantics, only a small part of subgraphs are truly informative, which can be deci-sive for downstream tasks [ 98 ]. Early work relies on pre-defined structural patterns, such as kernels or motifs, which provide strong inductive bias but remain heuristic, and difficult to scale or adapt across tasks [ 41 , 59 ]. More recent approaches explore learnable or information-theoretic criteria to identify task-relevant subgraphs [ 76 ,104 ], yet often lack explicit semantic preservation or minimality guarantees. In GraphRAG, subgraphs are rarely used as retrieval units, and existing attempts focus on coverage rather than task sufficiency, leaving the problem of identifying compact and critical subgraphs largely unresolved [48]. 
+
+## 3 Preliminary 
+
+Notation. A knowledge graph is denoted as G = (V , R, E) , where 
+
+V is entity set, R denotes relations, and E ⊆ V ×R ×V denotes the relational triples. G is indexed from a corpus of documents 
+
+C = {𝑐 𝑖 } from different knowledge domains {D} . Each 𝑐 𝑖 links to a set of entities 𝜙 (𝑐 𝑖 ) ⊆ V . Denote the Graph Foundation Model as 𝑓 𝜽 (·) , where the parameter 𝜽 is pre-trained on G with the KG completion task, and then fine-tuned with the subgraph retrieval task. Given the query q, 𝑓 ★ 
+
+> 𝜽
+
+(·) acts as a query-dependent retriever for a subgraph Gq = 𝑓 ★ 
+
+> 𝜽
+
+(G 𝑇 , q) on the target knowledge graph G𝑇 .
+
+Subgraph-based RAG. Given a query q, the retrieved subgraph 
+
+Gq is denoted as Gq = (V q, Rq, Eq), which specifies both the rel-evant entities and their dependencies. To ground the retrieved entities in text, we derive a supporting document set Cq ⊆ C by mapping entities back to their corpus as Cq = Ð𝑒 ∈ V q 𝜙 −1 (𝑒 ) ={𝑐 ∈C | 𝜙 (𝑐 ) ∩ V q ≠ ∅} , where 𝜙 −1 (𝑒 ) denotes the chunks mentioning entity 𝑒 . The downstream answer generator is an LLM that condi-tions on the query together with the retrieved context to produce an answer 𝑦 = LLM (q, Gq, Cq).Retrieving Minimal and Sufficient Reasoning Subgraphs with Graph Foundation Models for Path-aware GraphRAG Inferring : Path -aware In -context Prompter Fine -tuning : Subgraph Selector Pre -training : GFM as Cross -domain Retriever           
+
+> drug
+> gene
+> disease company
+> stock
+> CEO
+> paper author
+> topic
+> r
+> erer
+> erer
+> ere
+
+KL      
+
+> Academic Domain Biologic Domain
+> Information Gain Regularizer Prototype -driven Alignment
+> Financial Domain
+> X1
+> [drug]
+> Y
+> [disease]
+> X2
+> [drug]
+
+Multi -domain Pre -trained GFM 
+
+(query -dependent GNN) 
+
+> Label -free IB Optimized Subgraph Selector
+
+Query -dependent Subgraph 
+
+q Prompt Generator 
+
+Tuning Query q: 
+
+How is disease Y affected by drug X1?
+
+q p
+
+q              
+
+> Social Network Domain
+> Alice
+> [regular_user]
+> Bob
+> [KOL_user]
+> “chip”
+> [post]
+> “AI ”
+> [topic]
+> “TechFan”
+> [group]
+> “Hot ”
+> [trend]
+> post
+> about
+> repost
+> influence
+> discuss
+> amplify
+> Entity 1
+> Entity 2
+> Entity 3
+> Entity n
+> …
+> …
+> Chunk 1
+> Chunk 2
+> Chunk m
+> Entity -to -Chunk Mapping
+> Alice “AI ”
+> “chip ”
+> post about
+> Bob
+> “chip ”
+> “AI ”repost about
+> Bob
+> “TechFan ”
+> “AI ”
+> discuss
+> “chip ”about
+> “AI ”
+> “TechFan ”“AI ”discuss
+> “TechFan ”“Hot ”amplify
+> influence
+> Top -K
+> Document
+> Re -ranking
+
+Inferring Query q:
+
+Who made “chip” a hot trend? 
+
+Answer y :
+
+The KOL user “ Bob”.   
+
+> Path -aware Reasoning
+> Golden Evidence
+
+▶ ▶ ▶
+
+𝑓 𝜽 (·) Z★ 
+
+> 𝑒
+
+eZ𝑒 
+
+LPhase I = 𝛼 1LBCE + ( 1 − 𝛼 1)L rank 
+
+LPhase II = 𝛼 2Lproto + 𝛼 3LIGC 
+
+Lproto LIGC 
+
+Pproto (𝑒 ) Prand (𝑒 )
+
+⌈L LIB ⌉−𝐼 (q; Gq) 𝐼 (G ; Gq)
+
+Gq
+
+M =
+
+" 1 0 · · · 0 1      
+
+> .... . ....
+> 01· · · 10
+
+#
+
+Figure 2: An overview of the Gfm -Retriever framework. (1) Pre-training: A query-conditioned GFM is trained as a cross-domain retriever. (2) Fine-tuning: A label-free IB-optimized selector identifies minimal sufficient query-specific subgraphs. (3) Inferring: Retrieved subgraphs are transformed into path-aware in-context prompts to guide multi-hop reasoning. Click “ ▶” to navigate. 
+
+## 4 Proposed Framework: Gfm -Retriever 
+
+In this section, we introduce the proposed Gfm -Retriever. 
+
+## 4.1 Generalized GFM as Cross-domain Retriever 
+
+To address cross-domain retrieval under data-scarce and cold-start scenarios, we establish a GFM-based retriever that is capable of generalizing across different knowledge domains by learning a unified yet discriminative representation space across multi-domain KGs and supports consistent retrieval. 
+
+Query-dependent GFM Message-Passing. Different from tra-ditional GNN message-passing, which aggregates independently of task [ 40 ], the GFM retriever employs a query-dependent message-passing mechanism that dynamically adapts to input queries [ 54 ]. Given a query q, the GFM retriever 𝑓 𝜽 (·) first initialize entity ( 𝑒 )and relation ( 𝑟 ) embeddings for all 𝑒 ∈ V , 𝑟 ∈ R :
+
+Z(0) 
+
+> 𝑒
+
+=
+
+(
+
+q, 𝑒 ∈ {V | q},
+
+0, otherwise , and Z(0) 
+
+> 𝑟
+
+= TextEmb (𝑟 ), (1) where Z𝑒 and Z𝑟 denote the embeddings of entities and relations, respectively, and 𝑒 ∈ {V | q} indicates the set of entities men-tioned in the query q. This initialization assigns higher activation to query-relevant entities, providing a contextualized starting point for subsequent propagation. The message passing at the (𝑙 + 1)-th layer then proceeds through relation-aware triple encoding, entity-wise aggregation, and representation update. 
+
+m(𝑙 +1) 
+
+> 𝑣
+
+= Msg  Z(𝑙 ) 
+
+> 𝑣
+
+, 𝑔 (𝑙 +1) (Z(𝑙 ) 
+
+> 𝑟
+
+), Z(𝑙 )
+
+> 𝑢
+
+, (𝑢, 𝑟, 𝑣 ) ∈ E , (2) 
+
+Z(𝑙 +1) 
+
+> 𝑣
+
+= Update  Z(𝑙 ) 
+
+> 𝑣
+
+, Agg ({ m(𝑙 +1) 
+
+> 𝑢
+
+| 𝑢 ∈ N ( 𝑣 )}) , (3) where the message m captures triple-level interactions between the neighboring entities and relations. Specifically, Msg (·) , the projec-tion function 𝑔 (·) , Update (·) , and Agg (·) are learnable components of the GFM 𝑓 𝜽 (·) and are jointly pre-trained over the indexed multi-domain knowledge graphs. Query-dependent GNNs are theoretically capable of multi-hop reasoning, but they assume the semantic consistency of the KG [ 30 ,101 ]. Nevertheless, as the knowledge graph G in our setting is indexed from the multi-domain documents with varying semantic distributions, it potentially breaks the assumption. We next bridge this alignment gap by deriving from Qiu et al. [68]. 
+
+Proposition 4.1 ( Multi-domain logical expressivity of qery-conditioned GFM ). Let G be a knowledge graph indexed from multiple domains. {Dom 𝑑 (𝑒 )} denotes unary predicates indicate domain attributes of entity 𝑒 . For a query 𝑞 , the query-conditioned GFM can learn a rule R(q, 𝑒 ) if and only if R(q, 𝑒 ) is a formula in graded modal logic over G with constant q, i.e., ∃⩾𝑁 𝑒 ′ (R(𝑒 ′, 𝑒 ) ∧ 
+
+Dom 𝑑 (𝑒 ′) ∧ 𝜓 (𝑒 ′)) , where 𝜓 (·) a subformula. [Proof] In plain terms, Proposition 4.1 shows that a query-conditioned GFM over a multi-domain knowledge graph can represent exactly those query-entity relations definable by graded modal logic, with the query q acting as a constant. This captures the multi-hop rela-tional and domain-aware reasoning required for complex queries. 
+
+Prototype-driven Multi-Domain Pre-training. An ideal GFM should exhibit homogenization across tasks and emergence of trans-ferable knowledge [ 51 ], enabling it as a cross-domain retriever un-der distribution shifts. To achieve this, we pre-train 𝑓 𝜽 (·) with KG completion task. For each masked triple (𝑒, 𝑟, ?) or (?, 𝑟, 𝑒 ) randomly sampled from G over domains, 𝑓 𝜽 (·) receives a pseudo-query q con-structed from the known elements and predicts the missing entity with relevance score [54]: 
+
+Pq (𝑒 ) = 𝜎  MLP (Z(𝐿 ) 
+
+> 𝑒
+
+) ∈ R| V | × 1, (4) which yields a binary cross-entropy (BCE) loss: 
+
+LBCE = − 1
+
+|V + 
+
+> q
+
+|∑︁ 𝑒 ∈ V +
+
+> q
+
+log Pq (𝑒 ) − 1
+
+|V − 
+
+> q
+
+|∑︁ 𝑒 ∈ V −
+
+> q
+
+log (1 − Pq (𝑒 )) , (5) Preprint. Under review. 
+
+where V+ 
+
+> q
+
+denotes the set of entities relevant to the query q, and V−
+
+> q
+
+denotes the remaining entities. To further alleviate the vanishing-gradient issue caused by the sparsity of positive entities, we addi-tionally incorporate a ranking loss to enforce a margin between positive and negative entities [3, 54]: 
+
+Lrank = − 1
+
+|V + 
+
+> q
+
+|∑︁ 𝑒 ∈ V +
+
+> q
+
+Pq (𝑒 )
+
+Í𝑒 ′ ∈ V −
+
+> q
+
+Pq (𝑒 ′). (6) To improve cross-domain semantic consistency, we introduce a lightweight prototype-based contrastive continuous pre-training mechanism. For each pre-training domain 𝑑 ∈ {D} , we uniformly sample a subset of query-entity pairs (q𝑖, 𝑒 𝑖 ) ∈ Q 𝑑 , and define the semantic prototype c𝑑 of domain 𝑑 as the mean embedding of the corresponding entities {𝑒 𝑖 }. The prototype-driven objective is: 
+
+Lproto =∑︁      
+
+> (q𝑖 ,𝑒 𝑖 ,𝑑 +) ∈ Ð𝑑 { Q 𝑑 }
+
+log exp  sim (Z(𝐿 ) 
+
+> 𝑒 𝑖
+
+, c𝑑 + )/ 𝜏 Í𝑑 ∈ D exp  sim (Z(𝐿 ) 
+
+> 𝑒 𝑖
+
+, c𝑑 )/ 𝜏  , (7) where {c𝑑 }𝑑 ∈ { D } denote the prototypes of all domains, c𝑑 + corre-sponds to the ground-truth domain of (q𝑖 , 𝑒 𝑖 ), and 𝜏 is a temperature hyperparameter. This loss encourages retrieved entity representa-tions to align with their corresponding domain prototypes while remaining separated from unrelated domain centers. The optimiza-tion is performed over a small sampled subset, ensuring efficiency during continuous pre-training. 
+
+Regularization via Information Gain. While Lproto encour-ages semantic discriminability across domains, it does not explicitly distinguish informative semantic alignment from spurious corre-lations or random perturbations. To further emphasize domain-relevant information, we introduce an information gain-based reg-ularizer [ 39 , 110 ]. Given the predicted distribution Pq (𝑒 ), the Infor-mation Gain Contrast (IGC) regularizer is defined as: 
+
+LIGC = KL (Pq (𝑒 ) ∥ Pproto (𝑒 )) − KL (Pq (𝑒 ) ∥ Prand (𝑒 )) , (8) where KL (·) denotes the Kullback-Leibler divergence. Pproto (𝑒 ) ∝ 
+
+exp (sim (Z𝑒 , c𝑑 + )) is a prototype-induced distribution reflecting domain-consistent semantics, while Prand (𝑒 ) is a randomized ref-erence distribution constructed by shuffling domain prototypes. By explicitly contrasting structured semantic alignment against randomness, LIGC encourages Pq (𝑒 ) to assign higher confidence to entities grounded in domain-relevant semantics, thereby strength-ening cross-domain consistency. 
+
+Overall Pre-training Objective. The full pre-training loss com-bines retrieval supervision with semantic regularization: 
+
+Lpre = 𝛼 1 LBCE + ( 1 − 𝛼 1)L rank 
+
+| {z }
+
+> Phase I
+
++ 𝛼 2 Lproto + 𝛼 3 LIGC 
+
+| {z }
+
+> Phase II
+
+, (9) where 𝛼 1 is the trade-off hyper-parameter, 𝛼 2 and 𝛼 3 are the La-grange multipliers. Regarding the diversity of objective terms, we propose a two-phase pre-training strategy to enhance the stability. During Phase I, we pre-train 𝑓 𝜽 (·) for a fixed number of epochs with LBCE and Lrank on KG completion task over mixed-domain triples to establish its general retrieval capability. During Phase II, we apply continuous pre-training mechanism with Lproto and 
+
+LIGC on a subset for the fine-grained semantic alignment. This staged training scheme stabilizes optimization and avoids conflicts among heterogeneous loss signals introduced by prototype-level regularization. We will specify details in Appendix B.1. 
+
+## 4.2 Label-free IB Optimized Subgraph Selector 
+
+While the pre-trained retriever 𝑓 ★ 
+
+> 𝜽
+
+(·) can identify relevant entities across domains, directly reasoning over the full graph is compu-tationally expensive and offers limited structural interpretability. Instead of returning a ranked list of entities, we learn a query-conditioned subgraph selector that identifies a minimal yet suffi-cient Gq for reasoning. 
+
+Query-conditioned Subgraph Selection. To efficiently adapt the pre-trained retriever 𝑓 ★ 
+
+> 𝜽
+
+(·) to query-specific subgraph selection, we adopt a parameter-efficient fine-tuning (PEFT) strategy that freezes the backbone GFM parameters and introduces lightweight, query-conditioned adaptations for subgraph selection. Given query 
+
+q on the knowledge graph G, we derive a shared query prompt 
+
+p = MLP (q), which is broadcast to construct query-conditioned entity embedding: 
+
+eZ𝑒 = Z★ 
+
+> 𝑒
+
+∥ W1p ∥ W2q, (10) where Z★ 
+
+> 𝑒
+
+is the initialized and then freezed entity embedding from 
+
+𝑓 ★ 
+
+> 𝜽
+
+(·) . W1, W2 are learnable weights. ∥ denotes the concatenation. To enable differentiable and optimizable subgraph sampling dur-ing fine-tuning, we employ the Gumbel-Sigmoid relaxation to ap-proximate binary selection gates. Specifically, for each entity 𝑒 , the selection probability 𝑆 𝑒 (q) ∈ [ 0, 1] is sampled as: 
+
+𝑆 𝑒 (q) =
+
+h
+
+1 + exp 
+
+
+
+−𝜎    MLP (eZ𝑒 ) + 𝑔 𝑒 
+
+/𝜏 
+
+i −1
+
+, (11) where the variable 𝑔 𝑒 is sampled from the standard Gumbel dis-tribution, and 𝜏 is the temperature parameter. This formulation provides a continuous and differentiable surrogate for discrete node selection, enabling stochastic yet trainable subgraph sampling within an end-to-end optimization framework. Given a threshold 
+
+𝜖 , the query-specific subgraph Gq is instantiated with entity set 
+
+Vq = {𝑒 ∈ V 𝑇 | 𝑆 𝑒 (q) > 𝜖 }, from which the corresponding relation set Rq and edge set Eq are induced accordingly. Importantly, the use of Gumbel-Sigmoid ensures that gradients can propagate through the selection process, making the subgraph construction fully dif-ferentiable and amenable to optimization under the downstream objectives. We next discuss its optimization. 
+
+Label-free Information Bottleneck. We formulate the selec-tor from an information-theoretic perspective. The Information Bottleneck (IB) principle [ 83 , 84 ] provides an ideal way to optimize the subgraph selector that compresses full KG ( minimal ) while preserving the query-relevant subgraph ( sufficient ): 
+
+LIB = −𝐼 (𝑦 ; Gq) + 𝛽𝐼 (G ; Gq), (12) where 𝐼 (·) is mutual information, and 𝛽 is Lagrange multiplier for trading off between compressing (the first term) and preserving (the second term). Minimizing LIB encourages the selector to find a minimal yet sufficient “coreset” in G.However, as generating the answer 𝑦 is non-differentiable, di-rectly optimizing Eq. (12) is intractable, which causes the major challenge in finding Gq. To address this dilemma, we establish a surrogate objective for label-free IB optimization by replacing the label 𝑦 with the query itself: 
+
+LLIB = −𝐼 (q; Gq) + 𝛽𝐼 (G ; Gq). (13) We next show LLIB is a faithful proxy of LIB .Retrieving Minimal and Sufficient Reasoning Subgraphs with Graph Foundation Models for Path-aware GraphRAG 
+
+Proposition 4.2 ( Error Bound of LLIB Approximation ). 
+
+Let Gq be the subgraph, 𝑦 the ground-truth answer, and q the query. Assume the Markov property ⟨𝑦 ↔ q ↔ G q⟩ exists, the approxima-tion error of LIB by LLIB is upper-bounded by the conditional entropy of q given 𝑦 :
+
+𝐼 (𝑦 ; Gq) − 𝐼 (q; Gq) ⩽ 𝐻 (q | 𝑦 ), (14) 
+
+where 𝐻 (q | 𝑦 ) is a data-dependent constant. [Proof] Proposition 4.2 declares that the approximation error is upper-bounded by the conditional entropy of the true label 𝑦 given the query q. Once the data distribution is given and fixed, the approxi-mation gap remains controllable within a constant bound by the informativeness of the query, which provides a guarantee that the quality of approximation is theoretically controlled by the informa-tiveness of the query. Since Eq. (13) provides a theoretical form of fine-tuning objective, both mutual information terms are computa-tionally infeasible. We next demonstrate their tractable derivations. 
+
+Proposition 4.3 ( Lower Bound of 𝐼 (q; Gq)). Denote the average-pooled subgraph representation as Gq = Í𝑒 ∈ V q 𝑆 𝑒 (q) · eZ𝑒 . Deriving from Alemi et al. [1], the lower bound is: 
+
+𝐼 (q; Gq) ⩾ −L NCE = log exp   sim (Gq, q)/ 𝜏 Íq′ ∈ B exp   sim (Gq′ , q′)/ 𝜏  , (15) 
+
+where (Gq′ , q′) is the negative sample pair. [Proof] 
+
+Proposition 4.4 ( Upper Bound of 𝐼 (G ; Gq)). Denote the sub-graph size and connectivity penalizers as: 
+
+Lsize =∑︁ 𝑒 ∈ V 𝑆 𝑒 (q), Lcon = Tr  S𝑒 (q)⊤LS 𝑒 (q), (16) 
+
+where 𝑆 𝑒 (q) ∈ [ 0, 1] is entity selection probability, S𝑒 (q) ∈ R| V | is the soft selection vector, L is the normalized graph Laplacian, and 
+
+Tr (·) calculates the trace of a matrix. The upper bound is: 
+
+𝐼 (G ; Gq) ⩽ 𝛽 1 Lsize + 𝛽 2 Lcon , (17) 
+
+where 𝛽 1 and 𝛽 2 are hyper-parameters. [Proof] Proposition 4.3 and Proposition 4.4 provide a principled method for approximating LLIB using tractable optimization objectives, while deriving such bounds under label-free settings is non-trivial. By establishing this connection, we ensure both theoretical sound-ness and practical guidance for subgraph identification in multi-domain knowledge graph retrieval. 
+
+Overall Fine-tuning Objective. Following the pre-training stage, we fine-tune the GFM retriever on a supervised document retrieval task, where each query q is associated with a labeled target entity set V+ 
+
+> q
+
+. While standard retrieval objectives encourage accu-rate ranking with respect to labeled entities, they do not explicitly constrain the structural properties of the retrieved subgraphs. To ad-dress this limitation, we incorporate subgraph-level regularization into the fine-tuning objective, resulting in the following: 
+
+Lftn = 𝛼 1 LBCE + ( 1 − 𝛼 1)L rank + ⌈L LIB ⌉ , (18) where LBCE and Lrank provide complementary supervision for entity-level relevance and relative ordering. The additional term 
+
+⌈L LIB ⌉ acts as a structural regularizer that promotes the query-dependent minimal and sufficient subgraphs. ⌈L LIB ⌉ is constructed by substituting the RHS of Eq. (15) and Eq. (17) into Eq. (13): 
+
+⌈L LIB ⌉ = LNCE + 𝛽 1 Lsize + 𝛽 2 Lcon . (19) 
+
+## 4.3 Relation Paths Induced In-context Prompter 
+
+Existing methods mainly retrieve relevant documents while leaving relations implicit. To expose key reasoning paths encoded in Gq,we treat the retrieved subgraph not only as an entity “coreset” but also as a structured reasoning scaffold for generation. 
+
+Entity-to-Document Mapping. Following inverted index para-digm [ 54 ], we construct a binary mapping matrix M ∈ { 0, 1}| E q | × | C q | ,where Cq denotes the set of supporting document chunks. An entry 
+
+M[𝑒, 𝑐 ] = 1 indicates that entity 𝑒 appears in document chunk 𝑐 . At inference time, rather than relying on heuristic top-𝐾 entity selec-tion, we restrict retrieval to the subgraph entities Vq and assign each entity a composite importance weight defined as: 
+
+𝑤 𝑒 = 𝑆 𝑒 (q) · 1
+
+Í𝑐 M[𝑒, 𝑐 ] · 𝜙 path (𝑒 ) , (20) where 𝑆 𝑒 (q) denotes the soft selection probability introduced in Eq. (11), and |𝜙 path (𝑒 )| represents the number of shortest reason-ing paths that involve entity 𝑒 . This weighting scheme emphasizes entities that are both highly relevant to the query and structurally central within the reasoning subgraph. Document relevance is sub-sequently computed by aggregating entity weights through the mapping matrix, given by 𝑅 𝑐 = M⊤𝑤 𝑒 , and the top-𝐾 documents are selected accordingly. 
+
+Reasoning Path Extraction. Enumerating all possible paths in a dense subgraph is computationally infeasible due to exponential growth in the number of candidate paths. To explicitly expose inter-pretable relational structures, we extract a compact set of reasoning paths Πq = {𝜋 1, . . . , 𝜋 𝑙 } from the query-specific subgraph Gq using an 𝑙 -hop truncated depth-first search (DFS). Each extracted path takes the form 𝜋 = (𝑒 0
+
+> 𝑟 1
+
+−→ 𝑒 1
+
+> 𝑟 2
+
+−→ · · · 𝑟 𝑘 
+
+−−→ 𝑒 𝑘 ) with 𝑘 ⩽ 𝑙 . To quan-tify the relevance of each reasoning path with respect to relation awareness, we define the following scoring function: 
+
+𝑆 𝑟 (𝜋 ) =
+
+> 𝑘
+
+∑︁ 
+
+> 𝑖 =0
+
+𝑆 𝑒 𝑖 (q) + 
+
+> 𝑘
+
+∑︁ 
+
+> 𝑗 =1
+
+𝜔 (𝑟 𝑗 ), (21) where 𝜔 (𝑟 𝑗 ) penalizes long-range dependencies via relation depth. This scoring favors paths traversing high-confidence nodes via semantically concise relations. 
+
+In-context Prompter Construction. To prevent the subgraph from degenerating into an unordered set of documents and entities in the answer generation, we construct an in-context prompter for explicit path-aware LLM reasoning: 
+
+Schema Value                         
+
+> <system> <doc> <path> <query>
+> As an advanced reading comprehension assistant, your task is to analyze text passages and corresponding ques-tions meticulously. Your responses start after ... Document: {title} \n {content} \n
+> Reasoning Path {path_id} (score: {path_score} ): \n
+> Entity {entity} (type: {entity_type} ): \n ---(relation: {relation} )---> \n
+> Entity {entity} (type: {entity_type} ): \n ---(relation: {relation} )---> \n
+> Entity {entity} (type: {entity_type} ): \n
+> Question: {query} \n
+
+We provide the detailed in-context prompter configurations and case studies in Appendix D.3. Preprint. Under review. 
+
+## 5 Experiments 
+
+In this section, we conduct extensive experiments to evaluate Gfm -Retriever 1 on the following research questions ( RQ s): 
+
+• RQ1: Can Gfm -Retriever improve retrieval performance? 
+
+• RQ2: How does Gfm -Retriever perform in QA task? 
+
+• RQ3: Can Gfm -Retriever generalize across different domains? 
+
+• RQ4: Is Gfm -Retriever more time-efficient and effective? 
+
+• RQ5: How do the subgraphs support multi-hop QA reasoning? 
+
+• RQ6: How does each component and hyper-parameter affect the overall performance of Gfm -Retriever? 
+
+## 5.1 Experiment Settings 
+
+We introduce the brief experiment settings of datasets, baselines, and metrics. Detailed settings are provided in Appendix D. 
+
+Datasets. Main experiments are conducted on the three repre-sentative multi-hop question answering benchmarks: HotpotQA [ 100 ], 
+
+MuSiQue [85 ], and 2WikiMultiHopQA [26 ], which are widely adopted to assess multi-hop retrieving and reasoning capabilities, covering diverse domains and complex inference patterns. To further evalu-ate the generalizability of Gfm -Retriever across different domains, we further incorporate seven benchmarks, including PubMedQA [36 ], 
+
+DelucionQA [ 71 ], TechQA [ 8], ExpertQA [ 56 ], EManual [ 61 ], MS Marco [62], and HAGRID [37]. Statistics in Table D.1 and Table D.2. 
+
+Baselines. We compare Gfm -Retriever against 18 state-of-the-art baselines (and their combinations), categorized into four groups: 
+
+• Base LLM: GPT-4o-mini [31]. 
+
+• Single-step RAGs: including BM25 [ 70 ], Contriever [ 32 ], GTR 
+
+[63], ColBERTv2 [72], RAPTOR [73], and Proposition [10]. 
+
+• Graph-enhanced RAGs: including GraphRAG [12 ], G-Retriever 
+
+[24 ], LightRAG [17 ], HippoRAG [18 ], HippoRAG 2 [19 ], SubgraphRAG 
+
+[48], PropRAG [88], and the most relevant GFM-RAG [54]. 
+
+• Multi-step RAGs: IRCoT [86], FLARE [35], Adaptive-RAG [33]. Notably, IRCoT [ 86 ] serves as a general multi-step reasoning wrap-per that can be combined with non-iterative retrievers, enabling single-step RAG and graph-based methods to perform multi-hop reasoning via interleaved retrieval and generation. We make a thor-ough comparison for all baselines and Gfm -Retriever in Table D.1. 
+
+Metrics. To assess the retrieval quality, we report Recall@2 and Recall@5 for both the retrieved entities and documents (R@2/5 E,R@2/5 D). In addition, we report Mean Reciprocal Rank (MRR) in selected retrieval experiments to further reflect ranking quality. For end-to-end QA, we adopt standard metrics, including Exact Match (EM), F1 score, Precision (P), and Recall (R) in main experiments, which thoroughly analyze the answer coverage and correctness [ 18 ]. We additionally report ROUGE-L in some cases to assess semantic overlap between generated answers and references. 
+
+Implementation Details. The retriever backbone is a 6-layer query-conditioned GNN with a hidden dimension of 512, initial-ized using all-mpnet-v2 sentence encoder [ 74 ]. Pre-training is conducted on a large-scale corpus of 700K documents, from which 60 domain-specific knowledge graphs comprising over 14M triples are constructed [ 54 ]. The model is trained on 8 NVIDIA A100 GPUs (80GB) with a batch size of 4. Additional hyper-parameters and implementation details are reported in Appendix E.1. 
+
+> 1Codes will be made public after the paper is formally published.
+
+## 5.2 RQ1: Entity Retrieval Performance 
+
+We evaluate entity-level and document-level retrieval performance on standard multi-hop QA benchmarks. 
+
+Results. As shown in Table 1, Gfm -Retriever consistently out-performs all baselines across most metrics, achieving the highest av-erage rank. It ranks first on R@2 E and R@5 E scores, which validate the effectiveness of the subgraph selector in extracting the compact yet informative entity sets, and reveal the cross-domain generaliz-ability that the GFM retriever provides. In contrast, dense retrievers such as Contriever and GTR ignore the inter-entity structure, while graph-based methods like GraphRAG and G-Retriever tend to over-select irrelevant neighbors. SubgraphRAG and GFM-RAG leverage graph structure but lack query-specific filtering. Gfm -Retriever im-proves the aforementioned drawbacks by jointly modeling semantic relevance and structural minimality. 
+
+## 5.3 RQ2: Question Answering Performance 
+
+We evaluate the end-to-end multi-hop QA by feeding the retrieved evidence into the same base LLM. 
+
+Results. As shown in Table 2, our Gfm -Retriever already shows strong single-step QA capability, outperforming most single-step baselines and surpassing several multi-step methods, which indi-cates retrieving a minimal yet sufficient subgraph provides infor-mative evidence for multi-hop answering even without iterative retrieval. When augmented with IRCoT , Gfm -Retriever achieves the best overall performance with consistent gains across datasets and metrics, suggesting that multi-step reasoning benefits substan-tially from structured evidence. The comparison between the Gfm -Retriever and Gfm -Retriever+ IRCoT further reveals that subgraph complements iterative reasoning: it provides a compact reasoning scaffold, while IRCoT refines evidence selection step by step, leading to higher answer coverage (Recall) without sacrificing correctness (Precision). Overall, the results confirm that our subgraph-centric retrieval is effective as a standalone single-step QA method and serves as a strong substrate for multi-step reasoning frameworks. 
+
+## 5.4 RQ3: Cross-domain Generalizability 
+
+We evaluate cross-domain generalization on seven QA datasets spanning biomedical, customer support, and general knowledge domains, all disjoint from pre-training. Gfm -Retriever is compared with three strong baselines identified in RQ1 and RQ2 . We report retrieval performance in R@5 D on all datasets and QA performance in ROUGE-L on three datasets that support answer generation, under a zero-shot setting without domain-specific fine-tuning. 
+
+Results. As shown in Figure 3, Gfm -Retriever consistently de-livers the best cross-domain performance on both retrieval and QA. It outperforms all baselines on document retrieval across seven datasets, with particularly strong gains on biomedical and customer-support benchmarks such as PubMedQA , DelucionQA , and HAGRID ,indicating robust generalization under domain shift. In contrast, 
+
+PropRAG and HippoRAG 2 exhibit clear performance drops, reflect-ing sensitivity to domain-specific indexing. On generative QA, Gfm -Retriever also achieves the highest ROUGE-L scores, showing that its cross-domain retrieval advantages directly translate to better answer generation. Additional domain-specific fine-tuning results are provided in Appendix F.1. Retrieving Minimal and Sufficient Reasoning Subgraphs with Graph Foundation Models for Path-aware GraphRAG 
+
+Table 1: Results of retrieval performance. We report Recall (%) at top-2 and top-5 for both entity-level (R@2 E, R@5 E) and document-level (R@2 D, R@5 D). Best results are in bold and runner-ups are underlined. The darker the cell, the better. Dataset HotpotQA MuSiQue 2WikiMultiHopQA Avg. Rank Method R@2 E R@5 E R@2 D R@5 D R@2 E R@5 E R@2 D R@5 D R@2 E R@5 E R@2 D R@5 D
+
+BM25 ( SIGIR’94 ) 40.0 53.2 55.4 72.2 19.5 23.6 32.3 41.2 46.9 57.9 51.8 61.9 18.3 
+
+Contriever ( TMLR’22 ) 41.7 56.0 57.2 75.5 19.8 28.8 34.8 46.6 39.7 51.7 46.6 57.5 17.7 
+
+GTR ( EMNLP’22 ) 46.5 57.1 59.4 73.3 20.3 27.7 37.4 49.1 56.7 65.7 60.2 67.9 14.1 
+
+ColBERTv2 ( NAACL’22 ) 49.3 62.3 64.7 79.3 24.4 28.1 37.9 49.2 54.7 64.7 59.2 68.2 11.6 
+
+RAPTOR ( ICLR’24 ) 44.6 56.7 58.1 71.2 22.3 28.6 35.7 45.3 41.0 50.0 46.3 53.8 17.2 
+
+Proposition ( EMNLP’24 ) 45.5 56.4 58.7 71.1 22.2 30.1 37.6 49.3 50.7 58.7 56.4 63.1 14.6 
+
+GraphRAG ( arXiv’24 ) 46.6 60.6 58.3 76.6 21.1 30.1 35.4 49.3 57.0 72.0 61.6 77.3 11.7 
+
+G-Retriever ( NeurIPS’24 ) 42.9 52.6 53.3 65.5 21.6 28.8 38.8 45.1 54.3 62.3 60.8 67.8 15.6 
+
+LightRAG ( arXiv’24 ) 39.7 42.5 38.8 54.7 12.0 20.6 24.8 34.7 40.9 54.9 45.1 59.1 20.5 
+
+HippoRAG ( NeurIPS’24 ) 47.3 60.8 60.1 78.5 25.7 33.5 41.2 53.2 65.1 83.1 68.4 87.0 8.6 
+
+HippoRAG 2 ( ICML’25 ) 63.4 70.0 80.5 88.1 30.3 35.9 47.0 56.7 83.6 86.5 88.9 90.1 3.1 
+
+SubgraphRAG ( ICLR’25 ) 48.2 56.5 61.5 73.0 27.5 32.0 42.1 49.3 64.3 80.3 70.7 85.5 9.3 
+
+PropRAG ( EMNLP’25 ) 63.4 70.7 81.9 88.0 30.9 36.9 47.7 57.9 82.0 86.0 87.9 90.1 2.8 
+
+GFM-RAG ( NeurIPS’25 ) 60.7 70.9 75.6 89.6 29.8 35.0 43.5 57.6 72.6 87.6 79.1 92.4 3.7 
+
+FLARE ( EMNLP’23 ) 56.4 65.0 73.1 81.3 29.6 35.9 44.3 55.1 63.0 69.0 67.1 73.1 6.8 
+
+Adaptive-RAG ( NAACL’24 ) 47.9 61.0 61.0 76.4 22.5 27.5 35.1 44.7 41.7 58.7 44.7 61.4 15.3 
+
+BM25 + IRCoT ( ACL’23 ) 46.9 59.5 65.6 79.0 19.2 28.6 34.2 44.7 53.8 68.8 61.2 75.6 13.3 
+
+Contriever + IRCoT ( ACL’23 ) 45.8 63.7 65.9 81.6 23.9 29.6 39.1 52.2 44.8 56.8 51.6 63.8 12.3 
+
+ColBERTv2 + IRCoT ( ACL’23 ) 52.4 66.6 67.9 82.0 24.8 32.9 41.7 53.7 56.9 67.9 64.1 74.4 8.1 
+
+HippoRAG + IRCoT ( ACL’23 ) 56.9 67.3 67.0 83.0 27.2 35.7 45.3 57.6 69.3 86.3 75.8 93.9 4.7 
+
+Gfm -Retriever (ours) 65.9 72.4 83.4 90.5 33.1 37.8 51.3 59.8 85.0 88.3 91.3 93.8 1.1 Table 2: Results of multi-hop question answering (QA) performance. We report Exact Match (EM), F1 score, Precision (P), and Recall (R), all reported as percentages (%). Best results are in bold and runner-ups are underlined . The darker the cell, the better. Dataset HotpotQA MuSiQue 2WikiMultiHopQA Avg. Rank Method EM F1 P R EM F1 P R EM F1 P R
+
+GPT-4o-mini ( arXiv’24 ) 40.0 53.2 55.4 72.2 19.5 23.6 32.3 41.2 46.9 57.9 51.8 61.9 19.3 
+
+Contriever ( TMLR’22 ) 34.9 51.2 51.8 52.2 16.3 21.6 21.9 22.0 24.3 33.9 34.1 34.8 18.5 
+
+GTR ( EMNLP’22 ) 33.8 51.9 52.5 52.9 15.1 25.2 25.5 25.7 33.7 42.5 42.8 43.6 16.9 
+
+ColBERTv2 ( NAACL’22 ) 43.4 57.7 58.4 58.8 15.5 26.4 26.7 27.0 33.4 43.3 43.6 44.3 14.8 
+
+RAPTOR ( ICLR’24 ) 48.2 59.2 59.9 60.3 17.6 28.9 29.2 29.5 30.6 42.0 42.3 43.1 13.3 
+
+GraphRAG ( arXiv’24 ) 35.3 54.6 55.3 55.6 13.4 29.5 29.8 30.1 28.3 46.9 47.2 48.1 14.3 
+
+G-Retriever ( NeurIPS’24 ) 33.2 50.3 50.6 51.5 18.0 25.9 26.1 26.6 42.3 45.6 45.9 46.8 15.7 
+
+LightRAG ( arXiv’24 ) 36.8 48.3 48.9 49.2 18.1 27.5 27.8 28.1 45.1 49.5 49.8 50.8 14.4 
+
+HippoRAG ( NeurIPS’24 ) 41.8 55.0 55.7 56.0 19.2 29.8 30.1 30.5 46.6 59.5 60.0 61.1 11.6 
+
+HippoRAG 2 ( ICML’25 ) 57.3 69.6 70.1 71.5 33.9 40.5 40.8 41.6 75.4 78.2 78.7 80.3 3.8 
+
+SubgraphRAG ( ICLR’25 ) 52.6 65.8 66.2 67.5 33.0 39.2 39.5 40.2 71.0 76.2 76.7 78.3 6.7 
+
+PropRAG ( EMNLP’25 ) 57.2 70.1 69.6 71.0 38.9 41.3 40.6 40.4 73.0 79.9 78.4 79.8 4.0 
+
+GFM-RAG ( NeurIPS’25 ) 51.6 66.9 67.7 68.2 30.2 40.4 40.8 41.3 69.8 77.7 78.2 79.8 5.8 
+
+FLARE ( EMNLP’23 ) 48.7 60.6 61.3 61.8 16.2 28.4 28.7 29.1 46.7 65.4 65.8 67.2 10.0 
+
+Adaptive-RAG ( NAACL’24 ) 45.5 59.6 60.3 60.7 13.8 25.6 25.9 26.1 48.9 62.8 63.2 64.5 11.8 
+
+ColBERTv2 + IRCoT ( ACL’23 ) 45.5 58.4 59.1 59.5 19.1 30.5 30.8 31.2 35.4 45.1 45.4 46.3 11.9 
+
+HippoRAG + IRCoT ( ACL’23 ) 45.7 59.2 59.9 60.3 21.9 33.3 33.7 34.0 47.7 62.7 63.1 64.3 9.3 
+
+GFM-RAG + IRCoT ( ACL’23 ) 56.0 71.8 70.7 70.2 36.6 49.2 47.7 47.3 72.5 80.8 77.1 78.0 3.4 
+
+Gfm -Retriever (ours) 55.4 70.4 72.5 72.5 34.8 41.5 42.3 42.5 74.3 78.8 79.1 80.4 3.0 
+
+Gfm -Retriever (ours) + IRCoT ( ACL’23 ) 60.5 72.9 75.5 74.5 42.8 48.7 48.9 50.4 78.8 79.7 79.4 82.3 1.3 
+
+## 5.5 RQ4: Efficiency and Effectiveness Analysis 
+
+We compare retrieval latency and document-level recall (R@5 D)across representative baselines. 
+
+Results. Figure 4 illustrates a clear efficiency-effectiveness trade-off across retrieval paradigms. Single-step dense retrievers ( e.g. ,
+
+ColBERTv2 ) achieve low latency but suffer from limited recall, while multi-step methods such as HippoRAG +IRCoT improve effectiveness at the cost of substantial latency. In contrast, Gfm -Retriever consis-tently lies in the upper-left region across all datasets, achieving the highest or near-highest R@5 D with sub-second retrieval time. Com-pared to graph-based baselines like SubgraphRAG and GFM-RAG , it delivers stronger retrieval quality without iterative graph traversal, benefiting from the IB-optimized subgraph selector that extracts a compact query-conditioned subgraph in a single forward pass. Preprint. Under review. PubMedQA DelucionQA TechQA ExpertQA Emanual MS Marco HAGRID 
+
+Retrieval (R@5 %) 
+
+ExpertQA Emanual MS Marco 
+
+Generative QA (ROUGE-L %) 
+
+PropRAG HippoRAG 2 GFM-RAG GFM -Retriever   
+
+> 72.3
+> 50.3 65.3 61.9
+> 86.2
+> 49.8
+> 71.6
+> 61.9 31.9 35.6
+> 65.0 75.0 55.0 70.0 65.0 75.0 90.0 33.0 37.0 52.0
+> D
+
+Figure 3: Cross-domain generalizability analysis. 0.0 1.0 2.0 3.0 
+
+Time (s) 
+
+> 72.5 75.0 77.5 80.0 82.5 85.0 87.5 90.0
+
+HotpotQA    
+
+> 0.0 1.0 2.0 3.0
+
+Time (s) 
+
+> 50.0 52.0 54.0 56.0 58.0 60.0
+
+MuSiQue    
+
+> 0.0 1.0 2.0 3.0
+
+Time (s)  
+
+> 70.0 75.0 80.0 85.0 90.0 95.0
+
+2WikiMultiHopQA ColBERTv2 GFM-RAG HippoRAG ColBERTv2+IRCoT SubgraphRAG HippoRAG+IRCoT PropRAG 
+
+GFM -Retriever R@5  %D Figure 4: Retrieving time efficiency and effectiveness. [Question] What government position was held by the woman who portrayed 
+
+Corliss Archer in the film Kiss and Tell ?
+
+[Answer] Chief of Protocol 
+
+Kiss and Tell 
+
+[Film] 
+
+Corliss Archer 
+
+[Character] 
+
+Shirley Temple 
+
+[Person] 
+
+Chief of Protocol 
+
+[Gov_Position ]
+
+> cast
+> has_character
+> portrayed
+> held_position
+> Jerome Courtland
+> [Person] Walter Abel
+> [Person]
+> Mildred Pringle
+> [Character]
+> A Kiss for Corliss
+> [Film]
+> U.S. Ambassador to Ghana
+> [Gov_Position ]
+
+Figure 5: Visualizations of the retrieved subgraph. 50.0 60.0 70.0 80.0 90.0 100 90.5 59.8 93.8 88.3 57.4 90.9 82.2 52.8 85.4 84.6 55.6 87.5 86.3 56.7 88.1 
+
+HotpotQA MuSiQue 2WikiMultiHopQA 
+
+> 30.0 40.0 50.0 60.0 70.0 80.0
+> EM %  55.4 34.8 74.3 52.8 31.2 71.5 46.5 29.5 68.3 51.3 30.9 70.1 52.3 31.6 70.5
+
+(-) Prompt (-) SubG (-) Tune (-) Proto + IGC GFM -Retriever (-) Prompt (-) SubG (-) Tune (-) Proto + IGC GFM -Retriever R@5  %D Figure 6: Ablation studies on retrieving and multi-hop QA. 0.0 0.5 1.0 
+
+α1
+
+> 0.50 0.55 0.60
+> MRR  0.58
+
+HotpotQA       
+
+> 10 310 210 110 0
+
+α2 
+
+> 0.58 0.60 0.62 0.61
+
+HotpotQA       
+
+> 10 310 210 110 0
+
+α3 
+
+> 0.61 0.62 0.63 0.63
+
+HotpotQA       
+
+> 10 310 210 110 0
+
+β1
+
+> 0.35 0.40
+> 0.41
+
+MuSiQue       
+
+> 10 310 210 110 0
+
+β2
+
+> 0.45 0.50
+> 0.51
+
+2WikiMultiHopQA 
+
+Figure 7: Sensitivity analysis of hyper-parameters. Results are reported with the MRR metric. 
+
+## 5.6 RQ5: Subgraph Visualization and Case Study 
+
+Figure 5 illustrates a representative multi-hop QA example from 
+
+HotpotQA . Gfm -Retriever retrieves a compact subgraph that forms a clear reasoning chain from “Corliss Archer” to “Kiss and Tell”, “Shirley Temple”, and the correct government role “Chief of Proto-col”. Importantly, entities that are semantically related but irrelevant to the target reasoning path are excluded. This case illustrates that 
+
+Gfm -Retriever identifies a minimal, query-aligned subgraph whose explicit relational paths directly support multi-hop inference, rather than aggregating loosely related evidence. 
+
+## 5.7 RQ6: Ablation and Sensitivity Analysis 
+
+Ablation. We ablate five core modules of Gfm -Retriever: pro-totype alignment ( Proto , Eq. (7)), information gain regularizer ( IGC ,Eq. (8), fine-tuning ( Tune , Eq. (18), the subgraph selector ( SubG , Sec-tion 4.2), and the in-context relational prompting strategy ( Prompt ,Section 4.3). As shown in Figure 6, removing any component consis-tently degrades performance on both retrieval and QA. Specifically, removing Proto+IGC leads to clear drops in R@5 D, degrading into the retriever in GFM-RAG , sacrificing cross-domain alignment. Dis-abling Tune causes degradation, especially on QA, highlighting the importance of adapting to query-conditioned subgraph selection. Removing SubG also results in substantial declines, corresponding to replacing the learned subgraph with a general retrieval strategy. Removing Prompt further reduces QA performance, whereas re-trieval remains less affected, confirming that explicitly organizing relational paths into in-context prompts is important for translating structural evidence into effective multi-hop reasoning. 
+
+Sensitivity. We study five weighting hyper-parameters: 𝛼 1, 𝛼 2,and 𝛼 3 in Eq. (9), and 𝛽 1, 𝛽 2 in Eq. (17). Figure 7 reports the results measured by MRR. Overall, performance is sensitive to different values of the hyper-parameters and contains a reasonable range. 
+
+## 6 Conclusion 
+
+In this work, we rethink graph-based retrieval from a structural perspective and propose Gfm -Retriever, which directly learns query-specific subgraphs as reasoning evidence. By repurposing a pre-trained GFM as a cross-domain retriever and introducing a label-free information bottleneck for optimizing minimal yet sufficient subgraphs, our framework enables efficient and interpretable multi-hop reasoning. Extensive experiments demonstrate strong retrieval quality, QA performance, generalization, and efficiency. Retrieving Minimal and Sufficient Reasoning Subgraphs with Graph Foundation Models for Path-aware GraphRAG 
+
+## References 
+
+[1] Alexander A. Alemi, Ian Fischer, Joshua V. Dillon, and Kevin Murphy. 2017. Deep variational information bottleneck. In International Conference on Learning Representations .[2] Emily Alsentzer, Samuel Finlayson, Michelle Li, and Marinka Zitnik. 2020. Subgraph neural networks. Advances in Neural Information Processing Systems 
+
+33 (2020), 8017–8029. [3] Aijun Bai, Rolf Jagerman, Zhen Qin, Le Yan, Pratyush Kar, Bing-Rong Lin, Xu-anhui Wang, Michael Bendersky, and Marc Najork. 2023. Regression compatible listwise objectives for calibrated ranking with binary relevance. In Proceed-ings of the 32nd ACM International Conference on Information and Knowledge Management . 4502–4508. [4] Pablo Barceló, Egor V Kostylev, Mikael Monet, Jorge Pérez, Juan Reutter, and Juan Pablo Silva. 2020. The logical expressiveness of graph neural networks. In 
+
+International Conference on Learning Representations .[5] Sebastian Borgeaud, Arthur Mensch, Jordan Hoffmann, Trevor Cai, Eliza Ruther-ford, Katie Millican, George Bm Van Den Driessche, Jean-Baptiste Lespiau, Bog-dan Damoc, Aidan Clark, et al . 2022. Improving language models by retrieving from trillions of tokens. In International Conference on Machine Learning . PMLR, 2206–2240. [6] Karsten M Borgwardt and Hans-Peter Kriegel. 2005. Shortest-path kernels on graphs. In Proceedings of the Fifth IEEE International Conference on Data Mining .IEEE, 74–81. [7] Yuxuan Cao, Jiarong Xu, Carl Yang, Jiaan Wang, Yunchao Zhang, Chunping Wang, Lei Chen, and Yang Yang. 2023. When to pre-train graph neural networks? From data generation perspective!. In Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining . 142–153. [8] Vittorio Castelli, Rishav Chakravarti, Saswati Dana, Anthony Ferritto, Radu Florian, Martin Franz, Dinesh Garg, Dinesh Khandelwal, J Scott McCarley, Michael McCawley, et al . 2020. The TechQA dataset. In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics . 1269–1278. [9] Ke-Jia Chen, Jiajun Zhang, Linpu Jiang, Yunyun Wang, and Yuxuan Dai. 2022. Pre-training on dynamic graph neural networks. Neurocomputing 500 (2022), 679–687. [10] Tong Chen, Hongwei Wang, Sihao Chen, Wenhao Yu, Kaixin Ma, Xinran Zhao, Hongming Zhang, and Dong Yu. 2024. Dense X retrieval: What retrieval granularity should we use?. In Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing . 15159–15177. [11] Maarten De Rijke. 2000. A note on graded modal logic. Studia Logica 64, 2 (2000), 271–283. [12] Darren Edge, Ha Trinh, Newman Cheng, Joshua Bradley, Alex Chao, Apurva Mody, Steven Truitt, Dasha Metropolitansky, Robert Osazuwa Ness, and Jonathan Larson. 2024. From local to global: A graph RAG approach to query-focused summarization. arXiv preprint arXiv:2404.16130 (2024). [13] Wenqi Fan, Yujuan Ding, Liangbo Ning, Shijie Wang, Hengyun Li, Dawei Yin, Tat-Seng Chua, and Qing Li. 2024. A survey on RAG meeting LLMs: Towards retrieval-augmented large language models. In Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining . 6491–6501. [14] Jie Gao, Jia Hu, Geyong Min, and Fei Hao. 2025. XDGNN: Efficient distributed GNN training via explanation-guided subgraph expansion. IEEE Transactions on Parallel and Distributed Systems (2025). [15] Thomas Gärtner, Peter Flach, and Stefan Wrobel. 2003. On graph kernels: Hard-ness results and efficient alternatives. In Learning Theory and Kernel Machines: 16th Annual Conference on Learning Theory and 7th Kernel Workshop . Springer, 129–143. [16] Abdellah Ghassel, Ian Robinson, Gabriel Tanase, Hal Cooper, Bryan Thomp-son, Zhen Han, Vassilis Ioannidis, Soji Adeshina, and Huzefa Rangwala. 2025. Hierarchical lexical graph for enhanced multi-hop retrieval. In Proceedings of the 31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining .4457–4466. [17] Zirui Guo, Lianghao Xia, Yanhua Yu, Tu Ao, and Chao Huang. 2024. LightRAG: Simple and fast retrieval-augmented generation. arXiv preprint arXiv:2410.05779 
+
+(2024). [18] Bernal Jiménez Gutiérrez, Yiheng Shu, Yu Gu, Michihiro Yasunaga, and Yu Su. 2024. HippoRAG: Neurobiologically inspired long-term memory for large language models. Advances in Neural Information Processing Systems 37 (2024), 59532–59569. [19] Bernal Jiménez Gutiérrez, Yiheng Shu, Weijian Qi, Sizhe Zhou, and Yu Su. 2025. From RAG to memory: Non-parametric continual learning for large language models. In Forty-second International Conference on Machine Learning .[20] Kelvin Guu, Kenton Lee, Zora Tung, Panupong Pasupat, and Mingwei Chang. 2020. Retrieval augmented language model pre-training. In International Con-ference on Machine Learning . PMLR, 3929–3938. [21] Haoyu Han, Yu Wang, Harry Shomer, Kai Guo, Jiayuan Ding, Yongjia Lei, Mahantesh Halappanavar, Ryan A Rossi, Subhabrata Mukherjee, Xianfeng Tang, et al . 2024. Retrieval-augmented generation with graphs (GraphRAG). 
+
+arXiv preprint arXiv:2501.00309 (2024). [22] Haoyu Han, Yaochen Xie, Hui Liu, Xianfeng Tang, Sreyashi Nag, William Headden, Yang Li, Chen Luo, Shuiwang Ji, Qi He, et al . 2025. Reasoning with graphs: Structuring implicit knowledge to enhance LLMs reasoning. In Findings of the Association for Computational Linguistics .[23] Kaiming He, Haoqi Fan, Yuxin Wu, Saining Xie, and Ross Girshick. 2020. Mo-mentum contrast for unsupervised visual representation learning. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition . 9729– 9738. [24] Xiaoxin He, Yijun Tian, Yifei Sun, Nitesh Chawla, Thomas Laurent, Yann Le-Cun, Xavier Bresson, and Bryan Hooi. 2024. G-Retriever: Retrieval-augmented generation for textual graph understanding and question answering. Advances in Neural Information Processing Systems 37 (2024), 132876–132907. [25] Yufei He and Bryan Hooi. 2024. UniGraph: Learning a cross-domain graph foundation model from natural language. arXiv preprint arXiv:2402.13630 (2024). [26] Xanh Ho, Anh-Khoa Duong Nguyen, Saku Sugawara, and Akiko Aizawa. 2020. Constructing a multi-hop QA dataset for comprehensive evaluation of reasoning steps. In Proceedings of the 28th International Conference on Computational Linguistics . 6609–6625. [27] Ziniu Hu, Yuxiao Dong, Kuansan Wang, Kai-Wei Chang, and Yizhou Sun. 2020. GPT-GNN: Generative pre-training of graph neural networks. In Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining . 1857–1867. [28] Lei Huang, Weijiang Yu, Weitao Ma, Weihong Zhong, Zhangyin Feng, Haotian Wang, Qianglong Chen, Weihua Peng, Xiaocheng Feng, Bing Qin, et al . 2025. A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions. ACM Transactions on Information Systems 43, 2 (2025), 1–55. [29] Qian Huang, Hongyu Ren, and Jure Leskovec. 2022. Few-shot relational rea-soning via connection subgraph pretraining. Advances in Neural Information Processing Systems 35 (2022), 6397–6409. [30] Xingyue Huang, Miguel Romero, Ismail Ceylan, and Pablo Barceló. 2023. A theory of link prediction via relational Weisfeiler-Leman on knowledge graphs. 
+
+Advances in Neural Information Processing Systems 36 (2023), 19714–19748. [31] Aaron Hurst, Adam Lerer, Adam P Goucher, Adam Perelman, Aditya Ramesh, Aidan Clark, AJ Ostrow, Akila Welihinda, Alan Hayes, Alec Radford, et al . 2024. GPT-4o system card. arXiv preprint arXiv:2410.21276 (2024). [32] Gautier Izacard, Mathilde Caron, Lucas Hosseini, Sebastian Riedel, Piotr Bo-janowski, Armand Joulin, and Edouard Grave. 2022. Unsupervised dense infor-mation retrieval with contrastive learning. Transactions on Machine Learning Research (2022). [33] Soyeong Jeong, Jinheon Baek, Sukmin Cho, Sung Ju Hwang, and Jong C Park. 2024. Adaptive-RAG: Learning to adapt retrieval-augmented large language models through question complexity. In Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies . 7029–7043. [34] Xunqiang Jiang, Yuanfu Lu, Yuan Fang, and Chuan Shi. 2021. Contrastive pre-training of GNNs on heterogeneous graphs. In Proceedings of the 30th ACM International Conference on Information & Knowledge Management . 803–812. [35] Zhengbao Jiang, Frank F Xu, Luyu Gao, Zhiqing Sun, Qian Liu, Jane Dwivedi-Yu, Yiming Yang, Jamie Callan, and Graham Neubig. 2023. Active retrieval aug-mented generation. In Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing . 7969–7992. [36] Qiao Jin, Bhuwan Dhingra, Zhengping Liu, William Cohen, and Xinghua Lu. 2019. PubMedQA: A dataset for biomedical research question answering. In 
+
+Proceedings of the 2019 Conference on Empirical Methods in Natural Language Pro-cessing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP) . 2567–2577. [37] Ehsan Kamalloo, Aref Jafari, Xinyu Zhang, Nandan Thakur, and Jimmy Lin. 2023. HAGRID: A human-llm collaborative dataset for generative information-seeking with attribution. arXiv preprint arXiv:2307.16883 (2023). [38] Vladimir Karpukhin, Barlas Oğuz, Sewon Min, Patrick SH Lewis, Ledell Wu, Sergey Edunov, Danqi Chen, and Wen-tau Yih. 2020. Dense passage retrieval for open-domain question answering. In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing . 6769–6781. [39] John T Kent. 1983. Information gain and a general measure of correlation. 
+
+Biometrika 70, 1 (1983), 163–173. [40] Thomas N Kipf and Max Welling. 2017. Semi-supervised classification with graph convolutional networks. In International Conference on Learning Repre-sentations .[41] Nils M Kriege, Fredrik D Johansson, and Christopher Morris. 2020. A survey on graph kernels. Applied Network Science 5, 1 (2020), 6. [42] John Boaz Lee, Ryan A Rossi, Xiangnan Kong, Sungchul Kim, Eunyee Koh, and Anup Rao. 2019. Graph convolutional networks with motif-based attention. In Proceedings of the 28th ACM International Conference on Information and Knowledge Management . 499–508. [43] O-Joun Lee et al . 2025. Pre-training graph neural networks on molecules by using subgraph-conditioned graph information bottleneck. In Proceedings of the AAAI Conference on Artificial Intelligence , Vol. 39. 17204–17213. Preprint. Under review. 
+
+[44] Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Heinrich Küttler, Mike Lewis, Wen-tau Yih, Tim Rock-täschel, et al . 2020. Retrieval-augmented generation for knowledge-intensive NLP tasks. Advances in Neural Information Processing Systems 33 (2020), 9459– 9474. [45] Dawei Li, Shu Yang, Zhen Tan, Jae Baik, Sukwon Yun, Joseph Lee, Aaron Chacko, Bojian Hou, Duy Duong-Tran, Ying Ding, et al . 2024. DALK: Dynamic co-augmentation of LLMs and KG to answer Alzheimer’s disease questions with scientific literature. In Findings of the Association for Computational Linguistics .2187–2205. [46] Haoyang Li, Xin Wang, Xueling Zhu, Weigao Wen, and Wenwu Zhu. 2025. Disentangling invariant subgraph via variance contrastive estimation under distribution shifts. In International Conference on Machine Learning .[47] Jianxin Li, Qingyun Sun, Hao Peng, Beining Yang, Jia Wu, and Philip S Yu. 2023. Adaptive subgraph neural network with reinforced critical structure mining. IEEE Transactions on Pattern Analysis and Machine Intelligence 45, 7 (2023), 8063–8080. [48] Mufei Li, Siqi Miao, and Pan Li. 2025. Simple is effective: The roles of graphs and large language models in knowledge-graph-based retrieval-augmented generation. In International Conference on Learning Representations .[49] Fangru Lin, Emanuele La Malfa, Valentin Hofmann, Elle Michelle Yang, An-thony G Cohn, and Janet B Pierrehumbert. 2024. Graph-enhanced large language models in asynchronous plan reasoning. In Forty-first International Conference on Machine Learning .[50] Jingzhe Liu, Haitao Mao, Zhikai Chen, Wenqi Fan, Mingxuan Ju, Tong Zhao, Neil Shah, and Jiliang Tang. 2024. One model for one graph: A new perspective for pretraining with cross-domain graphs. arXiv preprint arXiv:2412.00315 (2024). [51] Jiawei Liu, Cheng Yang, Zhiyuan Lu, Junze Chen, Yibo Li, Mengmei Zhang, Ting Bai, Yuan Fang, Lichao Sun, Philip S Yu, et al . 2025. Graph foundation models: Concepts, opportunities and challenges. IEEE Transactions on Pattern Analysis and Machine Intelligence (2025). [52] Yixin Liu, Ming Jin, Shirui Pan, Chuan Zhou, Yu Zheng, Feng Xia, and S Yu Philip. 2022. Graph self-supervised learning: A survey. IEEE Transactions on Knowledge and Data Engineering 35, 6 (2022), 5879–5900. [53] Yuanfu Lu, Xunqiang Jiang, Yuan Fang, and Chuan Shi. 2021. Learning to pre-train graph neural networks. Proceedings of the AAAI Conference on Artificial Intelligence 35, 5 (2021), 4276–4284. [54] Linhao Luo, Zicheng Zhao, Gholamreza Haffari, Dinh Phung, Chen Gong, and Shirui Pan. 2025. GFM-RAG: Graph foundation model for retrieval augmented generation. In Advances in Neural Information Processing Systems .[55] Yao Ma and Jiliang Tang. 2021. Deep learning on graphs . Cambridge University Press. [56] Chaitanya Malaviya, Subin Lee, Sihao Chen, Elizabeth Sieber, Mark Yatskar, and Dan Roth. 2024. ExpertQA: Expert-curated questions and attributed answers. In Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies . 3025– 3045. [57] Costas Mavromatis and George Karypis. 2025. GNN-RAG: Graph neural re-trieval for efficient large language model reasoning on knowledge graphs. In 
+
+Findings of the Association for Computational Linguistics . 16682–16699. [58] Fatma Miladi, Valéry Psyché, and Daniel Lemire. 2024. Leveraging GPT-4 for accuracy in education: A comparative study on retrieval-augmented generation in MOOCs. In International Conference on Artificial Intelligence in Education .Springer, 427–434. [59] Federico Monti, Karl Otness, and Michael M Bronstein. 2018. MotifNet: A motif-based graph convolutional network for directed graphs. In IEEE Data Science Workshop . IEEE, 225–228. [60] Christopher Morris, Martin Ritzert, Matthias Fey, William L Hamilton, Jan Eric Lenssen, Gaurav Rattan, and Martin Grohe. 2019. Weisfeiler and Leman go neu-ral: Higher-order graph neural networks. In Proceedings of the AAAI Conference on Artificial Intelligence , Vol. 33. 4602–4609. [61] Abhilash Nandy, Soumya Sharma, Shubham Maddhashiya, Kapil Sachdeva, Pawan Goyal, and Niloy Ganguly. 2021. Question answering over electronic devices: A new benchmark dataset and a multi-Task learning based QA Frame-work. In Findings of the Association for Computational Linguistics: EMNLP 2021 .4600–4609. [62] Tri Nguyen, Mir Rosenberg, Xia Song, Jianfeng Gao, Saurabh Tiwary, Rangan Majumder, and Li Deng. 2016. MS Marco: A human-generated machine reading comprehension dataset. In Proceedings of the Workshop on Cognitive Computa-tion: Integrating Neural and Symbolic Approaches 2016 Co-located with the 30th Annual Conference on Neural Information Processing Systems .[63] Jianmo Ni, Chen Qu, Jing Lu, Zhuyun Dai, Gustavo Hernandez Abrego, Ji Ma, Vincent Zhao, Yi Luan, Keith Hall, Ming-Wei Chang, et al . 2022. Large dual encoders are generalizable retrievers. In Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing . 9844–9855. [64] Aaron van den Oord, Yazhe Li, and Oriol Vinyals. 2018. Representation learning with contrastive predictive coding. arXiv preprint arXiv:1807.03748 (2018). [65] Martin Otto. 2019. Graded modal logic and counting bisimulation. arXiv preprint arXiv:1910.00039 (2019). [66] Boci Peng, Yun Zhu, Yongchao Liu, Xiaohe Bo, Haizhou Shi, Chuntao Hong, Yan Zhang, and Siliang Tang. 2024. Graph retrieval-augmented generation: A survey. ACM Transactions on Information Systems (2024). [67] Hao Peng, Jianxin Li, Qiran Gong, Yuanxin Ning, Senzhang Wang, and Lifang He. 2020. Motif-matching based subgraph-level attentional convolutional network for graph classification. In Proceedings of the AAAI Conference on Artificial Intelligence , Vol. 34. 5387–5394. [68] Haiquan Qiu, Yongqi Zhang, Yong Li, et al . 2024. Understanding expressivity of GNN in rule learning. In International Conference on Learning Representations .[69] Jiezhong Qiu, Qibin Chen, Yuxiao Dong, Jing Zhang, Hongxia Yang, Ming Ding, Kuansan Wang, and Jie Tang. 2020. GCC: Graph contrastive coding for graph neural network pre-training. In Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining . 1150–1160. [70] Stephen E Robertson and Steve Walker. 1994. Some simple effective approxima-tions to the 2-Poisson model for probabilistic weighted retrieval. In Proceedings of the Seventeenth Annual International ACM-SIGIR Conference on Research and Development in Information Retrieval . Springer, 232–241. [71] Mobashir Sadat, Zhengyu Zhou, Lukas Lange, Jun Araki, Arsalan Gundroo, Bingqing Wang, Rakesh R Menon, Md Parvez, and Zhe Feng. 2023. DelucionQA: Detecting hallucinations in domain-specific question answering. In Findings of the Association for Computational Linguistics: EMNLP 2023 . 822–835. [72] Keshav Santhanam, Omar Khattab, Jon Saad-Falcon, Christopher Potts, and Matei Zaharia. 2022. ColBERTv2: Effective and efficient retrieval via lightweight late interaction. In Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies . 3715–3734. [73] Parth Sarthi, Salman Abdullah, Aditi Tuli, Shubh Khanna, Anna Goldie, and Christopher D Manning. 2024. RAPTOR: Recursive abstractive processing for tree-organized retrieval. In International Conference on Learning Representations .[74] SBERT. 2021. all-mpnet-base-v2 . https://huggingface.co/sentence-transforme rs/all-mpnet-base-v2 [75] Nino Shervashidze, Pascal Schweitzer, Erik Jan Van Leeuwen, Kurt Mehlhorn, and Karsten M Borgwardt. 2011. Weisfeiler-lehman graph kernels. Journal of Machine Learning Research 12, 9 (2011). [76] Yongduo Sui, Xiang Wang, Jiancan Wu, Min Lin, Xiangnan He, and Tat-Seng Chua. 2022. Causal attention for interpretable and generalizable graph clas-sification. In Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining . 1696–1705. [77] Jiashuo Sun, Chengjin Xu, Lumingyuan Tang, Saizhuo Wang, Chen Lin, Yeyun Gong, Lionel Ni, Heung-Yeung Shum, and Jian Guo. 2024. Think-on-Graph: Deep and responsible reasoning of large language model on knowledge graph. In International Conference on Learning Representations .[78] Mingchen Sun, Kaixiong Zhou, Xin He, Ying Wang, and Xin Wang. 2022. GPPT: Graph pre-training and prompt tuning to generalize graph neural networks. In 
+
+Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining . 1717–1727. [79] Qingyun Sun, Jianxin Li, Hao Peng, Jia Wu, Yuanxing Ning, Philip S Yu, and Lifang He. 2021. SUGAR: Subgraph neural network with reinforcement pooling and self-supervised mutual information mechanism. In Proceedings of the ACM on Web Conference . 2081–2091. [80] Yanchao Tan, Zihao Zhou, Hang Lv, Weiming Liu, and Carl Yang. 2024. WalkLM: A uniform language model fine-tuning framework for attributed graph embed-ding. Advances in Neural Information Processing Systems 36 (2024). [81] Jiabin Tang, Yuhao Yang, Wei Wei, Lei Shi, Long Xia, Dawei Yin, and Chao Huang. 2024. HiGPT: Heterogeneous graph language model. In Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining .2842–2853. [82] Wenzhuo Tang, Haitao Mao, Danial Dervovic, Ivan Brugere, Saumitra Mishra, Yuying Xie, and Jiliang Tang. 2024. Cross-domain graph data scaling: A show-case with diffusion models. arXiv preprint arXiv:2406.01899 (2024). [83] Naftali Tishby, Fernando C Pereira, and William Bialek. 2000. The information bottleneck method. arXiv preprint physics/0004057 (2000). [84] Naftali Tishby and Noga Zaslavsky. 2015. Deep learning and the information bottleneck principle. In IEEE Information Theory Workshop . Ieee, 1–5. [85] Harsh Trivedi, Niranjan Balasubramanian, Tushar Khot, and Ashish Sabhar-wal. 2022. MuSiQue: Multihop questions via single-hop question composition. 
+
+Transactions of the Association for Computational Linguistics 10 (2022), 539–554. [86] Harsh Trivedi, Niranjan Balasubramanian, Tushar Khot, and Ashish Sabharwal. 2023. Interleaving retrieval with chain-of-thought reasoning for knowledge-intensive multi-step questions. In Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics . 10014–10037. [87] Heng Wang, Shangbin Feng, Tianxing He, Zhaoxuan Tan, Xiaochuang Han, and Yulia Tsvetkov. 2024. Can language models solve graph problems in natural language? Advances in Neural Information Processing Systems 36 (2024). [88] Jingjin Wang and Jiawei Han. 2025. PropRAG: Guiding retrieval with beam search over proposition paths. In Proceedings of the 2025 Conference on Empirical Retrieving Minimal and Sufficient Reasoning Subgraphs with Graph Foundation Models for Path-aware GraphRAG 
+
+Methods in Natural Language Processing . 6223–6238. [89] Shuting Wang, Jiejun Tan, Zhicheng Dou, and Ji-Rong Wen. 2025. OmniEval: An omnidirectional and automatic rag evaluation benchmark in financial domain. In Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing . 5737–5762. [90] Yu Wang, Nedim Lipka, Ryan A Rossi, Alexa Siu, Ruiyi Zhang, and Tyler Derr. 2024. Knowledge graph prompting for multi-document question answering. In Proceedings of the AAAI Conference on Artificial Intelligence , Vol. 38. 19206– 19214. [91] Nirmalie Wiratunga, Ramitha Abeyratne, Lasal Jayawardena, Kyle Martin, Stew-art Massie, Ikechukwu Nkisi-Orji, Ruvan Weerasinghe, Anne Liret, and Bruno Fleisch. 2024. CBR-RAG: Case-based reasoning for retrieval augmented gen-eration in LLMs for legal question answering. In International Conference on Case-Based Reasoning . Springer, 445–460. [92] Yaozu Wu, Yankai Chen, Zhishuai Yin, Weiping Ding, and Irwin King. 2023. A survey on graph embedding techniques for biomedical data: Methods and applications. Information Fusion 100 (2023), 101909. [93] Yaochen Xie, Zhao Xu, Jingtun Zhang, Zhengyang Wang, and Shuiwang Ji. 2022. Self-supervised learning of graph neural networks: A unified review. 
+
+IEEE Transactions on Pattern Analysis and Machine Intelligence 45, 2 (2022), 2412–2429. [94] Jiarong Xu, Renhong Huang, Xin Jiang, Yuxuan Cao, Carl Yang, Chunping Wang, and Yang Yang. 2023. Better with less: A data-active perspective on pre-training graph neural networks. Advances in Neural Information Processing Systems 36 (2023), 56946–56978. [95] Ran Xu, Wenqi Shi, Yue Yu, Yuchen Zhuang, Bowen Jin, May Dongmei Wang, Joyce Ho, and Carl Yang. 2024. RAM-EHR: Retrieval augmentation meets clinical predictions on electronic health records. In Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers) . 754–765. [96] Shicheng Xu, Liang Pang, Huawei Shen, and Xueqi Cheng. 2024. A theory for token-level harmonization in retrieval-augmented generation. In International Conference on Learning Representations .[97] Qi Xuan, Jinhuan Wang, Minghao Zhao, Junkun Yuan, Chenbo Fu, Zhongyuan Ruan, and Guanrong Chen. 2019. Subgraph networks with application to structural feature space expansion. IEEE Transactions on Knowledge and Data Engineering 33, 6 (2019), 2776–2789. [98] Carl Yang, Mengxiong Liu, Vincent W Zheng, and Jiawei Han. 2018. Node, motif and subgraph: Leveraging network functional blocks through structural convo-lution. In IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining . IEEE, 47–52. [99] Yaming Yang, Ziyu Guan, Zhe Wang, Wei Zhao, Cai Xu, Weigang Lu, and Jianbin Huang. 2022. Self-supervised heterogeneous graph pre-training based on structural clustering. Advances in Neural Information Processing Systems 35 (2022), 16962–16974. [100] Zhilin Yang, Peng Qi, Saizheng Zhang, Yoshua Bengio, William Cohen, Ruslan Salakhutdinov, and Christopher D Manning. 2018. HotpotQA: A dataset for diverse, explainable multi-hop question answering. In Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing . 2369–2380. [101] Michihiro Yasunaga, Hongyu Ren, Antoine Bosselut, Percy Liang, and Jure Leskovec. 2021. QA-GNN: Reasoning with language models and knowledge graphs for question answering. In Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies . 535–546. [102] Zixuan Yi, Iadh Ounis, and Craig Macdonald. 2023. Contrastive graph prompt-tuning for cross-domain recommendation. ACM Transactions on Information Systems 42, 2 (2023), 1–28. [103] Jun Yin, Chaozhuo Li, Hao Yan, Jianxun Lian, and Senzhang Wang. 2023. Train once and explain everywhere: Pre-training interpretable graph neural networks. 
+
+Advances in Neural Information Processing Systems 36 (2023), 35277–35299. [104] Junchi Yu, Tingyang Xu, Yu Rong, Yatao Bian, Junzhou Huang, and Ran He. 2021. Graph information bottleneck for subgraph recognition. In International Conference on Learning Representations .[105] Junchi Yu, Tingyang Xu, Yu Rong, Yatao Bian, Junzhou Huang, and Ran He. 2021. Recognizing predictive substructures with subgraph information bottleneck. 
+
+IEEE Transactions on Pattern Analysis and Machine Intelligence 46, 3 (2021), 1650–1663. [106] Xingtong Yu, Chang Zhou, Yuan Fang, and Xinming Zhang. 2024. Text-free multi-domain graph pre-training: Toward graph foundation models. arXiv preprint arXiv:2405.13934 (2024). [107] Jintao Zhang, Guoliang Li, and Jinyang Su. 2025. SAGE: A framework of precise retrieval for RAG. In International Conference on Data Engineering .[108] Minjia Zhang, Wenhan Wang, and Yuxiong He. 2022. Grasp: Optimizing graph-based nearest neighbor search with subgraph sampling and pruning. In Pro-ceedings of the Fifteenth ACM International Conference on Web Search and Data Mining . 1395–1405. [109] Qinggang Zhang, Shengyuan Chen, Yuanchen Bei, Zheng Yuan, Huachi Zhou, Zijin Hong, Hao Chen, Yilin Xiao, Chuang Zhou, Junnan Dong, et al . 2025. A survey of graph retrieval-augmented generation for customized large language models. arXiv preprint arXiv:2501.13958 (2025). [110] Wentao Zhang, Yexin Wang, Zhenbang You, Meng Cao, Ping Huang, Jiulong Shan, Zhi Yang, and Bin Cui. 2022. Information gain propagation: A new way to graph active learning with soft labels. International Conference on Learning Representations (2022). [111] Ziwei Zhang, Haoyang Li, Zeyang Zhang, Yijian Qin, Xin Wang, and Wenwu Zhu. 2023. Graph meets LLMs: Towards large graph models. In NeurIPS 2023 Workshop: New Frontiers in Graph Learning .[112] Zaixi Zhang, Qi Liu, Hao Wang, Chengqiang Lu, and Chee-Kong Lee. 2021. Motif-based graph self-supervised learning for molecular property prediction. 
+
+Advances in Neural Information Processing Systems 34 (2021), 15870–15882. [113] Haihong Zhao, Aochuan Chen, Xiangguo Sun, Hong Cheng, and Jia Li. 2024. All in one and one for all: A simple yet effective method towards cross-domain graph pretraining. In Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining . 4443–4454. [114] Wayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min, Beichen Zhang, Junjie Zhang, Zican Dong, et al . 2023. A survey of large language models. arXiv preprint arXiv:2303.18223 1, 2 (2023). [115] Yingli Zhou, Yaodong Su, Youran Sun, Shu Wang, Taotao Wang, Runyuan He, Yongwei Zhang, Sicong Liang, Xilin Liu, Yuchi Ma, et al . 2025. In-depth analysis of graph-based RAG in a unified framework. arXiv preprint arXiv:2503.04338 
+
+(2025). [116] Tanli Zuo, Yukun Qiu, and Wei-Shi Zheng. 2021. Neighbor combinatorial attention for critical structure mining. In Proceedings of the Twenty-Ninth Inter-national Conference on International Joint Conferences on Artificial Intelligence .3299–3305. Preprint. Under review. 
+
+## A Notations 
+
+Notations Descriptions 
+
+Knowledge Graph and Corpus 
+
+G = (V , R, E) Knowledge graph with entity set V, relation set R, and triple set E.
+
+(𝑢, 𝑟, 𝑣 ) ∈ E Relational triple from entity 𝑢 to 𝑣 via relation 𝑟 .
+
+{D} , 𝑑 ∈ D Set of knowledge domains and a domain identifier. 
+
+Dom 𝑑 (𝑒 ) Predicate indicating entity 𝑒 belongs to domain 𝑑 .
+
+C = {𝑐 𝑖 } Corpus of document chunks. 
+
+𝜙 (𝑐 𝑖 ), 𝜙 −1 (𝑒 ) Mapping between document chunks and mentioned entities. 
+
+Query, Answer, and RAG Interface 
+
+q, V | q Input query, and entities explicitly mentioned in the query. 
+
+LLM (q, Gq, Cq), 𝑦 The answer generator, and the generated answer. 
+
+Cq Supporting documents induced by retrieved entities. 
+
+Subgraph Retrieval 
+
+Gq = (V q, Rq, Eq) Query-specific retrieved subgraph. 
+
+Vq, Rq, Eq Entity, relation, and edge sets of the retrieved subgraph. 
+
+Graph Foundation Model (GFM) 
+
+𝑓 𝜽 (·) , 𝑓 ★ 
+
+> 𝜽
+
+(·) , 𝜽 The graph foundation model and its pre-trained variant with parameters. 
+
+Z(𝑙 ) 
+
+> 𝑒
+
+, Z(𝑙 ) 
+
+> 𝑟
+
+Entity and relation embeddings at the GFM layer 𝑙 .
+
+N ( 𝑣 ), m(𝑙 +1) 
+
+> 𝑣
+
+Neighborhood of entity 𝑣 and aggregated message. 
+
+Msg (·) , 𝑔 (·) , Agg (·) , Update (·) Learnable GFM message passing and update functions. 
+
+𝑙 , 𝐿 GNN layer index and total number of layers. 
+
+Pre-training and Prototype Learning 
+
+(𝑒, 𝑟, ?), (?, 𝑟, 𝑒 ) Masked triples used in KG completion pre-training. 
+
+Pq (𝑒 ) Relevance probability of entity 𝑒 for query q.
+
+V+ 
+
+> q
+
+, V− 
+
+> q
+
+Positive and negative entity sets. 
+
+LBCE , Lrank Binary cross-entropy and ranking loss. 
+
+Q𝑑 , (q𝑖 , 𝑒 𝑖 ) Query-entity pairs sampled from domain 𝑑 .
+
+c𝑑 , {c𝑑 } Domain prototype embedding and all prototypes. 
+
+Lproto , LIGC Prototype contrastive loss and information gain contrast regularizer. 
+
+Lpre , 𝛼 1, 𝛼 2, 𝛼 3 Overall pre-training objective and loss weights. 
+
+Subgraph Selection and Information Bottleneck 
+
+p Query-conditioned prompt. 
+
+Z★ 
+
+> 𝑒
+
+, eZ𝑒 Frozen entity embedding, and query-conditioned entity representation. 
+
+W1, W2 Learnable projection matrices. 
+
+𝑆 𝑒 (q), 𝑔 𝑒 , 𝜖 Soft entity selection probability, Gumbel noise, and selection threshold. 
+
+𝐼 (· ; ·) , 𝐻 (· | ·) Mutual information and conditional entropy. 
+
+S𝑒 (q), L Soft selection vector and normalized graph Laplacian. 
+
+𝛽 , 𝛽 1, 𝛽 2 Information Bottleneck regularization coefficients. 
+
+LIB , LLIB Information Bottleneck objective and its label-free variant. 
+
+Gq, LNCE Pooled subgraph representation and contrastive lower-bound loss. 
+
+Lsize , Lcon Subgraph size and connectivity regularization terms. 
+
+Lftn Overall fine-tuning objective. 
+
+Path Reasoning and Prompt Construction 
+
+M Binary entity-document incidence matrix. 
+
+𝑤 𝑒 , 𝑅 𝑐 Entity importance weight and document relevance score. 
+
+Πq, 𝜋 Set of reasoning paths and a single relational path. 
+
+𝑆 𝑟 (𝜋 ), 𝜙 path (𝑒 ), 𝜔 (𝑟 ) Path relevance score, path-based entity centrality, and relation depth penalty. Retrieving Minimal and Sufficient Reasoning Subgraphs with Graph Foundation Models for Path-aware GraphRAG 
+
+Algorithm 1: Pre-training of the GFM Retriever 𝑓 𝜽 (·) .
+
+Input: The multi-domain indexed KG G = (V , R, E) over domains D; query-conditioned GFM 𝑓 𝜽 (·) with 𝐿 
+
+layers; hyper-parameters 𝛼 1, 𝛼 2, 𝛼 3, 𝜏 .
+
+Output: Pre-trained GFM retriever 𝑓 ★ 
+
+> 𝜽
+
+(·) . 
+
+> 1
+
+Initialize model parameters 𝜽 ; 
+
+> 2
+
+// # Phase I: KG completion pre-training  
+
+> 3
+
+for each pre-training epoch do  
+
+> 4
+
+for each triple (𝑒, 𝑟, ?) or (?, 𝑟, 𝑒 ) sampled from G do  
+
+> 5
+
+Construct pseudo-query q from triplets;  
+
+> 6
+
+Initialize embeddings: Z(0) 
+
+> 𝑒
+
+← Eq. (1);  
+
+> 7
+
+for 𝑙 = 0 to 𝐿 − 1 do  
+
+> 8
+
+Message passing: m(𝑙 +1) 
+
+> 𝑣
+
+← Eq. (2);  
+
+> 9
+
+Entity update: Z(𝑙 +1) 
+
+> 𝑣
+
+← Eq. (3);  
+
+> 10
+
+end  
+
+> 11
+
+Predict entity relevance Pq (𝑒 ) ← Eq. (4);  
+
+> 12
+
+Loss: LBCE ← Eq. (5), Lrank ← Eq. (6);  
+
+> 13
+
+LPhase I = 𝛼 1 LBCE + ( 1 − 𝛼 1)L rank (Eq. (9));  
+
+> 14
+
+end  
+
+> 15
+
+end  
+
+> 16
+
+// # Phase II: Continuous pre-training  
+
+> 17
+
+for each pre-training epoch do  
+
+> 18
+
+Sample pairs (q𝑖 , 𝑒 𝑖 ) ∈ Q 𝑑 from each domain 𝑑 ∈ D ; 
+
+> 19
+
+Compute domain prototype c𝑑 ; 
+
+> 20
+
+Compute prototype contrastive loss: Lproto ← Eq. (7);  
+
+> 21
+
+Compute information gain contrast LIGC ← Eq. (8);  
+
+> 22
+
+LPhase II = 𝛼 2 Lproto + 𝛼 3 LIGC (Eq. (9)).;  
+
+> 23
+
+end 
+
+## B Algorithm and Complexity Analysis 
+
+The pre-training, fine-tuning, and inference (QA task) pipeline of Gfm -Retriever is illustrated in Algorithm 1, Algorithm 2, and Algorithm 3. We next analyze their computational complexity. 
+
+## B.1 Computational Complexity of the Pre-training Stage 
+
+The pre-training stage consists of two phases: (1) mixed-domain KG completion pre-training (Phase I), and (2) prototype-driven continuous pre-training (Phase II). Unless otherwise stated, we focus on the asymptotic complexity with respect to graph size, and omit constant factors related to embedding dimensionality and the internal implementations of neural modules ( e.g. , Msg (·) ,
+
+Update (·) , Agg (·) , MLP (·) , etc. ). 
+
+Phase I: Mixed-domain KG Completion Pre-training. Phase I performs KG completion over the multi-domain indexed graph 
+
+G = (V , R, E) using query-conditioned GFM inference. For each masked triple, a pseudo-query q is constructed. 
+
+• Embedding initialization. Initializing entity and relation em-beddings for all 𝑒 ∈ V and 𝑟 ∈ R requires O(|V | + |R|) .
+
+• Query-conditioned message passing. For each GFM layer, messages are computed over all edges (𝑢, 𝑟, 𝑣 ) ∈ E and aggre-gated at each node. The per-layer complexity is O(|E| + |V |) ,and stacking 𝐿 layers yields O( 𝐿 (|E| + |V |)) .
+
+• Entity relevance scoring. Computing Pq (𝑒 ) for all entities requires a forward pass of an MLP, which requires O(|V |) .
+
+• KG completion loss. Both LBCE and Lrank involve summations over positive and negative entity sets whose union equals V.Hence, their computation costs O(|V |) .Summing up, time complexity for Phase I is O( 𝐿 |E| + 𝐿 |V | + |R| + |V |) . Since |E| ⩾ |V | and 𝐿 ⩾ 1, it can be simplified to O( 𝐿 |E| + |V | + |R|) with O( 𝐿 |E|) being the dominant term. If masking over all triples in E once per epoch, the per-epoch complexity becomes: 
+
+O  𝐿 |E| 2 + |E||V | + |E||R| , (B.1) which is dominated by O( 𝐿 |E| 2).
+
+Phase II: Prototype-driven Continuous Pre-training. Phase II performs semantic alignment using a subset of query-entity pairs 
+
+Ð𝑑 ∈ D Q𝑑 sampled from each domain. 
+
+• Prototype construction. Computing domain prototypes needs averaging entity representations, yielding O( Í𝑑 ∈ D |Q 𝑑 |) .
+
+• Prototype contrastive loss. For each pair, the softmax denomi-nator sums over all domains, yielding O(( Í𝑑 ∈ D |Q 𝑑 |) · |D|) .
+
+• Information gain contrast regularization. The KL-divergence is calculated over the entity distribution Pq (𝑒 ) ∈ R| V | × 1. For each query, this requires O(|V |) time, yielding O(( Í𝑑 ∈ D |Q 𝑑 |) · |V |) .
+
+• GFM forward inference. Since Pq (𝑒 ) depends on the query-conditioned GFM output, each query requires an 𝐿 -layer message-passing forward pass, incurring O( 𝐿 (|E| + |V |)) . Over all sam-pled queries, this contributes O(( Í𝑑 ∈ D |Q 𝑑 |) · 𝐿 |E|) , which is the dominant cost in Phase II. Combining all, the per-epoch complexity of Phase II is: 
+
+O
+
+ ∑︁  
+
+> 𝑑 ∈ D
+
+|Q 𝑑 | · ( 𝐿 |E| + |V | + |D|) 
+
+
+
+. (B.2) 
+
+Overall Pre-training Complexity. Combining Phase I and Phase II, the total per-epoch time complexity of pre-training is: 
+
+O  𝐿 |E| 2 +|E||V |+|E||R|  +O 
+
+∑︁  
+
+> 𝑑 ∈ D
+
+|Q 𝑑 |( 𝐿 |E|+|V |+|D|) 
+
+
+
+. (B.3) Since Phase II is performed on a subset and Phase I dominates in large-scale knowledge graphs, the overall complexity is asymp-totically governed by O( 𝐿 |E| 2), which highlights that the compu-tational cost of pre-training is primarily determined by repeated query-conditioned message passing over the entire indexed graph, which motivates our later use of parameter-efficient fine-tuning and subgraph-level optimization in the downstream stages. 
+
+## B.2 Computational Complexity of the Fine-tuning Stage 
+
+The fine-tuning stage optimizes the label-free IB objective (Eq. (13)) via tractable surrogate using Proposition 4.3 (Eq. (15)) and Proposi-tion 4.4 (Eq. (17)), together with supervised retrieval loss (Eq. (5) and Eq. (6)). Follow the same protocal in Appendix B.1, we omit constant factors related to hidden dimensions and the internal implemen-tations of neural modules ( e.g. , MLP (·) ), focusing on asymptotic dependence on graph and batch sizes. Preprint. Under review. 
+
+Algorithm 2: Fine-tuning with the Subgraph Selector. 
+
+Input: The multi-domain indexed KG G = (V , R, E) ;frozen entity embeddings Z★ 
+
+> 𝑒
+
+from 𝑓 ★ 
+
+> 𝜽
+
+(·) ; training queries {( q, V+ 
+
+> q
+
+)} ; hyper-parameters 𝛼 1, 𝛽 1, 𝛽 2, 𝜏 , 𝜖 .
+
+Output: Trained subgraph selector producing Gq. 
+
+> 1
+
+for each mini-batch B of queries do  
+
+> 2
+
+for each query q ∈ B do  
+
+> 3
+
+Construct query prompt p = MLP (q); 
+
+> 4
+
+for each entity 𝑒 ∈ V do  
+
+> 5
+
+// Learn query-conditioned subgraph  
+
+> 6
+
+Query-conditioned entity: eZ𝑒 ← Eq. (10);  
+
+> 7
+
+Sample selection gate: 𝑆 𝑒 (q) ← Eq. (11);  
+
+> 8
+
+end  
+
+> 9
+
+Induce subgraph Gq by thresholding 𝜖 ; 
+
+> 10
+
+// Label-free IB regularization  
+
+> 11
+
+Retrieval loss: LBCE ← Eq. (5), Lrank ← Eq. (6);  
+
+> 12
+
+Pooled subgraph representation: 
+
+Gq = Í𝑒 ∈ V q 𝑆 𝑒 (q) · eZ𝑒 ; 
+
+> 13
+
+Lower bound of 𝐼 (q; Gq): LNCE ← Eq. (15);  
+
+> 14
+
+Penalties: Lsize ← Eq. (16), Lcon ← Eq. (16);  
+
+> 15
+
+Combine the IB surrogate: ⌈L LIB ⌉ ← Eq. (19);  
+
+> 16
+
+Calculate the final fine-tuning loss: Lftn ← Eq. (18);  
+
+> 17
+
+end  
+
+> 18
+
+Update selector parameters via gradient descent;  
+
+> 19
+
+end Per-query Complexity (mini-batch B). For a query q, the fine-tuning stage consists of the following computation modules. 
+
+• Query prompt construction. Prompt p = MLP (q) is computed once per query. Treating MLP (·) as a constant-cost operator w.r.t. 
+
+graph size, this step requires O( 1).
+
+• Query-conditioned entity embedding construction. For ev-ery entity 𝑒 ∈ V , we form eZ𝑒 = Z★ 
+
+> 𝑒
+
+∥ W1p ∥ W2q, which is a per-entity operation. Thus, the complexity is O(|V |) .
+
+• Differentiable subgraph gate sampling. For each 𝑒 ∈ V , the Gumbel-Sigmoid gate 𝑆 𝑒 (q) in Eq. (11) is computed once. This is also linear in the number of entities: O(|V |) .
+
+• Subgraph induction by thresholding. Constructing Vq re-quires one pass over all entities that yields O(|V |) .
+
+• Subgraph generation. Inducing Rq and Eq from Vq can be done by scanning edges, which is at most O(|E|) . We state explicitly below as an optional dominant term if full edge scanning is used. 
+
+• Supervised retrieval loss. Both LBCE and Lrank sum over posi-tives V+ 
+
+> q
+
+and negatives V− 
+
+> q
+
+. In the worst case, they are computed over all entities and yield O(|V |) , which matches the dependence of Eq. (5) and Eq. (6) on entity-level distributions. 
+
+• Pooled subgraph representation. The pooled Gq requires iterating over the selected entity set Vq: O(|V q |) ⩽ O(|V |) .
+
+• Noise-contrastive estimation term. Eq. (15) computes a de-nominator summing over negative pairs (Gq′ , q′) for q′ ∈ B .Assuming Gq′ is precomputed for all q′ ∈ B (as in Algorithm 2), computing the softmax-normalized score per query costs O(|B|) .(If Gq′ is not cached, the cost would inherit O(|V q′ |) construc-tion, which is accounted for by the pooled representation.) 
+
+• Size penalty. The size term Lsize costs O(|V q |) ⩽ O(|V |) .
+
+• Connectivity penalty. The connectivity term Lcon involves multiplication by the normalized Laplacian L. Computing LS 𝑒 (q)
+
+can be implemented as the sparse matrix-vector multiplication with sparsity pattern given by E, which costs O(|E|) , which is typically the dominant term among the regularizers. 
+
+Per-batch Complexity. Summing up, a single query q gives: 
+
+O(|V |) 
+
+| {z }
+
+> Eq. (10)
+
++ O(|V |) 
+
+| {z }
+
+> Eq. (11)
+
++ O(|V |) 
+
+| {z }
+
+> thresholding
+
++ O(|V |) 
+
+| {z } 
+
+> LBCE ,Lrank
+
++ O(|V q |) 
+
+| {z } 
+
+> Gq,Lsize
+
++ O(|B|) 
+
+| {z }
+
+> LNCE
+
++ O(|E|) 
+
+| {z }
+
+> Lcon
+
+. (B.4) Using |V q | ⩽ |V | and grouping terms, we obtain O(|V |+|E|+|B|) .For a mini-batch B, the total cost is O(|B| · (|V | + |E| + |B|)) .Expanding the product yields O(|B||V | + |B||E| + |B| 2). In typical large KGs, |E| dominates |V | and |B| ≪ |E| . Thus, the fine-tuning is asymptotically dominated by the connectivity regularizer, giving 
+
+O(|B||E|) , where the per-query dominant cost is O(|E|) .Notably, if Eq and Rq are explicitly induced by scanning the full edge set each iteration, that additional cost is at most O(|E|) 
+
+per query and is already subsumed by the O(|E|) term above. In contrast, if one uses edge-indexing restricted to the selected node set Vq, the practical runtime can be reduced, but the worst-case asymptotic bound remains unchanged. 
+
+## B.3 Computational Complexity of the Inference Stage (QA) 
+
+Given a query q on the target knowledge graph G𝑇 = (V 𝑇 , R𝑇 , E𝑇 ),the inference stage consists of (1) subgraph retrieval via the trained selector (Eq. (11)), and (2) relational paths induced in-context prompt-ing, including entity-to-document mapping and truncated DFS path extraction. We omit constant factors related to hidden dimensions and neural module internals. 
+
+Step-wise Complexity Analysis. For a single query q, Algo-rithm 3 includes the following modules. 
+
+• Selection probability. The selector computes 𝑆 𝑒 (q) (Eq. (11)), which requires one pass over all entities, hence 𝑂 (|V 𝑇 |) .
+
+• Subgraph induction by thresholding. Constructing Vq costs 
+
+O(|V 𝑇 |) . If Eq is explicitly induced from Vq by scanning all edges in E𝑇 , the worst-case additional cost is O(|E 𝑇 |) .
+
+• Entity weighting. For each entity 𝑒 ∈ V q, inference computes 
+
+𝑤 𝑒 (Eq. (20)), which is linear in the size of the selected entity set: 
+
+O(|V q |) . (The term Í𝑐 M[𝑒, 𝑐 ] can be precomputed per entity from the fixed mapping matrix M.) 
+
+• Document relevance computation. The document scores are given by 𝑅 𝑐 = M⊤𝑤 𝑒 . Treating M ∈ { 0, 1}| E q | × | C q | as a sparse matrix, computing M⊤𝑤 𝑒 is a sparse matrix-vector multiplication. Its time complexity is proportional to the number of non-zeros (nnz ) in M restricted to the selected entities as O( nnz (MVq )) ,where MVq denotes the submatrix induced by Vq. In the worst case, this is upper-bounded by scanning all entity-to-chunk links in the query-restricted support, i.e. , O(|E q ||C q |) , while in practice it is typically much smaller due to sparsity. Retrieving Minimal and Sufficient Reasoning Subgraphs with Graph Foundation Models for Path-aware GraphRAG 
+
+Algorithm 3: Inference with In-context Prompting. 
+
+Input: Query q; target KG G𝑇 ; trained selector producing 
+
+𝑆 𝑒 (q); entity-to-document mapping matrix M; DFS search hop limit 𝑙 ; top-𝐾 documents C (𝐾 ) 
+
+> q
+
+.
+
+Output: Generated answer ˆ𝑦 . 
+
+> 1
+
+// Subgraph retrieval  
+
+> 2
+
+Selection probabilities 𝑆 𝑒 (q) ← Eq. (11) for all 𝑒 ∈ V 𝑇 ; 
+
+> 3
+
+Induce subgraph Gq = (V q, Rq, Eq); 
+
+> 4
+
+// Entity-to-document scoring  
+
+> 5
+
+for each entity 𝑒 ∈ V q do  
+
+> 6
+
+Compute importance weight 𝑤 𝑒 ← Eq. (20);  
+
+> 7
+
+end  
+
+> 8
+
+Compute relevance 𝑅 𝑐 = M⊤𝑤 𝑒 and select top-𝐾 documents;  
+
+> 9
+
+// Reasoning path extraction.  
+
+> 10
+
+Extract relational paths Πq from Gq via 𝑙 -hop truncated DFS;  
+
+> 11
+
+for each path 𝜋 do  
+
+> 12
+
+Compute path score 𝑆 𝑟 (𝜋 ) ← Eq. (21).  
+
+> 13
+
+end  
+
+> 14
+
+Select top-ranked paths Π★ 
+
+> q
+
+; 
+
+> 15
+
+// In-context prompting and generation  
+
+> 16
+
+Construct prompt from Π★ 
+
+> q
+
+and retrieved documents;  
+
+> 17
+
+Generate answer ˆ𝑦 = LLM (q, Π★ 
+
+> q
+
+, C (𝐾 ) 
+
+> q
+
+);
+
+• Top-𝐾 document selection. Selecting the top-𝐾 documents from {𝑅 𝑐 } can be done in O(|C q |) (e.g. , linear-time selection), or 
+
+O(|C q | log |C q |) if full sorting is used. 
+
+• Relational path extraction. In the worst case, enumerating all paths ( ⩽ 𝑙 ) may grow exponentially due to branching in DFS. Denoting the maximum degree in the induced subgraph Gq by 
+
+Δ, the worst-case number of DFS expansions is O( Δ𝑙 ).
+
+• Path scoring. For each extracted path 𝜋 , inference computes 
+
+𝑆 𝑟 (𝜋 ) (Eq. (21)), which costs O( 𝑘 ) ⩽ O( 𝑙 ) per path, hence over all extracted paths requires O(| Πq | · 𝑙 ).
+
+• Path ranking and subset selecting. Ranking paths by {𝑆 𝑟 (𝜋 )} 
+
+costs O(| Πq | log |Πq |) , or O(| Πq |) with top-𝐾 selection. 
+
+• LLM answer generation. The answer generation ˆ𝑦 = LLM (·) 
+
+depends on the LLM inference cost and prompt length. We omit it for brevity. 
+
+Overall Inference Complexity. Excluding the LLM generation cost, the per-query inference complexity is: 
+
+O(|V 𝑇 |) + O(|E 𝑇 |) 
+
+| {z }  
+
+> (optional, if inducing Eqby edge scan)
+
++O(|V q |) + O  nnz (MVq )
+
++O(|C q |) + O( Δ𝑙 ) + O(| Πq | · 𝑙 ) + O(| Πq | log |Πq |) . (B.5) As |V q | ⩽ |V 𝑇 |, we obtain the simplified bound: 
+
+O
+
+
+
+|V 𝑇 | + |E 𝑇 | + nnz (MVq ) + Δ𝑙 + | Πq | log |Πq |
+
+
+
+. (B.6) In typical settings, the dominant cost is the truncated DFS path extraction, which can be exponential in the hop budget 𝑙 in the worst case. 
+
+## C Proofs C.1 Proof of Proposition 4.1 
+
+We first restate Proposition 4.1 for reference. 
+
+Proposition 4.1 (Multi-domain logical expressivity of qery-conditioned GFM ) Let G be a knowledge graph in-dexed from multiple domains. {Dom 𝑑 (𝑒 )} denotes unary predicates indicate domain attributes of entity 𝑒 . For a query 𝑞 , the query-conditioned GFM can learn a rule R(q, 𝑒 ) if and only if R(q, 𝑒 )
+
+is a formula in graded modal logic over G with constant q, i.e., 
+
+∃⩾𝑁 𝑒 ′ (R(𝑒 ′, 𝑒 ) ∧ Dom 𝑑 (𝑒 ′) ∧ 𝜓 (𝑒 ′)) , where 𝜓 (·) a subformula. 
+
+Proof. Let G = (V , R, E) be the KG indexed from the multi-domain documents. D : V → { 0, 1}|D| maps each entity node to its domain attributes. We denote the unary predicate Dom 𝑑 (𝑣 ) as true if the 𝑑 -th entry of D ( 𝑣 ) is 1. We assume the query-conditioned GFM 𝑓 𝜽 (·) follows the message passing scheme defined in Eq. (2) and Eq. (3). To prove Proposition 4.1, we establish the equivalence between the logical formulas learnable by this GFM and the Graded Modal Logic (CML) [11, 65, 68] extended with domain predicates. 
+
+(1) Sufficiency (Constructive Proof). We prove that for any formula 𝜑 in the multi-domain CML logic, there exists a parameteri-zation of the GFM that learns 𝜑 . We proceed by structural induction on the formula construction. The bad case is the atomic formulas (e.g. , Dom 𝑑 (𝑒 )) are directly contained in the initial entity embed-dings Z(0) 
+
+> 𝑒
+
+. A simple linear projection (1-layer GFM) can encode these embeddings, so that the base predicates are learnable. For the inductive step, assume a sub-formula 𝜓 (𝑒 ′) is learnable by a GFM with 𝑙 − 1 layers, such that the dimension 𝑗 of Z(𝑙 −1) 
+
+> 𝑒 ′
+
+acts as an indication Z(𝑙 −1) 
+
+> 𝑒 ′
+
+[ 𝑗 ] = I(G , 𝑒 ′ |= 𝜓 ), where I(·) is the indicator. We next show the formula Φ(𝑒 ) = ∃⩾𝑁 𝑒 ′ (R(𝑒 ′, 𝑒 ) ∧ Dom 𝑑 (𝑒 ′) ∧ 
+
+𝜓 (𝑒 ′)) is learnable by the 𝑙 -th layer. The semantics of Φ(𝑒 ) require counting neighbors 𝑒 ′ connected by relation R that satisfy both the domain constraint Dom 𝑑 (·) and the property 𝜓 . We construct the 
+
+𝑙 -th layer aggregation following Lemma C.3 [68]: 
+
+Message Construction. Let the message function Msg (𝑙 ) 
+
+> R
+
+(·) 
+
+select and combine the relevant features. Since Dom 𝑑 (𝑒 ′) is a unary predicate available in the input features (and preserved or prop-agated to (𝑙 − 1)-th layer), let Z(𝑙 −1) 
+
+> 𝑒 ′
+
+[𝑘 ] correspond to Dom 𝑑 (𝑒 ′).We define the message to output a scalar value 1 only if both con-ditions are met, essentially implementing a logical “AND” ( ∧) via soft continuous approximation ( e.g. , using summing components or MLP approximation in the limit): 
+
+m𝑒 ′,𝑒  I Z(𝑙 −1) 
+
+> 𝑒 ′
+
+[𝑘 ] = 1 ∧ Z(𝑙 −1) 
+
+> 𝑒 ′
+
+[ 𝑗 ] = 1. (C.1) Alternatively, in a standard linear GNN, WMsg assigns a unit weight to the 𝜓 dimension conditioned on 𝑒 ′ being masked or filtered by domain 𝑑 . A more robust construction uses the universal approxi-mation theorem of MLPs (contained in Msg (·) ) to map Z(𝑙 −1) 
+
+> 𝑒 ′
+
+to 1 if the domain and 𝜓 bits are active, and 0 otherwise. 
+
+Aggregation. The GFM sums the messages from neighbors: 
+
+𝑆 𝑒 =∑︁    
+
+> 𝑒 ′∈ N R(𝑒 )
+
+m𝑒 ′,𝑒 = |{ 𝑒 ′ | R(𝑒 ′, 𝑒 ) ∧ Dom 𝑑 (𝑒 ′) ∧ 𝜓 (𝑒 ′)}| . (C.2) This sum 𝑆 𝑒 exactly counts the number of valid logical witnesses in the specific domain. Preprint. Under review. 
+
+Thresholding (Quantifier Realization). To realize the quan-tifier ∃⩾𝑁 , we set the bias term b(𝑙 ) and use a step-like activation function 𝜎 (e.g. , a steep Sigmoid). Assume b = −𝑁 + 𝛿 , then: 
+
+Z(𝑙 ) 
+
+> 𝑒
+
+= 𝜎 (𝑆 𝑒 − 𝑁 + 𝛿 ), 𝛿 > 0. (C.3) If 𝑆 𝑒 ⩾ 𝑁 , the input to 𝜎 is positive, outputting 1 (True). If 𝑆 𝑒 < 𝑁 ,the output is 0 (False). Thus, the GFM can structurally implement the formula Φ(𝑒 ).
+
+(2) Necessity (Expressivity Limit). Deriving from Theorem C.2 and Theorem C.7 in Qiu et al . [68] , we prove any rule learnable by the query-conditioned GFM corresponds to a CML formula over G.We invoke the established correspondence between MPNNs and the 1-dimensional Weisfeiler-Leman (1-WL) test [ 30 ]. It is known that the discriminative power of standard MPNNs is bounded by 1-WL. Furthermore, the stable coloring of 1-WL on a graph is equivalent to the logical equivalence classes defined by CML with counting quantifiers [4, 60]. In our specific case: 
+
+Graph Augmentation. The multi-domain graph G can be viewed as a standard colored graph where the initial node colors 𝐶 (𝑣 ) are tuples (I(𝑣 = q), Dom 𝑑 1 (𝑣 ), · · · , Dom 𝑑 𝑘 (𝑣 ), · · · ) .
+
+Bisimulation Invariance. GFM is permutation invariant. If two entities 𝑢 and 𝑣 are indistinguishable by CML formulas ( i.e. , bisimi-lar on the augmented graph), they will receive identical message aggregates at every step and thus identical final embeddings. In conclusion, if the GFM learns a classifier that distinguishes entity 𝑒 based on R(q, 𝑒 ), there must exist a distinguishing structure in the computation tree. Since the computation tree is isomorphic to the unrolled logic formula in CML, the decision boundary learned by the GFM must be describable by a CML formula. Specifically, the “multi-domain” property simply expands the set of atomic unary predicates in the logic. If a rule relies on checking Dom 𝑑 , this is valid in CML as checking an atomic proposition. If the rule cannot be expressed in CML ( e.g. , it requires counting cycles or check-ing connectivity beyond tree-unrolling), the 1-WL test would fail to distinguish the relevant subgraphs, and the GFM would conse-quently fail to learn the rule. Therefore, a rule is learnable only if it is expressible in CML with domain predicates. □
+
+## C.2 Proof of Proposition 4.2 
+
+We first restate Proposition 4.2 for reference. 
+
+Proposition 4.2 (Error Bound of LLIB Approximation ) Let 
+
+Gq be the subgraph, 𝑦 the ground-truth answer, and q the query. Assume the Markov property ⟨𝑦 ↔ q ↔ G q⟩ exists, the approxi-mation error of LIB by LLIB is upper-bounded by the conditional entropy of q given 𝑦 :
+
+𝐼 (𝑦 ; Gq) − 𝐼 (q; Gq) ⩽ 𝐻 (q | 𝑦 ),
+
+where 𝐻 (q | 𝑦 ) is a data-dependent constant. 
+
+Proof. We formally analyze the approximation error introduced by the label-free objective using the interaction information and the chain rule of mutual information. Let the random variables 
+
+𝑦 , q, and Gq represent the ground-truth answer, the query, and the retrieved subgraph, respectively. Consider the joint mutual information 𝐼 (𝑦, q; Gq). By symmetry, we can decompose this term in two equivalent ways based on the chain rule: 
+
+𝐼 (𝑦, q; Gq) = 𝐼 (𝑦 ; Gq) + 𝐼 (q | 𝑦 ; Gq), (C.4) 
+
+𝐼 (𝑦, q; Gq) = 𝐼 (q; Gq) + 𝐼 (𝑦 | q; Gq). (C.5) Subtracting Eq. (C.5) from Eq. (C.4) allows us to isolate the discrep-ancy between the supervised objective 𝐼 (𝑦 ; Gq) and our proposed label-free proxy 𝐼 (q; Gq):
+
+𝐼 (𝑦 ; Gq) − 𝐼 (q; Gq) = 𝐼 (𝑦 | q; Gq) − 𝐼 (q | 𝑦 ; Gq). (C.6) To derive an upper bound, we recall the property that mutual in-formation is bounded by the entropy of its variables. Specifically, for conditional mutual information, we have: 
+
+𝐼 (𝑋 ; 𝑌 | 𝑍 ) = 𝐻 (𝑋 | 𝑍 ) − 𝐻 (𝑋 | 𝑌, 𝑍 ). (C.7) Since entropy is non-negative and conditioning reduces entropy, or leaves it unchanged, we know that: 
+
+𝐼 (𝑋 ; 𝑌 | 𝑍 ) ⩽ 𝐻 (𝑌 | 𝑍 ), (C.8) where 𝐻 (·) denotes the Shannon entropy. Applying this inequality to both terms on the RHS of Eq. (C.6): 
+
+𝐼 (𝑦 | q; Gq) ⩽ 𝐻 (𝑦 | q), (C.9) 
+
+𝐼 (q | 𝑦 ; Gq) ⩽ 𝐻 (q | 𝑦 ). (C.10) Substituting these bounds back into the absolute difference error: 
+
+𝐼 (𝑦 ; Gq) − 𝐼 (q; Gq) ⩽ max  𝐻 (𝑦 | q) + 𝐻 (q | 𝑦 )
+
+⩽ 𝐻 (𝑦 | q) + 𝐻 (q | 𝑦 ). (C.11) In the context of retrieval where the query intends to specify the answer ( i.e. , q is not independent of 𝑦 ), if we assume the retrieved subgraph Gq only contains information about 𝑦 via the semantics of q (Markov property ⟨𝑦 ↔ q ↔ G q⟩), the bound tightens to: 
+
+𝐼 (𝑦 ; Gq) − 𝐼 (q; Gq) ⩽ 𝐻 (q | 𝑦 ). (C.12) While 𝐻 (q | 𝑦 ) represents the intrinsic diversity of queries target-ing the same answer, it is crucial to note that this term is determined solely by the data distribution P(q, 𝑦 ) and remains constant with respect to the learnable parameters in the subgraph selector. There-fore, minimizing the upper bound is equivalent to minimizing the proxy gap up to a constant additive factor. The gradient directions for optimizing sufficiency are essentially unaffected by this term. In conclusion, Proposition 4.2 suggests maximizing the mutual information with query 𝐼 (G q; q) is an effective proxy for 𝐼 (G q; 𝑦 ),provided that the query ambiguity 𝐻 (𝑦 | G q) is low. Since the query is designed to point towards the answer (low ambiguity), minimizing the label-free loss effectively minimizes the supervised loss within a controllable error margin. □
+
+## C.3 Proof of Proposition 4.3 
+
+We first restate Proposition 4.3 for reference. 
+
+Proposition 4.3 (Lower Bound of 𝐼 (q; Gq)) Denote the average-pooled subgraph representation as Gq = Í𝑒 ∈ V q 𝑆 𝑒 (q) · eZ𝑒 . Deriving from Alemi et al. [1] , the lower bound is: 
+
+𝐼 (q; Gq) ⩾ −L NCE = log exp   sim (Gq, q)/ 𝜏 Íq′ ∈ B exp   sim (Gq′ , q′)/ 𝜏  ,
+
+where (Gq′ , q′) is the negative sample pair. Retrieving Minimal and Sufficient Reasoning Subgraphs with Graph Foundation Models for Path-aware GraphRAG 
+
+Proof. The primary goal is to maximize the mutual informa-tion 𝐼 (q; Gq) to ensure the retrieved subgraph Gq retains sufficient semantic information relevant to the query q. Since the exact com-putation involves high-dimensional integration over the joint distri-bution, we derive a tractable lower bound via variational estimation. 
+
+Variational Lower Bound Derivation. By definition, mutual information is the reduction in uncertainty of q given Gq:
+
+𝐼 (q; Gq) = 𝐻 (q) − 𝐻 (q | G q). (C.13) Since the entropy of the query distribution 𝐻 (q) is constant with respect to the subgraph selector, maximizing mutual information is equivalent to minimizing conditional entropy 𝐻 (q | G q). However, the true posterior distribution P(q | G q) is unknown. We introduce a variational distribution Q(q | G q) to approximate this posterior. Leveraging the non-negativity of the Kullback-Leibler divergence, 
+
+KL (Q(p | G q) || Q(q | G q)) ⩾ 0, we establish the following bound: 
+
+𝐼 (q; Gq) = EP(q,Gq )
+
+
+
+log P(q | G q)
+
+P(q)
+
+
+
+= EP(q,Gq )
+
+log Q(q | G q) + KL (P || Q)
+
+⩾ EP(q,Gq )
+
+log Q(q | G q) , (C.14) which implies that maximizing the log-likelihood of the variational distribution is a valid proxy for mutual information. 
+
+Modeling Semantic Alignment. To bridge the gap between the query and the graph structure, we model the variational dis-tribution Q using an energy-based formulation. The probability is proportional to the semantic similarity between the pooled sub-graph representation Gq and the query embedding q:
+
+Q(q | G q) = exp (sim (Gq, q)/ 𝜏 )
+
+Π(G q) , (C.15) where 𝜏 is a temperature hyper-parameter and Π(·) is the parti-tion function. This formulation effectively encourages aligning the embedding spaces of relevant subgraphs and queries. 
+
+Tractable NCE Approximation. Directly computing the parti-tion Π(G q) requires summing over the entire query space, which is computationally infeasible. Following the InfoNCE principle [ 23 ,64 ], we approximate this term using a batch of negative samples B.The learning problem is thus cast as a discrimination task: identify-ing the true query q from a set of distractors (negative samples): 
+
+E log Q(q | G q)  EB
+
+
+
+log exp (sim (Gq, q)/ 𝜏 )
+
+Íq′ ∈ B exp (sim (Gq′ , q′)/ 𝜏 )
+
+
+
+= −L NCE .
+
+(C.16) We conclude the proof. □
+
+## C.4 Proof of Proposition 4.4 
+
+We first restate Proposition 4.4 for reference. 
+
+Proposition 4.4 (Upper Bound of 𝐼 (G ; Gq)) Denote the sub-graph size and connectivity penalizers as: 
+
+Lsize =∑︁ 𝑒 ∈ V 𝑆 𝑒 (q), Lcon = Tr  S𝑒 (q)⊤LS 𝑒 (q),
+
+where 𝑆 𝑒 (q) ∈ [ 0, 1] is entity selection probability, S𝑒 (q) ∈ R| V | is the soft selection vector, L is the normalized graph Laplacian, and 
+
+Tr (·) calculates the trace of a matrix. The upper bound is: 
+
+𝐼 (G ; Gq) ⩽ 𝛽 1 Lsize + 𝛽 2 Lcon ,
+
+where 𝛽 1 and 𝛽 2 are hyper-parameters. 
+
+Proof. This compression term prevents the subgraph selector from retrieving the entire graph and encourages the identification of a “minimal” subgraph. We prove that minimizing the two proposed structural penalizers is equivalent to minimizing an upper bound of this mutual information. 
+
+Variational Upper Bound Derivation. Let P(G q | G) denote the encoding distribution ( i.e. , the subgraph selection process). We construct an upper bound by introducing an arbitrary prior distri-bution 𝑟 (G q) over the space of possible subgraphs: 
+
+𝐼 (G ; Gq) = EP( G) 
+
+KL (P(G q | G) || P(G q)) 
+
+⩽ EP( G) 
+
+KL (P(G q | G) || 𝑟 (G q))  . (C.17) Minimizing KL divergence penalizes the learned subgraph distribu-tion to conform to properties specified by the prior 𝑟 (G q).
+
+Gibbs Prior for Graph Structure. To inject the inductive bi-ases that valid reasoning paths should be dense and connected, we explicitly define the prior 𝑟 (G q) as a Gibbs distribution (or Boltz-mann distribution). The energy function 𝐸 (G q) encodes the cost of a subgraph configuration: 
+
+𝑟 (G q) = 1
+
+𝑍 exp  −𝐸 (G q) ,
+
+where 𝐸 (G q) = 𝛽 1𝐸 size + 𝛽 2𝐸 con . (C.18) The constant 𝑍 denotes Zustandssumme (German for “sum over states”). Its mathematical definition is the normalized sum of the exponential of the energy over all possible states: 
+
+𝑍 =∑︁  
+
+> G′∈Ω
+
+exp (− 𝐸 (G ′)) . (C.19) The specific forms of the energy terms are derived from two priors: 
+
+(1) Sparsity via Laplace Prior. Assuming the edge selection follows a Laplace distribution centered at zero, its negative log-likelihood corresponds to the 𝐿 1-norm of the selection probabilities, yielding 𝐸 size = Í 𝑆 𝑒 (q), denoting as Lsize .
+
+(2) Connectivity via GMRF Prior. Assuming the selection variables follow a Gaussian Markov Random Field (GMRF) over the structure, the energy is defined by the graph Laplacian quadratic form, yielding 𝐸 con = Tr (S𝑒 (q)⊤LS 𝑒 (q)) , denoting as Lcon .
+
+Equivalence to Loss Minimization. We substitute the Gibbs prior back into the KL divergence term. Note that the entropy of the encoder 𝐻 (G q | G) is determined by the subgraph selector’s confi-dence. Assuming a deterministic or low-variance selection process, this entropy term can be treated as a constant. The optimization objective simplifies as follows: 
+
+min KL (P(· | G) || 𝑟 (·)) ⇔ min EP( G q | G) 
+
+− log 𝑟 (G q)
+
+⇔ min EP( G q | G) 
+
+
+
+− log 
+
+ 1
+
+𝑍 exp (− 𝐸 (G q)) 
+
+ 
+
+⇔ min EP( G q | G) [𝛽 1 Lsize + 𝛽 2 Lcon + log 𝑍 ]⇔ min (𝛽 1 Lsize + 𝛽 2 Lcon ) . (C.20) We conclude the proof. □Preprint. Under review. 
+
+Table D.1: Statistics of the general multi-hop QA datasets. Dataset # Q-doc Pair # Document # KG # Entity # Relation # Triple 
+
+HotpotQA [100] 20,000 204,822 20 1,930,362 967,218 6,393,342 
+
+MuSiQue [85] 20,000 410,380 20 1,544,966 900,338 4,848,715 
+
+2WikiMultiHopQA [26] 20,000 122,108 20 916,907 372,554 2,883,006 
+
+Total 60,000 737,310 60 4,392,235 2,240,110 14,125,063 
+
+Table D.2: Statistics of the domain-specific QA datasets. Dataset Domain # Test # Document # Entity # Relation # Triple                                                                       
+
+> HotpotQA [100] Multi-hop 1,000 9,221 87,768 45,112 279,112
+> MuSiQue [85] Multi-hop 1,000 11,656 100,853 55,944 319,618
+> 2WikiMultiHopQA [26] Multi-hop 1,000 6,119 48,779 20,748 160,950
+> PubMedQA [36] Biomedical 2,450 5,932 42,389 20,952 149,782
+> DelucionQA [71] Customer Support 184 235 2,669 2,298 6,183
+> TechQA [8] Customer Support 314 769 10,221 4,606 57,613
+> ExpertQA [56] Customer Support 203 808 11,079 6,810 16,541
+> EManual [61] Customer Support 132 102 695 586 1,329
+> MS Marco [62] General Knowledge 423 3,481 24,740 17,042 63,995
+> HAGRID [37] General Knowledge 1,318 1,975 23,484 18,653 48,969
+
+## D Experiment Details 
+
+In this section, we provide additional experimental details. 
+
+## D.1 Datasets Details 
+
+D.1.1 General Multi-hop QA Datasets. Following prior work [ 54 ], we conduct experiments on three benchmark datasets for the multi-hop question answering task, namely HotpotQA [100 ], MuSiQue [85 ], and 2WikiMultiHopQA [26 ]. The statistics are listed in Table D.1. A brief description of each dataset is provided below. 
+
+• HotpotQA [ 100 ]: a large-scale multi-hop question answering dataset comprising 97k examples. Each question is paired with up to two gold supporting documents and several distractors. Answering typically requires combining evidence from both doc-uments, testing the ability to perform fine-grained reasoning. 
+
+• MuSiQue [ 85 ]: contains 25k carefully curated multi-hop ques-tions that require two to four reasoning steps. The questions are constructed to encourage compositional reasoning over multiple documents, making it a challenging benchmark for evaluating multi-step semantic understanding. 
+
+• 2WikiMultiHopQA [26 ]: a Wikipedia-based multi-hop QA dataset with 192k questions. Each question is designed to require rea-soning over two or four different Wikipedia articles. The dataset highlights diverse reasoning patterns across factual content, pro-viding a comprehensive testbed. 
+
+D.1.2 Domain-specific QA Datasets. To assess the generalization ability of Gfm -Retriever across diverse application scenarios, we further evaluate it on seven multi-hop QA benchmarks spanning multiple domains, including: (1) Biomedical: PubMedQA [ 36 ]; (2) Customer Support: DelucionQA [71 ], TechQA [8 ], ExpertQA [56 ], and EManual [61 ]; and (3) General Knowledge: MS Marco [62 ] and 
+
+HAGRID [37]. The statistics of the datasets are listed in Table D.2. 
+
+## D.2 Baseline Details 
+
+We compare with 18 state-of-the-art baselines (and their combina-tions), categorized by four groups: (1) Base LLM: GPT-4o-mini [31 ]; 
+
+(2) Single-step RAGs: including BM25 [70 ], Contriever [32 ], GTR 
+
+[63 ], ColBERTv2 [72 ], RAPTOR [73 ], Proposition [10 ]; (3) Graph-enhanced RAGs: GraphRAG [ 12 ], G-Retriever [ 24 ], LightRAG 
+
+[17 ], HippoRAG [ 18 ], HippoRAG 2 [19 ], SubgraphRAG [ 48 ], PropRAG 
+
+[ 88 ], GFM-RAG [ 54 ]; (4) Multi-step RAGs: including IRCoT [86 ], 
+
+FLARE [35], Adaptive-RAG [33]. A brief introduction is below. 
+
+(1) Base LLM: uses a pre-trained large language model without fine-tuning or retrieval augmentation. It serves as the common gen-erator for all retrieval-based methods, ensuring a fair comparison. We adopt GPT-4o-mini [ 31 ], which answers queries solely based on parametric knowledge. 
+
+(2) Single-step RAGs: retrieve in a single pass, and are widely used due to their efficiency and general applicability. This category includes both sparse and dense retrievers: 
+
+• BM25 [70 ]: a classical probabilistic sparse retriever based on term frequency, document length normalization, and inverse docu-ment frequency, serving as a strong zero-shot baseline. 
+
+• Contriever [ 32 ]: an unsupervised dense retriever trained via contrastive learning, exhibiting strong zero-shot and cross-domain generalization without labeled data. 
+
+• GTR [ 63 ]: a T5-based dual encoder that improves cross-domain retrieval by scaling model capacity with dot-product scoring, achieving high data efficiency. 
+
+• ColBERTv2 [72 ]: a late-interaction retriever that performs token-level matching with compressed representations, balancing re-trieval quality and memory efficiency. 
+
+• RAPTOR [ 73 ]: a hierarchical retrieval method that organizes doc-uments into recursive summaries, enabling retrieval across mul-tiple abstraction levels for complex queries. Retrieving Minimal and Sufficient Reasoning Subgraphs with Graph Foundation Models for Path-aware GraphRAG 
+
+Table D.1: Comparison of baselines. Filled ( ), half-filled ( H#), and empty circles ( #) indicate full, partial, and no support for each feature, respectively. Gfm -Retriever is the only method covering all the listed comparing dimensions. Method Retriever Design Training and Generalization Reasoning 
+
+external retrieve dense neural retriver graph-augmented retrieve structured output subgraph output adaptive budget pre-train cross-domain fine-tune structure-aware prompt single-step 
+
+BM25 # # # # # # # # # #
+
+Contriever # # # # H# H# # #
+
+GTR # # # # H# # #
+
+ColBERTv2 # # # H# # # #
+
+RAPTOR H# # H# # # # H# #
+
+Proposition # # # # #
+
+GraphRAG # # # # H# #
+
+G-Retriever H# # H# H#
+
+LightRAG H# H# # H# # #
+
+HippoRAG H# H# H# # H# # #
+
+HippoRAG 2 H# H# H# # H# # #
+
+SubgraphRAG # # H#
+
+PropRAG H# # # # # #
+
+GFM-RAG # # H# #
+
+FLARE # # # # # # # # # #
+
+Adaptive-RAG # # # # # # H# # #
+
+IRCoT # # # # # # # # #
+
+Gfm -Retriever 
+
+• Proposition [10 ]: a dense retriever that indexes text using fine-grained propositions as atomic units, improving retrieval preci-sion and downstream QA under limited budgets. 
+
+(3) Graph-enhanced RAGs: incorporate structured knowledge in the form of graphs to enhance retrieval and reasoning by explic-itly modeling entities and relations, enabling multi-hop dependency modeling beyond flat text retrieval. 
+
+• GraphRAG [12 ]: constructs an entity graph from documents and generates community-level summaries with LLMs, enabling corpus-level question answering beyond standard retrieval. 
+
+• G-Retriever [24 ]: formulates retrieval as a soft Prize-Collecting Steiner Tree problem to identify query-relevant subgraphs in large graphs, improving reasoning while reducing hallucination. 
+
+• LightRAG [ 17 ]: integrates graph-aware indexing with flat text retrieval via a dual-level scheme, capturing both fine- and coarse-grained semantic dependencies efficiently. 
+
+• HippoRAG [18 ]: combines knowledge graphs with Personalized PageRank to support efficient one-step retrieval inspired by hip-pocampal memory, with strong multi-hop QA performance. 
+
+• HippoRAG 2 [ 19 ]: extends HippoRAG with deeper passage inte-gration and improved LLM interaction, enhancing factual, asso-ciative, and sense-making memory. 
+
+• SubgraphRAG [ 48 ]: retrieves compact KG subgraphs using triple scoring and structural distance encoding, but relies on fixed heuristics that limit query-adaptive reasoning. 
+
+• PropRAG [ 88 ]: replaces triples with context-rich propositions and performs beam search over proposition paths, improving zero-shot multi-hop retrieval. 
+
+• GFM-RAG [ 54 ]: employs a graph foundation model as a retriever over large heterogeneous graphs, but lacks explicit cross-domain semantic alignment and does not fully exploit KG reasoning structure at inference. 
+
+(4) Multi-step RAGs: iteratively interleave retrieval and reason-ing to support complex multi-hop questions, gradually constructing reasoning chains. These methods are largely retriever-agnostic and can be combined with different RAG architectures. 
+
+• IRCoT [86 ]: interleaves retrieval with Chain-of-Thought reason-ing, where each reasoning step guides the next retrieval. This design reduces hallucination and improves multi-hop QA. No-tably, IRCoT is retriever-agnostic and can be paired with existing RAG methods to enable multi-step reasoning. 
+
+• FLARE [ 35 ]: performs forward-looking active retrieval during generation by anticipating low-confidence content and retrieving evidence to refine it, improving factual consistency in long-form generation. 
+
+• Adaptive-RAG [33 ]: dynamically selects between single-step and multi-step retrieval strategies based on predicted query complex-ity, balancing efficiency and reasoning capability across diverse queries. 
+
+## D.3 Experimental Setting Details 
+
+In this section, we introduce detailed experimental settings 2.
+
+Detailed Settings for Section 5.2 ( RQ1 ). We evaluate entity-and document-level retrieval under a unified protocol. Baselines that output ranked lists are evaluated using Recall@2/5 on entities and documents (R@2/5 E, R@2/5 D). In contrast, Gfm -Retriever re-turns a query-conditioned subgraph Gq and uses its node set Vq
+
+> 2Since standard benchmark datasets are adopted, and the same base LLM settings are used, the baseline results reported in this paper are taken directly from the original publications unless otherwise stated. Preprint. Under review.
+
+as retrieved entities, where the retrieval size is determined by the learned selector rather than an explicit top-𝐾 cutoff (we set 𝐾 = 5
+
+for comparison). Document retrieval is performed using the same entity-to-chunk inverted index across all methods. For multi-step baselines, we aggregate unique entities and documents across steps and evaluate Recall on the final ranked outputs. This setting decou-ples retrieval quality from downstream generation while maintain-ing consistent entity-document linking. 
+
+Detailed Settings for Section 5.3 ( RQ2 ). We evaluate end-to-end QA by feeding the retrieved evidence from each method into the same base LLM, GPT-4o-mini [ 31 ]. Single-step RAGs use top retrieved document chunks under the same budget as RQ1 , while graph-enhanced methods serialize retrieved entities or subgraphs following their original designs. Multi-step methods such as IRCoT 
+
+interleave retrieval and reasoning, and concatenate evidence across steps. For Gfm -Retriever, the input is constructed from the query-specific minimal sufficient subgraph, including selected entities, relational paths, and linked document chunks. All methods share identical decoding settings and are evaluated without QA fine-tuning, using EM, F1, Precision, and Recall on test splits. 
+
+Detailed Settings for Section 5.4 ( RQ3 ). The retrieval perfor-mance is evaluated on all seven cross-domain QA datasets, while generative QA is reported on three datasets that provide free-form answer annotations. For retrieval, we use document-level Recall@5 (R@5 D), reflecting a practical retrieval budget and better captur-ing evidence coverage under domain shift. For generative QA, we adopt ROUGE-L instead of EM or F1, as cross-domain answers are often longer and paraphrased, where sequence-level overlap more reliably reflects semantic faithfulness. 
+
+Detailed Settings for Section 5.5 ( RQ4 ). We evaluate retriever-side efficiency by measuring end-to-end retrieval latency together with document-level Recall@5 (R@5 D). Latency is measured from query input to document scoring completion, excluding LLM gener-ation. For multi-step methods ( e.g. , IRCoT -based), latency includes all iterative retrieval steps, while for graph-based methods, offline indexing is excluded and online traversal is counted. All results are averaged over 1,000 runs to ensure fair comparison across different retrieval paradigms. 
+
+Detailed Settings for Section 5.6 ( RQ5 ). We conduct a case study on a multi-hop question from HotpotQA . The question asks for the government position held by the actress who portrayed “Corliss Archer” in the film “Kiss and Tell”. The supporting evidence spans multiple documents, including the film “Kiss and Tell (1945)”, the actress “Shirley Temple”, and biographical descriptions of her later public service role. We apply Gfm -Retriever to this instance and visualize the query-conditioned subgraph produced by the subgraph selector. The visualization highlights the selected entities, relations, and explicit reasoning paths, and contrasts them with semantically related but query-irrelevant entities present in the original context. This case enables qualitative inspection of whether the retrieved subgraph is both minimal and sufficient for supporting multi-hop reasoning, with full metadata provided in Figure D.1. 
+
+Detailed Settings for Section 5.7 ( RQ6 ). For ablation stud-ies, to analyze the contribution of the core components in Gfm -Retriever, we construct five ablated variants (and their combina-tions) by removing the specific modules while keeping other set-tings unchanged. The variants are: 
+
+• Gfm -Retriever ( w/o Proto ): Removes the prototype-based se-mantic alignment loss Lproto in Eq. (7), disabling cross-domain prototype supervision during retriever training. 
+
+• Gfm -Retriever ( w/o IGC ): Removes the information gain con-trast loss LIGC in Eq. (8), preventing the retriever from being regularized toward informative semantic prototypes. 
+
+• Gfm -Retriever ( w/o Tune ): Disables the fine-tuning stage de-fined in Eq. (18), where the retriever is adapted to query-specific subgraph selection. 
+
+• Gfm -Retriever ( w/o SubG ): Removes the entire subgraph se-lector module in Section 4.2, reducing the model to entity-level retrieval without learning a minimal sufficient subgraph. 
+
+• Gfm -Retriever ( w/o Prompt ): Removes the in-context rela-tional prompting strategy described in Section 4.3. Retrieved entities and documents are still used, but relational paths are not explicitly reorganized into structured prompts for the LLM. All variants are evaluated under the same settings. For hyper-parameter sensitivity analysis, we conduct sensitivity analysis on 
+
+five key weighting hyper-parameters: 
+
+• 𝛼 1: controls weight of the binary cross-entropy retrieval LBCE in Eq. (7), which helps relevance prediction for query-entity pairs. 
+
+• 𝛼 2: controls the contribution of the ranking-based retrieval loss 
+
+Lrank in Eq. (7), enforcing a margin between relevant and irrele-vant entities to improve retrieval robustness. 
+
+• 𝛼 3: weights the prototype-based semantic alignment loss Lproto 
+
+in Eq. (7), regulating the strength of cross-domain semantic con-sistency during training. 
+
+• 𝛽 1: controls the minimality regularization term that penalizes the size of the selected subgraph in Eq. (18). 
+
+• 𝛽 2: controls the connectivity regularization term that encourages structural coherence of the selected subgraph in Eq. (18). Each hyper-parameter is varied independently, and performance is reported using MRR on the validation set. 
+
+## E Implementation Details 
+
+In this section, we provide the implementation details. 
+
+## E.1 Implementation Details of Gfm -Retriever 
+
+E.1.1 Pre-training Data. We follow the pre-training data process-ing pipeline released by Luo et al . [54] to prepare large-scale pre-training data. Specifically, a total of 60K pre-training instances are sampled from the training splits of HotpotQA , MuSiQue , and 
+
+2WikiMultiHopQA , and merge their associated candidate passages to form the document corpus. To build KG, the OpenIE-based ex-traction strategy is adopted, using GPT-4o-mini with prompts de-scribed in Gutiérrez et al . [18] to extract entities, relations, and triples from the corpus. Entity resolution is then performed by com-puting pairwise embedding similarities 𝑠 (𝑒 𝑖 , 𝑒 𝑗 ) with ColBERTv2 [72 ]: 
+
+𝑠 (𝑒 𝑖 , 𝑒 𝑗 ) = TextEmb (𝑒 𝑖 )⊤TextEmb (𝑒 𝑗 ), (E.1) where a new equivalence relation (𝑒 𝑖 , ≡, 𝑒 𝑗 ) is added when their embedding similarity exceeds a threshold 𝜏 = 0.8. To control the scale of each index, the sampled data are partitioned into subsets of approximately 1K questions and 10K documents. This results in 60 knowledge graph indexes paired with corresponding question-document sets, which are used for large-scale pre-training. Retrieving Minimal and Sufficient Reasoning Subgraphs with Graph Foundation Models for Path-aware GraphRAG 
+
+Table E.1: Hyper-parameter configurations. Stage Hyper-parameter Value 
+
+KG Index Construction OpenIE model GPT-4o-mini 
+
+Entity resolution model ColBERTv2 
+
+Text embedding dimension 768 Similarity threshold 𝜏 0.8 GFM Architecture Number of layers 6Hidden dimension 512 Sentence encoder all-mpnet-v2 
+
+Message function Msg (·) DistMult (·) 
+
+Aggregation function Agg (·) Sum (·) 
+
+Relation update 𝑔 (·) 2-layer MLP Pre-training (Phase I) Loss weight 𝛼 1 0.3 Optimizer AdamW Learning rate 5e-4 Batch size 4Number of training steps 30,000 Number of negative samples 128 Pre-training (Phase II) Loss weight 𝛼 2 0.1 Loss weight 𝛼 3 0.1 Temperature 𝜏 0.1 Optimizer AdamW Learning rate 5e-4 Batch size 4Epochs of continual training 20 Fine-tuning Text embedding dimension 768 Hidden dimension 1024 Query prompt dimension 512 Subgraph selector dimension 256 Regularization weight 𝛽 1 0.01 Regularization weight 𝛽 2 0.1 Gumbel-Sigmoid temperature 𝜏 0.5 InfoNCE temperature 𝜏 0.07 Optimizer AdamW Learning rate 5e-4 Batch size 8Number of fine-tuning epochs 20 Inference (QA) Number of top-𝐾 documents 5Maximum DFS depth 𝑙 3Random seed 1024 
+
+E.1.2 Model Configurations. Gfm -Retriever is implemented as a query-conditioned GNN with 6 message-passing layers with a hid-den size of 512. Entity and relation embeddings are initialized from the frozen all-mpnet-v2 sentence encoder [ 74 ] in 768 dimensions. Each layer performs relation-aware message passing using a bi-linear interaction function followed by sum aggregation, while relation states are refined through a lightweight 2-layer MLP to capture context-dependent transformations. The pre-trained Gfm -Retriever contains approximately 8.1M trainable parameters and serves as a generalized and cross-domain retriever that produces query-conditioned entity embeddings for subgraph selection. For document ranking, we return the top-5 document corpus. 
+
+E.1.3 Hyper-paramters. We provide hyper-parameter configura-tions of pre-training, fine-tuning, and inference stages in Table E.1. 
+
+## E.2 Implementation Details of Baselines 
+
+We provide the baseline methods implementations as follows. 
+
+• GPT-4o-mini : https://platform.openai.com. 
+
+• BM25 : https://github.com/jxmorris12/bm25_pt. 
+
+• Contriever : https://github.com/facebookresearch/contriever. 
+
+• GTR : https://github.com/google-research/t5x_retrieval#dense-retrieval-models. 
+
+• ColBERTv2 : https://github.com/stanford-futuredata/ColBERT. 
+
+• RAPTOR : https://github.com/parthsarthi03/raptor. 
+
+• Proposition : https://github.com/chentong0/factoid-wiki. 
+
+• GraphRAG : https://github.com/microsoft/graphrag. 
+
+• G-Retriever : https://github.com/XiaoxinHe/G-Retriever. 
+
+• LightRAG : https://github.com/HKUDS/LightRAG. 
+
+• HippoRAG : https://github.com/OSU-NLP-Group/HippoRAG. 
+
+• HippoRAG 2 : https://github.com/OSU-NLP-Group/HippoRAG. 
+
+• SubgraphRAG : https://github.com/Graph-COM/SubgraphRAG. 
+
+• PropRAG : https://github.com/ReLink-Inc/PropRAG. 
+
+• GFM-RAG : https://github.com/RManLuo/gfm-rag. 
+
+• IRCoT : https://github.com/stonybrooknlp/ircot. 
+
+• FLARE : https://github.com/jzbjyb/FLARE. 
+
+• Adaptive-RAG : https://github.com/starsuzi/Adaptive-RAG. For all baselines, if the same standard benchmark datasets and the same base LLM settings are used, the results reported in this paper are taken directly from the original publications. When such settings are unavailable, we adopt the hyper-parameter configura-tions suggested in the original publications or provided by official implementations to ensure reasonable baseline performance. To maintain a fair and controlled comparison, we keep other factors such as hidden size, number of layers, and architectural settings consistent with those used in our proposed framework. 
+
+## E.3 Hardware and Software Configurations 
+
+We conduct the experiments in a Linux-based server environment with the following hardware and software configurations. 
+
+• Operating System: Ubuntu 20.04 LTS. 
+
+• CPU: 10 Intel(R) Xeon(R) Platinum 8358 CPU @ 2.60GHz with 1TB DDR4 of Memory. 
+
+• GPU: 8 NVIDIA Tesla A100 SMX4 with 80GB of Memory. 
+
+• Software: CUDA 12.4, Python 3.8.12, PyTorch 3 1.9.1, PyTorch Geometric 4 2.0.1. 
+
+## F Additional Results F.1 Impact of Domain-Specific Fine-Tuning 
+
+To further investigate and compare the cross-domain adaptability of retrievers, we fine-tune the most relevant baseline GFM-RAG and our Gfm -Retriever on the training split of its corresponding target dataset and evaluate on the same seven cross-domain benchmarks used in Section 5.4 ( RQ3 ). Table F.1 reports document retrieval performance using R@5 D, and Table F.2 reports generative QA performance using ROUGE-L on the three datasets that support free-form answers. Results marked with “*” denote performance after domain-specific fine-tuning, while unmarked results correspond to the zero-shot setting in consistency with that in RQ3 .  
+
+> 3https://github.com/pytorch/pytorch.
+> 4https://github.com/pyg-team/pytorch_geometric. Preprint. Under review.
+
+Table F.1: Impact of domain-specific fine-tuning on cross-domain document retrieval (R@5 D %). Results marked with “*” denote the fine-tuned performance. Dataset PropRAG HippoRAG 2 GFM-RAG Gfm -Retriever                                           
+
+> PubMedQA 55.2 60.1 58.5 63.6* 61.9 64.2 *
+> DelucionQA 65.9 68.2 70.8 82.7* 72.3 84.3 *
+> TechQA 44.1 47.5 46.6 49.5* 50.3 51.6 *
+> ExpertQA 60.9 63.5 62.7 60.8* 65.3 65.9 *
+> Emanual 58.3 56.2 60.6 75.9 *61.9 71.7*
+> MS Marco 65.2 68.4 71.0 77.5* 71.6 78.0 *
+> HAGRID 78.8 81.6 84.7 86.6* 86.2 87.5 *
+
+Table F.2: Impact of domain-specific fine-tuning on cross-domain generative QA (ROUGE-L %). Results marked with * denote the fine-tuned performance. Dataset PropRAG HippoRAG 2 GFM-RAG Gfm -Retriever                   
+
+> ExpertQA on 27.1 29.0 27.6 27.3* 31.9 32.3 *
+> Emanual 43.3 46.1 47.6 50.9* 49.8 51.6 *
+> MS Marco 33.8 33.1 30.2 36.5* 35.6 37.1 *
+
+Results show that domain-specific fine-tuning yields clear im-provements for both GFM-RAG and Gfm -Retriever across retrieval and generative QA, indicating that both benefit from in-domain supervision. However, Gfm -Retriever consistently remains stronger than GFM-RAG in both settings. Specifically, for cross-domain doc-ument retrieval, Gfm -Retriever outperforms GFM-RAG before fine-tuning and retains this advantage after fine-tuning. The same trend holds for the generative QA, where Gfm -Retriever achieves higher ROUGE-L both zero-shot and fine-tuned. Overall, the results sug-gest that Gfm -Retriever not only generalizes better for cross-domain retrieval, but also provides a consistently stronger adaptation start-ing point under domain-specific fine-tuning. 
+
+F.1.1 Impact of Different Base LLMs. To evaluate the modularity of Gfm -Retriever with respect to the underlying generator, we com-pare its QA performance when paired with different base LLMs. Since our retriever is LLM-agnostic, we keep the retrieved sub-graphs fixed and only replace the generation LLMs. We test six rep-resentative LLMs with varying capacities and costs: GPT-4o-mini ,
+
+GPT-5-mini , Gemini-2.5-Flash , Qwen3-Max , Grok-4-Fast , and 
+
+DeepSeek-V3.2 . We report Exact Match (EM %) on three multi-hop QA benchmarks, with and without integrating the multi-step reasoning framework IRCoT . Additionally, we compare their token-level monetary cost for both input and output tokens. Figure F.1 shows that stronger LLMs consistently improve an-swer generation while the retrieval component remains unchanged. For all three datasets, EM steadily increases as model capability grows, demonstrating that better generators can more effectively exploit the structured evidence provided by Gfm -Retriever. When combined with IRCoT , the performance gap between LLMs further widens, indicating that multi-step reasoning benefits more from stronger base LLMs. Notably, even lightweight models achieve competitive performance when guided by the structured subgraph evidence, highlighting the robustness of the retrieval stage. The cost analysis reveals a clear quality-cost trade-off: while larger models such as Qwen3-Max yield the best accuracy, smaller mod-els ( e.g. , GPT-4o-mini ) offer a favorable efficiency-performance balance. Overall, the results confirm that Gfm -Retriever is fully pluggable with diverse LLM backbones, and improvements in gen-eration quality can be directly translated into better end-to-end QA without modifying the retriever. 
+
+F.1.2 Distribution of Predicted Reasoning Hops. To further exam-ine whether the retrieved structures reflect the intrinsic multi-hop complexity of questions, we analyze the distribution of reason-ing hop counts implied by different methods. For each question in the test sets of HotpotQA , MuSiQue , and 2WikiMultiHopQA , we estimate the number of hops in the ground-truth reasoning chain based on annotated supporting facts. We then compute the hop count of the reasoning paths induced by different retrieval methods and compare their distributions against the ground-truth. Figure F.2 shows that Gfm -Retriever behaves consistently closer to the ground-truth than those of HippoRAG and GFM-RAG , which is reflected by the lowest mean absolute error (MAE) across all three datasets. In contrast, HippoRAG exhibits a clear bias toward longer reasoning chains, especially on 2WikiMultiHopQA , where it overestimates high-hop paths and deviates substantially from the ground-truth distribution. While GFM-RAG better tracks the general trend, its hop distribution remains less aligned than that of Gfm -Retriever. The results indicate that Gfm -Retriever not only retrieves relevant evidence but also captures the sufficient structural depth required for each query. Instead of relying on shallow or deep reasoning paths, it tends to recover subgraphs that match the reasoning requirements, further supporting the subgraph selector effectively models minimal yet sufficient multi-hop structures. 
+
+## G Discussions 
+
+In this section, we address these “Key Questions” to provide deeper insights into the motivation, theories, and design choices. 
+
+Q1. Why can Gfm -Retriever be regarded as a foundation model rather than a task-specific retriever? Gfm -Retriever is pre-trained on large-scale, heterogeneous knowledge graphs con-structed from multi-domain corpora, rather than on a single down-stream task. It learns generalizable structural reasoning patterns through KG completion, then transfers to structurally different tasks, including subgraph selection and document retrieval under domain shift. Proposition 4.1 further shows that a query-conditioned GFM can express graded modal logic over multi-domain KGs, pro-viding formal justification that the model captures domain-aware multi-hop reasoning rules instead of dataset-specific heuristics. 
+
+Q2. What is the source of the retriever’s transferability across domains? Transferability mainly stems from the Prototype-driven Continuous Pre-training (Phase II). Standard GNNs often overfit to domain-specific structural patterns. In contrast, Phase II training explicitly aligns entity embeddings with domain semantic prototypes ( c𝑑 in Eq. (7)), which regularizes the retriever to learn general domain knowledge while distinguishing domain-invariant semantic differences. The IGC regularizer further suppresses spu-rious correlations. This ensures the message-passing mechanism captures fundamental reasoning patterns ( e.g. , transitivity, compo-sition) that hold true regardless of the specific domain. Retrieving Minimal and Sufficient Reasoning Subgraphs with Graph Foundation Models for Path-aware GraphRAG GPT-4o-mini GPT-5-mini Gemini-2.5-Flash Qwen3-Max Grok-4-Fast DeepSeek-V3.2        
+
+> 55.0 57.5 60.0 62.5
+> EM %
+> 55.4 56.0 57.6 57.2 57.0 56.9 60.5 62.2 62.5 63.9 63.3 62.9
+
+HotpotQA        
+
+> GPT-4o-mini GPT-5-mini Gemini-2.5-Flash Qwen3-Max Grok-4-Fast DeepSeek-V3.2
+> 35.0 40.0 45.0
+> EM %
+> 34.8 35.1 37.1 36.4 37.2 37.8 42.8 44.2 45.1 44.7 45.9 45.6
+
+MuSiQue       
+
+> GPT-4o-mini GPT-5-mini Gemini-2.5-Flash Qwen3-Max Grok-4-Fast DeepSeek-V3.2
+> 75.0 80.0
+> EM %
+> 74.3 75.5 76.4 76.3 76.9 77.1 78.8 81.3 83.1 82.8 82.5 83.9
+
+2WikiMultiHopQA 
+
+> GPT-4o-mini GPT-5-mini Gemini-2.5-Flash Qwen3-Max Grok-4-Fast DeepSeek-V3.2
+> 0.0 1.0 2.0 3.0
+> Dollar ($)
+> 0.15 0.25 0.30 0.34 0.20 0.30 0.60  2.00 2.50 1.37 0.50 0.45
+
+Cost / M Tokens 
+
+Input Query Output Answer GFM -Retriever GFM -Retriever + IRCoT 
+
+GFM -Retriever GFM -Retriever + IRCoT 
+
+GFM -Retriever GFM -Retriever + IRCoT 
+
+Figure F.1: QA performance of Gfm -Retriever with different base LLMs. 1 2 3 4 5 6 7 8
+
+# Hops 
+
+> 0510 15 20 25 30 35 40 45
+> Percentage %
+
+HotpotQA        
+
+> 12345678
+
+# Hops  
+
+> 0510 15 20 25 30 35 40 45
+
+MuSiQue        
+
+> 12345678
+
+# Hops  
+
+> 0510 15 20 25 30 35 40 45
+
+2WikiMultiHopQA 
+
+Ground-truth HippoRAG GFM-RAG GFM-Retriever 
+
+> MAE ( HippoRAG ) = 4.2% MAE ( GFM - RAG ) = 1.8% MAE ( Gfm -Retriever) = 1.7%
+> MAE ( HippoRAG ) = 7.2%
+> MAE ( GFM - RAG ) = 4.4%
+> MAE ( Gfm -Retriever) = 2.9%
+> MAE ( HippoRAG ) = 14.9% MAE ( GFM - RAG ) = 4.2%
+> MAE ( Gfm -Retriever) = 3.0%
+
+Figure F.2: Distribution of predicted reasoning hop counts. 
+
+Q3. Why is the Information Bottleneck (IB) formulation termed "label-free"? The term “label-free” refers to the unavailabil-ity of the ground-truth answer 𝑦 during the retrieval optimization phase. We therefore propose a surrogate objective by replacing 𝑦 
+
+with the query q, optimizing 𝐼 (q; Gq) instead. Proposition 4.2 theo-retically guarantees that the error introduced by this approximation is bounded by the conditional entropy 𝐻 (q | 𝑦 ), which allows us to optimize the subgraph selector with only query-data pairs. 
+
+Q4. Why employ Parameter-Efficient Fine-Tuning (PEFT) instead of full fine-tuning? (1) Preserving Generalization: Full fine-tuning on a specific dataset risks catastrophic forgetting. By freezing the GFM backbone and only training the lightweight pro-jection matrices and subgraph selector, we retain the cross-domain reasoning capabilities while adapting to the specific format of the retrieval task. (2) Task Discrepancy Management: The pre-training task (KG completion) and downstream task (subgraph selection) differ. PEFT acts as a bridge, optimizing the decision boundary without distorting the semantic space that encodes entities. 
+
+Q5. What is the theoretical performance bottleneck, and how is it mitigated? Theoretically, the bottleneck lies in inference, specifically the path extraction process. While subgraph selection is efficient ( O(|V 𝑇 |) ), enumerating reasoning paths via DFS has a worst-case exponential complexity O( Δ𝑙 ), where Δ is the node de-gree and 𝑙 is its depth. We address this by implementing a truncated DFS with a strict hop limit ( 𝑙 ⩽ 3) and beam search scoring. 
+
+Q6. Is the performance gain due to the Subgraph Selector or the In-context Prompter? Both components are essential. The ablation study (Figure 6) disentangles their contributions. Removing the subgraph selector (reverting to standard retrieval) causes the most significant drop in retrieval, which proves that the content quality is primarily driven by the retriever’s selection capability. Removing the in-context prompter causes a notable drop in QA but has little effect on retrieval, which indicates that while the selector finds the “ingredients”, the prompter provides the “recipe”, explicitly organizing structures to guide the LLM’s reasoning process. 
+
+Q7. How does Gfm -Retriever systematically differ from re-lated works? While following standard evaluation protocols (datasets and metrics), Gfm -Retriever fundamentally differs in its overall par-adigm. We illustrate their comparison in Table D.1. 
+
+Q8. Does constructing the KG index introduce prohibitive costs for real-world applications? While the KG construction incurs an initial overhead, it is a one-time and offline investment. Once indexed, the graph supports infinite queries with high effi-ciency. As the KG construction is not our main contribution, and as we follow the same experiment protocols in Gutiérrez et al . [18] , Li et al . [48] and Luo et al . [54] , we directly perform evaluations on their released KGs, which ensures the fair comparisons. 
+
+## H Additional Related Work H.1 Retrieval-Augmented Generation 
+
+Retrieval-augmented generation (RAG) is a general paradigm that enhances generative large models by enabling explicit access to external knowledge during inference. Instead of relying solely on information stored in model parameters, RAG systems retrieve rel-evant evidence conditioned on the input and incorporate it into Preprint. Under review. 
+
+the generation process. This design has demonstrated strong effec-tiveness across diverse real-world applications, including financial analysis [ 89 ], healthcare systems [ 95 ], legal reasoning tasks [ 91 ], and education [ 58 ]. With the rapid development of LLMs, retrieval augmentation has become increasingly important, as purely para-metric models often suffer from hallucinated outputs, outdated knowledge, and limited adaptability. Prior surveys indicate that grounding generation in retrieved evidence substantially improves faithfulness, reduces privacy risks, and enhances robustness under distributional shifts [ 28 , 114 ]. Consequently, RAG has emerged as a widely adopted strategy for extending the knowledge capacity of LLMs without requiring full model retraining. Most retrieval-augmented generation methods adopt a “retrieve-then-generate” paradigm. Retrieved text units are then incorporated into the generator as additional context through concatenation, attention-based fusion, or encoder-decoder conditioning [ 13 ]. Com-pared with keyword-based retrieval, dense retrievers provide higher semantic recall and better alignment with downstream generation. Building on this framework, later RAG variants explore tighter retrieval-generation coupling by operating at different granulari-ties, including sentence-level [ 20 , 38 ], chunk-level [ 44 , 107 ], and token-level [ 5, 96 ], enabling dynamic evidence integration during decoding. Other approaches further constrain generation to im-prove grounding and verifiability. Despite architectural differences, a shared principle across RAG systems is to treat retrieval as a mod-ular and updatable component, decoupling external knowledge access from the generator’s parametric capacity. However, most existing RAGs retrieve unstructured text and treat evidence as an unordered set of contexts. Although effective for many knowledge-intensive tasks, this formulation largely ignores relational dependencies and higher-order structure among retrieved items, motivating graph-based extensions such as GraphRAG. 
+
+## H.2 Graph-based Retrieval-Augmented Generation 
+
+Graphs provide an expressive representation for structured rela-tionships and have been widely applied in knowledge represen-tation, social network analysis, and biomedical modeling [ 55 , 92 ]. Motivated by the limitations of text-only retrieval, Graph-based retrieval-augmented generation (GraphRAG) has emerged as an extension of RAG that incorporates graph-structured knowledge into the retrieval process [ 109 ]. In GraphRAG, concepts are typi-cally represented as nodes, while edges encode semantic, logical, or relations, enabling retrieval to exploit explicit structure rather than relying solely on unstructured textual similarity [ 12 , 66 , 115 ]. Re-cent studies explore this paradigm in settings involving structured graphs such as knowledge graphs and molecular graphs [ 21 , 66 ], highlighting its potential for relation-aware retrieval and reasoning. Beyond retrieving from pre-existing graphs, a growing body of work focuses on constructing graphs from unstructured text. By organizing textual information into a graph, GraphRAGs en-able structured access to implicit relational knowledge, benefiting tasks such as document summarization [ 12 ], planning [ 49 ], and multi-step reasoning [ 22 ]. Within this line of research, graphs act as intermediate representations that facilitate abstraction, aggrega-tion, and traversal-based evidence selection, complementing dense text retrieval. Existing methods can be grouped into several recur-ring design patterns. Hierarchical graph construction approaches organize knowledge through tree structures or community-level abstractions, enabling coarse-to-fine retrieval over large corpora, as exemplified by RAPTOR [73 ] and Microsoft’s GraphRAG [12 ]. Neu-ral graph retrieval methods integrate graph neural encoders with specialized objectives to support multi-hop reasoning and scal-able retrieval, including G-Retriever [ 24 ], LightRAG [17 ], and 
+
+GFM-RAG [ 54 ]. Other approaches emphasize dynamic graph con-struction and adaptive traversal tightly coupled with large language models, allowing retrieval policies and graph structures to evolve during inference, such as DALK [45 ], KGP [ 90 ], and ToG [77 ]. In addi-tion, HippoRAG [ 18 ] adopts a memory-inspired formulation based on Personalized PageRank to enable efficient single-step multi-hop retrieval, demonstrating that graph-based propagation mechanisms can substantially improve reasoning efficiency. Despite recent progress, many GraphRAG methods retrieve over-dense graphs, often introducing redundant structure and yielding contexts that are not task-sufficient. Moreover, reliance on fixed graph construction limits generalization across tasks, highlighting the open challenge of identifying compact, task-relevant subgraphs that retain essential relational information. 
+
+## H.3 Graph Foundation Models 
+
+Graph foundation models aim to learn transferable representations from large-scale graph data via self-supervised pre-training [ 52 , 93 ]. By leveraging objectives such as attribute corruption, structural reconstruction, and contrastive learning, these models seek to cap-ture generalizable structural and semantic patterns that can be reused across tasks. A broad line of work has explored this para-digm, including GCC [ 69 ], GPT-GNN [ 27 ], GPPT [ 78 ], L2P-GNN [53 ], and subsequent variants [ 7, 9 , 34 , 94 , 99 , 103 ]. After pre-training, the learned representations are typically adapted through fine-tuning or prompting. However, most existing approaches implicitly assume limited distributional discrepancy between pre-training and down-stream graphs, often focusing on homogeneous subgraphs [29] or narrowly scoped domains [ 112 ]. As a result, their transferability degrades under domain shift. To alleviate this issue, recent research has investigated cross-domain and multi-domain GFMs, aiming to reduce distribution gaps and improve generalization. One line of work focuses on extracting domain-invariant representations to support transfer across dissim-ilar domains, as explored in GCOPE [ 113 ], OMOG [ 50 ], PGPRec [ 102 ], 
+
+UniAug [ 82 ], and UniGraph [ 25 ]. Another direction incorporates language models to assist cross-domain alignment by mapping graphs into textual space, such as OFA [ 50 ] and HiGPT [ 81 ], though such methods are restricted to text-attributed graphs [ 80 , 87 ]. Com-plementary strategies introduce structural or token-level mecha-nisms to bridge domains, including virtual nodes in GCOPE [ 113 ]and domain tokens in MDGPT [ 106 ], yet they overlook semantic consistency over heterogeneous domains. There are some attempts to use GFMs as retrievers in GraphRAG, exemplified by GFM-RAG [54 ]. However, GFM pre-training acts as a semantic black box and does not explicitly align semantics across domains, causing retrieval to rely on implicit representation simi-larity and limiting robustness under domain shift. Retrieving Minimal and Sufficient Reasoning Subgraphs with Graph Foundation Models for Path-aware GraphRAG 
+
+## H.4 Critical Subgraph Mining 
+
+Graph structures contain rich relational semantics, yet only a small fraction of them are truly decisive for downstream tasks. Though structures have long been recognized as fundamental to graph rep-resentation learning [ 2 , 98 ], systematic approaches for identifying task-relevant and data-dependent subgraphs remain underexplored. Early efforts mainly relied on predefined structure decomposi-tion, most notably graph kernels [ 41 ], which extract specific pat-terns such as random walks [ 15 ], shortest paths [ 6 ], or rooted subtrees [ 75 ]. These methods benefit from strong inductive bias and can achieve competitive results in certain domains. However, the structural patterns encoded by kernel functions are typically handcrafted and fixed, resulting in limited flexibility and poor gen-eralization when task requirements or graph semantics vary. An-other prominent direction focuses on small recurring local pat-terns, especially motifs, to preserve fine-grained structural prop-erties [ 42 , 59 , 67 ]. NEST [ 98 ] further combines multiple motifs to capture richer subgraph-level interactions. Despite their effective-ness, motif-based approaches fundamentally rely on exhaustive enumeration of small substructures, which requires domain exper-tise and limits scalability to larger or irregular patterns. To move beyond rigid neighborhoods, several studies investigate more flexible subgraph modeling strategies [ 43 , 46 , 47 , 79 ]. SGN [97 ]expands the structural feature space via manually specified sub-graph selection rules, but such heuristics become less informative as subgraphs grow larger. NCAT [ 116 ] assigns learnable weights to combinatorial neighbor patterns, though it still operates under fixed-size constraints. From an information-theoretic perspective, 
+
+SIB [104 , 105 ] learns edge-wise assignments to identify bottleneck subgraphs, but it does not explicitly preserve subgraph semantics. 
+
+CAL [ 76 ] further explores causal subgraph discovery by separating causal signals from shortcut correlations through attention-based estimation. Subgraphs are rarely used for retrieval. SubgraphRAG [ 48 ] re-trieves query-centered subgraphs via triple-level scoring under a size budget, but focuses on coverage rather than task-specific suffi-ciency, resulting in non-minimal retrieved structures and leaving critical subgraph identification unaddressed. 
+
+## I Limitations 
+
+Despite the promising performance of the proposed Gfm -Retriever in cross-domain retrieval and multi-hop reasoning, we acknowledge several limitations that define the scope of our current work and point towards future research directions 
+
+Dependency on Knowledge Graph Construction. Our frame-work primarily focuses on the retrieval and reasoning stages, operat-ing on the premise of a pre-constructed knowledge graph. While we utilize advanced OpenIE techniques driven by LLMs for indexing, the upper bound of retrieval performance is naturally constrained by the completeness of this upstream knowledge graph construc-tion. In scenarios where the raw corpora are extremely noisy or the extracted triples suffer from severe sparsity, the semantic expres-siveness of the GFM could be theoretically limited by the quality of the underlying structure. 
+
+Trade-off in Path Extraction Depth. To ensure real-time in-ference efficiency, we employ a truncated Depth-First Search (DFS) strategy with a pre-defined hop limit ( 𝑙 ⩽ 3) to extract reasoning paths from the selected subgraph. While our empirical analysis (Appendix B.3) confirms that this setting covers the reasoning com-plexity of most standard benchmarks, it may introduce constraints when handling hyper-complex queries that require extremely long-range dependencies. Extending the path extraction mechanism to support deeper traversal without incurring exponential computa-tional overhead remains a challenge for future optimization. 
+
+Adaptability to Knowledge Updates. Gfm -Retriever leverages a “pretrain-then-finetune” paradigm, which assumes a relatively static knowledge snapshot during the inference phase. Although the Graph Foundation Model exhibits strong generalization across domains, adapting the indexed knowledge graph to real-time data streams or highly temporal facts without full re-indexing poses a practical challenge. We envision future work incorporating contin-ual learning to address this limitation in time-sensitive applications. 
+
+## J Future Directions 
+
+Building upon the structural retrieval paradigm established, we envision several promising avenues to further advance the synergy between GFMs and LLMs: 
+
+Dynamic and Continual GraphRAG. Real-world knowledge is inherently temporal and evolving. A natural extension of this work is to integrate continual graph learning mechanisms into the GFM backbone. Future research could explore efficient inductive updates that enable the retriever to dynamically integrate new entities and relations from streaming data without requiring full-scale re-indexing. This would enable the system to handle time-sensitive queries in scenarios such as breaking news analysis or financial monitoring. 
+
+Alignment via Graph Instruction Tuning. While the pro-posed Gfm -Retriever currently bridges graphs and LLMs via in-context prompting, tighter integration could yield further perfor-mance gains. We plan to explore parameter-efficient joint training strategies that align the representation space of the GFM directly with the LLM. By treating subgraph retrieval as a latent step in a unified instruction-tuning pipeline, we aim to construct integrated architectures capable of understanding complex structural instruc-tions natively. 
+
+GFM-driven Autonomous Agents. Beyond question answer-ing tasks, the ability to retrieve minimal and sufficient subgraphs serves as a critical capability for autonomous agents navigating complex environments. We intend to adapt Gfm -Retriever as a “cognitive map” module for agents, where the retrieved subgraph represents the state space or action constraints. This could em-power agents to perform multi-step planning and reasoning in knowledge-intensive environments, such as code repository navi-gation or scientific discovery. Preprint. Under review. 
+
+Metadata (Python Dict) 
+
+{"_id": "5a8c7595554299585d9e36b6", "answer": "Chief of Protocol", "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?", ↩→
+
+"supporting_facts": [ ["Kiss and Tell (1945 film)", 0], ["Shirley Temple", 0], ["Shirley Temple", 1], ], "context": [ ["A Kiss for Corliss", ["A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale.", ↩→
+
+" It stars Shirley Temple in her final starring role as well as her final film appearance.", 
+
+' It is a sequel to the 1945 film "Kiss and Tell". ',
+
+' "A Kiss for Corliss" was retitled "Almost a Bride" before release and this title appears in the title sequence. ',↩→
+
+" The film was released on November 25, 1949, by United Artists.", ], ], ["Lord High Treasurer", ["The post of Lord High Treasurer or Lord Treasurer was an English government position and has been a British government position since the Acts of Union of 1707.", ↩→
+
+" A holder of the post would be the third-highest-ranked Great Officer of State, below the Lord High Steward and the Lord High Chancellor.", ↩→
+
+], ], ["Meet Corliss Archer (TV series)", ["Meet Corliss Archer is an American television sitcom that aired on CBS (July 13, 1951 - August 10, 1951) and in syndication via the Ziv Company from April to December 1954.", ↩→
+
+" The program was an adaptation of the radio series of the same name, which was based on a series of short stories by F. Hugh Herbert.", ↩→
+
+], ], ["Village accountant", [
+
+'The Village Accountant (variously known as "Patwari", "Talati", "Patel", "Karnam", "Adhikari", "Shanbogaru","Patnaik" etc.) is an administrative government position found in rural parts of the Indian sub-continent. ',
+
+> ↩→
+> ↩→
+
+' The office and the officeholder are called the "patwari" in Telangana, Bengal, North India and in Pakistan while in Sindh it is called "tapedar". ',↩→
+
+' The position is known as the "karnam" in Andhra Pradesh, "patnaik" in Orissa or "adhikari" in Tamil Nadu, while it is commonly known as the "talati" in Karnataka, Gujarat and Maharashtra. ',↩→
+
+' The position was known as the "kulkarni" in Northern Karnataka and Maharashtra. ',
+
+' The position was known as the "shanbogaru" in South Karnataka. ',], ], ["Joseph Kalite", ["Joseph Kalite (died 24 January 2014) was a Central African politician.", " As a government minister he either held the housing or health portfolio.", " Kalite, a Muslim, was reported to be killed by anti-balaka outside the Central Mosque in the capital Bangui during the Central African Republic conflict.", ↩→
+
+" He was killed with machetes on the day in Bangui after interim president Catherine Samba-Panza took power.", ↩→
+
+" At the time of the attack Kalite held no government position, nor did he under the Séléka rule.", " He was reported to have supported the rule of Séléka leader Michel Djotodia.", ], ], Retrieving Minimal and Sufficient Reasoning Subgraphs with Graph Foundation Models for Path-aware GraphRAG 
+
+["Charles Craft", ["Charles Craft (May 9, 1902 – September 19, 1968) was an English-born American film and television editor.", ↩→
+
+" Born in the county of Hampshire in England on May 9, 1902, Craft would enter the film industry in Hollywood in 1927.", ↩→
+
+' The first film he edited was the Universal Pictures silent film, "Painting the Town". '," Over the next 25 years, Craft would edit 90 feature-length films.", 
+
+' In the early 1950s he would switch his focus to the small screen, his first show being "Racket Squad", from 1951–53, for which he was the main editor, editing 93 of the 98 episodes. ',↩→
+
+' He would work on several other series during the 1950s, including "Meet Corliss Archer" (1954), "Science Fiction Theatre" (1955–56), and "Highway Patrol" (1955–57). ',↩→
+
+' In the late 1950s and early 1960s he was one of the main editors on "Sea Hunt", starring Lloyd Bridges, editing over half of the episodes. ',↩→
+
+' His final film work would be editing "Flipper\ 's New Adventure" (1964, the sequel to 1963\ 's"Flipper". ',↩→
+
+" When the film was made into a television series, Craft would begin the editing duties on that show, editing the first 28 episodes before he retired in 1966.", ↩→
+
+" Craft died on September 19, 1968 in Los Angeles, California.", ], ], ["Meet Corliss Archer", ["Meet Corliss Archer, a program from radio 's Golden Age, ran from January 7, 1943 to September 30, 1956.", ↩→
+
+' Although it was CBS\ 's answer to NBC\ 's popular "A Date with Judy", it was also broadcast by NBC in 1948 as a summer replacement for "The Bob Hope Show". ',↩→
+
+" From October 3, 1952 to June 26, 1953, it aired on ABC, finally returning to CBS.", " Despite the program 's long run, fewer than 24 episodes are known to exist.", ], ], ["Janet Waldo", ["Janet Marie Waldo (February 4, 1920 – June 12, 2016) was an American radio and voice actress.", 
+
+' She is best known in animation for voicing Judy Jetson, Nancy in "Shazzan", Penelope Pitstop, and Josie in "Josie and the Pussycats", and on radio as the title character in "Meet Corliss Archer". ',
+
+> ↩→
+> ↩→
+
+], ], ["Kiss and Tell (1945 film)", ["Kiss and Tell is a 1945 American comedy film starring then 17-year-old Shirley Temple as Corliss Archer.", ↩→
+
+" In the film, two teenage girls cause their respective parents much concern when they start to become interested in boys.", ↩→
+
+" The parents ' bickering about which girl is the worse influence causes more problems than it solves.", ], ], ["Secretary of State for Constitutional Affairs", ["The office of Secretary of State for Constitutional Affairs was a British Government position, created in 2003.", ↩→
+
+" Certain functions of the Lord Chancellor which related to the Lord Chancellor 's Department were transferred to the Secretary of State.", ↩→
+
+" At a later date further functions were also transferred to the Secretary of State for Constitutional Affairs from the First Secretary of State, a position within the government held by the Deputy Prime Minister.", 
+
+> ↩→
+> ↩→
+
+], ], ], "type": "bridge", "level": "hard", }
+
+Figure D.1: Metadata of the case study from HotpotQA .

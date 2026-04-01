@@ -1,0 +1,86 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.10899v1/fig-001.webp",
+      "caption": "Figure 4: Top row: Average LongBench results across multiple budgets and models. Bottom row: Average RULER results across varying context lengths with a fixed budget of 128. Across all tested models, budgets and context lengths, LOOKAHEADKV consistently demonstrates superior performance.",
+      "page": 6,
+      "index": 1,
+      "width": 821,
+      "height": 356
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10899v1/fig-002.webp",
+      "caption": "Table 16: Training hyperparameters.",
+      "page": 25,
+      "index": 2,
+      "width": 632,
+      "height": 300
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10899v1/fig-003.webp",
+      "caption": "Figure 1: An overview of LOOKAHEADKV (a) Training. During training, lookahead tokens and lookahead LoRA are trained to predict the ground-truth importance scores obtained with pregenerated model response via a KL divergence loss. (b) Inference. During prefill, LOOKAHEADKV utilizes the learned modules to identify essential tokens and compress the KV cache, facilitating memory-efficient decoding.",
+      "page": 2,
+      "index": 3,
+      "width": 786,
+      "height": 386
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10899v1/fig-004.webp",
+      "caption": "Table 2: MT-Bench evaluation results. Bold and underlined values indicate best and second best scores, respectively.",
+      "page": 7,
+      "index": 4,
+      "width": 748,
+      "height": 486
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10899v1/fig-005.webp",
+      "caption": "Figure 9: Full RULER results across context lengths (budget = 64)",
+      "page": 23,
+      "index": 5,
+      "width": 810,
+      "height": 471
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10899v1/fig-006.webp",
+      "caption": "Figure 10: Full RULER results across context lengths (budget = 128)",
+      "page": 23,
+      "index": 6,
+      "width": 810,
+      "height": 470
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10899v1/fig-007.webp",
+      "caption": "Table 3: Theoretical and empirical cost analysis of LLaMA3.1-8B at C = 128.",
+      "page": 8,
+      "index": 7,
+      "width": 826,
+      "height": 305
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10899v1/fig-008.webp",
+      "caption": "Figure 3: Time-to-First-Token (TTFT) latency overhead ratio across context lengths. Similar to SnapKV, LOOKAHEADKV introduces negligible TTFT overhead across all tested context lengths; draft-based methods (LAQ, SpecKV) incur substantial latency, especially for shorter contexts.",
+      "page": 4,
+      "index": 8,
+      "width": 781,
+      "height": 251
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10899v1/fig-009.webp",
+      "caption": "Figure 8: Full Longbench results across multiple cache budgets. 1B-scale results are included.",
+      "page": 19,
+      "index": 9,
+      "width": 801,
+      "height": 420
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10899v1/fig-010.webp",
+      "caption": "Table 15: Theoretical and Practical Analysis across various context lengths and methods.",
+      "page": 24,
+      "index": 10,
+      "width": 830,
+      "height": 652
+    }
+  ]
+}

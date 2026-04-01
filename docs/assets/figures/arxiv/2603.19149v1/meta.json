@@ -1,0 +1,158 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-001.webp",
+      "caption": "Figure 3 Predicted loss vs. observed loss across multiple scenarios. The scaling laws are fit on smaller models with varying amount of PT and CPT token budgets. Loss is estimated over domain 8.",
+      "page": 6,
+      "index": 1,
+      "width": 936,
+      "height": 320
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-002.webp",
+      "caption": "Figure 8 Accuracy vs. number of training tokens for varying number of domains and varying number of PT steps. All domain models are 1.3B parameter models. The total number of parameters varies with the number of domains, but the number of active parameters remains constant at a single domain model.",
+      "page": 11,
+      "index": 2,
+      "width": 986,
+      "height": 273
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-003.webp",
+      "caption": "Figure 15 Performance across eight zero-shot QA benchmarks for a 125M model at the same training compute with varying amount of pretraining steps. Each subfigure has a different total number of training tokens.",
+      "page": 25,
+      "index": 3,
+      "width": 898,
+      "height": 225
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-004.webp",
+      "caption": "Figure 16 Performance of 1.3B models at the same training compute with different amount of pretraining steps. We compare split training with pretraining from scratch, split training with no pretraining, and finetuning (split training for only 1B tokens).",
+      "page": 25,
+      "index": 4,
+      "width": 898,
+      "height": 225
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-005.webp",
+      "caption": "Figure 17 Accuracy vs. number of training tokens for varying number of domains and varying number of PT steps. All domain models are 2.7B parameter models. The total number of parameters varies with the number of domains, but the number of active parameters remains constant at a single domain model.",
+      "page": 25,
+      "index": 5,
+      "width": 986,
+      "height": 273
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-006.webp",
+      "caption": "Table 11 Per-cluster perplexity (PPL) comparing split training of Mixture of Expert (MoE) models with a single model pretrained on all clusters.",
+      "page": 26,
+      "index": 6,
+      "width": 427,
+      "height": 447
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-007.webp",
+      "caption": "Table 10 QA benchmark accuracy for split model training with optimal token budget allocation.",
+      "page": 26,
+      "index": 7,
+      "width": 918,
+      "height": 240
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-008.webp",
+      "caption": "Figure 1 (a) Split model training: The pretraining corpus is clustered based on semantics, then a model is trained on all domains before being copied and subsequently trained independently on an individual cluster. (b) Compute multiplier: The multiplicative factor on the amount of data required for standard pretraining to match optimal split model training performance. At large compute budgets, standard pretraining requires up to 50× the amount of data to match the loss of optimal split training.",
+      "page": 2,
+      "index": 8,
+      "width": 986,
+      "height": 287
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-009.webp",
+      "caption": "Figure 4 Left Number of pretraining tokens after which split training becomes beneficial Dsplit, as a function of model size. We compute it as the solution of equation 5.2. We see that it takes more tokens for larger models to start benefiting from split training. We only use the loss on one domain to approximate the average loss L. Right Optimal fraction of pretraining tokens as a function of the total training budget tS/DT : the fraction decays with budget, but the optimal number of pretraining tokens increases with budget.",
+      "page": 7,
+      "index": 9,
+      "width": 953,
+      "height": 366
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-010.webp",
+      "caption": "Figure 12 Estimated optimal fraction of pretraining tokens as a function of total compute budget, estimated from persize scaling laws (solid lines) and extrapolation via power-law fit across smaller sizes (dotted lines). Shaded intervals represent the range of allocations that achieve loss within 0.005 of the optimum, capturing the flatness of the loss surface near the optimal split.",
+      "page": 22,
+      "index": 10,
+      "width": 740,
+      "height": 420
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-011.webp",
+      "caption": "Figure 13 Estimated fits with the scaling law from (Liew and Kato, 2025)",
+      "page": 22,
+      "index": 11,
+      "width": 938,
+      "height": 320
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-012.webp",
+      "caption": "Figure 9 Distribution of samples from Pile domains within the DCLM clustering.",
+      "page": 18,
+      "index": 12,
+      "width": 986,
+      "height": 705
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-013.webp",
+      "caption": "Figure 14 Predicted loss vs. observed loss across multiple scenarios. The scaling laws are fit on smaller models with varying amount of PT and CPT token budgets. Loss is estimated over domain 0.",
+      "page": 23,
+      "index": 13,
+      "width": 936,
+      "height": 318
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-014.webp",
+      "caption": "Figure 5 Loss vs. fraction of pretraining tokens for a 1.3B parameter models at 120, 240, and 360B total training tokens.",
+      "page": 8,
+      "index": 14,
+      "width": 898,
+      "height": 225
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-015.webp",
+      "caption": "Figure 6 Zero shot QA accuracy vs. fraction of pretraining tokens for a 1.3B parameter models at 120, 240, and 360B total training tokens.",
+      "page": 8,
+      "index": 15,
+      "width": 898,
+      "height": 225
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-016.webp",
+      "caption": "Figure 10 Loss for five domains of the pile and common crawl data for each split model. The models are 1.3B models pretrained for 340B tokens before CPT.",
+      "page": 19,
+      "index": 16,
+      "width": 740,
+      "height": 416
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-017.webp",
+      "caption": "Table 9 Per-domain scaling law fit metrics for the 1.3B model. Scaling laws are trained with the CPT steps < 20B tokens, and tested with CPT steps ≥ 20B tokens.",
+      "page": 24,
+      "index": 17,
+      "width": 698,
+      "height": 480
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-018.webp",
+      "caption": "Figure 11 Average loss vs. fraction of compute for pretraining for different pairs of clusters in the DCLM-base dataset. Total compute budget is 90000 steps or roughly 90B tokens.",
+      "page": 20,
+      "index": 18,
+      "width": 986,
+      "height": 261
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19149v1/fig-019.webp",
+      "caption": "Figure 2 Average fact accuracy (over two clusters) vs. split step for synthetic phonebook fact clusters with different overlaps under different total training budget. We say the total budget is sufficient if split training on two cluster each using (Total Steps/2) from step 0 reaches 100% average fact accuracy, and otherwise say the total budget is limited.",
+      "page": 5,
+      "index": 19,
+      "width": 957,
+      "height": 387
+    }
+  ]
+}

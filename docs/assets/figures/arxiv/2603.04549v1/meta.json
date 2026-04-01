@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.04549v1/fig-001.webp",
+      "caption": "Table 1: Performance comparison on LoCoMo test set (N=225). Latency marked with † includes LLM API calls. Best F1 in bold.",
+      "page": 6,
+      "index": 1,
+      "width": 647,
+      "height": 253
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04549v1/fig-002.webp",
+      "caption": "Figure 2: Precision-recall tradeoff comparison. A-MAC achieves the best balance between precision and recall, occupying the upper-right region of the curve. Dashed lines indicate F1 iso-contours.",
+      "page": 7,
+      "index": 2,
+      "width": 471,
+      "height": 454
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04549v1/fig-003.webp",
+      "caption": "Figure 1: Overview of A-MAC. Candidate memories are extracted from conversation history and evaluated using five complementary signals capturing usefulness, reliability, redundancy, temporal relevance, and persistence. A learned linear admission policy aggregates these signals into a score S(m) and applies a threshold θ to determine whether to admit, update, or reject a candidate.",
+      "page": 4,
+      "index": 3,
+      "width": 829,
+      "height": 498
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04549v1/fig-004.webp",
+      "caption": "Figure 3: Cross-domain F1 performance. Personal conversations achieve higher F1 due to explicit preference statements that align with Type Prior’s strengths. The dashed line indicates mean performance across domains.",
+      "page": 9,
+      "index": 4,
+      "width": 473,
+      "height": 383
+    }
+  ]
+}

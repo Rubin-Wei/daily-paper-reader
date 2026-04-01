@@ -1,0 +1,134 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-001.webp",
+      "caption": "Fig. 2: Structured taxonomy mapping the landscape of RAG security research. The diagram organizes the field into Threats, Defenses, and Evaluation Standards, cascading down to specific methodologies and key literature citations. To provide architectural context, the right-hand column groups these methodologies based on where they operate within the RAG pipeline, differentiating between attacks targeting specific modules (e.g., Retrievers) and defenses applied at specific stages (e.g., FullPipeline Defenses). 6",
+      "page": 6,
+      "index": 1,
+      "width": 735,
+      "height": 1023
+    },
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-002.webp",
+      "caption": "Fig. 8: Pipeline-integrated defense mechanisms for secure RAG operations. The schematic maps targeted security interventions to their corresponding vulnerable nodes within the RAG architecture. Key defensive layers (pink boxes) include data sanitization and differential privacy during external data construction, database encryption and strict access control during retrieval, and input-level privacy enhancements prior to LLM generation. This end-to-end framework provides a structural blueprint for securing RAG systems against both external adversarial threats and internal data leakage.",
+      "page": 25,
+      "index": 2,
+      "width": 729,
+      "height": 325
+    },
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-003.webp",
+      "caption": "Fig. 9: The proposed input-side defense pipeline for securing RAG architectures. The schematic focuses exclusively on mechanisms that protect the integrity of data entering the LLM. It maps out a four-stage input security flow: (1) securing the ingestion of external databases, (2) establishing an encrypted and authenticated query retrieval engine, and (3) deploying strict pre-generation guardrails (TEE) to intercept malicious attention manipulation. Ultimately, these stringent input-side controls provide a safe and robust context for the final generation phase.",
+      "page": 26,
+      "index": 3,
+      "width": 741,
+      "height": 348
+    },
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-004.webp",
+      "caption": "Table 4: Related Work on Adversarial Attacks",
+      "page": 21,
+      "index": 4,
+      "width": 775,
+      "height": 867
+    },
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-005.webp",
+      "caption": "Fig. 11: (a) Comparative metrics of 13 attack methods evaluated on the NQ dataset. (b) Impact of InstructRAG and TrustRAG defenses on maintaining ACC against various attacks (NQ dataset)",
+      "page": 39,
+      "index": 5,
+      "width": 685,
+      "height": 253
+    },
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-006.webp",
+      "caption": "Fig. 4: Security threats to RAG systems: i) Data poisoning attacks, where attackers inject malicious data into the database to manipulate output results ; ii) Indirect attacks, where attackers utilize external data as a carrier to inject payloads targeting the large language model, such as prompt injection or jailbreaking, to compromise the model ; iii) Embedding inversion attacks, which are methods that reconstruct original data from embedding vectors ; iv) Adversarial attacks, which target the retrieval logic by injecting imperceptible perturbations into the data to disrupt model responses ; v) Membership inference attacks, which infer the presence of sensitive data within the database based on features such as confidence scores in RAG responses .",
+      "page": 10,
+      "index": 6,
+      "width": 701,
+      "height": 638
+    },
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-007.webp",
+      "caption": "Table 1: Comparison of Research Scopes in Existing Survey Literature on RAG Security (✓ indicates the existence of this dimension; × indicates the absence of this dimension)",
+      "page": 3,
+      "index": 7,
+      "width": 791,
+      "height": 185
+    },
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-008.webp",
+      "caption": "Table 2: Representative Works on Data Poisoning Attacks",
+      "page": 13,
+      "index": 8,
+      "width": 737,
+      "height": 808
+    },
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-009.webp",
+      "caption": "Fig. 3: RAG technical workflow: i) Vector database construction, which involves calculating semantic vectors for data chunks via data chunking and embedding models to establish the vector database ; ii) Retriever, responsible for retrieving the top-k data chunks most relevant to the user query from the database ; iii) Generator, responsible for integrating the top-k data chunks with the user query and submitting them to the large language model for response generation .",
+      "page": 8,
+      "index": 9,
+      "width": 690,
+      "height": 384
+    },
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-010.webp",
+      "caption": "Fig. 7: Optimization and injection process of adversarial text within a RAG architecture. This diagram highlights the algorithmic complexity behind adversarial attacks compared to simple data poisoning. The top panel illustrates an automated, optimization-driven generation loop. By continuously testing perturbed text against a simulated retriever and scoring it via a reward function, the attacker refines the payload until it successfully deviates from the target polarity while maintaining semantic similarity to the original text (e.g., subtly changing “tonight” to “this evening”). Upon successful generation, this highly optimized adversarial example is injected into the vector database (red arrow), silently weaponizing the standard retrieval-generation pipeline against the end-user.",
+      "page": 19,
+      "index": 10,
+      "width": 681,
+      "height": 856
+    },
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-011.webp",
+      "caption": "Fig. 6: The workflow of Membership Inference Attacks (MIA) against RAG systems. This diagram illustrates how attackers exploit the retrieval and generation processes to compromise data privacy. Unlike poisoning attacks, the vector database remains unaltered. Instead, the attacker starts with a specific “Target Document” and carefully crafts a “Malicious Query” designed to trigger the retrieval of this document. The RAG system processes this query normally through its components, ultimately generating an answer. Crucially, the attacker then performs a “Membership Score Calculation” based on the LLM’s output characteristics (such as exact string matching or confidence scores). By analyzing this score, the attacker can successfully infer whether the target private document was originally included in the system’s vector database (Output: Yes/No), thereby causing a severe privacy leak.",
+      "page": 17,
+      "index": 11,
+      "width": 725,
+      "height": 354
+    },
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-012.webp",
+      "caption": "Fig. 10: The proposed secure RAG system for preventing output-side privacy leakage. This diagram depicts an end-to-end privacy preservation strategy that physically and cryptographically isolates sensitive user data from the LLM. By executing retrieval and DP noise injection locally (blue), and substituting sensitive entities with placeholders (green), the system ensures the LLM generates responses based entirely on sanitized inputs within a secure enclave (TEE). The defining feature of this outputcentric defense lies in the final stage (purple): the generated response, containing only placeholders, is sent back to the local client for structural unmasking and compliance verification. This design strictly confines raw sensitive information to the trusted edge, effectively neutralizing risks such as membership inference and unintended data memorization in the final output.",
+      "page": 32,
+      "index": 12,
+      "width": 715,
+      "height": 538
+    },
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-013.webp",
+      "caption": "Fig. 5: Mechanisms of data injection and propagation in RAG poisoning attacks. This figure details how an attacker successfully manipulates the final output of an LLM by compromising the RAG system’s knowledge base. The architecture is divided into data construction, retrieval, and generation stages. The critical vulnerability occurs during data construction (purple block), where malicious data is covertly injected and processed into embedding vectors. Consequently, the standard retrieval mechanism (green block) is weaponized; it actively fetches the poisoned chunk as context for the user’s query. As indicated by the red flow path, the generation component (orange block) blindly trusts this manipulated context, resulting in the successful execution of the attack and the delivery of fabricated information to the user.",
+      "page": 12,
+      "index": 13,
+      "width": 706,
+      "height": 475
+    },
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-014.webp",
+      "caption": "Table 6: Insights, Challenges, and Prospects",
+      "page": 41,
+      "index": 14,
+      "width": 737,
+      "height": 1267
+    },
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-015.webp",
+      "caption": "Fig. 1: Overview of RAG security research trends and literature composition",
+      "page": 5,
+      "index": 15,
+      "width": 774,
+      "height": 608
+    },
+    {
+      "url": "assets/figures/arxiv/2603.21654v1/fig-016.webp",
+      "caption": "Table 3: Membership Inference Attacks against RAG Systems",
+      "page": 16,
+      "index": 16,
+      "width": 777,
+      "height": 1010
+    }
+  ]
+}

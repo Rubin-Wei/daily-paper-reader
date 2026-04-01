@@ -1,0 +1,94 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.25164v1/fig-001.webp",
+      "caption": "Table 2: Implementation Details & Hyperparameters. Summary of the implementation settings and default budgets used to instantiate PIDP-Attack.",
+      "page": 6,
+      "index": 1,
+      "width": 494,
+      "height": 540
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25164v1/fig-002.webp",
+      "caption": "Table 6: Ablation A1–A2 (diagnostics). Comparison between Prompt-only and Clean-RAG under relaxed matching. Bold values indicate ASR > 0.5.",
+      "page": 11,
+      "index": 2,
+      "width": 504,
+      "height": 322
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25164v1/fig-003.webp",
+      "caption": "Table 1: Comparison of attack capabilities. ✓ = supported, ✗ = not supported. Clean-RAG is our ablation variant using only query-path injection.",
+      "page": 2,
+      "index": 3,
+      "width": 1081,
+      "height": 286
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25164v1/fig-004.webp",
+      "caption": "Figure 3: Context budget sweep (A4). ASR (green) and retrieval F1 (red) as functions of the context budget k (topk) on (a) nq, (b) hotpotqa, and (c) msmarco; shaded bands indicate ±1 std.",
+      "page": 13,
+      "index": 4,
+      "width": 504,
+      "height": 687
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25164v1/fig-005.webp",
+      "caption": "Table 3: Configuration of Baselines vs. PIDP-Attack. We distinguish methods by their query modification and poisoning scope. Specifically: PoisonedRAG = per-query targeted poisoning (q-tailored); Disinformation Attack = per-query disinformation poisoning (q-tailored); GGPP = prefix-based retrieval steering; GCG = prompt-only injection; and Corpus = query-agnostic corpus poisoning (fixed adversarial passages). PIDP-Attack is the only setting that combines retrieval-key modification with target-conditioned poisoning.",
+      "page": 8,
+      "index": 5,
+      "width": 1087,
+      "height": 202
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25164v1/fig-006.webp",
+      "caption": "Figure 1: Overview of PIDP-Attack. The attacker appends an injection suffix δ(S) to an arbitrary victim query q to form q′, and inserts a small set of poisoned passages {pi} keyed on the target question S into the retrieval corpus. The injected query increases the likelihood that poisoned passages appear in the top-k retrieved context, which then steers the generator toward the attacker-chosen incorrect target answer a−.",
+      "page": 4,
+      "index": 6,
+      "width": 1052,
+      "height": 361
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25164v1/fig-007.webp",
+      "caption": "Table 8: Qualitative Example. A successful PIDP-Attack where an unrelated user query (about acts passed in 2010) is injected with a suffix targeting the \"Inception\" director question. The retriever surfaces a poisoned passage claiming Michael Bay is the director, which the RAG system then adopts as the answer.",
+      "page": 19,
+      "index": 7,
+      "width": 1026,
+      "height": 394
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25164v1/fig-008.webp",
+      "caption": "Figure 2: Poison budget sweep (A3). ASR (green) and retrieval F1 (red) as functions of the poison budget n on (a) nq, (b) hotpotqa, and (c) msmarco; shaded bands indicate ±1 std.",
+      "page": 12,
+      "index": 8,
+      "width": 504,
+      "height": 687
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25164v1/fig-009.webp",
+      "caption": "Table 4: Main comparison across datasets (nq, hotpotqa, msmarco). Attack success rate (ASR; mean±std over repeated trials; strict incorrect-answer matching). ∆ASR is PIDP-Attack minus PoisonedRAG. Retrieval statistics (F1 for adversarial-passage retrieval) are reported separately in Table 5.",
+      "page": 9,
+      "index": 9,
+      "width": 840,
+      "height": 994
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25164v1/fig-010.webp",
+      "caption": "Table 11: Experimental Configuration Summary. Overview of dataset splits, default/sweep budgets, inference parameters, and evaluation protocol. For msmarco, we evaluate on the BEIR train split solely as a query pool because the BEIR test split is too small for our repeated-trials protocol.",
+      "page": 20,
+      "index": 10,
+      "width": 408,
+      "height": 427
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25164v1/fig-011.webp",
+      "caption": "Table 10: Hyperparameter Configuration. Settings for the nanoGCG suffix optimization (prompt-only baseline) and the LLM-based poison generation process.",
+      "page": 20,
+      "index": 11,
+      "width": 496,
+      "height": 394
+    }
+  ]
+}

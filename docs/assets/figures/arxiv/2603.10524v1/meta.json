@@ -1,0 +1,126 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.10524v1/fig-001.webp",
+      "caption": "Figure 5: Turn position distribution for evaluated turns in the development (blue) and test (orange) sets. The dev set spans positions 1 10+, while all 507 test turns are non-first turns eliminating the easy first-turn queries that inflate dev-set averages and ensuring every test turn requires contextual understanding.",
+      "page": 11,
+      "index": 1,
+      "width": 932,
+      "height": 345
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10524v1/fig-002.webp",
+      "caption": "Table 37: Root cause analysis of 50 Task C failures (dev set). Cross-turn error propagation (34%) is nearly as frequent as within-turn retrieval errors (38%), highlighting the compounding challenge of multi-turn RAG.",
+      "page": 25,
+      "index": 2,
+      "width": 950,
+      "height": 214
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10524v1/fig-003.webp",
+      "caption": "Figure 12: Representative error cascade in Task C (Cloud domain). A retrieval miss at turn 3 (×) corrupts evidence for turns 4–5, causing generation errors (!) despite correct retrieval at those turns. Turn 6 recovers independently.",
+      "page": 25,
+      "index": 3,
+      "width": 918,
+      "height": 276
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10524v1/fig-004.webp",
+      "caption": "Table 21: The ensemble paradox. As ELSER improves through rewriting, multi-retriever fusion increasingly harms R@5 while improving R@100. ↑/↓: change relative to ELSER alone at the same stage. Unique gold documents from other retrievers shift to avg. rank 37–54 after fusion—below the top-10 cutoff. †ELSER alone vs. +All: p<0.01 (paired bootstrap).",
+      "page": 15,
+      "index": 4,
+      "width": 389,
+      "height": 468
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10524v1/fig-005.webp",
+      "caption": "Figure 10: Extractiveness shaping function ϕ(r4). Dashed vertical lines mark the ideal band [0.28, 0.38]; the grey region [0.38, 0.50] is acceptable. The asymmetric design penalizes under-extractive (hallucination-prone) responses more strongly than over-extractive ones.",
+      "page": 22,
+      "index": 5,
+      "width": 656,
+      "height": 372
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10524v1/fig-006.webp",
+      "caption": "Figure 4: Non-standalone phenomena in dev set non-first turns (N = 732, multi-label). Pronoun coreference and implicit topic carryover are the most frequent sources of query underspecification, motivating history-aware query rewriting.",
+      "page": 10,
+      "index": 6,
+      "width": 652,
+      "height": 400
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10524v1/fig-007.webp",
+      "caption": "Figure 1: System architecture: (a) Task A retrieval pipeline, (b) Task B generation pipeline, (c) Task C end-to-end RAG with answerability gate.",
+      "page": 3,
+      "index": 7,
+      "width": 827,
+      "height": 350
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10524v1/fig-008.webp",
+      "caption": "Figure 8: R@5 vs. turn index: ELSER baseline (dashed) vs. final system (solid). Rewriting reduces the later-turn drop from 51% to 39%.",
+      "page": 18,
+      "index": 8,
+      "width": 939,
+      "height": 226
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10524v1/fig-009.webp",
+      "caption": "Figure 9: SA vs. Non-SA R@5, baseline vs. final system, per domain.",
+      "page": 18,
+      "index": 9,
+      "width": 931,
+      "height": 448
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10524v1/fig-010.webp",
+      "caption": "Table 17: Reformulations for a non-standalone Cloud query. “The pricing” refers to an entity introduced earlier in the conversation.",
+      "page": 13,
+      "index": 10,
+      "width": 464,
+      "height": 319
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10524v1/fig-011.webp",
+      "caption": "Figure 2: Question-type distribution per domain (dev set, % of domain turns). FiQA’s Opinion-heavy profile and Cloud’s even distribution across types stand in contrast to the Factoid/Summarization-dominated ClapNQ and Govt corpora.",
+      "page": 8,
+      "index": 11,
+      "width": 441,
+      "height": 342
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10524v1/fig-012.webp",
+      "caption": "Figure 7: Answerability distribution per domain (% of domain turns), development set (left) vs. test set (right). Red borders highlight the Unanswerable column. Cloud exhibits the most severe shift: unanswerable turns rise from 7% (dev) to 27% (test), the highest unanswerable rate across all domains.",
+      "page": 12,
+      "index": 12,
+      "width": 833,
+      "height": 314
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10524v1/fig-013.webp",
+      "caption": "Figure 11: RLF vs. RBllm scatter for dev set responses binned by 4-gram extractiveness. Responses in the [0.28, 0.38] band (blue) cluster near the Pareto frontier; under-extractive (r4<0.28, red) and over-extractive (r4>0.50, grey) responses degrade at least one metric.",
+      "page": 24,
+      "index": 13,
+      "width": 448,
+      "height": 350
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10524v1/fig-014.webp",
+      "caption": "Table 11: Development vs. test set comparison. Notable distributional shifts are shown in bold. The test set is substantially harder due to a 3× higher unanswerable rate and single-turn evaluation structure.",
+      "page": 9,
+      "index": 14,
+      "width": 290,
+      "height": 415
+    },
+    {
+      "url": "assets/figures/arxiv/2603.10524v1/fig-015.webp",
+      "caption": "Table 10: Representative MTRAG challenge examples.",
+      "page": 9,
+      "index": 15,
+      "width": 461,
+      "height": 286
+    }
+  ]
+}

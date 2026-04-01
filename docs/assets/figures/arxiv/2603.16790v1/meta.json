@@ -1,0 +1,238 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-001.webp",
+      "caption": "Table 4. Performance on chip design benchmarks. InCoder-32B results are highlighted in gray.",
+      "page": 11,
+      "index": 1,
+      "width": 941,
+      "height": 461
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-002.webp",
+      "caption": "Figure 18. EmbeddedC: STM32F407 PWM with TIM12 – Problem Description.",
+      "page": 57,
+      "index": 2,
+      "width": 950,
+      "height": 1316
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-003.webp",
+      "caption": "Figure 6. Performance across nine industrial code benchmarks as SFT data scales from 83M to 250M tokens.",
+      "page": 15,
+      "index": 3,
+      "width": 933,
+      "height": 584
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-004.webp",
+      "caption": "Figure 19. EmbeddedC: STM32F407 PWM with TIM12 – Reference Code (Part 1: Infrastructure).",
+      "page": 58,
+      "index": 4,
+      "width": 950,
+      "height": 679
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-005.webp",
+      "caption": "Figure 7. Training loss curves for both stages of mid-training. (a) Stage 2.1 shows consistent convergence with cosine learning rate decay. (b) Stage 2.2 reflects the graduated warm-up strategy for long-sequence samples.",
+      "page": 30,
+      "index": 5,
+      "width": 939,
+      "height": 358
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-006.webp",
+      "caption": "Figure 22. RealBench: AES Cipher Top – Model Output (Part 1: Declarations & Control).",
+      "page": 62,
+      "index": 6,
+      "width": 950,
+      "height": 779
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-007.webp",
+      "caption": "Figure 2. Comparison of CUDA grid configuration strategies for RMS Normalization on large spatial dimensions (512×512). (Left) Claude assigns spatial_size (262,144) to gridDim.y, exceeding the CUDA hardware limit of 65,535, resulting in an invalid configuration argument runtime error. (Right) InCoder-32B flattens all dimensions into a 1D grid, safely utilizing the gridDim.x limit and avoiding the hardware constraint violation.",
+      "page": 2,
+      "index": 7,
+      "width": 758,
+      "height": 348
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-008.webp",
+      "caption": "Figure 21. RealBench: AES Cipher Top – Design Specification.",
+      "page": 61,
+      "index": 8,
+      "width": 950,
+      "height": 819
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-009.webp",
+      "caption": "Figure 8. VeriScope Problem 221: UART Transmitter (8N1) – Complete Example Case.",
+      "page": 39,
+      "index": 9,
+      "width": 950,
+      "height": 802
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-010.webp",
+      "caption": "Figure 25. RealBench: AES Cipher Top – Model Output (Part 4: Output Generation & Submodules).",
+      "page": 66,
+      "index": 10,
+      "width": 950,
+      "height": 277
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-011.webp",
+      "caption": "Figure 16. KernelBench: CUDA Matrix Multiplication – Input Prompt.",
+      "page": 54,
+      "index": 11,
+      "width": 950,
+      "height": 734
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-012.webp",
+      "caption": "Figure 5. Error distribution of InCoder-32B across 9 industrial benchmarks. The center number indicates total failures per benchmark. Errors are color-coded by type: reds/oranges for compilation and syntax errors, blues for functional/logic errors, purples for format errors, greens for performance issues.",
+      "page": 14,
+      "index": 12,
+      "width": 915,
+      "height": 440
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-013.webp",
+      "caption": "Figure 3. The three-stage training pipeline of InCoder-32B. Pre-train performs data curation and enhancement, Mid-train constructs an industrial-aware foundation with progressive context scaling from 8K to 128K, and Post-train produces simulation-grounded SFT data across industrial domains.",
+      "page": 3,
+      "index": 13,
+      "width": 934,
+      "height": 302
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-014.webp",
+      "caption": "Figure 11. C Compile: CUDA Matrix Multiplication Optimization – Complete Example Case.",
+      "page": 46,
+      "index": 14,
+      "width": 950,
+      "height": 1327
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-015.webp",
+      "caption": "Figure 14. TritonBench: Fused BMM-RMSNorm-GELU-Dropout-Sub – Output Code (Part 1: Kernel).",
+      "page": 50,
+      "index": 15,
+      "width": 950,
+      "height": 894
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-016.webp",
+      "caption": "Table 1. Performance comparison on code generation tasks.",
+      "page": 8,
+      "index": 16,
+      "width": 941,
+      "height": 436
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-017.webp",
+      "caption": "Table 2. Combined performance on code reasoning (CruxEval, LiveCodeBench), code efficiency (Mercury), and Text2SQL (Bird, Spider) benchmarks.",
+      "page": 8,
+      "index": 17,
+      "width": 941,
+      "height": 456
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-018.webp",
+      "caption": "Figure 26. ArchXBench: 8-to-3 Binary Encoder – Design Specification.",
+      "page": 67,
+      "index": 18,
+      "width": 950,
+      "height": 1069
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-019.webp",
+      "caption": "Figure 13. TritonBench: Fused BMM-RMSNorm-GELU-Dropout-Sub – Model Analysis.",
+      "page": 49,
+      "index": 19,
+      "width": 950,
+      "height": 1316
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-020.webp",
+      "caption": "Figure 24. RealBench: AES Cipher Top – Model Output (Part 3: MixColumns & AddRoundKey).",
+      "page": 64,
+      "index": 20,
+      "width": 950,
+      "height": 975
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-021.webp",
+      "caption": "Figure 27. ArchXBench: 8-to-3 Binary Encoder – Model Output.",
+      "page": 68,
+      "index": 21,
+      "width": 950,
+      "height": 1282
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-022.webp",
+      "caption": "Table 5. Performance on GPU optimization, code optimization, and 3D modeling benchmarks. InCoder-32B results are highlighted in gray.",
+      "page": 12,
+      "index": 22,
+      "width": 941,
+      "height": 386
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-023.webp",
+      "caption": "Figure 17. KernelBench: CUDA Matrix Multiplication – Model Output.",
+      "page": 56,
+      "index": 23,
+      "width": 950,
+      "height": 1007
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-024.webp",
+      "caption": "Table 3. Combined performance on agentic coding tasks (Terminal-Bench v1.0, Terminal-Bench v2.0, SWE-Verified) and general tool-use tasks (Mind2Web, BFCL V3, 𝜏2-bench).",
+      "page": 9,
+      "index": 24,
+      "width": 941,
+      "height": 517
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-025.webp",
+      "caption": "Figure 20. EmbeddedC: STM32F407 PWM with TIM12 – Reference Code (Part 2: Main & IRQ Handler).",
+      "page": 59,
+      "index": 25,
+      "width": 950,
+      "height": 871
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-026.webp",
+      "caption": "Table 6. Model configuration of InCoder-32B.",
+      "page": 37,
+      "index": 26,
+      "width": 431,
+      "height": 407
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-027.webp",
+      "caption": "Figure 15. TritonBench: Fused BMM-RMSNorm-GELU-Dropout-Sub – Output Code (Part 2: Wrapper).",
+      "page": 52,
+      "index": 27,
+      "width": 950,
+      "height": 392
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-028.webp",
+      "caption": "Figure 12. TritonBench: Fused BMM-RMSNorm-GELU-Dropout-Sub – Input Prompt.",
+      "page": 48,
+      "index": 28,
+      "width": 950,
+      "height": 1318
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16790v1/fig-029.webp",
+      "caption": "Figure 23. RealBench: AES Cipher Top – Model Output (Part 2: State Matrix & ShiftRows).",
+      "page": 63,
+      "index": 29,
+      "width": 950,
+      "height": 1213
+    }
+  ]
+}

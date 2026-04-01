@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.04692v1/fig-001.webp",
+      "caption": "Figure 4: Confusion matrix illustrating that subselected procedurally generated data and engineering data are less easily distinguished (based on TabPFN 2.5’s embedding).",
+      "page": 6,
+      "index": 1,
+      "width": 464,
+      "height": 309
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04692v1/fig-002.webp",
+      "caption": "Figure 3: Visualization of procedurally generated data that is subselected to maximally resemble engineering data. Embedding is a 2D t-SNE of the TabPFN 2.5’s 192-dimensional dataset embedding. The selected procedurally generated appears to better span the engineering data compared to the randomly generated data.",
+      "page": 6,
+      "index": 2,
+      "width": 462,
+      "height": 386
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04692v1/fig-003.webp",
+      "caption": "Figure 5: Sample comparison of model accuracy for different quantities of data over 12 example problems.",
+      "page": 7,
+      "index": 3,
+      "width": 943,
+      "height": 1059
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04692v1/fig-004.webp",
+      "caption": "Figure 1: 2D T-SNE embedding of TabPFN 2.5’s 192-dimensional dataset embedding. Distributional differences between engineering and non-engineering data are apparent. A small proportion of the procedurally generated data overlaps with the engineering data. The procedurally generated data appears to splay off toward random noise, indicating that a significant amount of the procedurally generated training data may be too random to be realistic.",
+      "page": 3,
+      "index": 4,
+      "width": 943,
+      "height": 427
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04692v1/fig-005.webp",
+      "caption": "Figure 6: Comparison of the estimated data-efficiency gain as a result of fine-tuning (our fine-tuned TabPFN 2.5 model vs. non-fine-tuned TabPFN 2.5 model) across all tested datasets. Left: Additive data-efficiency (Eadd). Right: Multiplicative data-efficiency (Emult)",
+      "page": 8,
+      "index": 5,
+      "width": 933,
+      "height": 298
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04692v1/fig-006.webp",
+      "caption": "Figure 7: Comparison of the estimated relative data-efficiency of our fine-tuned TabPFN 2.5 model against AutoGluon across all tested datasets. Left: Additive data-efficiency (Eadd). Right: Multiplicative data-efficiency (Emult)",
+      "page": 8,
+      "index": 6,
+      "width": 931,
+      "height": 300
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04692v1/fig-007.webp",
+      "caption": "Table 2: TREDBench dataset summary showing name, source, classification, and dimensionality.",
+      "page": 12,
+      "index": 7,
+      "width": 925,
+      "height": 894
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04692v1/fig-008.webp",
+      "caption": "Figure 2: Confusion Matrix illustrating distinguishability of dataset classes (according to TabPFN 2.5’s embedding). Distributional differences between engineering and non-engineering datasets can be witnessed. A small portion of the procedurally generated data appears to span the engineering data.",
+      "page": 5,
+      "index": 8,
+      "width": 464,
+      "height": 309
+    }
+  ]
+}

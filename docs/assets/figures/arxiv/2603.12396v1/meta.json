@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.12396v1/fig-001.webp",
+      "caption": "Figure 1: An illustration of the information flow for our proposed test-time strategies compared to the baseline during a single inference turn i. Baseline: This represents the standard Search-R1 framework, where the LLM sends a query (qi) to the retriever and directly receives the retrieved documents (Di) to continue its reasoning. Deduplication: This approach filters out previously seen content and returns only a set of novel documents (D′ i) to the LLM. Contextualization: This approach parses the retrieved documents (Di) and reformulates their content to improve integration into the LLM’s reasoning process, returning an enhanced set of information (D∗ i ). Hybrid: This approach combines both modules sequentially.",
+      "page": 2,
+      "index": 1,
+      "width": 458,
+      "height": 371
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12396v1/fig-002.webp",
+      "caption": "Table 1: Performance comparison of our proposed modules against the Search-R1 baselines on our 500-question evaluation set. We report Exact Match, LLM Match, and the average number of turns. Our modules are applied as test-time enhancements to the Qwen2.5-7b base (PPO) model. Cont: Contextualization (Section 3.1). De-Dup: De-duplication (Section 3.2). Hybrid (Section 3.3). Best results for our approaches are in bold.",
+      "page": 5,
+      "index": 2,
+      "width": 459,
+      "height": 392
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12396v1/fig-003.webp",
+      "caption": "Figure 2: Illustration that questions requiring more agentic turns are inherently more difficult, as shown by the downward trend in Exact Match (EM) score for both the Search-R1 baseline and our Contextualization module. While the Contextualization module achieves a slightly higher mean EM at some points, the overlapping 95% confidence intervals indicate that we are not seeing a statistically significant improvement or difference between the two compared approaches for any given search count.",
+      "page": 5,
+      "index": 3,
+      "width": 458,
+      "height": 296
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.16435v1/fig-001.webp",
+      "caption": "Figure 6 | The results of LLaMA3.1-8B on LongBench with different compression ratio.",
+      "page": 11,
+      "index": 1,
+      "width": 655,
+      "height": 447
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16435v1/fig-002.webp",
+      "caption": "Figure 7 | Results of VQKV on LongBench with different combinations of codebooks on LLaMA3.1-8B.",
+      "page": 11,
+      "index": 2,
+      "width": 892,
+      "height": 318
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16435v1/fig-003.webp",
+      "caption": "Table 1 | Results of LLaMA3.1-8B and LLaMA3.2-3B on LongBench . The Ratiomeans discarding ratios. Our VQKV achieves the closest performance to the full cache models on comparable compression ratio against other methods.",
+      "page": 7,
+      "index": 3,
+      "width": 975,
+      "height": 369
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16435v1/fig-004.webp",
+      "caption": "Figure 2 | Results of LLaMA3.1-8B on NIAH.",
+      "page": 7,
+      "index": 4,
+      "width": 954,
+      "height": 400
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16435v1/fig-005.webp",
+      "caption": "Table 3 | Results of LLaMA3.1-8B on LongBench with different compression ratios. The Ratio means discarding ratios. Our VQKV achieves the best performance on comparable compression ratio against other methods.",
+      "page": 10,
+      "index": 5,
+      "width": 975,
+      "height": 507
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16435v1/fig-006.webp",
+      "caption": "Figure 1 | Overview of our VQKV. The left part shows the detailed process of our VQKV on prefilling stage and decoding stage. The right part shows the overview of our VQKV.",
+      "page": 3,
+      "index": 6,
+      "width": 977,
+      "height": 283
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16435v1/fig-007.webp",
+      "caption": "Figure 4 | Detailed results of LLaMA3.1-8B on RULER in different context length. The results of full cache model are taken as the 100% reference.",
+      "page": 8,
+      "index": 7,
+      "width": 964,
+      "height": 246
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16435v1/fig-008.webp",
+      "caption": "Figure 5 | Detailed results of LLaMA3.2-3B on RULER in different context length. The results of full cache model are taken as the 100% reference.",
+      "page": 8,
+      "index": 8,
+      "width": 964,
+      "height": 246
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16435v1/fig-009.webp",
+      "caption": "Figure 3 | Results of LLaMA3.2-3B on NIAH.",
+      "page": 8,
+      "index": 9,
+      "width": 954,
+      "height": 415
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16435v1/fig-010.webp",
+      "caption": "Figure 8 | Generation length and corresponding peak memory usage between full-cache LLaMA3.1-8B and our VQKV. The prompt length is 65536 and FlashAttention is used on both.",
+      "page": 12,
+      "index": 10,
+      "width": 850,
+      "height": 380
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16435v1/fig-011.webp",
+      "caption": "Table 2 | Results of LLaMA3.1-8B and LLaMA3.2-3B on RULER. Our VQKV outperforms other methods on 4K to 32K length.",
+      "page": 9,
+      "index": 11,
+      "width": 560,
+      "height": 406
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16435v1/fig-012.webp",
+      "caption": "Table 4 | Detailed results of different combinations of codebooks of VQKV on LLaMA3.1-8B [Dubey et al., 2024]. Ratio means discarding ratios.",
+      "page": 16,
+      "index": 12,
+      "width": 983,
+      "height": 1169
+    }
+  ]
+}

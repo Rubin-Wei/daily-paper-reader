@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.02581v1/fig-001.webp",
+      "caption": "Fig. 1: Visual comparisons on different attention mechanisms. (a) Window-based self-attention constrain the attention to local windows due to the quadratic computational complexity, resulting in limited receptive field. (b) Our proposed token dictionary cross-attention leverages the typical image structures summarized in the token dictionary to incorporate external information to input features. (c) Our proposed adaptive category-based self-attention exploits relationships within categories, connecting distant but similar tokens across the image.",
+      "page": 2,
+      "index": 1,
+      "width": 1076,
+      "height": 284
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02581v1/fig-002.webp",
+      "caption": "Fig. 5: Illustration of the proposed Categorize operation. The attention map is flattened and sorted based on the index of the maximum value in each row as denoted in Eq. 12 and Eq. 14. This effectively clusters tokens sharing similar features for selfattention. Subsequently, the UnCategorize operation applies the inverse permutation to restore the original spatial structure.",
+      "page": 7,
+      "index": 2,
+      "width": 526,
+      "height": 246
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02581v1/fig-003.webp",
+      "caption": "TABLE 2: Quantitative comparison (PSNR/SSIM) with state-of-the-art methods on lightweight image SR task. Best and second best results are marked with bold and underline. Experimental details can be found in Sec. 5.1.",
+      "page": 10,
+      "index": 3,
+      "width": 1076,
+      "height": 1011
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02581v1/fig-004.webp",
+      "caption": "Fig. 8: Qualitative comparison on color Gaussian image denoising with noise level σ = 50.",
+      "page": 13,
+      "index": 4,
+      "width": 1072,
+      "height": 197
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02581v1/fig-005.webp",
+      "caption": "Fig. 9: Qualitative comparison on grayscale Gaussian image denoising with noise level σ = 50.",
+      "page": 13,
+      "index": 5,
+      "width": 1072,
+      "height": 196
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02581v1/fig-006.webp",
+      "caption": "TABLE 9: Quantitative comparison (PSNR/SSIM) with state-of-the-art methods on JPEG compression artifacts removal task. Best and second best results are marked with bold and underline. Experimental details can be found in Sec. 6.1.",
+      "page": 13,
+      "index": 6,
+      "width": 1056,
+      "height": 265
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02581v1/fig-007.webp",
+      "caption": "Fig. 10: Qualitative comparison on JPEG CAR with quality factor q = 10.",
+      "page": 13,
+      "index": 7,
+      "width": 1072,
+      "height": 198
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02581v1/fig-008.webp",
+      "caption": "Fig. 6: Visualization of the attention groups for window-based self-attention and the proposed adaptive category-based selfattention. Green and red regions represent the query tokens and their corresponding key tokens, respectively. In window-based self-attention (window size nw = 162), similarity computations are confined within local windows, which limits the ability to exploit similar regions across the image. In contrast, the proposed adaptive category-based self-attention (category size ns = 256, equal to window size) could connect distant but similar tokens across the image. Additionally, as shown in (c) and (d), the attention categories vary across different layers, allowing the receptive field to expand progressively. Zoom in for a better view.",
+      "page": 8,
+      "index": 8,
+      "width": 970,
+      "height": 337
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02581v1/fig-009.webp",
+      "caption": "TABLE 7: Quantitative comparison (PSNR/SSIM) with state-of-the-art methods on color image denoising task. Best and second best results are marked with bold and underline. Experimental details can be found in Sec. 6.1.",
+      "page": 12,
+      "index": 9,
+      "width": 1072,
+      "height": 291
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02581v1/fig-010.webp",
+      "caption": "TABLE 8: Quantitative comparison (PSNR/SSIM) with state-of-the-art methods on grayscale image denoising task. Best and second best results are marked with bold and underline. Experimental details can be found in Sec. 6.1.",
+      "page": 12,
+      "index": 10,
+      "width": 1072,
+      "height": 229
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02581v1/fig-011.webp",
+      "caption": "TABLE 1: Quantitative comparison (PSNR/SSIM) with state-of-the-art methods on classical image SR task. Best and second best results are marked with bold and underline. Experimental details can be found in Sec. 5.1.",
+      "page": 9,
+      "index": 11,
+      "width": 1076,
+      "height": 581
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02581v1/fig-012.webp",
+      "caption": "Fig. 2: Overall architectures of the proposed ATD and ATD-U networks. Each ATD block contains several consecutive transformer layers and a learnable token dictionary. The transformer layer combines three attention branches: token dictionary cross-attention (4.2), adaptive category-based self-attention (4.3), and window-based self-attention to enhance image feature. The attention map of TDCA branch is further utilized by the ACMSA branch for categorization and CFFN for dictionary entry selection, respectively.",
+      "page": 5,
+      "index": 12,
+      "width": 1076,
+      "height": 600
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02581v1/fig-013.webp",
+      "caption": "Fig. 3: Illustrations of the proposed (a) Token Dictionary Cross-Attention (TDCA), (b) Adaptive Category-based Multi-head SelfAttention (AC-MSA), and (c) Category-aware Feed-Forward Network (CFFN). Descriptions of TDCA and ACMSA are provided in Sec. 4.2 and 4.3, respectively. Further details of the Categorize operation can be found in Eq. 12 and Fig. 5.",
+      "page": 5,
+      "index": 13,
+      "width": 1076,
+      "height": 260
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.27138v1/fig-001.webp",
+      "caption": "Figure 4: Overall architecture of ScoutAttention.",
+      "page": 3,
+      "index": 1,
+      "width": 502,
+      "height": 343
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27138v1/fig-002.webp",
+      "caption": "Figure 5: Workflow of GPU-CPU collaborative block-wise sparse attention with layer-ahead CPU pre-computation.",
+      "page": 4,
+      "index": 2,
+      "width": 503,
+      "height": 313
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27138v1/fig-003.webp",
+      "caption": "Table 1: Cosine similarity between predict query and real query.",
+      "page": 4,
+      "index": 3,
+      "width": 506,
+      "height": 412
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27138v1/fig-004.webp",
+      "caption": "Figure 7: Results on LongBench of different methods.",
+      "page": 5,
+      "index": 4,
+      "width": 498,
+      "height": 297
+    }
+  ]
+}

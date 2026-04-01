@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.11513v1/fig-001.webp",
+      "caption": "Figure 2: The distraction effect: percentage of KNOWN answers destroyed by adding retrieval context. For models ≤3B, oracle and noisy retrieval cause statistically indistinguishable harm—context presence, not quality, drives distraction.",
+      "page": 6,
+      "index": 1,
+      "width": 443,
+      "height": 299
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11513v1/fig-002.webp",
+      "caption": "Figure 4: Oracle utilization gap: the pink region shows the fraction of retrieval effort that is wasted (answer in passage, model still fails). Even at 7B, 85% of oracle retrievals are unused.",
+      "page": 10,
+      "index": 2,
+      "width": 445,
+      "height": 301
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11513v1/fig-003.webp",
+      "caption": "Figure 1: Retrieval utilization across model scale. Left: For UNKNOWN questions, oracle retrieval achieves at most 14.6% EM at 7B, meaning 85%+ of retrieval effort is wasted. Right: For KNOWN questions, all retrieval methods destroy 42–64% of previously correct answers. Error bars are 95% bootstrap CIs.",
+      "page": 5,
+      "index": 3,
+      "width": 933,
+      "height": 354
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11513v1/fig-004.webp",
+      "caption": "Table 4: Exact Match (%) by parametric split, retrieval condition, and model size [95% CI]. Corpus-matched oracle only (n=756). All non-zero differences from None are significant at p < 0.001 (McNemar, Bonferroni-corrected), except SmolLM2-360M. The 360M KNOWN cell is based on n=11 only and should be interpreted with extreme caution.",
+      "page": 5,
+      "index": 4,
+      "width": 765,
+      "height": 186
+    }
+  ]
+}

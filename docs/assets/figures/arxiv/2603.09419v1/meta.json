@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.09419v1/fig-001.webp",
+      "caption": "Fig. 3. Qualitative visualizations on test-time training results. The top row shows the prediction results without adaptation, while the bottom row indicates the adaptation results using test-time training. We only visualize the best modality for multi-modal predictions.",
+      "page": 6,
+      "index": 1,
+      "width": 791,
+      "height": 268
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09419v1/fig-002.webp",
+      "caption": "Fig. 2. Overview of our MetaDAT framework. MetaDAT first performs meta pre-training across the simulated test-time training tasks on the source dataset, then the pre-trained model goes through data-adaptive test-time training on the target dataset under distribution shifts. Newly proposed modules in our framework are highlighted in orange, while the TTT baseline is in purple.",
+      "page": 3,
+      "index": 2,
+      "width": 896,
+      "height": 420
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09419v1/fig-003.webp",
+      "caption": "TABLE I PERFORMANCE ON VARIOUS DISTRIBUTION SHIFTS. THE PREDICTOR IS TRAINED ON THE SOURCE DATASET, AND TEST-TIME TRAINED AND ONLINE EVALUATED ON THE TARGET DATASET (SOURCE →TARGET). * MEANS REPRODUCED RESULTS BY OURSELVES.",
+      "page": 5,
+      "index": 3,
+      "width": 896,
+      "height": 194
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09419v1/fig-004.webp",
+      "caption": "Fig. 1. (a) Illustration for the test-time training and online evaluation protocol for trajectory prediction. (b) Previous offline pre-training overlooks the offline-online misalignment between pre-training and adaptation. In contrast, our method aligns these two phases via meta pre-training (MP). Additionally, instead of using fixed updating rules, we propose data-adaptive test-time updating by dynamic optimization of the learning rate α (DLO) and additional hard-sample-driven updates (HSD).",
+      "page": 1,
+      "index": 4,
+      "width": 489,
+      "height": 466
+    }
+  ]
+}

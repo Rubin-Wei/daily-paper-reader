@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.04815v1/fig-001.webp",
+      "caption": "Figure 1: The EchoGuard Framework Architecture. The central agent orchestrates specialized tools, maintaining a persistent state (S) to analyze user logs. It uses a constrained prompt generator to create reflective interventions, which in turn update the agent’s context via an adaptive learning loop.",
+      "page": 5,
+      "index": 1,
+      "width": 668,
+      "height": 729
+    }
+  ]
+}

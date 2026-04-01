@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.11798v1/fig-001.webp",
+      "caption": "Table 1: Experimental results for MEBench.",
+      "page": 6,
+      "index": 1,
+      "width": 564,
+      "height": 662
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11798v1/fig-002.webp",
+      "caption": "Table 4: Ablation Study Results for DocSage on Loong Benchmark",
+      "page": 11,
+      "index": 2,
+      "width": 1077,
+      "height": 227
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11798v1/fig-003.webp",
+      "caption": "Table 3: Results of the ablation study on the MEBench benchmark.",
+      "page": 11,
+      "index": 3,
+      "width": 819,
+      "height": 225
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11798v1/fig-004.webp",
+      "caption": "Figure 1: The overview of DocSage framework, which consists of three core modules: Interactive Schema Discovery, Logic-Aware Structured Extraction, and Schema-Guided Relational Reasoning.",
+      "page": 4,
+      "index": 4,
+      "width": 950,
+      "height": 377
+    }
+  ]
+}

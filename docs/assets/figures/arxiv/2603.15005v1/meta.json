@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.15005v1/fig-001.webp",
+      "caption": "Table 2: Model size (millions of parameters) and vocabulary size (thousands).",
+      "page": 5,
+      "index": 1,
+      "width": 375,
+      "height": 431
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15005v1/fig-002.webp",
+      "caption": "Table 1: Overview of curated Latvian text corpora. Word counts are in millions.",
+      "page": 3,
+      "index": 2,
+      "width": 854,
+      "height": 465
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15005v1/fig-003.webp",
+      "caption": "Table 3: Results for sentiment classification (LTEC), linguistic acceptability (ScaLA), named entity recognition (FSNER), question answering (WikiQA), and commonsense reasoning (COPA). MCC denotes Matthews correlation coefficient; MF1 macro-F1; mF1 micro-F1; and EM exact match. † indicates scores excluding the MISC class. ⋄ marks few-shot prompting for LLMs, while all other LLM results are zero-shot. The best overall result in each column is highlighted in bold, and the best result within each model group is underlined.",
+      "page": 6,
+      "index": 3,
+      "width": 923,
+      "height": 495
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15005v1/fig-004.webp",
+      "caption": "Table 4: Universal Dependencies results on the Latvian UD treebank (UD v2.16) under joint multi-task fine-tuning. Evaluation is performed using the standard CoNLL-U scoring script.",
+      "page": 7,
+      "index": 4,
+      "width": 937,
+      "height": 380
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15005v1/fig-005.webp",
+      "caption": "Table 5: WSD results. Match Acc. denotes binary accuracy for context–sense pairs, and Sense Acc. denotes top-1 sense selection accuracy.",
+      "page": 7,
+      "index": 5,
+      "width": 454,
+      "height": 519
+    }
+  ]
+}

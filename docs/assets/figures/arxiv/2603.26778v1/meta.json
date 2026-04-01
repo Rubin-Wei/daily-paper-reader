@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.26778v1/fig-001.webp",
+      "caption": "Figure 1: TED reformulates knowledge distillation from parameter updates to contextual experience reuse.",
+      "page": 1,
+      "index": 1,
+      "width": 474,
+      "height": 300
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26778v1/fig-002.webp",
+      "caption": "Table 1: Results on the MathVision benchmark.",
+      "page": 6,
+      "index": 2,
+      "width": 456,
+      "height": 424
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26778v1/fig-003.webp",
+      "caption": "Figure 4: Hyperparameter ablation of TED on MathVision. Performance is affected by the number of experience items, the number of sampled trajectories, and the choice of teacher model. TED performs best with a moderate experience size, more diverse trajectories, and stronger teachers.",
+      "page": 8,
+      "index": 3,
+      "width": 1049,
+      "height": 243
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26778v1/fig-004.webp",
+      "caption": "Figure 2: Overview of TED. Our proposed method includes three stages: trajectory generation, experience generation, and experience compression. The student first samples multiple reasoning trajectories, which the teacher critiques against its own reasoning and the ground truth to distill generalized experiences. These experiences are then compressed and injected into the system prompt for iterative, parameter-free improvement.",
+      "page": 4,
+      "index": 4,
+      "width": 1006,
+      "height": 431
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26778v1/fig-005.webp",
+      "caption": "Figure 3: Overview of the Experience Compression module in TED. When the experience exceeds the context budget, TED estimates each experience’s utility and tracks its usage frequency. The teacher then compresses the experience by merging, rewriting, deleting, or retaining experiences, producing a compact system prompt that preserves high-utility knowledge for efficient, parameter-free iterative improvement.",
+      "page": 5,
+      "index": 5,
+      "width": 1046,
+      "height": 183
+    }
+  ]
+}

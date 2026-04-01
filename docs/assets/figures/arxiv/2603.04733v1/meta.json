@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.04733v1/fig-001.webp",
+      "caption": "Figure 1. Convergence Curves of Forward-Only Test-Time Adaptation Algorithms. Average ACC@1 (%) of various Test-Time Adaptation (TTA) methods on ImageNet-C (level 5) versus adaptation time (s). Per original settings, FOA and ZOA use 28 forward propagation (FP), while our FOZO method employs 26 FP. FOZO (Dynamic) consistently surpasses FOZO (Base) in accuracy, demonstrating the effectiveness of our dynamic perturbation strategy. Furthermore, FOZO achieves superior performance and faster convergence than FOA and ZOA. Notably, FOZO reaches 65% ACC@1 in only 66% of the runtime required by FOA and ZOA, respectively.",
+      "page": 1,
+      "index": 1,
+      "width": 480,
+      "height": 302
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04733v1/fig-002.webp",
+      "caption": "Table 1. Continual adaptation results: Comparison with forward-only methods on ImageNet-C (5k, level 5). FP denote the number of forward propagations per single sample. For a fair comparison with the same number of forward propagations, and referencing ZOA’s reproduced results, FOA’s population size K is set to 2, FOZO’s number of SPSA is set to 1, and ZOA’s steps is set to 1. Time (s) is measured for processing ImageNet-C (5k, level 5) on an NVIDIA RTX 4090 GPU. Memory usage (MiB) is the peak GPU memory allocated by tensors, measured on a single adaptation batch. #Params is the number of parameters updated during TTA.",
+      "page": 6,
+      "index": 2,
+      "width": 1048,
+      "height": 196
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04733v1/fig-003.webp",
+      "caption": "Table 3. Comparison with the forward-only methods on quantized ViT models (8bit PTQ4ViT).",
+      "page": 7,
+      "index": 3,
+      "width": 1014,
+      "height": 195
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04733v1/fig-004.webp",
+      "caption": "Table 2. Continual adaptation results: Comparison with backpropagation methods on ImageNet-C (5k, level 5). When FP=28, ZOA’s steps is set to 14, and FOA’s population size K is 28. For FOZO, the number of SPSA n is set to 13 when FP=26, and 14 when FP=28.",
+      "page": 7,
+      "index": 4,
+      "width": 1036,
+      "height": 265
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04733v1/fig-005.webp",
+      "caption": "Figure 3. Ablation Study of FOZO Hyperparameters on ImageNet-C (Gaussian Noise, level 5).",
+      "page": 8,
+      "index": 5,
+      "width": 454,
+      "height": 338
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04733v1/fig-006.webp",
+      "caption": "Figure 2. Overview of our proposed FOZO. (a) Forward-Only Zeroth-Order Optimization. This diagram illustrates how FOZO adaptively updates learnable visual prompts (P) at test time using a zeroth-order gradient estimation. For each test batch, the model performs two forward passes by perturbing the prompt P in positive (P + ϵtZ) and negative (P − ϵtZ) directions. Here, Z is a perturbation vector generated from a random seed s, and ϵt is a dynamically adjusted perturbation step size. (b) Deep-Shallow Aligning Loss Function. We compute the mean (µT ) and standard deviation (σT ) of the [CLS] token activations by grouping shallow (e01, . . . , e0N/2) and deep (e0N/2+1, . . . , e 0 N ) layers of the model, and align them with pre-computed source domain statistics (µS , σS).",
+      "page": 4,
+      "index": 6,
+      "width": 950,
+      "height": 431
+    }
+  ]
+}

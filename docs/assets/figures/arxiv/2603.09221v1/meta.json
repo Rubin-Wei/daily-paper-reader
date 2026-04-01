@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.09221v1/fig-001.webp",
+      "caption": "Table 2: Accuracy (%) on math reasoning datasets compared with baseline methods, including test-time memorization approaches. We mark the best performer in bold and the runner-up with underline. Our TTC-Net achieves the highest level of accuracy consistently.",
+      "page": 11,
+      "index": 1,
+      "width": 1014,
+      "height": 363
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09221v1/fig-002.webp",
+      "caption": "Figure 1: Memory-only prediction vs. unifiedmemory-control planning. Memory-based models resemble human System 1 processing, relying on associative retrieval and producing fixed responses. Inspired by System 2 cognition, we model reasoning as an explicit optimal control problem and propose TTC-Net, a unified architecture that integrates test-time control (TTC) layers to encode value functions during sequential modeling, enabling planning before prediction.",
+      "page": 2,
+      "index": 2,
+      "width": 560,
+      "height": 389
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09221v1/fig-003.webp",
+      "caption": "Table 1: Accuracy (%) on Sudoku reasoning. Best method (ours) is marked in bold while the runner-up is underlined.",
+      "page": 10,
+      "index": 3,
+      "width": 792,
+      "height": 280
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09221v1/fig-004.webp",
+      "caption": "Figure 3: Benchmarking running speed and memory of different LQR solvers. Throughput is reported in TFLOPs/s on a logarithmic scale. Among all evaluated solvers, our method achieves over a 10x higher throughput while maintaining constant memory cost w.r.t. horizon. Zero throughput indicates an out-of-memory error during execution.",
+      "page": 8,
+      "index": 4,
+      "width": 1000,
+      "height": 284
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09221v1/fig-005.webp",
+      "caption": "Figure 5: Test-time scaling with TTC layers. TTC allows scaling test-time compute to improve performance by enlarging the planning horizon 𝑇 .",
+      "page": 12,
+      "index": 5,
+      "width": 394,
+      "height": 344
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09221v1/fig-006.webp",
+      "caption": "Table 3: Ablation studies. Accuracy (%) on MATH-500 dataset.",
+      "page": 12,
+      "index": 6,
+      "width": 320,
+      "height": 515
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09221v1/fig-007.webp",
+      "caption": "Figure 4: Overview of TTC-Net. We construct a hybrid model by inserting a TTC layer between attention and MLP.",
+      "page": 9,
+      "index": 7,
+      "width": 331,
+      "height": 405
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09221v1/fig-008.webp",
+      "caption": "Figure 2: Test-Time Control (TTC) layer. To predict the next token, TTC layers think through a receding-horizon LQR problem with linear state evolution and a cost function. A hardware-efficient solver computes optimal actions using structured matrix operations, enabling test-time control with minimal inference overhead.",
+      "page": 5,
+      "index": 8,
+      "width": 561,
+      "height": 392
+    }
+  ]
+}

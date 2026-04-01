@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.16177v2/fig-001.webp",
+      "caption": "Figure 6: SPT regularizes finetuning. Domain training loss (x-axis) versus domain test loss (y-axis) across the pretraining and finetuning stages for MusicPile, with mixture fractions δ = 0%, 2%, 5%. Dotted lines show the pretraining stage; solid lines show finetuning. During finetuning, SPT models achieve lower test loss than NPT models at the same training loss, indicating that SPT reduces overfitting. Notably, the δ = 5% model has already seen the domain data over 33× during pretraining, yet it still overfits less during finetuning than the NPT model seeing the same data for the first time. This regularization is a consequence of diffused exposure to specialized data during pretraining.",
+      "page": 6,
+      "index": 1,
+      "width": 456,
+      "height": 283
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16177v2/fig-002.webp",
+      "caption": "Figure 2: Specialized pretraining (SPT) outperforms finetuning-only across domains. We pretrain models with a small fraction (δ) of domain-specific tokens mixed into general web data, then finetune on the domain dataset. We plot the best post-finetuning domain loss across pretraining budgets for MusicPile, ChemPile, and ProofPile (300M tokens each). Even small domain mixtures (δ = 1–5%, blue curves) consistently outperform pretraining on general data alone (δ = 0%, gray) at all token scales.",
+      "page": 2,
+      "index": 2,
+      "width": 826,
+      "height": 289
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16177v2/fig-003.webp",
+      "caption": "Figure 20: Japanese overlap sweep: each metric plotted against Rgain. All metrics show strong correlations (|r| > 0.85) in the expected direction.",
+      "page": 29,
+      "index": 3,
+      "width": 814,
+      "height": 505
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16177v2/fig-004.webp",
+      "caption": "Figure 14: Gamma and log-linear fits over learned coefficients.",
+      "page": 23,
+      "index": 4,
+      "width": 664,
+      "height": 781
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16177v2/fig-005.webp",
+      "caption": "Figure 19: Comparison of Pearson correlations between the Japanese overlap sweep and cross-domain analysis. C2ST AUC flips from r = +0.90 to r = −0.98.",
+      "page": 28,
+      "index": 5,
+      "width": 730,
+      "height": 352
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16177v2/fig-006.webp",
+      "caption": "Figure 4: Specialized pretraining (SPT) is more effective than scaling tokens or parameters. We compare models that include domain data during pretraining (SPT→FT) against models pretrained only on general web data (NPT→FT). Left: Relative gain of SPT→FT over NPT→FT. Center: Compute multiplier showing how much faster SPT reaches NPT’s best performance. Right: Percentage of the 1B vs. 3B parameter performance gap closed by SPT. Values above 100% indicate the 1B SPT outperforms 3B NPT. SPT consistently improves model quality, training speed, and parameter efficiency (i.e. SPT is a pareto improvement in training efficiency) across all three examined domains.",
+      "page": 4,
+      "index": 6,
+      "width": 826,
+      "height": 204
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16177v2/fig-007.webp",
+      "caption": "Figure 18: ∆ Test follows a power law relationship with respect to the pretraining steps.",
+      "page": 27,
+      "index": 7,
+      "width": 472,
+      "height": 1052
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.04759v1/fig-001.webp",
+      "caption": "Table 2: Langauge modeling results of the supervised fine-tuning setting. “OOM” denotes the outof-memory exception is raised during inference. Excessively large perplexities (> 102) are hidden with a dash (“-”).",
+      "page": 7,
+      "index": 1,
+      "width": 822,
+      "height": 196
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04759v1/fig-002.webp",
+      "caption": "Figure 1: Overview of SHAREDLLM. The architecture resembles general encoder-decoder architecture like T5 (Raffel et al., 2020), but the interaction occurs at the first M layers between lower and upper model through shared key-values which are encoded and compressed from the text chunk into a sequence of trees (top-left).",
+      "page": 3,
+      "index": 2,
+      "width": 754,
+      "height": 467
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04759v1/fig-003.webp",
+      "caption": "Figure 5: Accuracy comparison on passkey retrieval (single key-value pair) task.",
+      "page": 18,
+      "index": 3,
+      "width": 498,
+      "height": 248
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04759v1/fig-004.webp",
+      "caption": "Table 3: Evaluation results of different SFT methods on two benchmarks from LongBench and Infini-Bench. Note that for some baselines we follow their default settings to truncate the input below their window length, which may cast positive effects on their performance.",
+      "page": 8,
+      "index": 4,
+      "width": 818,
+      "height": 484
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04759v1/fig-005.webp",
+      "caption": "Table 8: Perplexity increment as a negative effect from the lack of books3. † represents the values in corresponding rows are reproduced from open-sourced code.",
+      "page": 17,
+      "index": 5,
+      "width": 818,
+      "height": 252
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04759v1/fig-006.webp",
+      "caption": "Table 13: Comparison of time and memory consumption when query-based retrieval is incorporated/not incorporated in SHAREDLLM. h, M and β are fixed at the default values.",
+      "page": 20,
+      "index": 6,
+      "width": 698,
+      "height": 261
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04759v1/fig-007.webp",
+      "caption": "Figure 6: A living example of tree growth and split on the passkey retrieval task. The numbers above the text boxes are the correlation score between the text chunk and user query. Green/Red boxes indicate the chunk is selected/not selected.",
+      "page": 20,
+      "index": 7,
+      "width": 743,
+      "height": 421
+    }
+  ]
+}

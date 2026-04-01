@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.11378v1/fig-001.webp",
+      "caption": "Figure 1: Wav2vec2-BERT 2.0 architecture showing the flow from raw audio input through convolutional feature extraction, transformer-based contextual encoding, and task-specific CTC head for ASR. The model was pretrained on 4.5M hours across 104 languages including Swahili.",
+      "page": 4,
+      "index": 1,
+      "width": 557,
+      "height": 466
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11378v1/fig-002.webp",
+      "caption": "Table 1: Swahili ASR performance across training configurations. Baseline refers to the 50K comparison model trained without CPT. ∆ represents relative improvement over baseline.",
+      "page": 4,
+      "index": 2,
+      "width": 489,
+      "height": 429
+    }
+  ]
+}

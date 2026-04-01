@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.20357v1/fig-001.webp",
+      "caption": "Fig. 1. Knowledge base built in terms of the integration of rules provided by agents A, B, and C.",
+      "page": 5,
+      "index": 1,
+      "width": 666,
+      "height": 250
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20357v1/fig-002.webp",
+      "caption": "Fig. 2. Key-value pairs for the knowledge-base considering only Prolog-like inference systems and queries (Horn clauses with resolution-based inference). Key values correspond to predicate names and arity.",
+      "page": 8,
+      "index": 2,
+      "width": 666,
+      "height": 365
+    }
+  ]
+}

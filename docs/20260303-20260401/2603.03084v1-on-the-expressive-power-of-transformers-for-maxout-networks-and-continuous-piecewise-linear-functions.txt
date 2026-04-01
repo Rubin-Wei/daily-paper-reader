@@ -1,0 +1,3066 @@
+Title: On the Expressive Power of Transformers for Maxout Networks and Continuous Piecewise Linear Functions
+
+URL Source: https://arxiv.org/pdf/2603.03084v1
+
+Published Time: Wed, 04 Mar 2026 02:14:47 GMT
+
+Number of Pages: 46
+
+Markdown Content:
+# On the Expressive Power of Transformers for Maxout Networks and Continuous Piecewise Linear Functions 
+
+## Linyan Gu 1, Lihua Yang 1, and Feng Zhou ∗2 1School of Mathematics, Sun Yat-sen University 
+
+2School of Information Science, Guangdong University of Finance and Economics March 4, 2026 
+
+Abstract 
+
+Transformer networks have achieved remarkable empirical success across a wide range of applications, yet their theoretical expressive power remains insufficiently understood. In this paper, we study the expressive capabilities of Transformer ar-chitectures. We first establish an explicit approximation of maxout networks by Transformer networks while preserving comparable model complexity. As a conse-quence, Transformers inherit the universal approximation capability of ReLU net-works under similar complexity constraints. Building on this connection, we develop a framework to analyze the approximation of continuous piecewise linear functions by Transformers and quantitatively characterize their expressivity via the number of linear regions, which grows exponentially with depth. Our analysis establishes a theoretical bridge between approximation theory for standard feedforward neu-ral networks and Transformer architectures. It also yields structural insights into Transformers: self-attention layers implement max-type operations, while feedfor-ward layers realize token-wise affine transformations. 
+
+# 1 Introduction 
+
+Transformer networks have become a cornerstone of modern sequence modeling since their introduction by Vaswani et al. [39]. They have driven major advances across a wide 
+
+> ∗
+
+Corresponding author: fengzhou@gdufe.edu.cn 
+
+1
+
+> arXiv:2603.03084v1 [cs.LG] 3 Mar 2026
+
+range of natural language processing (NLP) tasks, including machine translation [39, 5], language modeling [30, 31], and question answering [10, 5]. Beyond NLP, Transform-ers have also been successfully applied to a wide range of domains, such as computer vision [12], signal and speech processing [22], and healthcare applications [28]. Despite these empirical successes, the theoretical understanding of Transformer architectures re-mains limited, and many fundamental questions about their expressive power are still open. A Transformer block consists of two main components: a self-attention layer and a token-wise feedforward layer. Both layers reuse the same parameters across tokens, and interactions between tokens are captured exclusively through pairwise dot products in the self-attention mechanism. This parameter sharing makes it feasible to train large-scale models efficiently, in contrast to the sequential computation required by RNNs and LSTMs. At the same time, parameter sharing and the restricted form of token interactions pose significant challenges for theoretical analysis [46, 20, 19]. To treat this challenge, [46] introduced the concept of “contextual mapping”, which aggregates dependencies among all tokens into token-based quantities through the self-attention mechanism. Our study is motivated by the intrinsic connection between the self-attention mech-anism and the max operation (x1, . . . , x k) 7 → max {x1, . . . , x k}, which inspires us to investigate the approximation of maxout networks by Transformer architectures. A max-out network is a feedforward neural network equipped with max activation functions, originally proposed in [14] as a generalization of networks with rectified linear units (Re-LUs), and is known to exactly represent continuous piecewise linear (CPWL) functions [26, 27]. By establishing a systematic approximation of maxout networks using Transformer models, we obtain a principled framework for analyzing the ability of Transformers to approximate CPWL functions. Moreover, since the number of linear regions is a funda-mental measure of expressivity for CPWL models, this framework enables a quantitative characterization of Transformer expressivity in terms of linear region complexity. From this perspective, our results offer a new viewpoint on the expressive power of Trans-former architectures, and align with recent advances in approximation theory that char-acterize neural network expressivity through the growth of the number of linear regions [38, 1, 16, 33, 41, 27, 7, 42, 26, 29]. In addition, our proof techniques clarify the distinct roles played by the self-attention and feedforward layers in Transformer architectures. Specifically, the self-attention layer is responsible for implementing max-type operations, while the feedforward layer realizes token-wise affine transformations. To mitigate the limitations induced by parameter shar-ing across tokens in the feedforward layers, rather than relying on the notion of contextual 2mapping, we introduce a token-wise shift that is applied repeatedly along the depth of the Transformer. This mechanism enhances the design flexibility and expressive capacity of token-wise feedforward networks. Our contributions are summarized as follows. • We provide an explicit construction of Transformer networks that approximate both shallow and deep maxout networks in the L∞ norm while preserving comparable model complexity. Since maxout networks strictly generalize ReLU networks, this result further implies that Transformers possess the universal approximation ca-pability for ReLU networks under similar complexity constraints. These findings establish a theoretical bridge between the approximation theory of standard feed-forward neural networks and Transformer architectures. • Building on this connection, we develop a principled framework for analyzing the approximation of continuous piecewise linear (CPWL) functions by Transformers. Within this framework, we obtain a quantitative characterization of Transformer expressivity in terms of the number of linear regions, and show that this number grows exponentially with network depth. • We provide structural insights into Transformer architectures. To mitigate the limitations induced by parameter sharing in the feedforward layers, we introduce a token-wise shift applied repeatedly along the depth of the Transformer, rather than relying on the notion of contextual mapping. This mechanism enhances the design flexibility and expressive capacity of token-wise feedforward networks. Moreover, we show that the two core components of Transformers play distinct roles: self-attention layers implement max-type operations, while feedforward layers realize token-wise affine transformations. 
+
+## 1.1 Related Works 
+
+Expressive capacity of feedforward neural networks. The study of expressive capacity of feedforward neural networks (FNNs) dates back to the classical universal approximation theorems established around the 1990s [9, 17, 13]. In recent years, there has been substantial progress in the theoretical analysis of approximation properties of FNNs. A central theme of this line of work is to understand how architectural features, such as network width and depth [44, 34, 35, 25], as well as the choice of activation functions [36, 43, 45], affect expressive power. A wide range of function spaces has been considered, including Hölder spaces [34, 35], Cs spaces [25], Sobolev spaces [44], Barron spaces [23], among others, revealing the broad approximation capabilities of FNNs. 3For FNNs equipped with piecewise linear activation functions, such as ReLU and max-out, an influential line of research characterizes expressivity through the number of linear regions of the represented functions. This perspective was initiated in [26, 29], showing that deep networks can represent functions with exponentially more linear regions than shallow networks with a comparable number of units or parameters. Subsequent works have further refined these results and extended them to various architectures; see, for example, [38, 1, 16, 33, 41, 27, 7, 42]. In this work, we establish a systematic approxima-tion of maxout networks using Transformer architectures, providing a bridge between the approximation theory of maxout (and ReLU) networks and Transformer models. 
+
+Expressive capacity of Transformers. Compared with standard feedforward neural networks (FNNs), the theoretical analysis of Transformer architectures is considerably more challenging due to parameter sharing and the restricted form of token interactions. Transformers must account for global contextual dependencies through self-attention. Yun et al. [46] proposed to aggregate these dependencies into a token-wise quantity, referred to as a “contextual mapping”, which is produced by self-attention and subsequently mapped to the desired output via a feedforward layer. This approach led to the first universal approximation theorem for Transformer models. Their results were subsequently extended to sparse-attention Transformers in [47, 48]. More recently, Kajitsuka et al. [20] showed that even single-layer Transformers can achieve universal approximation by sufficiently increasing the network width. In contrast to these works, our approach does not rely on the notion of contextual mapping. Instead, to mitigate the limitations of parameter sharing in the feedforward layers, we introduce a token-wise shift applied repeatedly along the Transformer depth, which enhances the design flexibility and expressive capacity of token-wise feedforward networks. Beyond universal approximation results, many intrinsic theoretical properties of Trans-former architectures have been investigated. One important line of work focuses on estab-lishing explicit approximation rates. Takakura and Suzuki [37] established approximation rates for smooth infinite-length sequence-to-sequence mappings. Jiang et al. [18] intro-duced a novel complexity measure and derived explicit Jackson-type approximation rates for Transformers. Wang et al. [40] further quantified approximation rates, highlighting the roles of network depth and the number of attention heads. Approximation rates for Hölder continuous function classes were obtained in [19]. Another line of research studies the theoretical properties of the self-attention mechanism itself, including analyses of the rank structure of attention matrices [11, 4], and the Lipschitz continuity of self-attention [21, 6]. In addition, the expressive power of Transformers has been compared with that of 4other neural architectures. For instance, it has been shown that attention layers can emulate convolution operations [8, 24], and that Transformers exhibit distinct expressive behaviors compared with recurrent neural networks [40, 18]. In this paper, we investigate the approximation of maxout networks by Transformer architectures, motivated by the intrinsic connection between self-attention and max opera-tions, and further obtain the approximation of ReLU networks. This perspective provides a principled framework for analyzing the ability of Transformers to approximate contin-uous piecewise linear (CPWL) functions and enables a quantitative characterization of Transformer expressivity in terms of the number of linear regions. 
+
+## 1.2 Organization of This Paper 
+
+The remainder of this paper is organized as follows. In Section 2, we introduce the notation used throughout the paper and review the Transformer architecture. Section 3 presents the universal approximation of maxout networks by Transformer architectures. Based on this result, Section 4 further investigates the ability of Transformers to ap-proximate continuous piecewise linear functions. Finally, Section 5 concludes the paper. Detailed proofs are deferred to the appendix. 
+
+# 2 Preliminaries 
+
+## 2.1 Notations 
+
+We summarize the notations used throughout this paper as follows. • Let R and N denote the sets of real numbers and natural numbers, respectively. • Let X = ( x1, . . . , xT ) ∈ Rd×T denote a sequence of length T , where each embedding 
+
+xt ∈ Rd.• For n ∈ N, define [n] := {1, . . . , n }.• Let 1n (resp. 0n) denote the length-n all-ones (resp. all-zeros) vector. • Let 1n×m (resp. 0n×m) denote the n × m all-ones (resp. zero) matrix, and let In
+
+denote the n × n identity matrix. • When the dimensions are clear from the context, 1 and 0 denote all-ones and zero vectors or matrices, respectively. • For a vector x ∈ Rn, let (x)i denote its i-th entry, and let (x)i:j denote the subvector consisting of entries i through j, where i, j ∈ [n] and i < j .5• For a matrix A ∈ Rn×m, let (A)i,j denote its (i, j )-th entry, and let Ai, : and A:,j 
+
+denote its i-th row and j-th column, respectively, where i ∈ [n] and j ∈ [m].Moreover, (A)i:j, : denotes the submatrix consisting of rows i through j, and (A):,i :j
+
+denotes the submatrix consisting of columns i through j, for i < j .• For a vector x = ( x1, . . . , x n)⊤ ∈ Rn and p ∈ [1 , ∞), the ℓp norm is defined by 
+
+‖x‖p := 
+
+( n∑
+
+> i=1
+
+|xi|p
+
+)1/p 
+
+,
+
+and the ℓ∞ norm is defined by 
+
+‖x‖∞ := max  
+
+> 1≤i≤n
+
+|xi|.
+
+• For p ∈ [1 , ∞), the induced ℓp matrix norm of A = ( aij )i∈[n], j ∈[m] is defined by 
+
+‖A‖p := sup 
+
+> ∥x∥p=1
+
+‖Ax‖p.
+
+In particular, 
+
+‖A‖1 := max 
+
+> j∈[m]
+> n
+
+∑
+
+> i=1
+
+|aij |, ‖A‖∞ := max 
+
+> i∈[n]
+> m
+
+∑
+
+> j=1
+
+|aij |.
+
+• We use C(a, b, . . . ) to denote a positive constant depending only on the parameters 
+
+a, b, . . . .• For X = ( x1, . . . , xT ) ∈ Rd×T , define the vectorization operator Vec : Rd×T → RdT 
+
+by 
+
+Vec( X) := ( x⊤ 
+
+> 1
+
+, . . . , x⊤ 
+
+> T
+
+)⊤.
+
+Its inverse mapping Vec −1 
+
+> d,T
+
+: RdT → Rd×T is defined by 
+
+[Vec −1 
+
+> d,T
+
+(x)] :,t = ( x(t−1) d+1 , . . . , x td )⊤, t ∈ [T ],
+
+for x = ( x1, . . . , x dT )⊤.• For x = ( x1, . . . , x n)⊤ ∈ Rn, define max( x) := max 1≤i≤n xi.• The rectified linear unit (ReLU) is defined by ReLU( x) := max {0, x }.• We consider two activation functions in the self-attention module: the hardmax and 6the scaled softmax with scaling parameter λ > 0, defined by 
+
+[σH (x)] i := 
+
+
+
+| arg max j∈[T ] xj |−1, i ∈ arg max j∈[T ] xj ,
+
+0, otherwise ,
+
+and 
+
+[σλS (x)] i := eλx i
+
+∑Tj=1 eλx j
+
+, i ∈ [T ],
+
+for x = ( x1, . . . , x T )⊤ ∈ RT .• Let NH and N λS denote Transformer networks equipped with the hardmax activation 
+
+σH and the scaled softmax activation σλS , respectively. When appearing as a pair, the two networks are identical except for the choice of activation function. • For a sequence-to-sequence function f : Ω → Rm×T with Ω ⊂ Rn×T , let (f )t : Ω →
+
+Rm denote its t-th coordinate function, defined by 
+
+(f )t(X) := [ f (X)] :,t , t ∈ [T ].
+
+• For a sequence-to-sequence or vector-valued function f defined on Ω ⊂ Rn×T or 
+
+Ω ⊂ Rn, the L∞ norm is defined by 
+
+‖f ‖L∞(Ω) := ess sup 
+
+> X∈Ω
+
+‖f (X)‖∞.
+
+• A function f is called convex if Ω is convex and 
+
+f (θx + (1 − θ)y) ≤ θf (x) + (1 − θ)f (y), ∀ x, y ∈ Ω, θ ∈ [0 , 1] .
+
+• If f is Lipschitz continuous on Ω, its Lipschitz constant is defined by 
+
+Lip( f ; Ω) := sup  
+
+> x,y ∈Ω
+> x̸=y
+
+‖f (x) − f (y)‖∞
+
+‖x − y‖∞
+
+.
+
+## 2.2 Transformer Networks 
+
+Transformers are widely used for sequence modeling, aiming to learn mappings be-tween input and output sequences. A Transformer network comprises three main compo-nents: positional embedding, stacked Transformer blocks, and a linear readout layer. 7Transformer Block. Each Transformer block consists of a self-attention layer followed by a token-wise feedforward layer. We consider an input space X ⊂ Rd×T consisting of sequences of T tokens, each represented as a d-dimensional embedding. Given input 
+
+X ∈ X , the output of a single block is computed as Attn (X) = X +
+
+> H
+
+∑
+
+> h=1
+
+W hOW hV X σ [(W hK X)⊤W hQX] ,
+
+FF (Attn (X)) = Attn (X) + W2 ReLU( W1Attn (X) + b11⊤ 
+
+> T
+
+) + b21⊤ 
+
+> T
+
+,
+
+(2.1) where, for the h-th attention head, W hK , W hQ, W hV ∈ Rk×d denote the key, query, and value projection matrices, respectively, and W hO ∈ Rd×k is the output projection matrix. The feedforward layer parameters are W1 ∈ Rr×d, W2 ∈ Rd×r, with bias vectors b1 ∈ Rr
+
+and b2 ∈ Rd. The activation function σ in the self-attention layer is applied column-wise, yielding a column-stochastic attention matrix. We consider two types of activation functions in the self-attention module: hardmax σH and scaled softmax σλS with scaling parameter λ > 0. The ReLU activation in the feedforward layer is applied element-wise to each entry. Here, d is the embedding dimension, H is the number of heads, k is the head size, and r is the hidden layer size of the feedforward layer. We denote the complexity of a Transformer block by s = ( d, k, H, r ), and let Fs 
+
+> tf
+
+⊂ { f : X → Rd×T } denote the class of functions computed by a Transformer block of complexity s. Note that the parameters in both attention and feedforward modules are shared across tokens, rendering the layer equivariant to permutations. Token interactions are mediated solely through pairwise dot products in the attention mechanism. 
+
+Transformer Network. Let E : Rn×T → Rd×T denote the positional embedding, and 
+
+C : Rd×T → Rm×T the linear readout. A Transformer network with L blocks of complexity 
+
+s is defined as 
+
+T FN n,m (L, d, k, H, r ) := 
+
+{
+
+T : Rn×T → Rm×T
+
+∣∣∣ T = C ◦ f L ◦ · · · ◦ f 1 ◦ E, f i ∈ F s
+
+> tf
+
+}
+
+.
+
+When the self-attention activation is fixed to hardmax, the corresponding class is denoted by T FN hard  
+
+> n,m
+
+(L, d, k, H, r ). Given a hardmax-based Transformer NH , the associated scaled softmax version with parameter λ > 0 is denoted by N λS , obtained by replacing σH with 
+
+σλS .
+
+Positional Embedding. Transformer layers are inherently permutation-equivariant [46]. To break this symmetry, positional embeddings are commonly employed [39, 46]. In this 8paper, we adopt a simple positional encoding: the input is linearly projected and then shifted by token-specific offsets [18], formally modeled as E(X) = AX + B with A ∈ Rn×d
+
+and B ∈ Rd×T . This ensures that each token is mapped to a distinct domain, eliminating permutation equivariance and enhancing the design flexibility of token-wise feedforward networks. 
+
+Auxiliary Token. We employ an auxiliary token, a technique widely used in Trans-former applications. For example, the classification token ([CLS]) in BERT [10] serves this purpose. Concretely, for a context of size T , the input is augmented to T + 1 tokens by concatenating a constant vector as the auxiliary token. The output corresponding to this token is disregarded in subsequent processing. For simplicity, we omit further elaboration, as its functional role is made explicit in the proofs. 
+
+# 3 Approximation for Maxout Networks by Transform-ers 
+
+A typical fully connected feedforward neural network (FNN) is a composition of stacked layers, where each layer applies an affine transformation followed by a nonlin-ear activation. Formally, an FNN with input dimension n, output dimension m, and L
+
+hidden layers of widths d1, . . . , d L computes a map 
+
+T : Rn → Rm := g ◦ T (L) ◦ · · · ◦ T (1) , with T (ℓ)(x) := σ(Wℓx + bℓ), (3.2) where σ denotes the activation function, Wℓ ∈ Rdℓ×dℓ−1 , bℓ ∈ Rdℓ for ℓ = 1 , . . . , L with 
+
+d0 = n, and g(x) = W x + b with W ∈ Rm×dL , b ∈ Rm.A maxout network [14] is a type of FNN in which each neuron outputs the maximum over a set of affine functions. Specifically, a rank-p maxout layer with n inputs and m
+
+outputs defines the function class 
+
+Tmax (n, p, m ) := 
+
+{
+
+T : Rn → Rm
+
+∣∣∣ T (x) = [ max( W 1x + b1), . . . , max( W mx + bm)]⊤,W i ∈ Rp×n, bi ∈ Rp, i ∈ [m]
+
+}
+
+.
+
+(3.3) A single maxout layer is often referred to as a shallow maxout network. A deep maxout network is constructed by stacking multiple such layers. Formally, a rank-p deep maxout network with input dimension d0 and L layers of widths d1, . . . , d L computes 
+
+T := T (L) ◦ · · · ◦ T (1) , with T (ℓ) ∈ T max (dℓ−1, p, d ℓ), ℓ ∈ [L]. (3.4) 9To accommodate sequence-to-sequence mappings, we adopt a convention of vectorizing inputs and outputs. Specifically, a rank-p maxout layer mapping from Rn1×n2 to Rm1×m2
+
+is defined by 
+
+Tmax (n1 × n2, p, m 1 × m2) := 
+
+{
+
+T : Rn1×n2 → Rm1×m2
+
+∣∣∣ T (X) = Vec −1
+
+> m1,m 2
+
+˜T (Vec( X)) ,
+
+˜T ∈ T max (n1n2, p, m 1m2)
+
+}
+
+.
+
+This vectorization convention naturally extends to deep maxout networks defined in (3.4) and to feedforward networks defined in (3.2), where both inputs and outputs are treated in the same vectorized form. We construct a three-layer Transformer network that approximates a maxout layer with arbitrary accuracy. As defined in Section 2.1, we consider paired Transformer net-works NH and N λS , which are identical in architecture, except that NH employs the hard-max activation while N λS uses the scaled softmax activation. This convention is adopted throughout all subsequent theorems. 
+
+Theorem 3.1 (Approximation of a Maxout Layer with p ≤ T ) Let p ≤ T , let Ω ⊂
+
+Rn×T be compact, and let f ∈ T max (n × T, p, m × T ). Then, there exists a hardmax-based Transformer network 
+
+NH ∈ T FN hard 
+
+> n,m
+
+(L = 3 ,d = max {n, m (T p + T + 1) } + T + 1 ,k = 2 ,H = T mp, r = 4( n + 1)( T + 3) ),
+
+such that 
+
+NH
+
+∣∣Ω = f ∣∣Ω.
+
+Moreover, for any ϵ > 0, the corresponding softmax-based Transformer N λS satisfies 
+
+‖N λS − f ‖L∞(Ω) < ϵ, 
+
+provided that the scaling parameter satisfies λ = O(1 /ϵ ).
+
+Proof Sketch. Let XVec = Vec( X). From (3.3), the k-th column of f can be written as 
+
+(f )k(X) = [max( W 1,k XVec + b1,k ), . . . , max( W m,k XVec + bm,k )]⊤,
+
+10 where X = ( x1, . . . , xT ) ∈ Ω, W i,k ∈ Rp×nT , and bi,k ∈ Rp for i ∈ [m]. The construction proceeds in two steps: 
+
+Step 1: Approximating the affine maps. We first approximate the set of affine functions {W i,k XVec + bi,k }mi=1 using a combination of a feedforward layer and a self-attention layer. Define V (i,j ) := Vec −1 
+
+> n,T
+
+(( W i,k )j, :), so that (W i,k )j, :XVec = ∑Tt=1 x⊤ 
+
+> t
+
+(V (i,j )):,t . By Lemma A.2, each term x⊤ 
+
+> t
+
+(V (i,j )):,t can be implemented by a token-wise feedforward layer after parti-tioning the input tokens into distinct regions. Concretely, the feedforward layer realizes a piecewise linear function where the t-th region corresponds to the linear map x⊤ 
+
+> t
+
+(V (i,j )):,t 
+
+for t ∈ [T ].The resulting scalars {x⊤ 
+
+> t
+
+(V (i,j )):,t }Tt=1 are then aggregated via a self-attention layer, which is the only Transformer component that enables inter-token interactions. 
+
+Step 2: Approximating the max operation. Each term max( W i,k XVec + bi,k ) is approximated by an additional self-attention layer. This relies on the observation 
+
+x⊤σλS (x) ≈ x⊤σH (x) = max( x)
+
+for sufficiently large λ > 0 (see Lemma A.3), so that the approximation error can be made arbitrarily small by taking λ large enough. 
+
+Remark 3.1 In Theorem 3.1, a maxout layer with parameter complexity O(T 2nmp ) can be approximated by a Transformer with the same order of parameters, once the sparsity of both the feedforward and self-attention layers is taken into account (see Remark A.3). This shows that the Transformer-based approximation is parameter-efficient relative to the maxout baseline. 
+
+Remark 3.2 Theorem 3.1 assumes p ≤ T , exploiting x⊤σλ(x) ≈ σH (x) = max( x) for large λ. For p > T , the same computation can be implemented by a rank-s maxout network of depth d(p−1) /(s−1) e for any s ≤ T , equipped with residual connections from the input. This regime corresponds to the approximation of deep maxout networks by Transformer networks, which will be addressed in Theorem 3.4. 
+
+Remark 3.3 In Theorem 3.1, if λ ≥ C(T, n, M 1, M 2), the approximation error between the hardmax-based network NH and the corresponding softmax-based network N λS satisfies (see Remark A.2 for details) 
+
+‖N H − N λS ‖L∞(Ω) ≤ C1T 2λ−1,
+
+11 where C1 is an absolute constant, and 
+
+M1 := max  
+
+> X∈Ω
+
+‖X‖∞, M2 := max  
+
+> i∈[m],k ∈[T]
+
+max {‖ bi,k ‖∞, ‖W i,k ‖∞}.
+
+Moreover, NH is Lipschitz continuous on Ω, with 
+
+Lip( NH ; Ω) ≤ C2pT 2M2,
+
+for some absolute constant C2.
+
+By Theorem 3.1, a three-layer Transformer network can approximate a single maxout layer. We now extend this construction to approximate a depth-D maxout network by sequentially stacking D such Transformer subnetworks. 
+
+Theorem 3.2 (Approximation of Deep Maxout Networks with p ≤ T ) Let p ≤
+
+T , let Ω ⊂ Rn×T be compact, and let f : Rn×T → Rm×T be realized by a D-layer maxout network with input dimension nT , width mT at each layer, and rank p. Then there exists a hardmax-based Transformer network 
+
+NH ∈ T FN hard 
+
+> n,m
+
+(L = 3 D, d = max {n, m [( T + 1)( p + 1) + 1] } + T + 1 ,k = 2 ,H = ( T + 1) mp, r = 4(max {n, mp } + 1)( T + 3) ),
+
+such that 
+
+NH
+
+∣∣Ω = f ∣∣Ω.
+
+Moreover, for any ϵ > 0, the corresponding softmax-based Transformer N λS satisfies 
+
+‖N λS − f ‖L∞(Ω) < ϵ, 
+
+provided that the scaling parameter satisfies λ = O(1 /ϵ ).
+
+The construction of Theorem 3.2 builds on Theorem 3.1 and relies on two key ideas. First, as in Theorem 3.1, positional embeddings are used to mitigate the effect of param-eter sharing across tokens in the feedforward layers, allowing each feedforward module to approximate a piecewise-linear function. For the multi-layer setting, we further introduce token-dependent shifts at each layer, which move token representations into pairwise disjoint regions and preserve the maxout computation. Second, by Remark 3.3, each 12 hardmax-based subnetwork admits a uniform Lipschitz bound, and the approximation error between a hardmax subnetwork and its softmax counterpart scales as O(1 /λ ). As a result, stacking D such subnetworks yields a deep Transformer network whose soft-max version approximates the corresponding deep maxout network with controlled error accumulation. 
+
+Remark 3.4 If the scaling parameter satisfies λ ≥ C
+
+(
+
+T, n, M, D, (mℓ)Dℓ=1 
+
+)
+
+, then the ap-proximation error between the hardmax-based Transformer NH and its softmax-based coun-terpart N λS satisfies 
+
+‖N H − N λS ‖L∞(Ω) ≤ C
+
+(
+
+T, M, D, (mℓ)Dℓ=1 
+
+)
+
+λ−1.
+
+Here, 
+
+M := sup 
+
+> X∈Ω
+
+‖X‖∞, mℓ := max   
+
+> i∈[m],j ∈[T]
+
+max {‖ W ℓi,j ‖∞, ‖bℓi,j ‖∞},
+
+where {W ℓi,j }i,j and {bℓi,j }i,j denote the weight matrices and bias vectors of the ℓ-th maxout layer, respectively. 
+
+For a feedforward neural network defined as (3.2) with the ReLU activation function 
+
+x 7 → max {0, x }, we refer to it as a ReLU network. Such a network can be regarded as a special case of a rank-2 maxout network followed by an affine readout layer. Hence, Theorem 3.2 immediately implies that ReLU networks admit universal approximation by Transformer networks, under vectorized representations of inputs and outputs. Moreover, the affine readout can be implemented by an additional Transformer layer, since a token-wise feedforward layer combined with self-attention can approximate affine mappings (cf. Step 1 in Proof Sketch of Theorem 3.1). 
+
+Corollary 3.3 (Universal Approximation of ReLU Networks) Let T ≥ 2, Ω ⊂
+
+Rn×T be compact, and let f : Rn×T → Rm×T be computed by a D-layer ReLU network with width mT per layer. Then, there exists a hardmax-based Transformer network 
+
+NH ∈ T FN hard 
+
+> n,m
+
+(L = 3 D + 1 ,d = max {n, m [3( T + 1) + 1] } + T + 1 ,k = 2 ,H = 2( T + 1) m, r = 4(max {n, 2m} + 1)( T + 3) ),
+
+such that 
+
+NH
+
+∣∣Ω = f ∣∣Ω.
+
+13 Moreover, for any ϵ > 0, the corresponding softmax-based Transformer N λS satisfies 
+
+‖N λS − f ‖L∞(Ω) < ϵ, 
+
+provided that the scaling parameter satisfies λ = O(1 /ϵ ).
+
+As discussed in Remark 3.2, a shallow maxout network of rank p > T ≥ 2 can be realized by a rank-s maxout network of depth dp−1 
+
+> s−1
+
+e for any 2 ≤ s ≤ T , equipped with residual connections from the input. Combining this observation with Theorem 3.2, we obtain the following result: 
+
+Theorem 3.4 (Universal Approximation of Shallow Maxout Networks) Let p, T ≥
+
+2, let Ω ⊂ Rn×T be compact, and let f ∈ T max (n × T, p, m × T ). Then, for any 2 ≤ s ≤ T ,there exists a hardmax-based Transformer network 
+
+NH ∈ T FN hard 
+
+> n,m
+
+(L = 3 
+
+⌈p − 1
+
+s − 1
+
+⌉
+
+,d = d′ + T + 1 ,k = 2 ,H = ( T + 1) m min {s, p },r = 4( r′ + 1)( T + 3) ),
+
+with 
+
+d′ =
+
+
+
+max {n, m (T p + T + 1) }, s ≥ p, n + m[( T + 1)( s + 1) + 1] , s < p, r′ =
+
+
+
+n, s ≥ p, 
+
+max {n + m, ms }, s < p, 
+
+such that 
+
+NH
+
+∣∣Ω = f ∣∣Ω.
+
+Moreover, for any ϵ > 0, the corresponding softmax-based Transformer N λS satisfies 
+
+‖N λS − f ‖L∞(Ω) < ϵ, 
+
+provided that the scaling parameter satisfies λ = O(1 /ϵ ).
+
+To approximate a deep maxout network with D layers, we sequentially stack D Trans-former subnetworks, each constructed as in Theorem 3.4. Combining Theorems 3.2 and 3.4 yields the following universal approximation result. 14 Theorem 3.5 (Universal Approximation of Deep Maxout Networks) Let p, T ≥
+
+2, let Ω ⊂ Rn×T be compact, and let f : Rn×T → Rm×T be computed by a D-layer maxout network with input dimension dT , width mT per layer, and rank p. For any 2 ≤ s ≤ T ,there exists a hardmax-based Transformer network 
+
+NH ∈ T FN hard 
+
+> n,m
+
+(L = 3 
+
+⌈p − 1
+
+s − 1
+
+⌉
+
+D, d = d′ + T + 1 ,k = 2 ,H = ( T + 1) m min {s, p },r = 4( r′ + 1)( T + 3) ),
+
+with 
+
+d′ =
+
+
+
+max {n, m [( T + 1)( p + 1) + 1] }, s ≥ p, 
+
+max {n, m } + m[( T + 1)( s + 1) + 1] , s < p, r′ =
+
+
+
+max {n, mp }, s ≥ p, 
+
+max {n + m, ms }, s < p, 
+
+such that 
+
+NH
+
+∣∣Ω = f ∣∣Ω.
+
+Moreover, for any ϵ > 0, the corresponding softmax-based Transformer N λS satisfies 
+
+‖N λS − f ‖L∞(Ω) < ϵ, 
+
+provided that the scaling parameter satisfies λ = O(1 /ϵ ).
+
+Remark 3.5 When s ≥ p, Theorems 3.4 and 3.5 reduce to Theorems 3.1 and 3.2, respectively. 
+
+Remark 3.6 For the Transformer networks in Theorems 3.2, 3.4, and 3.5, the total num-ber of parameters matches that of the target maxout network up to constants when the sparsity of both feedforward and self-attention layers is considered, achieving parameter-efficient approximation (see Remark 3.1). This follows from sequentially stacking subnet-works that approximate individual maxout layers. 
+
+According to [2], any convex and Lipschitz continuous function can be approximated by the maximum of finitely many affine functions; see Lemma C.2. Consequently, any such function can be approximated by a maxout layer with sufficiently large rank. Combining this observation with Theorem 3.4, we obtain the following result. 15 Corollary 3.6 (Approximation of Convex Lipschitz Functions) Let T ≥ 2 and let Ω ⊂ Rn×T be a compact convex set with nonempty interior. Suppose that f : Ω → Rm×T
+
+is convex and Lipschitz continuous with Lipschitz constant C. Then, for any integer p ≥ 2
+
+and any 2 ≤ s ≤ T , there exists a hardmax-based Transformer network 
+
+NH ∈ T FN hard 
+
+> n,m
+
+(L = 3 
+
+⌈p − 1
+
+s − 1
+
+⌉
+
+,d = d′ + T + 1 ,k = 2 ,H = ( T + 1) m min {s, p },r = 4( r′ + 1)( T + 3) ),
+
+where 
+
+d′ =
+
+
+
+max {n, m (T p + T + 1) }, s ≥ p, n + m[( T + 1)( s + 1) + 1] , s < p, r′ =
+
+
+
+n, s ≥ p, 
+
+max {n + m, ms }, s < p. 
+
+The network NH satisfies the uniform approximation bound 
+
+‖N H − f ‖L∞(Ω) ≤ 72 nT 2C diam(Ω) p−2/(nT ),
+
+where diam(Ω) := sup x,y∈Ω ‖x − y‖∞.
+
+Moreover, for any ϵ > 0, the corresponding softmax-based Transformer N λS satisfies 
+
+‖N λS − f ‖L∞(Ω) < 72 nT 2C diam(Ω) p−2/(nT ) + ϵ, 
+
+provided that the scaling parameter satisfies λ = O(1 /ϵ ).
+
+# 4 The Number of Linear Regions for Transformer Networks 
+
+Building on Section 3, where Transformer networks were shown to approximate max-out networks, we extend the analysis to a broader and fundamental function class, namely continuous piecewise linear (CPWL) functions. A natural way to quantify the expres-sive power of Transformer architectures is through the number of linear regions they can represent. Accordingly, we study the architectural complexity required for Transformer networks to realize CPWL functions with a prescribed number of linear regions, and con-versely, characterize the maximal number of linear regions achievable by Transformers of 16 a given complexity. Classically, CPWL functions are defined as mappings f : Rn → Rm. Here we extend this notion to sequence-to-sequence mappings f : Rn×T → Rm×T by identifying inputs and outputs with their vectorized representations. In particular, when T = 1 , this definition reduces to the standard one, and the two notions coincide. We begin by formalizing CPWL functions in the sequence-to-sequence setting. 
+
+Definition 4.1 (continuous piecewise linear (CPWL) functions) A function f :
+
+Rn×T → Rm×T is called CPWL if it is continuous and if there exists a finite collection of closed and nonempty sets {I k}Kk=1 ⊂ Rn×T with nonempty, pairwise disjoint interiors and 
+
+⋃Kk=1 Ik = Rn×T , such that f is affine on each Ik. That is, for every k = 1 , . . . , K , there exist W k ∈ RmT ×nT and bk ∈ RmT such that f (X) = Vec −1
+
+> m,T
+
+(W k Vec( X) + bk), X ∈ I k.
+
+Definition 4.2 (Linear regions of CPWL functions) Let f : Rn×T → Rm×T be CPWL. A set I ⊂ Rn×T is called a linear region of f if it is a maximal connected subset on which 
+
+f is affine. We denote by N (f ) the number of linear regions of f , and for a class of CPWL functions F define N (F) := sup f ∈F N (f ).
+
+We now relate CPWL functions to maxout representations. By Lemma 4.1, any CPWL function can be decomposed as the difference of two convex CPWL functions. Moreover, each convex CPWL function can be represented as the maximum of finitely many affine functions. Combining this decomposition with the universal approximation results for maxout networks established in Theorem 3.4, we conclude that Transformer networks are capable of representing arbitrary CPWL functions. This is formalized in Theorem 4.2 below. 
+
+Lemma 4.1 ([15, Proposition 4.3]) Let f : Rn → R be a CPWL function with N
+
+linear regions. Then f admits a decomposition f = g − h, where both g and h are convex CPWL functions with at most N 2n+1 linear regions. 
+
+Theorem 4.2 (Universal Approximation of CPWL Functions) Let N, T ≥ 2, and let f : Rn×T → Rm×T be a CPWL function with at most N linear regions. Then, for any compact set Ω ⊂ Rn×T , there exists a hardmax-based Transformer network 
+
+NH ∈ T FN hard 
+
+> n,m
+
+(L = 3 
+
+⌈N 2nT +1 − 1
+
+T − 1
+
+⌉
+
+,d = n + 2 m(T + 1) 2 + 2 m + T + 1 ,k = 2 ,H = 2 mT (T + 1) ,r = 4(max {n + 2 m, 2mT } + 1)( T + 3) ),
+
+17 such that 
+
+NH
+
+∣∣Ω = f ∣∣Ω.
+
+Moreover, for any ϵ > 0, the corresponding softmax-based Transformer N λS satisfies 
+
+‖N λS − f ‖L∞(Ω) < ϵ, 
+
+provided that the scaling parameter satisfies λ = O(1 /ϵ ).
+
+Next, we study the maximal number of linear regions that can be attained by CPWL functions approximable by Transformer networks with a fixed architecture. To this end, we extend the notion of linear regions from CPWL functions to Transformer architectures. Specifically, by Theorem 4.2, although Transformer networks are not CPWL functions themselves, any CPWL function with an arbitrarily prescribed number of linear regions can be approximated, on an arbitrary compact set and to arbitrary accuracy, by a Trans-former network of fixed architecture through a suitable choice of parameters. Let F denote the class of functions realizable by Transformer networks with a fixed architecture, and let f be a CPWL function. If, for any compact set Ω ⊂ Rn×T and any 
+
+ϵ > 0, there exists ˆf ∈ F such that 
+
+‖ ˆf − f ‖L∞(Ω) < ϵ, 
+
+then we say that the Transformer architecture can realize at least N (f ) linear regions, and we write 
+
+N (F) ≥ N (f ).
+
+The following lemma provides a lower bound on the number of linear regions realizable by deep maxout networks [27]. 
+
+Lemma 4.3 ([27, Proposition 3.12]) Consider a rank-k maxout network N with n0
+
+inputs and L layers, with layer widths n1, . . . , n L. Let n ≤ n0, n1 
+
+> 2
+
+, . . . , nL−1 
+
+> 2
+
+, and assume that nl/n is even for l = 1 , . . . , L − 1 (otherwise, take the largest even lower bound and discard the rest). Then the number of linear regions satisfies 
+
+N (N ) ≥
+
+(L−1∏
+
+> l=1
+
+(nl 
+
+> n
+
+(k − 1) + 1 )n
+
+)( n∑
+
+> j=0
+
+(nL
+
+j
+
+)
+
+(k − 1) j
+
+)
+
+.
+
+Combining Lemma 4.3 with the universal approximation of deep maxout networks by Transformer networks established in Theorem 3.5, we obtain a lower bound on the maximal number of linear regions attainable by Transformer networks with a fixed archi-tecture. 18 Theorem 4.4 (Number of linear regions for Transformer networks) Let F denote the class of functions realizable by Transformer networks with input dimension n × T , out-put dimension m × T , and size of 
+
+(L = D, d = max {n, m [( T + 1) 2 + 1] } + T + 1 ,k = 2 ,H = ( T + 1) T m, r = 4(max {n, mT } + 1)( T + 3) ),
+
+where D ≥ 3. Then 
+
+N (F) ≥
+
+[mT q (T − 1) + 1 
+
+] q(⌊D/ 3⌋− 1) q
+
+∑
+
+> j=0
+
+(mT j
+
+)
+
+(T − 1) j , (4.5) 
+
+for every integer q satisfying q ≤ min {nT, mT / 2}, and mT q is even. 
+
+Remark 4.1 Theorem 4.4 shows that the number of linear regions attainable by Trans-former networks grows exponentially with the network depth D, highlighting the expressive power gained through depth. 
+
+# 5 Conclusions 
+
+This paper studies the expressive power of Transformer networks. We construct Trans-former architectures that uniformly approximate maxout networks with comparable model complexity, thereby establishing a direct link between the approximation theory of feed-forward neural networks and Transformers. Building on this connection, we develop a principled framework for analyzing the ability of Transformers to approximate contin-uous piecewise linear (CPWL) functions and provide a quantitative characterization of their expressivity in terms of the number of linear regions. Several directions for future research naturally arise from this work. One direction is to transfer refined approximation results for feedforward neural networks—such as ap-proximation rates on specific function spaces and techniques for alleviating the curse of dimensionality—to Transformer models via their systematic approximation of maxout and ReLU networks. Another important question is whether pure self-attention architec-tures can efficiently emulate standard feedforward networks, and more broadly, whether Transformers or self-attention–only models can surpass feedforward networks in expressive power, for instance as measured by the growth of linear regions. 19 Appendix A Proof of Theorem 3.1 
+
+To prove Theorem 3.1, we first consider a simplified setting in which a Transformer network approximates a function f ∈ T max (n × T, p, m ) at a single token position, while suppressing the outputs at all other positions. This case is established in the follow-ing lemma. The general sequence-to-sequence result then follows by a straightforward extension with the same architecture is applied across T positions. 
+
+Lemma A.1 Let p ≤ T , Ω ⊂ Rn×T be a compact set, and let f ∈ T max (n × T, p, m ).Then, for any k ∈ [T ], there exists a hardmax-based Transformer network 
+
+NH ∈ T FN hard 
+
+> n,m
+
+(L = 3 ,d = max {n, mp + 2 m} + T + 1 ,k = 2 ,H = mp, r = 4( n + 1)( T + 3) ),
+
+such that 
+
+(NH )k
+
+∣∣Ω = f ∣∣Ω, and (NH )k′
+
+∣∣Ω = 0, for all k′ ∈ [T ] \ { k}.
+
+Moreover, for any ϵ > 0, the corresponding softmax-based Transformer N λS satisfies 
+
+‖(N λS )k − f ‖L∞(Ω) < ϵ, and ‖(N λS )k′ ‖L∞(Ω) < ϵ for all k′ ∈ [T ] \ { k},
+
+provided that the scaling parameter satisfies λ = O(1 /ϵ ).
+
+Proof. Let X = ( x1, . . . , xT ) ∈ Rn×T and denote by XVec := Vec( X) ∈ RnT its vectorized form. By definition, any function f ∈ T max (n × T, p, m ) can be written as 
+
+f (X) = [max( W 1XVec + b1), . . . , max( W mXVec + bm)]⊤,
+
+where W i ∈ Rp×nT and bi = ( bij )pj=1 ∈ Rp for i ∈ [m].For each i ∈ [m] and j ∈ [p], define 
+
+V (i,j ) := Vec −1
+
+> n,T
+
+((W i)j, :
+
+) ∈ Rn×T .
+
+Then, for any X ∈ Rn×T ,
+
+(W i)j, :XVec + bij =
+
+> T
+
+∑
+
+> t=1
+
+x⊤ 
+
+> t
+
+(V (i,j )):,t + bij ,
+
+20 which expresses each affine component of f as a sum of token-wise inner products. We first construct a hardmax-based Transformer network that realizes the desired token-selective approximation. The approximation result for the softmax-based Trans-former then follows from a quantitative comparison between the hardmax and softmax activations. 
+
+(1) Hardmax Case 
+
+We construct the network in two main steps. 
+
+Step 1: Affine map via feedforward layer and self-attention layer. 
+
+A feedforward layer and a self-attention layer are used to approximate {W iXVec +
+
+bi}mi=1 . Formally, together with position embedding, the resulting mapping sends X ∈ Ω
+
+to 
+
+Z =
+
+
+
+Z1
+
+Z2
+
+...
+
+Zm
+
+ , Z i =
+
+(
+
+(W iXVec + bi)⊤ 0
+
+)
+
+, for i ∈ [m]. (A.6) • Position embeddings are introduced to map each token of the input sequence into a distinct domain. Denote 
+
+a := min {xij | X = ( xij ) ∈ Ω, i ∈ [n], j ∈ [T ]} ,b := max {xij | X = ( xij ) ∈ Ω, i ∈ [n], j ∈ [T ]} ,
+
+then Ω ⊂ [a, b ]n×T . We use the following position embedding: 
+
+˜X =
+
+(
+
+X 0n
+
+)
+
++ P
+
+0
+
+IT +1 
+
+ ∈ Rd×(T +1) , with P := ˜ p1⊤ 
+
+> n
+
+,
+
+where ˜p = (˜ pt)t ∈ RT +1 , ˜pt = ( b−a)( t−1)+ tδ for t ∈ [T ], and ˜pT +1 = a+( b−a)( T +1/2) + ( T + 1) δ, with 0 < δ < (b − a)/(T + 1) . Denoting X = ( x1, · · · , xT ) ∈ Ω and 
+
+˜X = ( ˜ x1, · · · , ˜xT , ˜xT +1 ), it is easy to see that ( ˜ xt)1: n ∈ I t := [ a, b ]n + (( t − 1)( b −
+
+a) + tδ )1n for t ∈ [T + 1] . Thus, Ii ∩ I j = ∅ for any i, j ∈ [T + 1] , i 6 = j.• A feedforward layer is employed to realize token-wise affine mappings {x⊤ 
+
+> t
+
+(V (i,j )):,t +
+
+bij }.21 Formally, it maps ˜X to 
+
+˜Y =
+
+
+
+Y
+
+0
+
+IT +1 
+
+ ∈ Rd×(T +1) , Y = ( y1, . . . , yT , yT +1 ) ∈ Rmp ×(T +1) .
+
+For each t ∈ [T ], the output token yt ∈ Rmp is defined componentwise by 
+
+(yt)(i−1) p+j = x⊤ 
+
+> t
+
+(V (i,j )):,t , i ∈ [m], j ∈ [p],
+
+that is, yt stacks all inner products between xt and the t-th columns of {V (i,j )}i∈[m], j ∈[p].And the last token is given by 
+
+yT +1 = 0mp .
+
+For simplicity of presentation, we omit the bias terms bi; they can be incorporated into the first output token y1 by replacing x⊤ 
+
+> 1
+
+(V (i,j )):,1 with x⊤ 
+
+> 1
+
+(V (i,j )):,1 + bij .Since the positional embedding maps each token into a distinct domain, it suffices to construct each output neuron as a piecewise linear function that coincides with 
+
+x⊤ 
+
+> t
+
+(V (i,j )):,t on It for t ∈ [T ], and with 0 on IT +1 . By Lemma A.2, such a function can be exactly represented by a one-layer feedforward network with 4( n + 1)( T + 2) 
+
+hidden neurons. To compensate for the residual connection, we additionally use the identity ReLU( −x)−
+
+ReLU( x) = −x. Thus, a feedforward layer with 2n hidden neurons maps 
+
+(
+
+X 0n
+
+)
+
++
+
+P to −
+
+(
+
+X 0n
+
+)
+
+− P .Altogether, a residual feedforward layer with 4( n + 1)( T + 2) + 2 n hidden neurons maps ˜X to ˜Y .• A self-attention layer is employed to aggregate the tokens to obtain {W iXVec +bi}mi=1 ,leveraging the attention mechanism’s ability to calculate a weighted sum of the input tokens. Formally, the self-attention layer consists of mp heads, each of size 2, and can be written as 
+
+˜Y +
+
+> m
+
+∑
+
+> i=1
+> p
+
+∑
+
+> j=1
+
+W (i) 
+
+> O
+
+W (i,j ) 
+
+> V
+
+˜Y σ [( W (j) 
+
+> K
+
+˜Y )⊤W (j) 
+
+> Q
+
+˜Y ],
+
+where W (i,j ) 
+
+> K
+
+, W (i,j ) 
+
+> Q
+
+, W (i,j ) 
+
+> V
+
+∈ R2×d, W (i,j ) 
+
+> O
+
+∈ Rd×2, and each head corresponds to 
+
+(W i)j, :XVec .22 We first specify the value matrices. Let W (i,j ) 
+
+> V
+
+˜Y extract the (p(i − 1) + j)-th row of 
+
+˜Y ; that is 
+
+W (i,j ) 
+
+> V
+
+˜Y =
+
+(
+
+T (x⊤ 
+
+> 1
+
+(V (i,j )):,1 + bij ) T x⊤ 
+
+> 2
+
+(V (i,j )):,2 · · · T x⊤ 
+
+> T
+
+(V (i,j )):,T 00 0 · · · 0 0
+
+)
+
+, (A.7) which is achieved by setting the (p(i − 1) + j)-th column of W (i,j ) 
+
+> V
+
+to (T, 0) ⊤ and all other column to 0.To obtain (W i)j, :XVec + bij , i.e., ∑Tt=1 x⊤ 
+
+> t
+
+(V (i,j )):,t + bij , we aim to make 
+
+σH [( W (j) 
+
+> K
+
+˜Y )⊤W (j) 
+
+> Q
+
+˜Y ] = 
+
+
+
+1 · · · j − 1 j j + 1 · · · T + 1 0 · · · 0 1 
+
+> T
+
+0 · · · 0
+
+... . . . ... ... ... . . . ...
+
+0 · · · 0 1 
+
+> T
+
+0 · · · 01 · · · 1 0 1 · · · 1
+
+. (A.8) Assuming (A.8) holds, we obtain 
+
+W (i,j ) 
+
+> V
+
+˜Y σ H [( W (j) 
+
+> K
+
+˜Y )⊤W (j) 
+
+> Q
+
+˜Y ] = 
+
+( 1 · · · j − 1 j j + 1 · · · T + 1 0 · · · 0 (W i)j, :XVec + bij 0 · · · 00 · · · 0 0 0 · · · 0
+
+)
+
+.
+
+To realize (A.8), it suffices to choose 
+
+W (j) 
+
+> K
+
+˜Y =
+
+( 1 · · · T T + 1 
+
+v1 · · · v1 v2
+
+)
+
+,
+
+and 
+
+W (j) 
+
+> Q
+
+˜Y =
+
+( 1 · · · j − 1 j j + 1 · · · T + 1 
+
+v2 · · · v2 v1 v2 · · · v2
+
+)
+
+,
+
+where v1 = (1 , 0) ⊤ and v2 = (0 , 1) ⊤. This construction is feasible since, by choosing 
+
+W (j) 
+
+> K
+
+=
+
+(
+
+0 A
+
+)
+
+, A ∈ R2×(T +1) , and noting that IT +1 is included in ˜Y , W (j) 
+
+> K
+
+˜Y
+
+can realize any matrix in R2×(T +1) through an appropriate choice of A. The same argument applies to W (j) 
+
+> Q
+
+˜Y .Consequently, 
+
+> p
+
+∑
+
+> j=1
+
+W (i,j ) 
+
+> V
+
+˜Y σ H
+
+[(W (j) 
+
+> K
+
+˜Y )⊤W (j) 
+
+> Q
+
+˜Y ] =
+
+(
+
+(W i)1,:XVec + bi 
+
+> 1
+
+· · · (W i)p, :XVec + bip 00 · · · 0 0
+
+)
+
+=
+
+(
+
+Zi
+
+0
+
+)
+
+.
+
+23 Next, define the output projection W (i) 
+
+> O
+
+by 
+
+(W (i) 
+
+> O
+
+)mp +i, : = (1 , 0) , (W (i) 
+
+> O
+
+)i′,: = (0 , 0) for i′ 6 = mp + i. 
+
+It follows that 
+
+> m
+
+∑
+
+> i=1
+> p
+
+∑
+
+> j=1
+
+W (i) 
+
+> O
+
+W (i,j ) 
+
+> V
+
+˜Y σ H
+
+[(W (j) 
+
+> K
+
+˜Y )⊤W (j) 
+
+> Q
+
+˜Y ] =
+
+
+
+0mp ×(T +1) 
+
+Z
+
+0
+
+ ,
+
+where Z is defined in (A.6). With the residual connection, the self-attention layer therefore maps ˜Y to 
+
+˜Z := ˜Y +
+
+
+
+0mp ×(T +1) 
+
+Z
+
+0
+
+ =
+
+
+
+YZ
+
+0
+
+IT +1 
+
+ .
+
+In conclusion, together with the positional embedding, a feedforward layer and a self-attention layer with hardmax activation map X to ˜Z, thereby realizing {W iXVec + bi}mi=1 .
+
+Step 2: Maximum via self-attention. 
+
+A self-attention layer is employed to map {W iXVec }mi=1 to {max( W iXVec )}mi=1 .Formally, the self-attention layer consists of m heads, each with a size of 2, and its output can be denoted by 
+
+˜Z +
+
+> m
+
+∑
+
+> i=1
+
+W iOW iV ˜Zσ H [( W iK ˜Z)⊤W iQ ˜Z],
+
+where W iK , W iQ, W iV ∈ R2×d, and W iO ∈ Rd×2.Let the input be 
+
+ˆZ =
+
+
+
+Y
+
+¯Z
+
+0
+
+IT +1 
+
+ ∈ Rd×(T +1) , with ¯Z =
+
+
+
+z1
+
+...
+
+zm
+
+ ∈ Rm×(T +1) . (A.9) For head i ∈ [m], define W iV to extract the i-th row of ¯Z:
+
+W iV ˆZ =
+
+(
+
+zi
+
+0
+
+)
+
+∈ R2×(T +1) ,
+
+24 which can be achieved by setting the (i + mp )-th column of W iV to (1 , 0) ⊤ and all other columns to 0.Define 
+
+W iK := 
+
+(
+
+0⊤  
+
+> d−T−1
+
+0 −α1⊤ 
+
+> T+1 −p
+
+0⊤  
+
+> d−T−1
+
+−α1⊤ 
+
+> p
+
+0
+
+)
+
++ W iV , W iQ := 
+
+(
+
+0 0 1 00⊤  
+
+> d−T−1
+
+1⊤ 
+
+> k−1
+
+0 1⊤ 
+
+> T+1 −k
+
+)
+
+.
+
+Then 
+
+W iK ˆZ =
+
+(
+
+0 −α1⊤ 
+
+> T+1 −p
+
+−α1⊤ 
+
+> p
+
+0
+
+)
+
++
+
+(
+
+zi
+
+0
+
+)
+
+, W iQ ˆZ =
+
+(
+
+0 1 01⊤ 
+
+> k−1
+
+0 1⊤ 
+
+> T+1 −k
+
+)
+
+.
+
+Hence, the attention matrix is 
+
+(W iK ˆZ)⊤W iQ ˆZ =
+
+(
+
+−α1p×(k−1) (z⊤ 
+
+> i
+
+)1: p −α1p×(T −k+1) 
+
+0 −α1T +1 −p + ( z⊤ 
+
+> i
+
+)p+1: T +1 0
+
+)
+
+.
+
+By choosing 
+
+α ≥ 2‖z⊤ 
+
+> i
+
+‖∞ + 1 ,
+
+each element of (z⊤ 
+
+> i
+
+)1: p becomes strictly larger than max( −α1T +1 −p + ( z⊤ 
+
+> i
+
+)p+1: T +1 ), so the hardmax selects the maximum: 
+
+W iV ˆZ σ H
+
+[(W iK ˆZ)⊤W iQ ˆZ] =
+
+(
+
+c1⊤ 
+
+> k−1
+
+max(( z⊤ 
+
+> i
+
+)1: p) c1⊤ 
+
+> T−k+1
+
+0 0 0
+
+)
+
+, c := 1
+
+T + 1 − p 
+
+> T+1
+
+∑
+
+> j=p+1
+
+(z⊤ 
+
+> i
+
+)j .
+
+(A.10) Let ˜Z be the output of the hardmax-based network constructed in Step 1 with input 
+
+X ∈ Ω. Then for any i ∈ [m], the i-th head of the self-attention layer produces 
+
+W iV ˜Z σ H
+
+[(W iK ˜Z)⊤W iQ ˜Z] =
+
+(
+
+0⊤ 
+
+> k−1
+
+max( W iXVec + bi) 0⊤ 
+
+> T−k+1
+
+0 0 0
+
+)
+
+, (A.11) which is achieved by choosing 
+
+α ≥ max  
+
+> i∈[m]
+
+2‖W iXVec + bi‖∞ + 1 ≥ 2( M1 + 1) M2 + 1 ,
+
+with 
+
+M1 := max  
+
+> X∈Ω
+
+‖X‖∞, M2 := max 
+
+> i∈[m]
+
+max {‖ bi‖∞, ‖W i‖∞}. (A.12) 25 Define the output projection W iO by 
+
+(W iO)mp +m+i, : = (1 , 0) , (W iO)i′,: = (0 , 0) for all i′ 6 = mp + m + i, i ′ ∈ [d].
+
+Then, summing over all heads, the self-attention layer outputs 
+
+> m
+
+∑
+
+> i=1
+
+W iOW iV ˜Z σ H
+
+[(W iK ˜Z)⊤W iQ ˜Z] =
+
+
+
+0(mp +m)×(T +1) 
+
+U
+
+0
+
+ ,
+
+where 
+
+U := 
+
+
+
+0⊤ 
+
+> k−1
+
+max( W 1XVec + b1) 0⊤ 
+
+> T−k+1
+
+... ... ...
+
+0⊤ 
+
+> k−1
+
+max( W mXVec + bm) 0⊤ 
+
+> T−k+1
+
+ .
+
+Finally, with the residual connection, this self-attention layer maps 
+
+˜Z 7 −→ ˜Z +
+
+
+
+0(mp +m)×(T +1) 
+
+U
+
+0
+
+ =
+
+
+
+YZU
+
+0
+
+IT +1 
+
+
+
+.
+
+We then define the linear readout matrix C ∈ Rm×d to C := 
+
+(
+
+0m×(mp +m) Im 0
+
+)
+
+.Consequently, the final output of the Transformer with hardmax activation computes U
+
+exactly for any input X ∈ Ω.
+
+(2) Softmax Case 
+
+We estimate the approximation error between the hardmax-based network and its softmax-based counterpart. Let FH denote the hardmax network constructed in Step 1, and let FλS be the cor-responding softmax network with scaling parameter λ > 0. The discrepancy between 
+
+FH and FλS arises solely from the replacement of the hardmax attention by the softmax attention in (A.8). Using the fact that, for any x = ( 0, 1⊤ 
+
+> n′
+
+, 0)⊤ ∈ Rn with n′ ≤ n,
+
+‖σH (x) − σλS (x)‖∞ ≤ ne −λ,
+
+26 together with (A.7), we obtain that for any X ∈ Ω,
+
+‖F H (X) − F λS (X)‖∞ = max 
+
+> i∈[m]
+
+∥∥∥
+
+> p
+
+∑
+
+> j=1
+
+W (i,j ) 
+
+> V
+
+˜Y (σH [( W (j) 
+
+> K
+
+˜Y )⊤W (j) 
+
+> Q
+
+˜Y ] − σλS [( W (j) 
+
+> K
+
+˜Y )⊤W (j) 
+
+> Q
+
+˜Y ])∥∥∥∞
+
+≤ (T + 1) 2e−λ max 
+
+> i∈[m]
+> p
+
+∑
+
+> j=1
+
+T
+
+( T∑
+
+> t=1
+
+|x⊤ 
+
+> t
+
+(V (i,j )):,t | + |bij |
+
+)
+
+≤ T (T + 1) 2e−λ max 
+
+> i∈[m]
+
+(
+
+p‖bi‖∞ +
+
+> p
+
+∑
+
+> j=1
+> T
+
+∑
+
+> t=1
+
+‖xt‖∞‖(V (i,j )):,t ‖1
+
+)
+
+≤ T (T + 1) 2e−λ max 
+
+> i∈[m]
+
+(p‖bi‖∞ + M1p‖W i‖∞
+
+)
+
+≤ T (T + 1) 2(M1 + 1) pM 2e−λ.
+
+(A.13) Hence, by choosing λ sufficiently large, the softmax-based network FλS approximates 
+
+FH uniformly on Ω with arbitrarily small error. Moreover, for any X1, X 2 ∈ Ω, the hardmax network FH satisfies 
+
+‖F H (X1) − F H (X2)‖∞
+
+≤ max 
+
+{
+
+max  
+
+> i∈[m]
+
+‖W i(Vec( X1) − Vec( X2)) ‖1, max 
+
+> i∈[m],j ∈[p]
+> T
+
+∑
+
+> t=1
+
+∣∣(( X1):,t − (X2):,t )⊤(V (i,j )):,t 
+
+∣∣}
+
+≤ max 
+
+{
+
+max  
+
+> i∈[m]
+
+p‖W i(Vec( X1) − Vec( X2)) ‖∞, max 
+
+> i∈[m],j ∈[p]
+> T
+
+∑
+
+> t=1
+
+‖(V (i,j )):,t ‖1 ‖(X1):,t − (X2):,t ‖∞
+
+}
+
+≤pM 2 ‖X1 − X2‖∞.
+
+(A.14) Let ˜FH denote the hardmax network constructed in Step 2, and let ˜Fλ1 
+
+> S
+
+be its softmax counterpart with scaling parameter λ1 > 0. The approximation error arises from the attention operation in (A.10). For any ˆZ as defined in (A.9), we have 
+
+‖ ˜FH ( ˆZ) − ˜Fλ1 
+
+> S
+
+( ˆZ)‖∞ = max 
+
+> i∈[m]
+
+{
+
+T
+
+∣∣∣∣zi
+
+(
+
+σH
+
+[
+
+−α1p
+
+0
+
+]
+
+− σλ1
+
+> S
+
+[
+
+−α1p
+
+0
+
+])∣∣∣∣
+
++
+
+∣∣∣∣zi
+
+(
+
+σH
+
+[
+
+(z⊤ 
+
+> i
+
+)1: p
+
+−α1T +1 −p + ( z⊤ 
+
+> i
+
+)p+1: T +1 
+
+]
+
+− σλ1
+
+> S
+
+[
+
+(z⊤ 
+
+> i
+
+)1: p
+
+−α1T +1 −p + ( z⊤ 
+
+> i
+
+)p+1: T +1 
+
+])∣∣∣∣}
+
+.
+
+27 For the first term, we have 
+
+∣∣∣∣zi
+
+(
+
+σH
+
+[
+
+−α1p
+
+0
+
+]
+
+− σλ1
+
+> S
+
+[
+
+−α1p
+
+0
+
+])∣∣∣∣ ≤ T e −αλ 1 ‖z⊤ 
+
+> i
+
+‖1.
+
+For the second term, applying Lemma A.3 gives 
+
+∣∣∣∣zi
+
+(
+
+σH
+
+[
+
+(z⊤ 
+
+> i
+
+)1: p
+
+−α1T +1 −p + ( z⊤ 
+
+> i
+
+)p+1: T +1 
+
+]
+
+− σλ1
+
+> S
+
+[
+
+(z⊤ 
+
+> i
+
+)1: p
+
+−α1T +1 −p + ( z⊤ 
+
+> i
+
+)p+1: T +1 
+
+])∣∣∣∣
+
+≤
+
+∣∣∣∣[
+
+(z⊤ 
+
+> i
+
+)1: p
+
+−α1T +1 −p + ( z⊤ 
+
+> i
+
+)p+1: T +1 
+
+]⊤ (
+
+σH
+
+[
+
+(z⊤ 
+
+> i
+
+)1: p
+
+−α1T +1 −p + ( z⊤ 
+
+> i
+
+)p+1: T +1 
+
+]
+
+− σλ1
+
+> S
+
+[
+
+(z⊤ 
+
+> i
+
+)1: p
+
+−α1T +1 −p + ( z⊤ 
+
+> i
+
+)p+1: T +1 
+
+])∣∣∣∣
+
++
+
+∣∣∣∣[
+
+0p
+
+−α1T +1 −p
+
+]⊤ (
+
+σH
+
+[
+
+(z⊤ 
+
+> i
+
+)1: p
+
+−α1T +1 −p + ( z⊤ 
+
+> i
+
+)p+1: T +1 
+
+]
+
+− σλ1
+
+> S
+
+[
+
+(z⊤ 
+
+> i
+
+)1: p
+
+−α1T +1 −p + ( z⊤ 
+
+> i
+
+)p+1: T +1 
+
+])∣∣∣∣
+
+≤e−1(T + 1) λ−11 + αT e −λ1 .
+
+Combining the two terms, we conclude that 
+
+‖ ˜FH ( ˆZ) − ˜Fλ1 
+
+> S
+
+( ˆZ)‖∞ ≤ T 2e−αλ 1 ‖ ¯Z‖∞ + e−1(T + 1) λ−11 + αT e −λ1 . (A.15) For any ˆZ1 =
+
+
+
+Y
+
+¯Z1
+
+0
+
+IT +1 
+
+ and ˆZ2 =
+
+
+
+Y
+
+¯Z2
+
+0
+
+IT +1 
+
+ similarly defined in (A.9), it follows from (A.10) that 
+
+‖ ˜FH ( ˆZ1) − ˜FH ( ˆZ2)‖∞ ≤ (T + 2) ‖ ¯Z1 − ¯Z2‖∞ = ( T + 2) ‖ ˆZ1 − ˆZ2‖∞. (A.16) Combining (A.14), for any X1, X 2 ∈ Ω, we have 
+
+‖ ˜FH ◦F H (X1)− ˜FH ◦F H (X2)‖∞ ≤ (T +2) ‖F H (X1)−F H (X2)‖∞ ≤ (T +2) pM 2‖X1−X2‖∞.
+
+(A.17) To estimate the total approximation error between the softmax network and the hard-28 max network, for any X ∈ Ω, we have 
+
+‖ ˜Fλ1 
+
+> S
+
+◦ F λS (X) − ˜FH ◦ F H (X)‖∞
+
+≤‖ ˜Fλ1 
+
+> S
+
+◦ F λS (X) − ˜FH ◦ F λS (X)‖∞ + ‖ ˜FH ◦ F λS (X) − ˜FH ◦ F H (X)‖∞
+
+≤T 2e−αλ 1 ‖(FλS (X)) mp +1: mp +m, :‖∞ + e−1(T + 1) λ−11 + αT e −λ1 + ( T + 2) ‖F λS (X) − F H (X)‖∞
+
+≤T 2(n2M1 + p)M2e−αλ 1 + e−1(T + 1) λ−11 + αT e −λ1 + ( T + 2) 5(M1 + 1) pM 2e−λ.
+
+(A.18) Here, the last inequality follows from (A.13) and the bound 
+
+‖(FλS (X)) mp +1: mp +m, :‖∞ ≤ ‖F λS (X) − F H (X)‖∞ + ‖(FH (X)) mp +1: mp +m, :‖∞,
+
+where the hardmax output is bounded by 
+
+‖(FH (X)) mp +1: mp +m, :‖∞ = max  
+
+> 1≤i≤m
+
+‖W iXVec + bi‖1 ≤ max  
+
+> 1≤i≤m
+
+‖W i‖1‖XVec ‖1 + ‖bi‖1
+
+≤ max  
+
+> 1≤i≤m
+
+n2‖W i‖∞‖X‖∞ + p‖bi‖∞ ≤ (n2M1 + p)M2.
+
+Therefore, by choosing λ and λ1 sufficiently large, the softmax network approximates the hardmax network within an arbitrarily small error. □
+
+Remark A.1 In the proof of Lemma A.1, the residual term 
+
+
+
+YZ
+
+0
+
+ can be removed by an additional feedforward layer of width 2( mp + m) in the third block, which, due to sparsity, requires only O(mp ) parameters, using the identity ReLU( −x) − ReLU( x) = −x. This construction is useful when stacking multiple such networks (cf. Theorem 3.2). In the present lemma, the residual is instead eliminated directly via a suitably designed readout matrix. 
+
+Remark A.2 Let NH be the hardmax-based Transformer and N λS the corresponding softmax-based Transformer constructed in Lemma A.1, with both self-attention layers using the same scaling parameter λ. By (A.18) , the approximation error satisfies 
+
+‖N H − N λS ‖L∞(Ω) ≤ C1T λ −1 + C2T 5n2p(M1 + 1) M2e−λ, (A.19) 
+
+for some absolute constants C1, C 2, where M1 and M2 depend on Ω and the target maxout network parameters, respectively (cf. (A.12) ). Moreover, by (A.17) , the hardmax-based Transformer NH is Lipschitz continuous on 
+
+Ω with 
+
+Lip( NH ; Ω) ≤ C3T pM 2, (A.20) 29 for some absolute constant C3.
+
+Remark A.3 In Lemma A.1, a maxout layer with parameter complexity O(T nmp ) can be approximated by a Transformer with the same order of parameters, once sparsity is taken into account. Specifically, the feedforward layer constructed via Lemma A.2 is sparse (see Remark A.4) and uses O(T nmp ) parameters. The self-attention layer is also sparse: the value and output projection matrices act as coordinate selectors and therefore have at most two non-zero entries, and the key and query matrices are of the form (0 A)
+
+with A ∈ R2×(T +1) , yielding O(T mp ) parameters for head size H = mp . Overall, the parameter complexity matches that of the target maxout layer up to constants. For the sequence-to-sequence construction in Theorem 3.1, this complexity is multiplied by a factor of T .
+
+The following lemma provides a construction of a one-hidden-layer feedforward ReLU network that exactly realizes a piecewise affine function over pairwise disjoint hyperrect-angles. 
+
+Lemma A.2 Let n, k, T ∈ N, and p < q . Given W t ∈ Rk×n and bt ∈ Rk for t ∈ [T + 1] ,there exists a one-hidden-layer ReLU network 
+
+f (x) = W2ReLU( W1x + b1),
+
+with W1 ∈ R4( n+1)( T +1) ×n, W2 ∈ Rk×4( n+1)( T +1) , and b1 ∈ R4( n+1)( T +1) , such that 
+
+f (x) = W tx + bt, ∀ x ∈ I t, t ∈ [T + 1] .
+
+Here {I t}T +1  
+
+> t=1
+
+are pairwise disjoint hyperrectangles defined by 
+
+˜xt := ( t − 1)( q − p) + tδ, t ∈ [T + 1] , 0 < δ < q − pT + 1 ,
+
+It := [ p, q ]n + ˜ xt1n, t ∈ [T + 1] .
+
+Proof. We construct a one-hidden-layer ReLU network that exactly realizes a piece-wise affine function over the regions {I t}T +1  
+
+> t=1
+
+. Specifically, the hidden layer implements region-specific selector functions that activate only within the corresponding region, while the affine readout applies the associated linear map and bias. 
+
+Region selector (hidden layer). For each region It, we construct 4n ReLU units that extract the input x when x ∈ I t, and output 0 when x ∈ I t′ for t′ 6 = t. To this end, 30 define a scalar selector function ϕt : R → R by 
+
+ϕt(s) = 
+
+
+
+0, s ≤ p + ˜ xt − δ, s, p + ˜ xt ≤ s ≤ q + ˜ xt,
+
+0, s ≥ q + ˜ xt + δ, 
+
+for t ∈ [T + 1] .
+
+This function can be realized using four ReLU units as 
+
+ϕt(s) = p + ˜ xt
+
+δ ReLU[ s − (p + ˜ xt − δ)] + 
+
+(
+
+1 − p + ˜ xt
+
+δ
+
+)
+
+ReLU[ s − (p + ˜ xt)] + −q − ˜xt − δδ ReLU[ s − (q + ˜ xt)] + q + ˜ xt
+
+δ ReLU[ s − (q + ˜ xt + δ)] .
+
+(A.21) Define Φt(x) := ( ϕt(x1), . . . , ϕ t(xn)) ⊤ with x = ( xi)i. Then Φt(x) = x if x ∈ I t, and 
+
+Φt(x) = 0 if x ∈ I ′ 
+
+> t
+
+with t′ 6 = t.To encode the bias term bt, we similarly define an indicator: 
+
+ψt(s) = 
+
+
+
+0, s ≤ p + ˜ xt − δ, 
+
+1, p + ˜ xt ≤ s ≤ q + ˜ xt,
+
+0, s ≥ q + ˜ xt + δ, 
+
+for t ∈ [T + 1] ,
+
+which can be realized as 
+
+ψt(s) = 1
+
+δ ReLU[ s−(p+˜ xt−δ)] −1
+
+δ ReLU[ s−(p+˜ xt)] −1
+
+δ ReLU[ s−(q+˜ xt)]+ 1
+
+δ ReLU[ s−(q+˜ xt+δ)] .
+
+(A.22) Let Ψ( x) = ( ψ1(x1), . . . , ψ T +1 (x1)) ⊤. Then Ψ( x) = et if x ∈ I t, with e1, . . . , eT +1 
+
+denoting the standard basis in RT +1 .Combining these, we can write 
+
+(
+
+Φ( x)Ψ( x)
+
+)
+
+=
+
+(
+
+V 00 ˜V
+
+)
+
+ReLU( W1x + b1),
+
+where Φ( x) := 
+
+(
+
+Φ1(x)⊤, . . . , ΦT +1 (x)⊤
+
+)⊤
+
+, and the weight matrices and bias vector are 31 defined as 
+
+W1 := 
+
+
+
+U1
+
+...
+
+UT +1 
+
+˜U
+
+ , b1 := 
+
+
+
+1n ⊗ ˜b1
+
+...
+
+1n ⊗ ˜bT +1 
+
+˜b1
+
+...
+
+˜bT +1 
+
+
+
+,
+
+Here, Ut := In ⊗ 14, for t ∈ [T + 1] , ˜U := 14( T +1) ⊗ (1 , 0⊤
+
+> n−1
+
+), and 
+
+˜bt := 
+
+
+
+−(p + ˜ xt − δ)
+
+−(p + ˜ xt)
+
+−(q + ˜ xt)
+
+−(q + ˜ xt + δ)
+
+ , for t ∈ [T + 1] .
+
+Moreover, V := diag( In ⊗ v1, . . . , I n ⊗ vT +1 ), with 
+
+vt := 
+
+(p + ˜ xt
+
+δ , 1 − p + ˜ xt
+
+δ , −q − ˜xt − δδ , q + ˜ xt
+
+δ
+
+)
+
+, for t ∈ [T + 1] ,
+
+and ˜V := IT +1 ⊗ ˜v, where ˜v := (1 
+
+> δ
+
+, −1 
+
+> δ
+
+, −1 
+
+> δ
+
+, 1
+
+> δ
+
+).
+
+Affine readout. Define: 
+
+W2 := ˜W2
+
+(
+
+V 00 ˜V
+
+)
+
+, ˜W2 := ( W 1, . . . , W T +1 , b1, . . . , bT +1 ).
+
+Then the network output satisfies 
+
+f (x) = W2ReLU( W1x + b1)= 
+
+> T+1
+
+∑
+
+> t=1
+
+[W tΦt(x) + btψt(x)]
+
+= W tx + bt, for x ∈ I t, t ∈ [T + 1] .
+
+□
+
+Remark A.4 Although the weight matrices in Lemma A.2 are fully connected in form, they exhibit significant sparsity in structure. When disregarding the zero weights, the number of nonzero parameters is only O(T nk ) rather than O(T n 2 + T nk ).
+
+32 Lemma A.3 Let d ∈ N and λ > 0. Then for all x = ( x1, . . . , x d)⊤ ∈ Rd, it holds that 
+
+∣∣∣∣x⊤σλS (x) − max  
+
+> 1≤i≤d
+
+xi
+
+∣∣∣∣ ≤ deλ .
+
+Proof. Let M := max i xi. Since x⊤σλS (x) is a convex combination of {xi}, we have 
+
+x⊤σλS (x) ≤ M, so it suffices to show x⊤σλS (x) ≥ M − deλ .
+
+We compute: 
+
+x⊤σλS (x) − M =
+
+∑di=1 xieλx i
+
+∑di=1 eλx i
+
+− M =
+
+∑di=1 (xi − M )eλx i
+
+∑di=1 eλx i
+
+≥
+
+∑di=1 (xi − M )eλx i
+
+eλM =
+
+> d
+
+∑
+
+> i=1
+
+(xi − M )eλ(xi−M ).
+
+Using the bound: for y ≥ 0, the function f (y) = ye −λy ≤ f (1 /λ ) = 1 
+
+> eλ
+
+, we have 
+
+(xi − M )eλ(xi−M ) ≥ − 1
+
+eλ .
+
+Thus, 
+
+x⊤σλS (x) − M ≥ − deλ .
+
+□
+
+# Appendix B Proofs of Theorem 3.2 and 3.4 
+
+Proof of Theorem 3.2. Let X ∈ Ω be the input to the network, and denote its vectorization by X0 := Vec( X). For each layer ℓ ∈ [D], let {W ℓi,j }i∈[m], j ∈[T ] denote the weights of the ℓ-th maxout layer, and let Xℓ = ( Xℓ
+
+> 1
+
+, . . . , X ℓT ) ∈ Rm×T be the matrix representation of its output. For simplicity, we omit the bias vectors. Define 
+
+M := sup 
+
+> X∈Ω
+
+‖X‖∞, mℓ := max   
+
+> i∈[m], j ∈[T]
+
+‖W ℓi,j ‖∞, Mℓ := M
+
+> ℓ
+
+∏
+
+> k=1
+
+mk.
+
+It is straightforward to verify that 
+
+‖Vec( Xℓ)‖∞ ≤ Mℓ.
+
+By Theorem 3.1, a 3-layer hardmax-based Transformer network can exactly compute a single maxout layer. To represent a D-layer maxout network, we stack D such Transformer 33 subnetworks sequentially. For ℓ ∈ [D], denote the output of the ℓ-th hardmax-based Transformer subnetwork by 
+
+
+
+ˆXℓ
+
+0
+
+IT +1 
+
+ ,
+
+where ˆXℓ = ( ˆXℓ
+
+> 1
+
+, . . . , ˆXℓT +1 ) ∈ Rm×(T +1) , and ˆX0 = E(X) with E denoting the positional embedding. For the corresponding softmax-based Transformer network, we denote the output of the ℓ-th subnetwork by 
+
+˜Xℓ
+
+0
+
+IT +1 
+
+ ,
+
+where ˜Xℓ = ( ˜Xℓ
+
+> 1
+
+, . . . , ˜XℓT +1 ) ∈ Rm×(T +1) . Within each subnetwork, all softmax layers share a common scaling parameter, which we denote by λℓ.With this notation, it suffices to show that the hardmax-based Transformer recovers the exact output of the maxout network, namely 
+
+ˆXDt = XDt , t ∈ [T ], (B.23) and that the corresponding softmax-based Transformer provides a uniform approximation: 
+
+‖ ˆXD − ˜XD‖∞ ≤ ϵ, (B.24) where ϵ > 0 can be made arbitrarily small by choosing the scaling parameters sufficiently large. To this end, we first establish the following inductive claim for each ℓ ∈ [D − 1] :
+
+ˆXℓt =
+
+
+
+Xℓt + αℓt 1m, t = 1 , . . . , T, αℓT +1 1m, t = T + 1 ,
+
+(B.25) where 
+
+αℓt := 2 Mℓ(t − 1) + tδ ℓ, t ∈ [T + 1] ,
+
+for some constant 0 < δ ℓ < 2Mℓ  
+
+> T+1
+
+.34 For the softmax-based Transformer, we further show that 
+
+ϵℓ := ‖ ˆXℓ − ˜Xℓ‖∞ ≤ C(T, (mi)ℓi=1 , M ) ℓ∑
+
+> k=1
+
+λ−1 
+
+> k
+
+, ℓ ∈ [D − 1] , (B.26) provided that each scaling parameter λk is chosen larger than some constant C (T, n, (mi)ℓi=1 , M, ℓ ),for k ∈ [ℓ].If (B.25) and (B.26) hold, then for any X ∈ Ω we have 
+
+ˆXℓt ∈ I ℓt := [αℓt − Mℓ, α ℓt + Mℓ
+
+]m, t ∈ [T + 1] ,
+
+˜Xℓt ∈ ˜Iℓt := Iℓt ⊕ ϵℓ[−1, 1] m, t ∈ [T + 1] ,
+
+(B.27) where ⊕ denotes the Minkowski sum of sets. Moreover, for both the hardmax and softmax cases, the output of the ℓ-th subnetwork is uniformly bounded on Ω:
+
+‖ ˆXℓ‖∞, ‖ ˜Xℓ‖∞ ≤ (T + 1) [(2 T + 2) Mℓ + ϵℓ
+
+] ≤ 2( T + 1) 2(M ℓ + ϵℓ
+
+). (B.28) Finally, for ϵℓ sufficiently small, the outputs corresponding to different tokens lie in pairwise disjoint hyperrectangles: 
+
+Iℓt ⊂ ˜Iℓt , ˜Iℓt ∩ ˜Iℓt′ = ∅, ∀ t 6 = t′, t, t ′ ∈ [T + 1] . (B.29) In particular, it suffices to choose ϵℓ ≤ δℓ, which can be ensured by taking the scaling parameters λk sufficiently large, i.e., λk ≥ C(T, (mi)ℓi=1 , M, ℓ ) for all k ∈ [ℓ]. We now prove (B.25) and (B.26) by induction on ℓ.
+
+Base Case ( ℓ = 1 ). By Theorem 3.1 and Lemma A.2, the first Transformer subnet-work of size (
+
+L = 3 , d = max {n, m [( T + 1)( p + 1) + 1] } + T + 1 ,k = 2 , H = ( T + 1) mp, r = 4(max {n, mp } + 1)( T + 3) 
+
+) (B.30) computes the first maxout layer as 
+
+ˆX1 
+
+> t
+
+=
+
+
+
+max( W 11,t X0 + α1 
+
+> t
+
+1p)
+
+...
+
+max( W 1
+
+> m,t
+
+X0 + α1 
+
+> t
+
+1p)
+
+ = X1 
+
+> t
+
++ α1 
+
+> t
+
+1m, t = 1 , . . . , T, 
+
+35 and 
+
+ˆX1  
+
+> T+1
+
+= α1 
+
+> T+1
+
+1m,
+
+which establishes (B.25) for ℓ = 1 .The residual term is offset by the feedforward layer in the third block of the subnetwork (size 2m(T + 1)( p + 1) ), using the identity ReLU (−x) − ReLU (x) = −x (cf. Remark A.1). For the corresponding softmax-based network with scaling parameter λ1, by (A.19) the approximation error satisfies 
+
+ϵ1 := ‖ ˆX1 − ˜X1‖∞ ≤ C1T 2λ−11 + C2T 6n2p(M + 1) max {m1, M 1T }e−λ1 ,
+
+for some absolute constants C1, C 2. Choosing λ1 sufficiently large, e.g., λ1 ≥ C(T, n, M, m 1),ensures ϵ1 ≤ C(T )λ−11 , which establishes (B.26) for ℓ = 1 .
+
+Inductive Step. Assume that (B.25) and (B.26) hold for layer ℓ − 1 ≥ 1, with ℓ < D .We show that they also hold for layer ℓ.By the inductive hypothesis, (B.27) and (B.29) hold for layer ℓ − 1. Hence, the inputs to the ℓ-th subnetwork, ˜Xℓ−1 
+
+> t
+
+and ˆXℓ−1 
+
+> t
+
+, lie in pairwise disjoint hyperrectangles across tokens t.Therefore, by Theorem 3.1 and Lemma A.2, there exists a Transformer subnetwork of size given in (B.30) that computes the ℓ-th maxout layer as 
+
+ˆXℓt =
+
+
+
+max (W ℓ 
+
+> 1,t
+
+Vec( Xℓ−1) + αℓt 1p
+
+)
+
+...
+
+max (W ℓm,t Vec( Xℓ−1) + αℓt 1p
+
+) = Xℓt + αℓt 1m, t = 1 , . . . , T, 
+
+and 
+
+ˆXℓT +1 = αℓT +1 1m,
+
+which establishes (B.25) for layer ℓ.Let N kH and N kS,λ k denote the k-th subnetwork, for k ∈ [ℓ], with hardmax activation and softmax activation with scaling parameter λk, respectively. For any X ∈ Ω, the approximation error satisfies 
+
+∥∥N ℓS,λ ℓ ◦ · · · ◦ N 1 
+
+> S,λ 1
+
+(X) − N ℓH ◦ · · · ◦ N 1 
+
+> H
+
+(X)∥∥∞
+
+≤ ∥∥N ℓS,λ ℓ ◦ · · · ◦ N 1 
+
+> S,λ 1
+
+(X) − N ℓH ◦ N ℓ−1 
+
+> S,λ ℓ−1
+
+◦ · · · ◦ N 1 
+
+> S,λ 1
+
+(X)∥∥∞
+
++ ∥∥N ℓH ◦ N ℓ−1 
+
+> S,λ ℓ−1
+
+◦ · · · ◦ N 1 
+
+> S,λ 1
+
+(X) − N ℓH ◦ · · · ◦ N 1 
+
+> H
+
+(X)∥∥∞.
+
+36 For the first term, by (A.19) and the bound (B.28), we obtain 
+
+∥∥N ℓS,λ ℓ ◦ · · · ◦ N 1 
+
+> S,λ 1
+
+(X) − N ℓH ◦ N ℓ−1 
+
+> S,λ ℓ−1
+
+◦ · · · ◦ N 1 
+
+> S,λ 1
+
+(X)∥∥∞
+
+≤C3T 2λ−1 
+
+> ℓ
+
++ C4T 6n2p T 2(Mℓ−1 + ϵℓ−1 + 1) max {mℓ, M ℓT }e−λℓ ,
+
+for some absolute constants C3, C 4. Choosing λℓ ≥ C(T, n, (mi)ℓi=1 , M, ℓ ) yields an upper bound C(T )λ−1 
+
+> ℓ
+
+for this term. For the second term, using the Lipschitz bound (A.20), we have 
+
+∥∥N ℓH ◦ N ℓ−1 
+
+> S,λ ℓ−1
+
+◦ · · · ◦ N 1 
+
+> S,λ 1
+
+(X) − N ℓH ◦ · · · ◦ N 1 
+
+> H
+
+(X)∥∥∞
+
+≤ C5T 2p max {mℓ, T M ℓ}∥∥N ℓ−1 
+
+> S,λ ℓ−1
+
+◦ · · · ◦ N 1 
+
+> S,λ 1
+
+(X) − N ℓ−1 
+
+> H
+
+◦ · · · ◦ N 1 
+
+> H
+
+(X)∥∥∞
+
+≤ C5T 2p max {mℓ, T M ℓ} ϵℓ−1.
+
+By the inductive hypothesis (B.26), the second term is bounded by C(T, (mi)ℓi=1 , M ) ∑ℓ−1 
+
+> k=1
+
+λ−1 
+
+> k
+
+.Combining both terms, we conclude that 
+
+ϵℓ ≤ C(T, (mi)ℓi=1 , M )
+
+> ℓ
+
+∑
+
+> k=1
+
+λ−1 
+
+> k
+
+,
+
+which establishes (B.26) for layer ℓ.For ℓ = D, we simply drop the shift by setting αDt = 0 . The same argument as above shows that (B.23) holds and that 
+
+‖ ˆXD − ˜XD‖∞ ≤ C(T, (mi)Di=1 , M ) D∑
+
+> k=1
+
+λ−1 
+
+> k
+
+,
+
+provided that each scaling parameter satisfies λk ≥ C(T, n, (mi)Di=1 , M, D ) for k ∈ [D].Consequently, for any ϵ > 0, by choosing the scaling parameters {λk}Dk=1 sufficiently large, we obtain 
+
+‖ ˆXD − ˜XD‖∞ ≤ ϵ, 
+
+which establishes (B.24). □
+
+Proof of Theorem 3.4. When s ≥ p, the statement reduces to Theorem 3.1. Hence, we restrict attention to the case s < p .The key observation is that a shallow maxout network of rank p can be represented by a rank-s maxout network of depth 
+
+D =
+
+⌈p − 1
+
+s − 1
+
+⌉
+
+, 2 ≤ s ≤ T, 
+
+37 by introducing residual connections from the input. Applying Theorem 3.2, there exists a hardmax-based Transformer network 
+
+NH ∈ T FN hard 
+
+> n,m
+
+(L = 3 D, d = n + m[( T + 1)( s + 1) + 1] + T + 1 ,k = 2 ,H = ( T + 1) ms, r = 4(max {n + m, ms } + 1)( T + 3) ),
+
+such that NH |Ω = f |Ω. Moreover, the corresponding softmax-based Transformer N λS
+
+approximates f within error ϵ provided that λ = O(1 /ϵ ).Here, the term n in the embedding dimension d accounts for the residual connections from the input, while the factor n + m in the width of the feedforward reflects that the layers implement piecewise affine mappings on augmented inputs induced by the residuals. 
+
+□
+
+# Appendix C Proof of Corollary 3.6 
+
+According to [2], any convex and Lipschitz continuous function defined on a compact set can be uniformly approximated by the maximum of finitely many affine functions; see Lemma C.2. Let B, C > 0 and let Ω ⊂ Rn be a convex set with finite diameter 
+
+diam(Ω) := sup 
+
+> x,y∈Ω
+
+‖x − y‖∞ < ∞.
+
+Define the class of convex Lipschitz functions on Ω by 
+
+CΩ,B,C := 
+
+{
+
+f : Ω → R
+
+∣∣∣ f is convex , ‖f ‖L∞(Ω) ≤ B, ∂f (x) 6 = ∅, ‖s‖∞ ≤ C, ∀s ∈ ∂f (x), ∀x ∈ Ω
+
+}
+
+,
+
+(C.31) where ∂f (x) denotes the subdifferential of f at x.Following [2] (see Lemma C.1), functions in CΩ,B,C can approximated by max-affine functions 
+
+Mp 
+
+> Ω,B,C
+
+:= 
+
+{
+
+h : Ω → R
+
+∣∣∣ h(x) = max 
+
+> 1≤j≤p
+
+{w⊤ 
+
+> j
+
+x + bj }, ‖wj ‖∞ ≤ C, h (x) ∈ [−Bn, B ]
+
+}
+
+,
+
+where Bn := B + Cn and Cn := nC diam(Ω) .38 Lemma C.1 ([2, Lemma 4.1]) For any f ∈ C Ω,B,C and any p ∈ N,
+
+inf 
+
+> h∈M p
+> Ω,B,C
+
+‖f − h‖L∞(Ω) ≤ 72 Cn p−2/n .
+
+Lemma C.2 Let Ω ⊂ Rn be a compact convex set with nonempty interior. Suppose that 
+
+f : Ω → R is convex and Lipschitz continuous with Lipschitz constant C. Then, for any 
+
+p ∈ N, there exist affine maps Aj : Rn → R such that 
+
+∥∥∥f − max  
+
+> 1≤j≤p
+
+Aj
+
+∥∥∥L∞(Ω) 
+
+≤ 72 nC diam(Ω) p−2/n .
+
+Proof. Let ˜Ω := int(Ω) denote the interior of Ω. Since Ω is convex, so is ˜Ω. We first show that f |˜Ω ∈ C ˜Ω,B,C for some B > 0. As f is continuous on the compact set Ω, there exists B > 0 such that ‖f ‖L∞( ˜Ω) ≤ B.To verify the remaining conditions, we extend f to Rn by defining 
+
+˜f (x) := inf 
+
+> y∈Ω
+
+{f (y) + C‖x − y‖∞
+
+}, x ∈ Rn.
+
+By [3, Proposition 3.3.3], ˜f is convex on Rn. Moreover, since f is C-Lipschitz on Ω, for any x ∈ Ω we have f (y) + C‖x − y‖∞ ≥ f (x) for all y ∈ Ω, which implies ˜f |Ω = f .We next show that ˜f is C-Lipschitz on Rn. For any x, z ∈ Rn,
+
+˜f (x) = inf 
+
+> y∈Ω
+
+{f (y) + C‖x − y‖∞
+
+}
+
+≤ inf 
+
+> y∈Ω
+
+{f (y) + C‖z − y‖∞
+
+} + C‖x − z‖∞
+
+= ˜f (z) + C‖x − z‖∞.
+
+Interchanging the roles of x and z yields | ˜f (x) − ˜f (z)| ≤ C‖x − z‖∞.By [32, Theorem 23.4], ∂ ˜f (x) 6 = ∅ for all x ∈ Rn, and hence ∂(f |˜Ω)( x) 6 = ∅ for all x ∈ ˜Ω. Moreover, for any x ∈ ˜Ω and any s ∈ ∂(f |˜Ω)( x), convexity and Lipschitz continuity imply 
+
+f (x + tv) − f (x) ≥ t s⊤v and f (x + tv) − f (x) ≤ tC ‖v‖∞
+
+for all v ∈ Rn and sufficiently small t > 0. Choosing v = s/‖s‖2 yields ‖s‖∞ ≤ C.Therefore, f |˜Ω ∈ C ˜Ω,B,C .Applying Lemma C.1, there exist affine functions Aj : Rn → R, j ∈ [p], such that 
+
+∥∥∥f − max  
+
+> 1≤j≤p
+
+Aj
+
+∥∥∥L∞( ˜Ω) 
+
+≤ 72 nC diam( ˜Ω) p−2/n .
+
+39 Finally, since Ω is compact and convex, cl( ˜Ω) = Ω by [3, Proposition 1.3.5]. As both f
+
+and max j Aj are continuous on Ω, the above estimate extends to Ω. □
+
+Proof of Corollary 3.6. To handle the sequence-to-sequence setting, we adopt the vectorization convention for both inputs and outputs. By Lemma C.2, there exist affine maps Aj : RnT → RmT , j ∈ [p], such that 
+
+∥∥∥f − max  
+
+> 1≤j≤p
+
+Vec −1 
+
+> m,T
+
+◦ Aj ◦ Vec 
+
+∥∥∥L∞(Ω) 
+
+≤ 72 nT 2C diam(Ω) p−2/(nT ),
+
+where the operator max is taken element-wise. The additional factor T (and hence T 2 in total) arises from passing from the vectorized error bound to the matrix-valued norm. Observe that 
+
+max  
+
+> 1≤j≤p
+
+Vec −1 
+
+> m,T
+
+◦ Aj ◦ Vec ∈ T max (n × T, p, m × T ).
+
+The desired conclusion then follows directly from Theorem 3.4. □
+
+# Appendix D Proofs of Section 4 
+
+Proof of Theorem 4.2. By Lemma 4.1, there exist convex CPWL functions g, h :
+
+Rn×T → Rm×T , each with at most N 2nT +1 linear regions, such that f = g − h.Since g and h are convex CPWL functions, they admit max-affine representations. In particular, 
+
+g, h ∈ T max (n × T, N 2nT +1 , m × T ).
+
+Define the stacked function 
+
+˜f (X) := 
+
+(
+
+g(X)
+
+h(X)
+
+)
+
+,
+
+which satisfies 
+
+˜f ∈ T max (n × T, N 2nT +1 , 2m × T ).
+
+Applying Theorem 3.4 with s = T , the function ˜f can be exactly represented on Ω by a hardmax-based Transformer network with architectural parameters 
+
+(L = 3 
+
+⌈N 2nT +1 −1 
+
+> T−1
+
+⌉
+
+,d = n + 2 m(T + 1) 2 + 2 m + T + 1 ,k = 2 , H = 2 mT (T + 1) ,r = 4(max {n + 2 m, 2mT } + 1)( T + 3) ).
+
+40 Finally, a linear readout layer computes the difference g − h, thereby recovering f on 
+
+Ω. □
+
+Proof of Theorem 4.4. Consider a D′-layer maxout network with input dimension 
+
+nT , width mT in each hidden layer, and rank p. Let F′ denote the class of functions com-puted by such networks. By Lemma 4.3, for every integer q satisfying q ≤ min {nT, mT / 2}
+
+and such that mT q is even, we have 
+
+N (F′) ≥
+
+[mT q (p − 1) + 1 
+
+]q(D′−1) q
+
+∑
+
+> j=0
+
+(mT j
+
+)
+
+(p − 1) j .
+
+By Theorem 3.5, any such maxout network can be approximated arbitrarily well on any compact set by a Transformer network of size 
+
+(L = 3 
+
+⌈p−1
+
+> s−1
+
+⌉
+
+D′,d = d′ + T + 1 ,k = 2 ,H = ( T + 1) m min {s, p },r = 4( r′ + 1)( T + 3) ),
+
+where 
+
+d′ =
+
+
+
+max {n, m [( T + 1)( p + 1) + 1] }, s ≥ p, 
+
+max {n, m } + m[( s + 1)( T + 1) + 1] , s < p, r′ =
+
+
+
+max {n, mp }, s ≥ p, 
+
+max {n, m } + ms, s < p. 
+
+Choosing p = s = T and setting D = 3 D′, the stated lower bound (4.5) follows immediately. □
+
+# References 
+
+[1] Raman Arora, Amitabh Basu, Poorya Mianjy, and Anirbit Mukherjee. Understand-ing deep neural networks with rectified linear units. arXiv preprint arXiv:1611.01491 ,2016. [2] Gábor Balázs, András György, and Csaba Szepesvári. Near-optimal max-affine es-timators for convex regression. In Artificial Intelligence and Statistics , pages 56–64. PMLR, 2015. [3] Dimitri Bertsekas. Convex optimization theory , volume 1. Athena Scientific, 2009. 41 [4] Srinadh Bhojanapalli, Chulhee Yun, Ankit Singh Rawat, Sashank Reddi, and San-jiv Kumar. Low-rank bottleneck in multi-head attention models. In International Conference on Machine Learning , pages 864–873. PMLR, 2020. [5] Tom Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared D Kaplan, Pra-fulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, et al. Language models are few-shot learners. Advances in Neural Information Pro-cessing Systems , 33:1877–1901, 2020. [6] Valérie Castin, Pierre Ablin, and Gabriel Peyré. How smooth is attention? arXiv preprint arXiv:2312.14820 , 2023. [7] Kuan-Lin Chen, Harinath Garudadri, and Bhaskar D Rao. Improved bounds on neural complexity for representing piecewise linear functions. Advances in Neural Information Processing Systems , 35:7167–7180, 2022. [8] Jean-Baptiste Cordonnier, Andreas Loukas, and Martin Jaggi. On the relationship between self-attention and convolutional layers. arXiv preprint arXiv:1911.03584 ,2019. [9] George Cybenko. Approximation by superpositions of a sigmoidal function. Mathe-matics of Control, Signals and Systems , 2(4):303–314, 1989. [10] Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. Bert: Pre-training of deep bidirectional transformers for language understanding. In Proceed-ings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, volume 1 (long and short papers) , pages 4171–4186, 2019. [11] Yihe Dong, Jean-Baptiste Cordonnier, and Andreas Loukas. Attention is not all you need: Pure attention loses rank doubly exponentially with depth. In International Conference on Machine Learning , pages 2793–2803. PMLR, 2021. [12] Alexey Dosovitskiy. An image is worth 16x16 words: Transformers for image recog-nition at scale. arXiv preprint arXiv:2010.11929 , 2020. [13] Ken-Ichi Funahashi. On the approximate realization of continuous mappings by neural networks. Neural Networks , 2(3):183–192, 1989. [14] Ian Goodfellow, David Warde-Farley, Mehdi Mirza, Aaron Courville, and Yoshua Bengio. Maxout networks. In International Conference on Machine Learning , pages 1319–1327. PMLR, 2013. 42 [15] Christoph Hertrich, Amitabh Basu, Marco Di Summa, and Martin Skutella. Towards lower bounds on the depth of ReLU neural networks. SIAM Journal on Discrete Mathematics , 37(2):997–1029, 2023. [16] Peter Hinz and Sara Van de Geer. A framework for the construction of upper bounds on the number of affine linear regions of ReLU feed-forward neural networks. IEEE Transactions on Information Theory , 65(11):7304–7324, 2019. [17] Kurt Hornik. Approximation capabilities of multilayer feedforward networks. Neural Networks , 4(2):251–257, 1991. [18] Haotian Jiang and Qianxiao Li. Approximation rate of the transformer architec-ture for sequence modeling. Advances in Neural Information Processing Systems ,37:68926–68955, 2024. [19] Yuling Jiao, Yanming Lai, Yang Wang, and Bokai Yan. Transformers can overcome the curse of dimensionality: A theoretical study from an approximation perspective. 
+
+arXiv preprint arXiv:2504.13558 , 2025. [20] Tokio Kajitsuka and Issei Sato. Are transformers with one layer self-attention using low-rank weight matrices universal approximators? arXiv preprint arXiv:2307.14023 ,2023. [21] Hyunjik Kim, George Papamakarios, and Andriy Mnih. The lipschitz constant of self-attention. In International Conference on Machine Learning , pages 5562–5571. PMLR, 2021. [22] Sehoon Kim, Amir Gholami, Albert Shaw, Nicholas Lee, Karttikeya Mangalam, Ji-tendra Malik, Michael W Mahoney, and Kurt Keutzer. Squeezeformer: An efficient transformer for automatic speech recognition. Advances in Neural Information Pro-cessing Systems , 35:9361–9373, 2022. [23] Jason M Klusowski and Andrew R Barron. Approximation by combinations of ReLU and squared ReLU ridge functions with ℓ1 and ℓ0 controls. IEEE Transactions on Information Theory , 64(12):7649–7656, 2018. [24] Shanda Li, Xiangning Chen, Di He, and Cho-Jui Hsieh. Can vision transformers perform convolution? arXiv preprint arXiv:2111.01353 , 2021. [25] Jianfeng Lu, Zuowei Shen, Haizhao Yang, and Shijun Zhang. Deep network approx-imation for smooth functions. SIAM Journal on Mathematical Analysis , 53(5):5465– 5506, 2021. 43 [26] Guido Montúfar, Razvan Pascanu, Kyunghyun Cho, and Yoshua Bengio. On the number of linear regions of deep neural networks. Advances in Neural Information Processing Systems , 27, 2014. [27] Guido Montúfar, Yue Ren, and Leon Zhang. Sharp bounds for the number of regions of maxout networks and vertices of Minkowski sums. SIAM Journal on Applied Algebra and Geometry , 6(4):618–649, 2022. [28] Subhash Nerella, Sabyasachi Bandyopadhyay, Jiaqing Zhang, Miguel Contreras, Scott Siegel, Aysegul Bumin, Brandon Silva, Jessica Sena, Benjamin Shickel, Azra Bihorac, et al. Transformers and large language models in healthcare: A review. 
+
+Artificial Intelligence in Medicine , 154:102900, 2024. [29] Razvan Pascanu, Guido Montufar, and Yoshua Bengio. On the number of response regions of deep feed forward networks with piece-wise linear activations. In Interna-tional Conference on Learning Representations 2013 , Banff, Alberta,2013. [30] Alec Radford, Karthik Narasimhan, Tim Salimans, Ilya Sutskever, et al. Improving language understanding by generative pre-training. OpenAI , 2018. [31] Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, Ilya Sutskever, et al. Language models are unsupervised multitask learners. OpenAI blog , 1(8):9, 2019. [32] Ralph Tyrell Rockafellar. Convex analysis . Princeton Landmarks in Mathematics and Physics. Princeton University Press, 1996. [33] Thiago Serra, Christian Tjandraatmadja, and Srikumar Ramalingam. Bounding and counting linear regions of deep neural networks. In International Conference on Machine Learning , pages 4558–4566. PMLR, 2018. [34] Zuowei Shen, Haizhao Yang, and Shijun Zhang. Deep network approximation charac-terized by number of neurons. Communications in Computational Physics , 28:1768– 1811, 2020. [35] Zuowei Shen, Haizhao Yang, and Shijun Zhang. Optimal approximation rate of ReLU networks in terms of width and depth. Journal de Mathématiques Pures et Appliquées , 157:101–135, 2022. [36] Jonathan W Siegel and Jinchao Xu. Approximation rates for neural networks with general activation functions. Neural Networks , 128:313–321, 2020. 44 [37] Shokichi Takakura and Taiji Suzuki. Approximation and estimation ability of trans-formers for sequence-to-sequence functions with infinite dimensional input. In Inter-national Conference on Machine Learning , pages 33416–33447. PMLR, 2023. [38] Matus Telgarsky. Benefits of depth in neural networks. In Conference on Learning Theory , pages 1517–1539. PMLR, 2016. [39] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. Advances in Neural Information Processing Systems , 30, 2017. [40] Mingze Wang and Weinan E. Understanding the expressive power and mechanisms of transformer for sequence modeling. In Advances in Neural Information Processing Systems , volume 37, pages 25781–25856, 2024. [41] Huan Xiong, Lei Huang, Mengyang Yu, Li Liu, Fan Zhu, and Ling Shao. On the num-ber of linear regions of convolutional neural networks. In International Conference on Machine Learning , pages 10514–10523. PMLR, 2020. [42] Huan Xiong, Lei Huang, Wenston JT Zang, Xiantong Zhen, Guo-Sen Xie, Bin Gu, and Le Song. On the number of linear regions of convolutional neural networks with piecewise linear activations. IEEE Transactions on Pattern Analysis and Machine Intelligence , 46(7):5131–5148, 2024. [43] Yunfei Yang and Ding-Xuan Zhou. Optimal rates of approximation by shallow ReLU k
+
+neural networks and applications to nonparametric regression. Constructive Approx-imation , 62(2):329–360, 2025. [44] Dmitry Yarotsky. Error bounds for approximations with deep ReLU networks. Neural Networks , 94:103–114, 2017. [45] Dmitry Yarotsky. Elementary superexpressive activations. In International Confer-ence on Machine Learning , pages 11932–11940. PMLR, 2021. [46] Chulhee Yun, Srinadh Bhojanapalli, Ankit Singh Rawat, Sashank Reddi, and Sanjiv Kumar. Are transformers universal approximators of sequence-to-sequence functions? In International Conference on Learning Representations , 2020. [47] Chulhee Yun, Yin-Wen Chang, Srinadh Bhojanapalli, Ankit Singh Rawat, Sashank Reddi, and Sanjiv Kumar. O(n) connections are expressive enough: Universal ap-proximability of sparse transformers. Advances in Neural Information Processing Systems , 33:13783–13794, 2020. 45 [48] Manzil Zaheer, Guru Guruganesh, Kumar Avinava Dubey, Joshua Ainslie, Chris Alberti, Santiago Ontanon, Philip Pham, Anirudh Ravula, Qifan Wang, Li Yang, et al. Big bird: Transformers for longer sequences. Advances in Neural Information Processing Systems , 33:17283–17297, 2020. 46

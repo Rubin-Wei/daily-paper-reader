@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.26486v1/fig-001.webp",
+      "caption": "Fig. 3: Visualization of attention weight shifts in LLaVA-1.5-7B. We visualize the average change in attention weights (∆Attention = AttentionClipTTT − AttentionBase). The x-axis represents the Transformer layers (0-31), and the y-axis represents attention heads (0-31). Left: Attention from Instruction tokens to Vision tokens. Middle: Attention from Response tokens to Vision tokens. Right: Attention from Response tokens to Instruction tokens. Red regions indicate where ClipTTT amplifies attention, effectively countering the visual disconnect caused by corruptions. Experiments on Zoom Blur.",
+      "page": 25,
+      "index": 1,
+      "width": 652,
+      "height": 215
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26486v1/fig-002.webp",
+      "caption": "Table 3: Left: F1 comparison across LVLMs on COCO (CHAIR subset). Right: NoCaps (Out-of-Domain) [1] F1 results. Higher is better.",
+      "page": 21,
+      "index": 2,
+      "width": 698,
+      "height": 195
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26486v1/fig-003.webp",
+      "caption": "Fig. 6: Additional Qualitative Comparisons: Comparison on corrupted images with identical prompt - “Please describe the image in detail.”; clean images shown for reference. Red text denotes hallucinations in the baseline’s greedy decoding, while green text highlights accurate corrections by ClipTTT. Evaluation on LLaVA-v1.5-7B [34].",
+      "page": 30,
+      "index": 3,
+      "width": 723,
+      "height": 394
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26486v1/fig-004.webp",
+      "caption": "Fig. 5: Qualtiative Comparison on Real-World Street Scenes: Comparison on corrupted images with identical prompt - “Please describe the image in detail.”; clean images shown for reference. Red text denotes hallucinations in the baseline’s greedy decoding, while green text highlights accurate corrections by ClipTTT. Evaluation on LLaVA-v1.5-7B [34].",
+      "page": 29,
+      "index": 4,
+      "width": 725,
+      "height": 221
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26486v1/fig-005.webp",
+      "caption": "Fig. 1: Left: CLIP Scores before and after test-time training across all corruptions. The largest gains are seen in challenging weather and noise-based corruptions like ‘Snow’,‘Gaussian Noise’, and ‘Shot Noise’. Right: Meta-ClipTTT provides a stronger LoRA initialization, leading to faster convergence and improved performance. Experiment on Zoom Blur.",
+      "page": 23,
+      "index": 5,
+      "width": 706,
+      "height": 269
+    }
+  ]
+}

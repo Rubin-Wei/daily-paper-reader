@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.03201v2/fig-001.webp",
+      "caption": "Figure 1: Schematic illustration of the proposed two-timescale mechanism for sequential memory transitions. At the initial time, the fast state variable is at a stable equilibrium corresponding to memory ξ1. The slow reasoning variable z progressively destabilizes this equilibrium while simultaneously stabilizing the equilibrium associated with memory ξ2. At the escape time Tescape, the equilibrium corresponding to ξ1 loses stability and the system transitions toward ξ2. This transition occurs only when the gain parameter κ of the slow dynamics exceeds a critical threshold κcritical. We analytically characterize both kcritical and the resulting escape time Tescape.",
+      "page": 2,
+      "index": 1,
+      "width": 727,
+      "height": 254
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03201v2/fig-002.webp",
+      "caption": "Figure 2: Cyclic memory transitions in one- and two-timescale Hopfield models. (A) Limit-cycle structure induced by the transition matrices Q in the one-timescale dynamics and A in the two-timescale reasoning dynamics (7), with both systems initialized near memory ξ1. (B-C) One-timescale model: sequential retrieval proceeds through mixed memory states, with partial overlaps and unpredictable escape times across memories. (D-E) Two-timescale reasoning model: transitions occur between individual memories without mixing, with uniform, quantifiable escape times and overlaps reaching their maximal value, indicating exact memory alignment.",
+      "page": 4,
+      "index": 2,
+      "width": 882,
+      "height": 273
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03201v2/fig-003.webp",
+      "caption": "Figure 3: Dependence of the slow reasoning dynamics on the gain κ and the initial condition Z0. (A) Solutions of the discrete iteration P(Z) = Z/κ as a function of the gain κ. Real solutions Z± > 1 exist only for κ ≥ κcritical = 4 and sequential transitions are self-sustaining only if the initial saliency weight satisfies Z0 > Z−. (B) HardTanh activation function, linear in (−1, 1) and saturated outside this interval. (C-D) Component-wise slow reasoning dynamics for different gain regimes. (C) Subcritical gain κ = 3: oscillations decay and the dynamics collapse to the origin, leading to loss of retrieval. (D) Supercritical gain κ = 5: oscillations persist and entrain to the stable fixed point Z+, enabling reliable sequential memory retrieval.",
+      "page": 5,
+      "index": 3,
+      "width": 882,
+      "height": 505
+    }
+  ]
+}

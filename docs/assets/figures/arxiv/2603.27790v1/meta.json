@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.27790v1/fig-001.webp",
+      "caption": "Table 2: Quantitative evaluation of text removal",
+      "page": 6,
+      "index": 1,
+      "width": 718,
+      "height": 263
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27790v1/fig-002.webp",
+      "caption": "Figure 3: Qualitative comparison for text removal. ©Nagano Noriko ©Omi Ayuko",
+      "page": 6,
+      "index": 2,
+      "width": 1058,
+      "height": 315
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27790v1/fig-003.webp",
+      "caption": "Figure 2: Examples of manga image editing. In each pair, the left image is the input and the right image is the ground truth. ©Kato Masaki ©Yabuno Tenya, Watanabe Tatsuya",
+      "page": 2,
+      "index": 3,
+      "width": 506,
+      "height": 612
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27790v1/fig-004.webp",
+      "caption": "Table 6: Evaluation on various models for text removal",
+      "page": 8,
+      "index": 4,
+      "width": 622,
+      "height": 290
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27790v1/fig-005.webp",
+      "caption": "Figure 5: Qualitative comparison for screentone synthesis. ©Saki Kaori ©Kurita Riku",
+      "page": 8,
+      "index": 5,
+      "width": 1058,
+      "height": 496
+    }
+  ]
+}

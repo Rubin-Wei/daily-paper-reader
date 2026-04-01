@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.03464v1/fig-001.webp",
+      "caption": "Table 7: GHN accuracy (%) with negative λ on heterophilous datasets. Best result per dataset-model in bold.",
+      "page": 11,
+      "index": 1,
+      "width": 522,
+      "height": 244
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03464v1/fig-002.webp",
+      "caption": "Figure 1: One iteration of the GHN update: node features xv are blended with (i) memory retrieval from pattern bank M, and (ii) graph Laplacian smoothing over neighbors. Damping α controls the step size.",
+      "page": 2,
+      "index": 2,
+      "width": 690,
+      "height": 211
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03464v1/fig-003.webp",
+      "caption": "Figure 4: Phase diagram of LSE vs. LSR energy on Amazon Photo. Each cell shows mean test accuracy over 10 seeds. High variance in some cells reflects bimodal behavior (seeds either converge to ∼94% or collapse). At K=64, LSR is stable for moderate β while LSE is bimodal for all tested β.",
+      "page": 10,
+      "index": 3,
+      "width": 816,
+      "height": 315
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03464v1/fig-004.webp",
+      "caption": "Figure 3: Accuracy under feature masking across five datasets. Tuning selects K=64 on Planetoid and K=256 on Amazon. All models degrade at comparable rates on Planetoid; on Amazon, memory-enabled variants show substantially greater robustness (Table 2).",
+      "page": 10,
+      "index": 4,
+      "width": 826,
+      "height": 247
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03464v1/fig-005.webp",
+      "caption": "Table 1: Node classification accuracy (%) with per-model HP tuning. Bold: best per column. †: bimodal (>10% std).",
+      "page": 3,
+      "index": 5,
+      "width": 594,
+      "height": 311
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03464v1/fig-006.webp",
+      "caption": "Table 4: Hyperparameters for GHN and training protocol. Per-model HP tuning (Table 1) selects the best config per dataset from the grid ranges shown.",
+      "page": 8,
+      "index": 6,
+      "width": 506,
+      "height": 474
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03464v1/fig-007.webp",
+      "caption": "Table 2: Accuracy (%) under 50% corruption on Amazon Photo. Clean baselines may differ from Table 1 due to a separate HP sweep optimized for robustness. Bold: best per column.",
+      "page": 4,
+      "index": 7,
+      "width": 510,
+      "height": 307
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03464v1/fig-008.webp",
+      "caption": "Table 3: Node classification (%) on heterophilous benchmarks. Bold: best per column. †Published results (Chien et al., 2021) on same splits; Actor not reported.",
+      "page": 5,
+      "index": 8,
+      "width": 494,
+      "height": 359
+    }
+  ]
+}

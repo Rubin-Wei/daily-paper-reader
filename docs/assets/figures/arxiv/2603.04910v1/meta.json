@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.04910v1/fig-001.webp",
+      "caption": "Fig. 4. Performance on MoMaRT benchmark.",
+      "page": 6,
+      "index": 1,
+      "width": 960,
+      "height": 217
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04910v1/fig-002.webp",
+      "caption": "Fig. 5. Performance on MIKASA benchmark.",
+      "page": 6,
+      "index": 2,
+      "width": 406,
+      "height": 437
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04910v1/fig-003.webp",
+      "caption": "Fig. 7. Ablation studies on Long-Horizon Square task.",
+      "page": 7,
+      "index": 3,
+      "width": 987,
+      "height": 281
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04910v1/fig-004.webp",
+      "caption": "Fig. 2. Overview of the VPWEM framework. (a) Policy architecture. Modules in green are learnable components, including the multi-modal encoder, contextual memory compressor, summary tokens, and the Transformer-based noise predictor in the diffusion policy. These components are optimized end-to-end with a behavior cloning loss. (b) Training process. Each training sample contains the complete trajectory from the beginning of the episode. The short-term memory component follows the standard diffusion policy baselines. Observations outside the context window are subsampled with a fixed ratio and passed to the contextual memory compressor, which outputs a fixed number of memory tokens. The combined long- and short-term memory tokens are used to condition the noise prediction network. (c) Inference process. Each decision step consists of three steps: encoding new frames and updating the observation and summary caches; compressing out-of-window tokens to obtain long-term memory tokens; and predicting the action chunk.",
+      "page": 4,
+      "index": 4,
+      "width": 997,
+      "height": 429
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04910v1/fig-005.webp",
+      "caption": "TABLE I HYPERPARAMETERS OF DP-VPWEM",
+      "page": 5,
+      "index": 5,
+      "width": 504,
+      "height": 398
+    }
+  ]
+}

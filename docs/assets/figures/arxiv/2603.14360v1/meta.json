@@ -1,0 +1,134 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-001.webp",
+      "caption": "Table 5 Performance comparison on the 410M model across long-context summarization, coding and few-shot learning benchmarks.",
+      "page": 21,
+      "index": 1,
+      "width": 979,
+      "height": 342
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-002.webp",
+      "caption": "Table 6 Performance comparison on the 7B (1B active) MoE model across long-context summarization, coding and few-shot learning benchmarks.",
+      "page": 21,
+      "index": 2,
+      "width": 979,
+      "height": 344
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-003.webp",
+      "caption": "Figure 1 Forget gate (ft) behavior as a function of the input (xt) for different values of αn and βn. n denotes the nth head.",
+      "page": 7,
+      "index": 3,
+      "width": 475,
+      "height": 292
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-004.webp",
+      "caption": "Figure 5 TP topology-independent M2RNN layer. Note that RMSNormTP have weights sharded along the model width dimension for the RMSNorm module on both GPUs requiring a synchronization in both the forward and backward computation.",
+      "page": 14,
+      "index": 4,
+      "width": 907,
+      "height": 738
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-005.webp",
+      "caption": "Table 4 In-context retrieval performance on real-world data at the 7B (1B active) MoE scale.",
+      "page": 18,
+      "index": 5,
+      "width": 977,
+      "height": 410
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-006.webp",
+      "caption": "Table 3 In-context retrieval performance on real-world data at the 410M parameter scale.",
+      "page": 18,
+      "index": 6,
+      "width": 977,
+      "height": 409
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-007.webp",
+      "caption": "Figure 10 Training throughput measured in billion tokens per day on a machine with 8x NVIDIA HGX H100 GPUs for our 7B MoE configuration.",
+      "page": 23,
+      "index": 7,
+      "width": 477,
+      "height": 362
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-008.webp",
+      "caption": "Figure 4 TP topology-aware M2RNN layer running with TP on 2 GPUs. Note that RMSNorm1 and RMSNorm2 have different weights for the RMSNorm module on both GPUs.",
+      "page": 13,
+      "index": 8,
+      "width": 907,
+      "height": 688
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-009.webp",
+      "caption": "Figure 6 Zero-shot in-context retrieval performance on the RULER benchmark for M2RNN layers and Gated DeltaNet models on 410M parameter scale. The vertical lines at 4096 indicate the training context length.",
+      "page": 19,
+      "index": 9,
+      "width": 964,
+      "height": 527
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-010.webp",
+      "caption": "Figure 7 Zero-shot in-context retrieval performance on the RULER benchmark for M2RNN layers and Mamba-2 models on 410M parameter scale. The vertical lines at 4096 indicate the training context length.",
+      "page": 19,
+      "index": 10,
+      "width": 964,
+      "height": 527
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-011.webp",
+      "caption": "Figure 2 Visualization of the Matrix-to-Matrix RNN layer. This block replaces attention and is combined with MLP and RMSNorm modules as in the Transformer.",
+      "page": 9,
+      "index": 11,
+      "width": 708,
+      "height": 582
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-012.webp",
+      "caption": "Figure 3 Accuracy on the permutation group S3 state-tracking task for M2RNN, Gated DeltaNet [−1, 1], Gated DeltaProduct [−1, 1] and GRU. The vertical line at 128 denotes the training context length for all models. For the Gated DeltaProduct, we use product of 2 HouseHolder matrices since it can solve the S3 task in theory (Grazzi et al., 2024). However, as the evaluation context length is increased beyond the training context length, we observe accuracy degradation.",
+      "page": 9,
+      "index": 12,
+      "width": 477,
+      "height": 315
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-013.webp",
+      "caption": "Figure 8 Zero-shot in-context retrieval performance on the RULER benchmark for M2RNN layers and Gated DeltaNet models for the 7B MoE model. The vertical lines at 4096 indicate the training context length.",
+      "page": 20,
+      "index": 13,
+      "width": 964,
+      "height": 527
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-014.webp",
+      "caption": "Figure 9 Zero-shot in-context retrieval performance on the RULER benchmark for M2RNN layers and Mamba-2 models for the 7B MoE model. The vertical lines at 4096 indicate the training context length.",
+      "page": 20,
+      "index": 14,
+      "width": 964,
+      "height": 527
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-015.webp",
+      "caption": "Table 1 Language Modeling on the 410M parameter dense model across commonsense reasoning benchmarks. All models are evaluated in the 0-shot setting.",
+      "page": 16,
+      "index": 15,
+      "width": 981,
+      "height": 267
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14360v1/fig-016.webp",
+      "caption": "Table 2 Language Modeling on the 7B (1B active) MoE model across commonsense reasoning benchmarks. All models are evaluated in the 0-shot setting.",
+      "page": 16,
+      "index": 16,
+      "width": 981,
+      "height": 266
+    }
+  ]
+}

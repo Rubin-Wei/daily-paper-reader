@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.18631v1/fig-001.webp",
+      "caption": "Table 1: Summary of overall scores and efficiency across four settings. The baseline performance comes from (Nan et al., 2025) and (Zhou and Han, 2025).",
+      "page": 6,
+      "index": 1,
+      "width": 829,
+      "height": 567
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18631v1/fig-002.webp",
+      "caption": "Table 3: Overall Performance Comparison (LoCoMo, GPT-4o-mini)",
+      "page": 15,
+      "index": 2,
+      "width": 941,
+      "height": 188
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18631v1/fig-003.webp",
+      "caption": "Figure 2: F1 Improvement of Quality Gating over Mem0∗ by Question Category on the LoCoMo Dataset.",
+      "page": 7,
+      "index": 3,
+      "width": 750,
+      "height": 312
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18631v1/fig-004.webp",
+      "caption": "Table 2: Impact of Fallback Mechanism in Gated Deliberation across Datasets. W/O FB: Without Fallback; W/ FB: With Fallback; Rate: Percentage of queries falling into this routing status.",
+      "page": 8,
+      "index": 4,
+      "width": 713,
+      "height": 387
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18631v1/fig-005.webp",
+      "caption": "Figure 1: Architectural overview of D-Mem. Components of Part A illustrates the memory mechanism of Mem0∗. The elements highlighted in soft pale pink denote our key modifications over the original Mem0 framework: (1) utilizing the top-10 similar memories rather than a general summary during the Extraction Phase, and (2) incorporating an additional relevance filtering step prior to memory updates. Part B illustrates the Quality Gating mechanism, which evaluates the initial answer from Mem0∗ and dynamically determines whether to trigger the Full Deliberation fallback.",
+      "page": 4,
+      "index": 5,
+      "width": 917,
+      "height": 393
+    }
+  ]
+}

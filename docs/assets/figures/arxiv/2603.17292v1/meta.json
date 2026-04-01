@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.17292v1/fig-001.webp",
+      "caption": "Figure 1: Overview of the SEAL-TAG Framework. (Top) Post-Training Pipeline: We address the “cold start” problem of privacy training via an S0–S6 synthetic data generator, which fuels a two-stage curriculum learning process: first optimizing for PII Perception (Stage I), then aligning for Protocol Adherence (Stage II). (Bottom) Runtime Architecture: The system enforces a Verify-then-Route contract. The RAG backbone retrieves context containing potential PII. The LLM acts as a SEAL-PROBE, generating a Draft Answer followed by a structured PII-Evidence Table (PET) that explicitly maps entities, linkability risks, and consensus signals. This structured evidence is consumed by a Probabilistic Circuit (PC) decision head, which performs exact inference on the feature vector to deterministically route the output to ALLOW, MASK, or REFUSE states.",
+      "page": 6,
+      "index": 1,
+      "width": 860,
+      "height": 272
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17292v1/fig-002.webp",
+      "caption": "Figure 5: System Latency Overhead Comparison (Log Scale).",
+      "page": 13,
+      "index": 2,
+      "width": 470,
+      "height": 287
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17292v1/fig-003.webp",
+      "caption": "Figure 4: Reliability Diagram (Calibration Plot). The x-axis represents the model’s self-reported confidence that a response is Safe. The y-axis represents the actual percentage of Safe responses in that confidence bin. And ECE is Expected Calibration Error.",
+      "page": 12,
+      "index": 3,
+      "width": 401,
+      "height": 333
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17292v1/fig-004.webp",
+      "caption": "Figure 3: The Privacy-Utility Pareto Frontier (Llama-3.2-3B). The x-axis represents Risk (Attack Success Rate), and the yaxis represents Utility (PopQA Accuracy). Curves represent the sensitivity sweep of decision thresholds.",
+      "page": 12,
+      "index": 4,
+      "width": 468,
+      "height": 295
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17292v1/fig-005.webp",
+      "caption": "Figure 2: The S0–S6 Anchored Synthesis Pipeline. The process begins with S0 (Anchoring), extracting and normalizing typed PII entities from curated sources. S1 (World Induction) and S2 (Atomic Enrichers) synthesize a plausible semantic backdrop and adversarial artifacts (e.g., phishing attempts) around these anchors. S3 (Context Composer) merges these elements into retrievable passages, deterministically tracking PII injection sites. S4 (Query & Draft) generates grounded user interactions. Finally, S5 (Finalize) and S6 (Review) construct the gold-standard <PET> and <FINAL> blocks, utilizing a Red-Team filter to retain only high-quality samples for the Instruction Tuning dataset.",
+      "page": 9,
+      "index": 5,
+      "width": 918,
+      "height": 366
+    }
+  ]
+}

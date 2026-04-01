@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.04885v1/fig-001.webp",
+      "caption": "Table 3. Results of different embedding models on STEM-Bench. Metrics marked with ↑ indicate higher is better, while ↓ denotes lower is better.",
+      "page": 15,
+      "index": 1,
+      "width": 1031,
+      "height": 875
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04885v1/fig-002.webp",
+      "caption": "Table 1. Statistics of the STEM-Bench dataset with samples examining HFP, SLR, and DGA. TBBT: The Big Bang Theory.",
+      "page": 3,
+      "index": 2,
+      "width": 466,
+      "height": 327
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04885v1/fig-003.webp",
+      "caption": "Figure 6. Average performance metrics (left) and latency (right) comparison across varying context complexity (entropy). The lines show the data distribution, with ProStream (green) exhibiting greater polarized context complexity than Full Context (red).",
+      "page": 8,
+      "index": 3,
+      "width": 492,
+      "height": 246
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04885v1/fig-004.webp",
+      "caption": "Figure 2. Overview of STEM-Bench Benchmark Curation. (a) Taxonomy of cognitive dimensions and tasks, where QA pairs are categorized by cognitive challenges (HFP, SLR, DGA) and distinct task types. (b) Data construction pipeline of the STEM-Bench dataset.",
+      "page": 4,
+      "index": 4,
+      "width": 967,
+      "height": 340
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04885v1/fig-005.webp",
+      "caption": "Figure 3. Preliminary analysis of RAG and full-context performance. (Top) The average accuracy of all performance metrics across evidence distances. (Bottom) Inference latency over dialogue turns. The dashed lines indicate the overall average results.",
+      "page": 4,
+      "index": 5,
+      "width": 492,
+      "height": 557
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04885v1/fig-006.webp",
+      "caption": "Figure 7. Qualitative comparison (Case Study) of the RAG method and our ProStream.",
+      "page": 9,
+      "index": 6,
+      "width": 1017,
+      "height": 265
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04885v1/fig-007.webp",
+      "caption": "Figure 4. Overview of our ProStream framework with four components discussed in turn from §5.1 to §5.4.",
+      "page": 5,
+      "index": 7,
+      "width": 917,
+      "height": 371
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04885v1/fig-008.webp",
+      "caption": "Figure 8. Two examples of error analysis.",
+      "page": 16,
+      "index": 8,
+      "width": 511,
+      "height": 394
+    }
+  ]
+}

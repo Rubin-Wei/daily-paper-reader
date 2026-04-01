@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.15923v1/fig-001.webp",
+      "caption": "Figure 7: Empirical scaling of the parameter size for the Attention-only model (L ≍ V ), trained with Adam using a batch size of ⌊N/16⌋. Top row (a–d): N ≍ V log V . Bottom row (e–h): N ≍ V 1.5.",
+      "page": 11,
+      "index": 1,
+      "width": 929,
+      "height": 479
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15923v1/fig-002.webp",
+      "caption": "Figure 2: Empirical scaling of parameter size via three-step GD for the Attention-only model. In (a) and (b), top-left and top-right use L ≍ V 0.5; bottom-left and bottom-right use L ≍ V . In (c), we compare the parameter counts from (a) and (b) for the L ≍ V case under two sample-size regimes, N ≍ V log V and N ≍ V 1.5. Line fitting: We identify in the heatmaps the smallest embedding dimension that achieves accuracies {0.1, 0.125, 0.15} and perform a least squares fit. The slopes of the fitted lines and their theoretical counterparts are reported on the heatmaps.",
+      "page": 7,
+      "index": 2,
+      "width": 829,
+      "height": 439
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15923v1/fig-003.webp",
+      "caption": "Figure 5: Empirical scaling of the parameter size for the Attention-only model under two sample size regimes. Top row (a–d): N ≍ V log V . Bottom row (e–h): N ≍ V 1.5. The model uses L ≍ V and is trained using Adam over 16 epochs. We observe that the capacity improves as the number of epochs increases.",
+      "page": 10,
+      "index": 3,
+      "width": 929,
+      "height": 474
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15923v1/fig-004.webp",
+      "caption": "Figure 6: Empirical scaling of the parameter size for the Attention-only model with N ≍ V log V and L ≍ V 0.85. The model is trained using Adam over 16 epochs. The slopes are smaller than in Figure 5, which is consistent with the shorter sequence length.",
+      "page": 10,
+      "index": 4,
+      "width": 925,
+      "height": 235
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15923v1/fig-005.webp",
+      "caption": "Figure 1: (a) Empirical scaling of the parameter size required for a GD-trained one-layer transformer to learn factual recall, where we use m ≍ d2 (see Section 4.2 for details). For small L, the trained model achieves the optimal capacity V ≍ md (purple line). As the sequence length L increases, the scaling changes, suggesting a multiplicative rate (blue and red lines). (b) Phase diagram for the theoretical scaling of the parameter count given in Corollary 2. Each region corresponds to a regime where a particular noise term in Theorem 1 is dominant. The parameter-size condition (md) in each region is given in Corollary 2.",
+      "page": 3,
+      "index": 5,
+      "width": 856,
+      "height": 395
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15923v1/fig-006.webp",
+      "caption": "Figure 4: Empirical scaling of embedding parameter size for the Attention-MLP model under two width regimes, m ≍ d2 and m ≍ d3. In (a) and (b), top-row uses L ≍ V 0.25; bottom-row uses L ≍ V 0.5. In (c), we compare the parameter counts from (a) and (b) for the L ≍ V 0.5 case under both width regimes.",
+      "page": 8,
+      "index": 6,
+      "width": 845,
+      "height": 447
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15923v1/fig-007.webp",
+      "caption": "Figure 3: Empirical scaling of parameter size for the Attention-MLP model under two sample size regimes, N ≍ V log V and N ≍ V 1.5. In (a) and (b), top-row uses L ≍ V 0.25; bottom-row uses L ≍ V 0.5. In (c), we compare the parameter counts from (a) and (b) for the L ≍ V 0.5 case under both sample-size regimes.",
+      "page": 8,
+      "index": 7,
+      "width": 839,
+      "height": 448
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.26931v1/fig-001.webp",
+      "caption": "Fig. 12. Generalization performance of models, across domains with structured calibration gains. The JT, P-TDA, and DD-TDA models were trained on 45 domains and tested on 5 unseen domains.",
+      "page": 15,
+      "index": 1,
+      "width": 500,
+      "height": 394
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26931v1/fig-002.webp",
+      "caption": "Fig. 11. Comparison of the proposed methods with the JT and PT methods for the sparse gain calibration problem. The P-TDA/DD-TDA has comparable performance to PT, demonstrating the domain-adaptability aspect.",
+      "page": 15,
+      "index": 2,
+      "width": 978,
+      "height": 385
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26931v1/fig-003.webp",
+      "caption": "Fig. 1. Layers/iterations of different LISTA architectures: (a) Conventional LISTA, (b), (c) NA-LISTA. (b) Single layer of the P-DTDA model with input data {y,A} and domain parameter σ available during inference. (c) Single layer of DD-TDA model with only input data {y,A} available during inference. Note: Green blocks represent the data available at inference time, and Gray blocks are trainable parameters.",
+      "page": 7,
+      "index": 3,
+      "width": 952,
+      "height": 189
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26931v1/fig-004.webp",
+      "caption": "TABLE III PER-SNR RECONSTRUCTION METRICS AND OCR ACCURACY ON MNIST TEST SET (2,000 SAMPLES PER SNR LEVEL). OCR ACCURACY CEILING ON CLEAN IMAGES IS 97.50%. P-TDA AND DD-TDA ARE NA-LISTA VARIANTS. ↑ INDICATES HIGHER IS BETTER AND ↓ INDICATES LOWER IS BETTER.",
+      "page": 10,
+      "index": 4,
+      "width": 922,
+      "height": 494
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26931v1/fig-005.webp",
+      "caption": "Fig. 4. Qualitative MNIST-CS reconstructions across SNR domains. Columns show ground truth (GT) and reconstructions from JT (LISTA), Tail-LISTA (tight), DDIM (diffusion model) and the proposed NA-LISTA with P-TDA and DD-TDA.",
+      "page": 10,
+      "index": 5,
+      "width": 914,
+      "height": 667
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26931v1/fig-006.webp",
+      "caption": "Fig. 15. A comparison of NMSE against the number of parameters and FLOPS for different methods.",
+      "page": 18,
+      "index": 6,
+      "width": 1048,
+      "height": 544
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26931v1/fig-007.webp",
+      "caption": "Fig. 8. Comparison of top (15× 15) of learned W2 matrices for different domains.",
+      "page": 13,
+      "index": 7,
+      "width": 973,
+      "height": 249
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26931v1/fig-008.webp",
+      "caption": "Fig. 7. Comparison of top (15× 15) of learned W1 matrices.",
+      "page": 13,
+      "index": 8,
+      "width": 986,
+      "height": 248
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26931v1/fig-009.webp",
+      "caption": "Fig. 9. Results for generalization experiment: The models (except PT) were trained on D1, D3, and D5 domains. Observation: DD-TDA generalizes well and performs better than JT models.",
+      "page": 13,
+      "index": 9,
+      "width": 500,
+      "height": 395
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26931v1/fig-010.webp",
+      "caption": "Fig. 2. Comparison of the proposed methods with the JT and PT methods for NA-LISTA for different SNR ranges. PT’s performances are better than JT’s for each domain. The P-TDA/DD-TDA has comparable performance to PT, demonstrating the noise-tunability aspect.",
+      "page": 8,
+      "index": 10,
+      "width": 1067,
+      "height": 407
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26931v1/fig-011.webp",
+      "caption": "Fig. 3. Comparison of the proposed methods with the JT and PT methods for NA-LISTA for broad SNR ranges, averaged over 5 experiments.",
+      "page": 8,
+      "index": 11,
+      "width": 523,
+      "height": 402
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26931v1/fig-012.webp",
+      "caption": "Fig. 14. Comparison of the proposed methods with the JT and PT methods for Phase Retrieval with sparsity [10, 7, 4] and HR tol: 0.05.",
+      "page": 17,
+      "index": 12,
+      "width": 523,
+      "height": 403
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26931v1/fig-013.webp",
+      "caption": "Fig. 5. Qualitative MNIST-CS reconstructions at SNR −10dB. Columns show ground truth (GT) and reconstructions from JT (LISTA), Tail-LISTA (tight), DDIM (diffusion model) and the proposed NA-LISTA with P-TDA and DD-TDA.",
+      "page": 12,
+      "index": 13,
+      "width": 832,
+      "height": 669
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26931v1/fig-014.webp",
+      "caption": "Fig. 6. Comparison of learned W1 matrices for different domains.",
+      "page": 12,
+      "index": 14,
+      "width": 990,
+      "height": 252
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26931v1/fig-015.webp",
+      "caption": "Fig. 13. PRα,L() is the tunable model for sparse phase retrieval. Note: Green symbols represent the data available at inference time. Red symbols are trainable parameters, and blue symbols are fixed parameters.",
+      "page": 16,
+      "index": 15,
+      "width": 450,
+      "height": 355
+    }
+  ]
+}

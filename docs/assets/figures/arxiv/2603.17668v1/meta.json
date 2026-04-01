@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.17668v1/fig-001.webp",
+      "caption": "Figure 1: VanillaLLM and RAG cannot utilize user’s domain knowledge effectively for long-context QA. Halo extracts this knowledge and systematically applies it in a multi-stage query optimization pipeline.",
+      "page": 2,
+      "index": 1,
+      "width": 504,
+      "height": 323
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17668v1/fig-002.webp",
+      "caption": "Figure 2: Workflow of Halo: (1) the KnowledgeParser extracts domain directives from the user prompt, (2) the ContextSelector prunes structural elements using the Structural operator and identifies the top-𝑘 relevant chunks, (3) the InferenceEngine applies the Filter operator to discard irrelevant chunks and generates candidate responses on the remaining chunks, (4) the Verifier re-ranks the responses using Validate operator–demoting hallucinatory responses.",
+      "page": 3,
+      "index": 2,
+      "width": 944,
+      "height": 381
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17668v1/fig-003.webp",
+      "caption": "Table 4: Dataset characteristics.",
+      "page": 9,
+      "index": 3,
+      "width": 490,
+      "height": 638
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17668v1/fig-004.webp",
+      "caption": "Table 3: Representative examples of domain knowledge used in our experiments. The domain knowledge column shows the natural language instructions a domain expert provides alongside the question.",
+      "page": 9,
+      "index": 4,
+      "width": 1056,
+      "height": 196
+    }
+  ]
+}

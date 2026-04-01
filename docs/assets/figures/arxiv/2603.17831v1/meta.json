@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.17831v1/fig-001.webp",
+      "caption": "Figure 1: Representative methods positioned along C1 (executability enforcement) and C2 (state consistency control): ReAct (Yao et al., 2023), Generative Agents (Park et al., 2023), Reflexion (Shinn et al., 2023), MemGPT (Packer et al., 2024), Inner Monologue (Huang et al., 2023), Voyager (Wang et al., 2024), LATS (Zhou et al., 2024), Action Attention (Wu et al., 2022), Imperative Learning (Wang et al., 2025), CAPE (Raman et al., 2024), NeSyC (Choi et al., 2025). Most prior work addresses one axis; RPMS targets both.",
+      "page": 1,
+      "index": 1,
+      "width": 439,
+      "height": 364
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17831v1/fig-002.webp",
+      "caption": "Figure 5: Learning curve: success rate vs. learning rounds for Memory-only and Rules+Memory configurations.",
+      "page": 11,
+      "index": 2,
+      "width": 445,
+      "height": 270
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17831v1/fig-003.webp",
+      "caption": "Figure 2: RPMS architecture. Each step: (1) parse observation into BeliefState and GoalSpec; (2) query Rule Manual and Episodic Memory in parallel; (3) filter experiences by state-signature compatibility; (4) resolve conflicts via Rules-First Arbitration; (5) query LLM with augmented prompt.",
+      "page": 4,
+      "index": 3,
+      "width": 950,
+      "height": 531
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17831v1/fig-004.webp",
+      "caption": "Table 7: Published ScienceWorld results for qualitative context only. Methods differ in backbone, training regime, protocol, and evaluated subset.",
+      "page": 12,
+      "index": 4,
+      "width": 891,
+      "height": 190
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17831v1/fig-005.webp",
+      "caption": "Table 6: Published ALFWorld results for qualitative context only. Methods differ in backbone, training regime, and trial budget.",
+      "page": 12,
+      "index": 5,
+      "width": 852,
+      "height": 188
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17831v1/fig-006.webp",
+      "caption": "Figure 3: RPMS agent architecture overview, showing rule injection (C1: executability enforcement) and state-consistent memory filtering (C2: state consistency control) as the two core components that augment the LLM decision loop.",
+      "page": 5,
+      "index": 6,
+      "width": 447,
+      "height": 600
+    }
+  ]
+}

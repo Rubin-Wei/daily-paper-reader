@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.04276v1/fig-001.webp",
+      "caption": "Table 1: Canonical event vocabulary for the Trump–Japan deal-making case study (N = 100, C = 30).",
+      "page": 15,
+      "index": 1,
+      "width": 988,
+      "height": 969
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04276v1/fig-002.webp",
+      "caption": "Figure 1: PC algorithm output for the Trump–Japan deal-making case study. (N = 100, C = 30). We split the original figure into two stacked panels for readability.",
+      "page": 9,
+      "index": 2,
+      "width": 964,
+      "height": 360
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04276v1/fig-003.webp",
+      "caption": "Figure 2: Part of the PC result in the AI–gold case study (N = 100, C = 20).",
+      "page": 10,
+      "index": 3,
+      "width": 976,
+      "height": 201
+    }
+  ]
+}

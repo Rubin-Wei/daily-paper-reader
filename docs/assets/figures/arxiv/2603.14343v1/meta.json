@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.14343v1/fig-001.webp",
+      "caption": "Figure 1: Causal tracing consists of three runs: i) a clean run for the correct object; ii) a corrupted run, where the subject span are corrupted to obtain a low-probability object prediction; and iii) a corrupted-with-restoration run, which restores the corrupted hidden representations at selected layers to their clean values, evaluating the contribution of those layers via changes in object probability.",
+      "page": 2,
+      "index": 1,
+      "width": 908,
+      "height": 343
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14343v1/fig-002.webp",
+      "caption": "Table 1: Editing performance across modalities and strategies.",
+      "page": 4,
+      "index": 2,
+      "width": 472,
+      "height": 296
+    }
+  ]
+}

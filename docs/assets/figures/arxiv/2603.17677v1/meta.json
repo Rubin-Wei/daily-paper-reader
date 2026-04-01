@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.17677v1/fig-001.webp",
+      "caption": "Figure 1: Overview of ARAM. ARAM mitigates knowledge conflict via step-wise and token-wise adaptive guidance driven by the Signal-to-Noise Ratio.",
+      "page": 1,
+      "index": 1,
+      "width": 454,
+      "height": 275
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17677v1/fig-002.webp",
+      "caption": "Table 1: Performance comparison across QA benchmarks. Bold indicates the best score within each backbone.",
+      "page": 6,
+      "index": 2,
+      "width": 846,
+      "height": 612
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17677v1/fig-003.webp",
+      "caption": "Figure 3: Dynamics of adaptive guidance. (a) Average guidance scale (λt) per step. ARAM maintains high guidance for gold documents but suppresses λt for noisy ones. (b) Token-wise guidance heatmap. Black squares mark unmasking positions, demonstrating a right-to-left generation tendency. ARAM assigns larger guidance to positions that align with the unmasking pattern.",
+      "page": 7,
+      "index": 3,
+      "width": 412,
+      "height": 545
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17677v1/fig-004.webp",
+      "caption": "Figure 5: Prompt template used for LLaDA.",
+      "page": 14,
+      "index": 4,
+      "width": 461,
+      "height": 425
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17677v1/fig-005.webp",
+      "caption": "Figure 6: Few-shot prompt template used for the Dream and other AR backbones.",
+      "page": 14,
+      "index": 5,
+      "width": 458,
+      "height": 1090
+    },
+    {
+      "url": "assets/figures/arxiv/2603.17677v1/fig-006.webp",
+      "caption": "Figure 4: Prompt template for LLM-based retrieval context quality annotation.",
+      "page": 13,
+      "index": 6,
+      "width": 458,
+      "height": 637
+    }
+  ]
+}

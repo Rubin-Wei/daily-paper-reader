@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.14778v1/fig-001.webp",
+      "caption": "Figure 1. The workflow of p2RAG. During the offline stage, the data owner sets up the secret-shared database. During the distance calculation, the servers compute the secret-shared distances between each document and the user’s prompt. During the distance bisection, the user determines a distance threshold dk for the top-k documents. The bisection iteration ends when dk is found, or the number of iterations exceeds an upper bound. During the text retrieval, the user retrieves textual documents using the indices of the top-k documents.",
+      "page": 4,
+      "index": 1,
+      "width": 1000,
+      "height": 536
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14778v1/fig-002.webp",
+      "caption": "Figure 3. Server time (lower is better) with varying numbers of documents N and retrieved documents k′. k′ = 16 and N = 217 for the two figures, respectively.",
+      "page": 8,
+      "index": 2,
+      "width": 490,
+      "height": 272
+    }
+  ]
+}

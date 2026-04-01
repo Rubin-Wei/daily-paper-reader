@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.09222v1/fig-001.webp",
+      "caption": "Figure 1: Answering performance (EM, F1) and compression efficiency (QpS, Saved %) across compressors. Questions Per Second (QpS) is from compression latency; Context Saved is 100% – Compression ratio.",
+      "page": 1,
+      "index": 1,
+      "width": 448,
+      "height": 472
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09222v1/fig-002.webp",
+      "caption": "Figure 2: Overview of our framework. Our proposed lightweight context pruner includes three steps. (1) each retrieved document is segmented into sentences. (2) We measure the importance of sentences by calculating the change in clue richness, denoted as ∆, when a sentence is omitted. A larger ∆ indicates that the sentence is more critical. (3) We apply an adaptive threshold τ to retain most essential sentences while pruning others, dynamically.",
+      "page": 2,
+      "index": 2,
+      "width": 943,
+      "height": 467
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09222v1/fig-003.webp",
+      "caption": "Table 1: Performance across models and datasets by reader Llama-3.1-8B Instruct and Llama-3.3-70B Instruct. Best (bold) and second-best (underlined) are determined using higher-precision values before rounding to shown decimal places.",
+      "page": 7,
+      "index": 3,
+      "width": 931,
+      "height": 937
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09222v1/fig-004.webp",
+      "caption": "Figure 3: Performance analysis on HQA at increasing top-k = {5, 10, 20, 30} by reader Llama-3.1-8B Instruct, comparing EM, compression latency, and compression ratio between baselines and our proposed method.",
+      "page": 8,
+      "index": 4,
+      "width": 902,
+      "height": 283
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09222v1/fig-005.webp",
+      "caption": "Figure 4: Peak memory vs. end-to-end latency for all compressors (lower-left indicates better efficiency) on HQA subset 500 at k = 10 by Llama-3.1-8B Instruct. Each point represents one model; ours is highlighted with a black ring, where our method is among the low-computationally required methods.",
+      "page": 12,
+      "index": 5,
+      "width": 448,
+      "height": 336
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09222v1/fig-006.webp",
+      "caption": "Table 6: Performance across compressing models on HQA and 2Wiki datasets using Gemini-2.5-flash, Kimi-K2 and GPT5-mini (low effort) readers at top-20 retrieved chunks.",
+      "page": 12,
+      "index": 6,
+      "width": 456,
+      "height": 575
+    }
+  ]
+}

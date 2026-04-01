@@ -1,0 +1,118 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.11564v1/fig-001.webp",
+      "caption": "Table 2: Main Results on LongBench: performance comparison of different KV cache compression methods",
+      "page": 6,
+      "index": 1,
+      "width": 946,
+      "height": 531
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11564v1/fig-002.webp",
+      "caption": "Table 14: Performance comparison of different methods across various LLMs on sub-task categories of the HELMET benchmark.",
+      "page": 21,
+      "index": 2,
+      "width": 946,
+      "height": 883
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11564v1/fig-003.webp",
+      "caption": "Figure 1: An overview of DapQ. A synthetic pseudo context (length N ) is appended to the original context (length Lp), forming an extended sequence of length Lp+N . The model processes this sequence during the prefill phase and then obtains pseudo queries for the synthetic tokens, which are endowed with the correct positional encodings of the first N decoding steps. These pseudo queries compute attention scores with all keys from the original prompt, establishing the token importance distribution. The topK tokens are retained in the compressed KV cache, while the others, along with all the synthetic tokens are evicted. Autoregressive decoding then begins from position Lp.",
+      "page": 2,
+      "index": 3,
+      "width": 902,
+      "height": 327
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11564v1/fig-004.webp",
+      "caption": "Table 15: Performance comparison of different methods across various LLMs on Needle-in-a-Haystack.",
+      "page": 22,
+      "index": 4,
+      "width": 508,
+      "height": 993
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11564v1/fig-005.webp",
+      "caption": "Table 1: Query similarity comparison under different content and position conditions. Post ROPE denotes similarity after ROPE has been applied to query vectors. Pre ROPE indicates similarity measured before ROPE application.",
+      "page": 3,
+      "index": 5,
+      "width": 950,
+      "height": 216
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11564v1/fig-006.webp",
+      "caption": "Figure 2: Analysis of Positional Dominance and Offset Sensitivity in Query Similarity. We set the pseudo queries of fixed length 32. (a) Boxplot of query similarity distributions for a 4k context under different content and position conditions, each aggregated from 100 independent trials. DC: pseudo-queries content is constructed by randomly sampling 32 tokens from the model’s vocabulary; DP: pseudo-queries positions are assigned by randomly sampling a consecutive span of 32 index positions from the context length range [0, m] (e.g., [0, 4000]). (b) Query similarity curves over offset positions for contexts of lengths 2k, 4k, 6k, and 8k. The x-axis denotes the starting position assigned to pseudo queries (e.g., an x-axis value of 3500 corresponds to position IDs 3500 ∼ 3531).",
+      "page": 3,
+      "index": 6,
+      "width": 925,
+      "height": 324
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11564v1/fig-007.webp",
+      "caption": "Table 11: Performance comparison of different methods across various kv cache size on Ruler for llama3-8BInstruct.",
+      "page": 18,
+      "index": 7,
+      "width": 946,
+      "height": 710
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11564v1/fig-008.webp",
+      "caption": "Figure 5: Visualization of Needle-in-a-Haystack results. We take LLaMA-3-8B-Instruct (8k context, 256 KV size) as a representative example to demonstrate the performance differences. The vertical axis represents the depth percentage, and the horizontal axis represents the token length.",
+      "page": 23,
+      "index": 8,
+      "width": 655,
+      "height": 1168
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11564v1/fig-009.webp",
+      "caption": "Figure 4: Ablation analysis of pseudo queries with respect to quality, length and insert positions. (a) Performance under a fixed Qpseudo length 32, with varying semantic content of Qpseudo: Fm_Ln is the concatenation of the first m and the last n tokens from the input context; RS_C is constructed by concatenating 32 randomly sampled individual tokens from the context; RC_C is a randomly sampled consecutive span of 32 tokens from the context; and Fix_C is a fixed, repetitive nonsensical sequence (e.g., “Sorry, I don’t know. Sorry, I don’t know. . . ”). (b) Performance under varying observation window sizes N . (c) Performance under varying insert positions of Qpseudo. Left Parts: we divide the original context interval [0, Lp) equally into three segments: part1 (beginning), part2 (middle), and part3 (end). For each segment, we randomly select a continuous sequence of 32 positions and map the position IDs of Qpseudo to it. Right Parts: we only move backwards the position IDs of Qpseudo to continuous 32 positions at different offsets after the context Lp (e.g., [Lp + 0, Lp + 32)), [Lp + 32, Lp + 64)).",
+      "page": 8,
+      "index": 9,
+      "width": 937,
+      "height": 233
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11564v1/fig-010.webp",
+      "caption": "Figure 3: Recall Performance of different methods across various Window Sizes.",
+      "page": 4,
+      "index": 10,
+      "width": 450,
+      "height": 432
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11564v1/fig-011.webp",
+      "caption": "Table 12: Performance comparison of different methods across various kv cache size on Ruler for Qwen2.5-7BInstruct.",
+      "page": 19,
+      "index": 11,
+      "width": 946,
+      "height": 812
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11564v1/fig-012.webp",
+      "caption": "Table 10: Performance comparison of different methods across various LLMs on LongBenchv2. For DapQ, the pseudo queries are constructed via prefix-suffix concatenation: using the first 8 and last 24 tokens for LLaMA series models, and the first 2 and last 30 tokens for Qwen models. Notably, several compressed methods surpass the FullKV baseline. We attribute this phenomenon to the noise reduction mechanism of cache eviction. By selectively retaining critical tokens, these methods effectively reduce noise and sparsify the context, potentially leading to more focused and effective model reasoning. This effect is particularly pronounced in long-context benchmarks.",
+      "page": 17,
+      "index": 12,
+      "width": 585,
+      "height": 840
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11564v1/fig-013.webp",
+      "caption": "Table 13: Performance comparison of different methods across various kv cache size on Ruler for Qwen3-8B.",
+      "page": 20,
+      "index": 13,
+      "width": 946,
+      "height": 813
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11564v1/fig-014.webp",
+      "caption": "Table 9: Performance comparison of different methods across various LLMs on LongBench.",
+      "page": 16,
+      "index": 14,
+      "width": 946,
+      "height": 771
+    }
+  ]
+}

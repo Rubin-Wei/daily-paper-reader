@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.09192v1/fig-001.webp",
+      "caption": "Figure 4: Cost–quality trade-off: expert score vs. token cost, colored by latency. The curve indicates the Pareto frontier.",
+      "page": 7,
+      "index": 1,
+      "width": 492,
+      "height": 361
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09192v1/fig-002.webp",
+      "caption": "Figure 3: Ablation results: score drop when removing each module. Larger values indicate higher sensitivity.",
+      "page": 7,
+      "index": 2,
+      "width": 492,
+      "height": 272
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09192v1/fig-003.webp",
+      "caption": "Table 5: Paired significance tests for Agent-RAG vs. Baseline at the question level. We report Holm–Bonferroni corrected p-values (pHolm) for the paired t-test, the Wilcoxon signed-rank test as a robustness check, and the paired effect size dz .",
+      "page": 14,
+      "index": 3,
+      "width": 818,
+      "height": 711
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09192v1/fig-004.webp",
+      "caption": "Figure 1: The complete algorithm process",
+      "page": 3,
+      "index": 4,
+      "width": 1017,
+      "height": 570
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09192v1/fig-005.webp",
+      "caption": "Table 1: Agent-RAG expert scores (µ± σ).",
+      "page": 8,
+      "index": 5,
+      "width": 704,
+      "height": 209
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09192v1/fig-006.webp",
+      "caption": "Table 2: Baseline (plain chat) expert scores (µ± σ).",
+      "page": 8,
+      "index": 6,
+      "width": 704,
+      "height": 214
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09192v1/fig-007.webp",
+      "caption": "Figure 2: A schematic diagram of Clustering Abstraction Tree and Method Provenance Tree",
+      "page": 4,
+      "index": 7,
+      "width": 1017,
+      "height": 570
+    }
+  ]
+}

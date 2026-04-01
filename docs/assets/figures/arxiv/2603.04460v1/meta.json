@@ -1,0 +1,86 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.04460v1/fig-001.webp",
+      "caption": "Figure 1: Overview of VSPrefill. The VSIndexer employs a shared-weight bilayer linear network that accepts concatenated key-value pairs as input and outputs vertical and slash attention scores, denoted as Âv and Âs. These scores are trained to approximate the ground-truth full attention weights aggregated along the corresponding directional patterns. During inference, Âv and Âs undergo top-k selection with a dynamic sparsity budget to construct the vertical-slash sparse attention mask. Implementation details, including the architecture of VSIndexer, RoPE, and sparse attention computation, are omitted for clarity.",
+      "page": 2,
+      "index": 1,
+      "width": 1023,
+      "height": 311
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04460v1/fig-002.webp",
+      "caption": "Table 1: Performance evaluation on the RULER benchmark across context lengths ranging from 4k to 128k. Bold values indicate the highest score within each model group (excluding FlashAttn); underlined values indicate the second-highest score. Speedup is relative to full attention.",
+      "page": 7,
+      "index": 2,
+      "width": 740,
+      "height": 348
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04460v1/fig-003.webp",
+      "caption": "Table 2: Performance evaluation on the LongBench benchmark across 13 diverse tasks. Bold values indicate the highest score within each model group (excluding FlashAttn); underlined values indicate the second-highest score.",
+      "page": 7,
+      "index": 3,
+      "width": 1040,
+      "height": 366
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04460v1/fig-004.webp",
+      "caption": "Figure 2: Accuracy and Perplexity Trends Across Different Attention Recall Levels on HotPotQA dataset.",
+      "page": 3,
+      "index": 4,
+      "width": 452,
+      "height": 269
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04460v1/fig-005.webp",
+      "caption": "Figure 8: Dimension-wise histogram statistics of Query and Key vectors with Gaussian fits. The distributions display dimensiondependent means and variances, revealing heterogeneous statistical properties of attention projections.",
+      "page": 13,
+      "index": 5,
+      "width": 1052,
+      "height": 289
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04460v1/fig-006.webp",
+      "caption": "Figure 7: Slash-aggregated attention weights under four configurations of query-key averaging before RoPE application: (a) no averaging, (b) averaging along the sequence dimension, (c) averaging along the feature dimension, and (d) averaging along both dimensions. In each case, Q and K are first averaged along the specified dimension(s), then element-wise replicated to restore their original shapes, followed by RoPE encoding.",
+      "page": 13,
+      "index": 6,
+      "width": 1052,
+      "height": 637
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04460v1/fig-007.webp",
+      "caption": "Figure 5: Accuracy vs. Speedup across different Attention mechanism on context length ranging from 32k to 128k.",
+      "page": 8,
+      "index": 7,
+      "width": 1054,
+      "height": 295
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04460v1/fig-008.webp",
+      "caption": "Figure 4: Diagonal-aggregated attention heatmap for Layer 0 of Qwen3-4B-Instruct on LongBench. The x-axis denotes the relative diagonal offset (i−j) where 0 corresponds to the main diagonal. The emergence of distinct vertical bands at distal offsets validates the existence of consistent slash patterns, characterized by strong correlations at fixed relative distances across multiple heads.",
+      "page": 4,
+      "index": 8,
+      "width": 527,
+      "height": 290
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04460v1/fig-009.webp",
+      "caption": "Figure 3: Visualization of dynamic attention sparsity patterns. (a-c) Comparisons reveal high structural similarity within the same KV group (Intra-Group) contrasted with distinct topologies across different groups (Inter-Group). (d) Sparsity patterns evolve significantly as network depth increases. (e-f) The distribution of salient weights shifts in response to varying input prompts and model architectures.",
+      "page": 4,
+      "index": 9,
+      "width": 1052,
+      "height": 197
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04460v1/fig-010.webp",
+      "caption": "Figure 6: Attention weights aggregated along the vertical direction across different heads on Qwen3-4B-Instruct using the LongBench dataset.",
+      "page": 12,
+      "index": 10,
+      "width": 1052,
+      "height": 577
+    }
+  ]
+}

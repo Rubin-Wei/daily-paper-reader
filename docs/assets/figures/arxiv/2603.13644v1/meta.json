@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.13644v1/fig-001.webp",
+      "caption": "Figure 1: StatePlane end-to-end architecture. The write path (Event Boundary Detector → Episodic Encoder → Write Gate) selectively encodes state. The read path (Intent Classifier → Goal-Conditioned Retriever→ State Reconstructor) composes bounded context. The Security & Governance Layer enforces access control, provenance, encryption, and audit logging.",
+      "page": 2,
+      "index": 1,
+      "width": 527,
+      "height": 358
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13644v1/fig-002.webp",
+      "caption": "Table 3: Comparison with existing agent memory systems.",
+      "page": 4,
+      "index": 2,
+      "width": 527,
+      "height": 437
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13644v1/fig-003.webp",
+      "caption": "Table 2: StatePlane benchmark suite.",
+      "page": 4,
+      "index": 3,
+      "width": 527,
+      "height": 302
+    }
+  ]
+}

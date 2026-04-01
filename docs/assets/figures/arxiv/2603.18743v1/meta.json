@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.18743v1/fig-001.webp",
+      "caption": "Figure 2: The three paradigms of LLM adaptation. Pre-training and fine-tuning update the model parameters θ and require large data and compute budgets. Deployment-time learning (this work) keeps θ frozen and instead accumulates experience in an external skill memory M, enabling continual adaptation from live interactions at zero retraining cost.",
+      "page": 3,
+      "index": 1,
+      "width": 754,
+      "height": 285
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18743v1/fig-002.webp",
+      "caption": "Figure 3: Overview of the Read–Write Reflective Learning loop. Given a new task, the agent retrieves a relevant skill from the skill memory (Read), executes it through the frozen LLM (Act), and uses the resulting feedback to reflectively optimise and update the skill library (Write). The LLM parameters remain fixed throughout; all adaptation occurs in the memory.",
+      "page": 3,
+      "index": 2,
+      "width": 952,
+      "height": 709
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18743v1/fig-003.webp",
+      "caption": "Figure 4: The GUI of Memento-Skills.",
+      "page": 5,
+      "index": 3,
+      "width": 948,
+      "height": 1223
+    },
+    {
+      "url": "assets/figures/arxiv/2603.18743v1/fig-004.webp",
+      "caption": "Figure 11: HLE results: training accuracy across retries (left) and test-set comparison with the Read-Write baseline (right).",
+      "page": 16,
+      "index": 4,
+      "width": 948,
+      "height": 730
+    }
+  ]
+}

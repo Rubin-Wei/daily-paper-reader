@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.04545v1/fig-001.webp",
+      "caption": "Fig. 8. Evaluation of KG-WISE while running on a CPU and a GPU",
+      "page": 11,
+      "index": 1,
+      "width": 510,
+      "height": 495
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04545v1/fig-002.webp",
+      "caption": "Fig. 9. KG-TOSA vs. KG-WISE on node classification tasks using three metrics: (A) Inference Accuracy (higher is better), (B) Inference Time (lower is better), and (C) Inference Memory (lower is better). Our LLMguided subgraph extraction and query-aware inference substantially improve efficiency: KG-WISE reduces inference time by 41–52% and memory usage by 60–84% while preserving accuracy.",
+      "page": 11,
+      "index": 2,
+      "width": 504,
+      "height": 653
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04545v1/fig-003.webp",
+      "caption": "Fig. 6. Results on link prediction tasks across three KGs, reporting (A) Hits@10, (B) inference time, and (C) memory usage. Rows correspond to YAGO3-10 (CA), DBLP (AA), and WikiKG (PO). Each query uses 100 target nodes. KG-WISE improves accuracy while reducing inference time (up to 7×) and memory compared to MorsE and DQ (which fails OOM in two cases).",
+      "page": 10,
+      "index": 3,
+      "width": 522,
+      "height": 654
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04545v1/fig-004.webp",
+      "caption": "Fig. 7. The inference time and memory consumption of KG-WISE and GraphSAINT inference pipelines under weak and strong scalability settings. KGWISE shows better scalability in both settings.",
+      "page": 10,
+      "index": 4,
+      "width": 499,
+      "height": 511
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04545v1/fig-005.webp",
+      "caption": "TABLE I A COMPARATIVE ANALYSIS OF EXISTING AND PROPOSED INFERENCE ACCELERATION TECHNIQUES.",
+      "page": 3,
+      "index": 5,
+      "width": 1064,
+      "height": 210
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04545v1/fig-006.webp",
+      "caption": "TABLE III MODEL SIZE BREAKDOWN FOR KG-WISE AND BASELINE ACCELERATORS. IN KG-BASED GNNS, MOST OF THE MODEL SIZE COMES FROM NON-TARGET NODE EMBEDDINGS, WHICH BASELINES ALWAYS LOAD IN FULL (CONSTANT MODEL SIZE ACROSS ALL |TN |). IN CONTRAST, KG-WISE LOADS ONLY EMBEDDINGS FOR THE EXTRACTED SUBGRAPH, YIELDING A QUERY-DEPENDENT MODEL SIZE. “OOM” DENOTES OUT-OF-MEMORY AND “N/A” NOT APPLICABLE. FOR DQ, WEIGHTS AND EMBEDDINGS CANNOT BE DECOUPLED DUE TO SHARED QUANTIZATION STATISTICS.",
+      "page": 8,
+      "index": 6,
+      "width": 1033,
+      "height": 552
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04545v1/fig-007.webp",
+      "caption": "Fig. 11. Evaluation of different LLMs used to generate the query template QT in KG-WISE across three KG tasks. Accuracy remains stable across all models, while inference time and memory vary due to differences in predicate selection. Open-weight LLMs (Qwen, GPT-oss) produce more compact subgraphs on heterogeneous KGs (e.g., YAGO4), yielding lower memory usage and faster inference compared to proprietary LLMs.TABLE IV",
+      "page": 12,
+      "index": 7,
+      "width": 510,
+      "height": 463
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04545v1/fig-008.webp",
+      "caption": "Fig. 5. Performance across NC tasks is based on three metrics: (A) Inference Accuracy (higher is better), (B) Inference-Time (lower is better), and (C) Inference Memory (lower is better). The top and middle sections illustrate the results for the Paper-Venue task on DBLP and MAG, respectively. The bottom figures present the results of the Place-Country task on YAGO4. The inference query performs inference for 1K target nodes stratified across all classes. KG-WISE archives comparable inference accuracy compared with the SOTA training/inference accelerators (Graph SAINT, IBMB, GCNP, and DQ). KG-WISE outperforms the SOTA methods by up to 28x in inference time on YAGO4 with memory reduction up to 98%.",
+      "page": 9,
+      "index": 8,
+      "width": 1051,
+      "height": 642
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04545v1/fig-009.webp",
+      "caption": "Fig. 3. The top half shows an encoded KG and a GNN trained on it. The GNN’s main components are the learned parameters and non-target node embeddings. The bottom half illustrates how KG-WISE maps the encoding and decouples the GNN components. The node embeddings are stored in a keyvalue store as as row-wise chunks grouped by node type in a Zarr KV store.",
+      "page": 5,
+      "index": 9,
+      "width": 520,
+      "height": 298
+    }
+  ]
+}

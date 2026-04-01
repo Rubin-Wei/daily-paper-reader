@@ -1,0 +1,254 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-001.webp",
+      "caption": "Table 9: Publicly available model links used for evaluation.",
+      "page": 25,
+      "index": 1,
+      "width": 830,
+      "height": 290
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-002.webp",
+      "caption": "Table 10: Overview of episodic retrieval tasks with task types and example abilities.",
+      "page": 25,
+      "index": 2,
+      "width": 822,
+      "height": 304
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-003.webp",
+      "caption": "Table 11: Overview of dialogue retrieval tasks with task types and example abilities. † MemBench has 10 subsets, each corresponding to a single task type; therefore, MemBench has 10 tasks. ‡ ConvoMem has 6 subsets, each corresponding to a single task type; therefore, ConvoMem has 6 tasks.",
+      "page": 26,
+      "index": 3,
+      "width": 822,
+      "height": 1266
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-004.webp",
+      "caption": "Table 16: Experiment results (datasets 1–11 of 22) in w/o inst. setting, with metric N@10.",
+      "page": 30,
+      "index": 4,
+      "width": 1357,
+      "height": 364
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-005.webp",
+      "caption": "Table 17: Experiment results (datasets 12–22 of 22) in w/o inst. setting, with metric N@10.",
+      "page": 30,
+      "index": 5,
+      "width": 1357,
+      "height": 365
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-006.webp",
+      "caption": "Table 3: Experiment results in w/ inst. setting, where the model takes the query and instruction as input to retrieval. The best results are boldfaced and the second-best ones are underlined. Task instructions are provided in Appendix C. Detailed performance for each dataset is presented in Table 20, Table 21, Table 22, and Table 23.",
+      "page": 7,
+      "index": 6,
+      "width": 832,
+      "height": 365
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-007.webp",
+      "caption": "Table 2: Experiment results in w/o inst. setting, where the model takes the query as input to retrieve. The best results are boldfaced and the second-best ones are underlined. We report the Mean (Dataset) score for LMEB-Episodic, LMEB-Dialogue, LMEB-Semantic, and LMEB-Procedural. Detailed performance for each dataset is presented in Table 16, Table 17, Table 18, and Table 19.",
+      "page": 7,
+      "index": 7,
+      "width": 832,
+      "height": 364
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-008.webp",
+      "caption": "Table 15: Task instructions (datasets 9–22 of 22) for LMEB evaluation.",
+      "page": 29,
+      "index": 8,
+      "width": 822,
+      "height": 616
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-009.webp",
+      "caption": "Table 6: Examples of query-relevant document pairs for dialogue memory retrieval datasets.",
+      "page": 22,
+      "index": 9,
+      "width": 822,
+      "height": 1277
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-010.webp",
+      "caption": "Figure 6: Correlation between the scores on LMEB-Episodic and MTEB (eng, v2) (retrieval subset).",
+      "page": 34,
+      "index": 10,
+      "width": 706,
+      "height": 590
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-011.webp",
+      "caption": "Figure 7: Correlation between the scores on LMEB-Dialogue and MTEB (eng, v2) (retrieval subset).",
+      "page": 34,
+      "index": 11,
+      "width": 706,
+      "height": 587
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-012.webp",
+      "caption": "Figure 1: Overview of LMEB memory categories and specificities. Table 1 presents detailed dataset statistics. Tables 5, 6, 7, and 8 provide examples of query-relevant document pairs for each dataset. Tables 10, 11, 12, and 13 provide detailed task types and example abilities assessed.",
+      "page": 3,
+      "index": 12,
+      "width": 826,
+      "height": 449
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-013.webp",
+      "caption": "Table 23: Experiment results (datasets 12–22 of 22) in w/ inst. setting, with metric R@10.",
+      "page": 33,
+      "index": 13,
+      "width": 1357,
+      "height": 365
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-014.webp",
+      "caption": "Table 22: Experiment results (datasets 1–11 of 22) in w/ inst. setting, with metric R@10.",
+      "page": 33,
+      "index": 14,
+      "width": 1357,
+      "height": 364
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-015.webp",
+      "caption": "Figure 8: Correlation between the scores on LMEB-Semantic and MTEB (eng, v2) (retrieval subset).",
+      "page": 35,
+      "index": 15,
+      "width": 706,
+      "height": 588
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-016.webp",
+      "caption": "Figure 9: Correlation between the scores on LMEB-Procedural and MTEB (eng, v2) (retrieval subset).",
+      "page": 35,
+      "index": 16,
+      "width": 706,
+      "height": 587
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-017.webp",
+      "caption": "Table 5: Examples of query-relevant document pairs for episodic memory retrieval datasets.",
+      "page": 18,
+      "index": 17,
+      "width": 822,
+      "height": 341
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-018.webp",
+      "caption": "Table 7: Examples of query-relevant document pairs for semantic memory retrieval datasets. The corpus title is enclosed within <Title> and </Title> tags, while the corpus text is enclosed within <Text> and </Text> tags.",
+      "page": 23,
+      "index": 18,
+      "width": 822,
+      "height": 1190
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-019.webp",
+      "caption": "Table 14: Task instructions (datasets 1–8 of 22) for LMEB evaluation.",
+      "page": 28,
+      "index": 19,
+      "width": 822,
+      "height": 943
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-020.webp",
+      "caption": "Figure 4: Performance comparison between w/o inst. and w/ inst.. The x-axis represents the two conditions (w/o inst. and w/ inst.), and the y-axis indicates the N@10 performance.",
+      "page": 8,
+      "index": 20,
+      "width": 808,
+      "height": 490
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-021.webp",
+      "caption": "Table 1: Statistics of datasets in LMEB benchmark. Querysrc and Corpussrc denote the source of queries and corpus, respectively, where “AI” represents AI-generated content, and “Human” represents content created through crowdsourcing. Qrels refers to Query Relevance Judgments. Avg. D / Q indicates the average relevant documents per query.",
+      "page": 4,
+      "index": 21,
+      "width": 827,
+      "height": 395
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-022.webp",
+      "caption": "Figure 2: Memory taxonomy of LMEB.",
+      "page": 4,
+      "index": 22,
+      "width": 417,
+      "height": 329
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-023.webp",
+      "caption": "Table 21: Experiment results (datasets 12–22 of 22) in w/ inst. setting, with metric N@10.",
+      "page": 32,
+      "index": 23,
+      "width": 1357,
+      "height": 365
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-024.webp",
+      "caption": "Table 20: Experiment results (datasets 1–11 of 22) in w/ inst. setting, with metric N@10.",
+      "page": 32,
+      "index": 24,
+      "width": 1357,
+      "height": 364
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-025.webp",
+      "caption": "Table 13: Overview of procedural retrieval tasks with task types and example abilities. † Gorilla has 3 subsets, each corresponding to a single task type; therefore, Gorilla has 3 tasks. ‡ ReMe has 6 subsets: appworld_qwen3_8b, appworld_qwen3_14b, appworld_qwen3_32b, bfcl_qwen3_8b, bfcl_qwen3_14b, and bfcl_qwen3_32b. The first three subsets contain only the generalized_query task type, while the latter three subsets include both generalized_query and task_query. Therefore, ReMe comprises 9 tasks in total. δ DeepPlanning has 3 subsets, each corresponding to a single task type; therefore, DeepPlanning has 3 tasks.",
+      "page": 27,
+      "index": 25,
+      "width": 822,
+      "height": 425
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-026.webp",
+      "caption": "Table 12: Overview of semantic retrieval tasks with task types and example abilities. † LooGLE has 2 subsets, each corresponding to a single task type; therefore, LooGLE has 2 tasks.",
+      "page": 27,
+      "index": 26,
+      "width": 822,
+      "height": 489
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-027.webp",
+      "caption": "Table 8: Examples of query-relevant document pairs for procedural memory retrieval datasets.",
+      "page": 24,
+      "index": 27,
+      "width": 822,
+      "height": 1322
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-028.webp",
+      "caption": "Figure 5: Correlation between the evaluation scores on LMEB and MTEB (eng, v2) (retrieval subset) Enevoldsen et al. [2025]. The evaluation score for LMEB is based on the N@10 metric, aligned with MTEB (eng, v2) (retrieval subset). Mean (Dataset) scores under w/ inst. are used for LMEB. Note that bge-m3 (Dense), bge-large-en-v1.5, and EmbeddingGemma-300M perform better without task instructions, so their results are based on the w/o inst. setting. The size of the points in the plot is proportional to the size of the models.",
+      "page": 9,
+      "index": 28,
+      "width": 622,
+      "height": 523
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-029.webp",
+      "caption": "Table 18: Experiment results (datasets 1–11 of 22) in w/o inst. setting, with metric R@10.",
+      "page": 31,
+      "index": 29,
+      "width": 1357,
+      "height": 364
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-030.webp",
+      "caption": "Table 19: Experiment results (datasets 12–22 of 22) in w/o inst. setting, with metric R@10.",
+      "page": 31,
+      "index": 30,
+      "width": 1357,
+      "height": 365
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12572v2/fig-031.webp",
+      "caption": "Figure 3: Inter-dataset diversity in LMEB. The left side illustrates pairwise weighted Jaccard Similarity (JS) scores between unigram word distributions of each dataset corpus, while the right side shows dataset relationships with a force-directed 2D layout.",
+      "page": 5,
+      "index": 31,
+      "width": 736,
+      "height": 388
+    }
+  ]
+}

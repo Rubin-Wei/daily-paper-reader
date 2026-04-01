@@ -1,0 +1,94 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.05369v1/fig-001.webp",
+      "caption": "Table 5. ProRes warmup schedules. Here l ∈ {1, . . . , L} denotes the layer index, t the training step, and T the warmup length for the first layer. “Warmup” denotes the number of training steps required for all layers to complete residual warmup. See Appendix D for visualization.",
+      "page": 6,
+      "index": 1,
+      "width": 487,
+      "height": 364
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05369v1/fig-002.webp",
+      "caption": "Table 6. Ablation of ProRes warmup schedules. Perplexity (↓) on C4 for 350M models trained with 6B tokens. “Warmup” denotes the number of training steps required for all layers to complete residual warmup. Blue indicates improvement while red indicates degrading performance relative to no-ProRes baseline. Perplexities higher than 1000 are marked as diverged. Additional baselines: DeepNorm (15.71) and LNS (14.63), trained under the same configuration without ProRes.",
+      "page": 6,
+      "index": 2,
+      "width": 487,
+      "height": 557
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05369v1/fig-003.webp",
+      "caption": "Figure 2. Spike score (↓) of loss and gradient norm as model depth increases.",
+      "page": 7,
+      "index": 3,
+      "width": 474,
+      "height": 351
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05369v1/fig-004.webp",
+      "caption": "Table 1. Forward equations of Transformer variants, with (✔) and without (✘) ProRes.",
+      "page": 3,
+      "index": 4,
+      "width": 487,
+      "height": 252
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05369v1/fig-005.webp",
+      "caption": "Figure 6. Visualization of various schedules in Table 5. We use T = 1000, L = 12 for visualizing α(l, t). Darker lines indicate shallow layers while brighter lines indicate deeper layers.",
+      "page": 13,
+      "index": 5,
+      "width": 985,
+      "height": 689
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05369v1/fig-006.webp",
+      "caption": "Figure 4. Cosine similarity of layerwise residuals between intermediate (first 10% steps) and final checkpoint.",
+      "page": 8,
+      "index": 6,
+      "width": 1013,
+      "height": 250
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05369v1/fig-007.webp",
+      "caption": "Figure 3. Layerwise activation norm of Pre-LN, with and without ProRes.",
+      "page": 8,
+      "index": 7,
+      "width": 1007,
+      "height": 250
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05369v1/fig-008.webp",
+      "caption": "Table 2. Perplexity (↓) on C4-en test set across model scales. Cells with ProRes are shaded by improvement magnitude.",
+      "page": 4,
+      "index": 8,
+      "width": 475,
+      "height": 400
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05369v1/fig-009.webp",
+      "caption": "Figure 5. Loss gap across training steps of 7B models. Left: training loss gap (0.99 EMA smoothed) between Pre-LN and its ProRes variant. Right: evaluation loss gap calculated every 1000 steps.",
+      "page": 12,
+      "index": 9,
+      "width": 1016,
+      "height": 209
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05369v1/fig-010.webp",
+      "caption": "Table 4. Perplexity (↓) on WikiText and Lambada for 1.3B models. Final row shows mean perplexity reduction (baseline minus ProRes).",
+      "page": 5,
+      "index": 10,
+      "width": 450,
+      "height": 431
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05369v1/fig-011.webp",
+      "caption": "Table 3. Zero-shot accuracy (↑) on reasoning benchmarks for 1.3B models.",
+      "page": 5,
+      "index": 11,
+      "width": 1017,
+      "height": 431
+    }
+  ]
+}

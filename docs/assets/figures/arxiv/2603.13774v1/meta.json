@@ -1,0 +1,246 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-001.webp",
+      "caption": "Table 1. Comparisons on related systems ( supported; G# partially supported; × not supported).",
+      "page": 6,
+      "index": 1,
+      "width": 886,
+      "height": 266
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-002.webp",
+      "caption": "Fig. 24. LLM evaluation prompts used to compute Assignment Accuracy, Hierarchical Consistency, Sibling Coherence, and Description Accuracy over problem taxonomy.",
+      "page": 53,
+      "index": 2,
+      "width": 827,
+      "height": 585
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-003.webp",
+      "caption": "Table 17. The impact of backbone LLMs for research trend analysis. The colors express relative values (worse than average, average, and better than average).",
+      "page": 47,
+      "index": 3,
+      "width": 900,
+      "height": 411
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-004.webp",
+      "caption": "Fig. 11. Research trend analysis.",
+      "page": 30,
+      "index": 4,
+      "width": 744,
+      "height": 489
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-005.webp",
+      "caption": "Fig. 10. Information Extraction and Synthesis.",
+      "page": 30,
+      "index": 5,
+      "width": 827,
+      "height": 449
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-006.webp",
+      "caption": "Table 7. Level-wise taxonomy evaluation.",
+      "page": 22,
+      "index": 6,
+      "width": 498,
+      "height": 398
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-007.webp",
+      "caption": "Fig. 25. LLM evaluation prompts used to compute Assignment Accuracy, Hierarchical Consistency, Sibling Coherence, and Description Accuracy over the method taxonomy.",
+      "page": 54,
+      "index": 7,
+      "width": 827,
+      "height": 569
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-008.webp",
+      "caption": "Fig. 14. Comparison of document parsing tools across effectiveness, efficiency, and monetary cost. “Cost-Free” denotes the normalized monetary-cost axis (higher is better, with free tools achieving the maximum score).",
+      "page": 42,
+      "index": 8,
+      "width": 827,
+      "height": 495
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-009.webp",
+      "caption": "Fig. 1. The workflow of an agentic scholarly data management system, illustrating how it responds to diverse query intents.",
+      "page": 3,
+      "index": 9,
+      "width": 825,
+      "height": 333
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-010.webp",
+      "caption": "Fig. 2. System architecture of AgenticScholar.",
+      "page": 3,
+      "index": 10,
+      "width": 660,
+      "height": 414
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-011.webp",
+      "caption": "Table 5. Results on Tier-3 queries. Elicit is the baseline; other entries report relative improvements (green, ↑) or degradations (red, ↓). Efficiency shows percentage runtime change (positive = faster).",
+      "page": 18,
+      "index": 11,
+      "width": 879,
+      "height": 536
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-012.webp",
+      "caption": "Table 11. The impact of backbone LLMs for research idea exploration. The colors express relative values (worse than average, average, and better than average).",
+      "page": 23,
+      "index": 12,
+      "width": 569,
+      "height": 275
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-013.webp",
+      "caption": "Table 16. Evaluation on taxonomies (Ass.: Assignment Accuracy; Hie.: Hierarchical Consistency; Sib.: Sibling Coherence).",
+      "page": 45,
+      "index": 13,
+      "width": 523,
+      "height": 420
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-014.webp",
+      "caption": "Table 2. Summary of Operator Library.",
+      "page": 13,
+      "index": 14,
+      "width": 848,
+      "height": 340
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-015.webp",
+      "caption": "Fig. 17. Additional results of Tier-2 queries.",
+      "page": 50,
+      "index": 15,
+      "width": 702,
+      "height": 393
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-016.webp",
+      "caption": "Fig. 16. Prompt template for generating cross-topic analytical queries.",
+      "page": 49,
+      "index": 16,
+      "width": 827,
+      "height": 1198
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-017.webp",
+      "caption": "Fig. 8. The comparison of token and monetary cost on Tier-3 Queries (RIE: Research Idea Exploration; MTA: Method-oriented Trend Analysis; PTA: Problem-oriented Trend Analysis; MPS: Milestone Paper Selection).",
+      "page": 19,
+      "index": 17,
+      "width": 817,
+      "height": 207
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-018.webp",
+      "caption": "Fig. 22. Case study for self correction.",
+      "page": 51,
+      "index": 18,
+      "width": 719,
+      "height": 589
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-019.webp",
+      "caption": "Fig. 7. Cost and efficiency on Tier-2 queries.",
+      "page": 17,
+      "index": 19,
+      "width": 662,
+      "height": 185
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-020.webp",
+      "caption": "Fig. 6. From query to validated execution plan.",
+      "page": 12,
+      "index": 20,
+      "width": 654,
+      "height": 327
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-021.webp",
+      "caption": "Table 14. Per-topic effectiveness across models.",
+      "page": 44,
+      "index": 21,
+      "width": 911,
+      "height": 355
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-022.webp",
+      "caption": "Table 13. Topics used in our evaluation.",
+      "page": 41,
+      "index": 22,
+      "width": 819,
+      "height": 184
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-023.webp",
+      "caption": "Fig. 5. Reference-enhanced taxonomy construction.",
+      "page": 9,
+      "index": 23,
+      "width": 577,
+      "height": 545
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-024.webp",
+      "caption": "Fig. 12. Research idea exploration.",
+      "page": 31,
+      "index": 24,
+      "width": 744,
+      "height": 408
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-025.webp",
+      "caption": "Fig. 13. Milestone paper selection.",
+      "page": 31,
+      "index": 25,
+      "width": 744,
+      "height": 529
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-026.webp",
+      "caption": "Fig. 23. Problem taxonomy comparison on “Vector Search”.",
+      "page": 52,
+      "index": 26,
+      "width": 791,
+      "height": 904
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-027.webp",
+      "caption": "Fig. 9. AgenticScholar’s results for case study on learning-based query optimization.",
+      "page": 20,
+      "index": 27,
+      "width": 752,
+      "height": 417
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-028.webp",
+      "caption": "Fig. 3. Representative scholarly queries across three tiers.",
+      "page": 5,
+      "index": 28,
+      "width": 660,
+      "height": 412
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-029.webp",
+      "caption": "Fig. 15. Prompt template for generating factual and in-topic analytical queries.",
+      "page": 48,
+      "index": 29,
+      "width": 827,
+      "height": 1181
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13774v1/fig-030.webp",
+      "caption": "Table 3. Effectiveness on Tier-1 queries.",
+      "page": 16,
+      "index": 30,
+      "width": 485,
+      "height": 263
+    }
+  ]
+}

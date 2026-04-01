@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.29450v1/fig-001.webp",
+      "caption": "Fig. 3. Illustration of our Context-driven architecture, structured around three core components: (1) a Context-Aware Tokenizer (2) a CNN encoder and (3) a Transformer decoder",
+      "page": 7,
+      "index": 1,
+      "width": 725,
+      "height": 417
+    },
+    {
+      "url": "assets/figures/arxiv/2603.29450v1/fig-002.webp",
+      "caption": "Table 3. Line-level comparison of handwritten text recognition (HTR) methods on the IAM and RIMES datasets. “–” indicates values not reported in the original publication; ∗ denotes paragraph-level evaluation. Ours-baseline refers to our model without any writer-specific adaptation. MAE denotes a Masked Autoencoder-based image reconstruction auxiliary decoder.",
+      "page": 13,
+      "index": 2,
+      "width": 700,
+      "height": 423
+    },
+    {
+      "url": "assets/figures/arxiv/2603.29450v1/fig-003.webp",
+      "caption": "Table 2. Effect of the number of context lines K on fusion performance on IAM and RIMES. The row at K = 0 corresponds to the standard OCR model used as baseline, without any fusion.",
+      "page": 12,
+      "index": 3,
+      "width": 710,
+      "height": 580
+    }
+  ]
+}

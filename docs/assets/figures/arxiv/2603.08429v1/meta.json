@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.08429v1/fig-001.webp",
+      "caption": "Table 5: Full results for all 12 configurations across three experiment groups. Group A: loss ablation (30 epochs, lr 3× 10−4). Group B: loss weight tuning (30 epochs, lr 3× 10−4, λc = 0). Group C: training recipe variations. Baseline: Recall@10 = 0.637, MRR@10 = 0.329.",
+      "page": 8,
+      "index": 1,
+      "width": 1006,
+      "height": 394
+    }
+  ]
+}

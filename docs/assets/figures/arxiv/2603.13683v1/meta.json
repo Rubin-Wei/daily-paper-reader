@@ -1,0 +1,126 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.13683v1/fig-001.webp",
+      "caption": "Figure 7: Ablation on test-time update latency (ECDF). Empirical CDF of the total parameter-update time per prompt for different inference-time strategies on Qwen3. We compare unpreconditioned TTA-SGD (blue) against preconditioned CAP-TTA variants with different trigger thresholds ϵ. Curves further left indicate lower update-time overhead (better efficiency); the plot shows that preconditioning consistently reduces the update-time tail, while ϵ controls how often updates are triggered and thus the total overhead.",
+      "page": 25,
+      "index": 1,
+      "width": 950,
+      "height": 577
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13683v1/fig-002.webp",
+      "caption": "Figure 3: This is graded by bias trigger score. Triggering trade-off for CAP-TTA. We compare the bias trigger score with epsilon, see if it decreases the level of bias trigger score.",
+      "page": 21,
+      "index": 2,
+      "width": 950,
+      "height": 662
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13683v1/fig-003.webp",
+      "caption": "Figure 8: LoRA Structure",
+      "page": 30,
+      "index": 3,
+      "width": 950,
+      "height": 1463
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13683v1/fig-004.webp",
+      "caption": "Figure 1: Static generation vs. prior test-time adaptation (TTA) vs. CAP-TTA. Static generation uses frozen parameters. Prior TTA performs online updates during generation, which can be costly and unstable. CAP-TTA decouples adaptation into an offline precomputed preconditioner P0 and an online bias-triggered, lightweight preconditioned update (optionally routed to a safe corpus with 4 types) when the trigger score exceeds ϵ.",
+      "page": 2,
+      "index": 4,
+      "width": 871,
+      "height": 479
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13683v1/fig-005.webp",
+      "caption": "Table 4: TTA ablations on Qwen-3-4B and DeepSeek-8B (toxic prompts): precondition epsilon sweep, segments, tokens per segment, multi-trigger, and typed safebank; includes each model’s baseline.",
+      "page": 7,
+      "index": 5,
+      "width": 950,
+      "height": 309
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13683v1/fig-006.webp",
+      "caption": "Table 3: Main comparison on BiasBench (toxic prompts). We report generation quality (PPL, Fluency), safety (BB Bias), and efficiency (trigger rate and update time) for static baselines, debiased checkpoints, and test-time adaptation methods. Lower is better for PPL, BB Bias, and update time; higher is better for Fluency. († indicates marginal significance, †† indicates significance, versus the corresponding baseline under a paired t-test.) Qwen-Prec-trig/no-trigger use our standard hyperparameter setting while Qwen-Prec-trig-2 uses another setting.",
+      "page": 7,
+      "index": 6,
+      "width": 950,
+      "height": 215
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13683v1/fig-007.webp",
+      "caption": "Figure 4: This is graded by bias score trigger. Comparison of static baselines on toxic prompts. Each point corresponds to one generated sample; the plot contrasts methods in terms of safety-related scores versus generation quality indicators (e.g., fluency/proxy perplexity). The spread and relative position of clusters illustrate that purely static detox/debias checkpoints can exhibit heterogeneous behavior across prompts.",
+      "page": 22,
+      "index": 7,
+      "width": 950,
+      "height": 637
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13683v1/fig-008.webp",
+      "caption": "Figure 9: Example of question given to human annotators.",
+      "page": 33,
+      "index": 8,
+      "width": 950,
+      "height": 727
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13683v1/fig-009.webp",
+      "caption": "Table 10: Fleiss’ κ for inter-annotator agreement on Bias (Yes/No). We compute κ only on items with exactly 5 bias ratings (fixed-n requirement). We report results for (A) all available items with n=5 per model, and (B) a fair subset of common prompt IDs where all three models have n=5 (21 prompt IDs; 63 items total across 3 models).",
+      "page": 35,
+      "index": 9,
+      "width": 933,
+      "height": 193
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13683v1/fig-010.webp",
+      "caption": "Figure 5: This is graded by bias final. Empirical CDF of the bias metric (bb_bias_final, lower is better) for Qwen3 under TTA-only and ablation variants.",
+      "page": 23,
+      "index": 10,
+      "width": 950,
+      "height": 710
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13683v1/fig-011.webp",
+      "caption": "Table 1: Quantitative comparison on ID (safe)/OOD (toxic) prompts. We report BB Bias score on the ID/OOD set. Speed is decoding throughput(tok/s). Dynamic? indicates whether the method performs Chain-of-Thought.",
+      "page": 4,
+      "index": 11,
+      "width": 950,
+      "height": 334
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13683v1/fig-012.webp",
+      "caption": "Table 8: Examples of BB-trigger gating and 4-type routing. For each text, we compute three raw toxicity/bias scores (snlp/roberta_toxicity_classifier, unitary/unbiased-toxic-roberta, unitary/toxic-bert). We use the committee mean b̄ as the BB-trigger score: if b̄ > ϵ, we trigger test-time adaptation. In parallel, we compute four routing scores over {race, sex, religion, other}; any type whose score exceeds ϵ is included in Triggered types.",
+      "page": 19,
+      "index": 12,
+      "width": 917,
+      "height": 194
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13683v1/fig-013.webp",
+      "caption": "Figure 6: This is graded by bias final. Distribution of bias/toxicity scores across methods on the evaluation prompt set. Boxes summarize median and interquartile range, with whiskers indicating variability across prompts. Lower medians and reduced upper tails indicate better mitigation and fewer extreme harmful generations.",
+      "page": 24,
+      "index": 13,
+      "width": 950,
+      "height": 504
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13683v1/fig-014.webp",
+      "caption": "Table 9: IRB Screening Responses (Survey-Only, Minimal Risk, Adults 18+).",
+      "page": 31,
+      "index": 14,
+      "width": 904,
+      "height": 525
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13683v1/fig-015.webp",
+      "caption": "Figure 2: This is graded by bias score trigger. Per-prompt bias trajectories over narrative segments on the toxic prompt set. Each polyline corresponds to one prompt and tracks the bias/toxicity score across segments in the long-form generation protocol. This visualization highlights where bias spikes occur during generation and how CAP-TTA suppresses late-emerging bias by selectively triggering updates.",
+      "page": 20,
+      "index": 15,
+      "width": 950,
+      "height": 614
+    }
+  ]
+}

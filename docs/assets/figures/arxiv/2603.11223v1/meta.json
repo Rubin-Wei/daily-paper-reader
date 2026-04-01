@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.11223v1/fig-001.webp",
+      "caption": "Figure 4. Performance evaluation across different datasets and metrics. Results are shown for WikiQA, HotpotQA, and BenchEE datasets using the scores obtained with LLM-as-a-Judge and Soft EM, comparing language match vs. language mismatch conditions.",
+      "page": 11,
+      "index": 1,
+      "width": 1017,
+      "height": 1134
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11223v1/fig-002.webp",
+      "caption": "Table 1. Evaluation scores on WikiQA, HotpotQA, and BenchEE grouped by evaluation method and language match/mismatch. ∆(%) indicates the percentage improvement in the score of MDER-DR compared with the best baseline.",
+      "page": 7,
+      "index": 2,
+      "width": 1025,
+      "height": 321
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11223v1/fig-003.webp",
+      "caption": "Figure 2. Indexing pipeline including the Map-Disambiguate-Enrich-Reduce (MDER) workflow. It begins with preprocessing, where input documents are segmented, summarized, and translated. The core pipeline then proceeds through: (1) Map extracts subject-predicate-object triples; (2) Disambiguate unifies fragmented or redundant entities; (3) Enrich adds contextual descriptions to triples; and (4) Reduce generates entity-centric summaries. The final output is a structured graph of interconnected document, chunk, entity, relationship, and triple nodes, optimized for downstream KG tasks, built upon a domain-agnostic RDF/OWL ontology.",
+      "page": 3,
+      "index": 3,
+      "width": 988,
+      "height": 266
+    }
+  ]
+}

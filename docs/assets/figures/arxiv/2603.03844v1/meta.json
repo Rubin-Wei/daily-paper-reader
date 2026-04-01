@@ -1,0 +1,158 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-001.webp",
+      "caption": "Table 1. Semantic segmentation main results of SSA on different tasks. SF denotes the Source Free method, which does not use source",
+      "page": 6,
+      "index": 1,
+      "width": 1019,
+      "height": 1324
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-002.webp",
+      "caption": "Figure 8. Confusion matrices for different domain shifts in the Office-31 dataset.",
+      "page": 25,
+      "index": 2,
+      "width": 791,
+      "height": 535
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-003.webp",
+      "caption": "Figure 9. t-SNE visualization for image classification on VisDA-C dataset.",
+      "page": 25,
+      "index": 3,
+      "width": 600,
+      "height": 252
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-004.webp",
+      "caption": "Figure 5. Sensitivity analysis for the thresholds.",
+      "page": 15,
+      "index": 4,
+      "width": 1019,
+      "height": 730
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-005.webp",
+      "caption": "Table 13. Performance Optimization Results Across Different Tasks.",
+      "page": 21,
+      "index": 5,
+      "width": 987,
+      "height": 411
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-006.webp",
+      "caption": "Table 14. Trade-off Analysis Between Computational Cost and Segmentation Performance",
+      "page": 21,
+      "index": 6,
+      "width": 804,
+      "height": 225
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-007.webp",
+      "caption": "Table 3. Ablation Studies on GTA5→Cityscapes.",
+      "page": 7,
+      "index": 7,
+      "width": 492,
+      "height": 591
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-008.webp",
+      "caption": "Table 2. Single-Label image classification performance of SSA on different tasks. SF denotes the Source Free method.",
+      "page": 7,
+      "index": 8,
+      "width": 908,
+      "height": 570
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-009.webp",
+      "caption": "Figure 1. Framework of Stepwise Semantic Alignment (SSA). Source Model* and Pre-Trained Model* are their respective feature",
+      "page": 3,
+      "index": 9,
+      "width": 1021,
+      "height": 926
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-010.webp",
+      "caption": "Figure 4. Scaling effect of SSA’s gains in different tasks.",
+      "page": 8,
+      "index": 10,
+      "width": 494,
+      "height": 564
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-011.webp",
+      "caption": "Table 7. Multi-label classification of SSA.",
+      "page": 8,
+      "index": 11,
+      "width": 483,
+      "height": 411
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-012.webp",
+      "caption": "Table 5. Multi-source/target results of SSA on Office-Home.",
+      "page": 8,
+      "index": 12,
+      "width": 494,
+      "height": 671
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-013.webp",
+      "caption": "Table 6. Source and pre-trained models results on Office-Home.",
+      "page": 8,
+      "index": 13,
+      "width": 494,
+      "height": 592
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-014.webp",
+      "caption": "Table 11. Performance and Computational Cost Analysis on Semantic Segmentation.",
+      "page": 19,
+      "index": 14,
+      "width": 1019,
+      "height": 444
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-015.webp",
+      "caption": "Table 12. Performance and Computational Cost Analysis on Classification.",
+      "page": 19,
+      "index": 15,
+      "width": 1016,
+      "height": 446
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-016.webp",
+      "caption": "Figure 7. Confusion matrices for different domain shifts in the VisDA-C dataset.",
+      "page": 24,
+      "index": 16,
+      "width": 770,
+      "height": 631
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-017.webp",
+      "caption": "Table 8. Impact of Different τpar Parameters on Single-label Classification",
+      "page": 16,
+      "index": 17,
+      "width": 1015,
+      "height": 362
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-018.webp",
+      "caption": "Table 9. Sensitivity analysis of τlg with varying τlw on different datasets.",
+      "page": 16,
+      "index": 18,
+      "width": 1019,
+      "height": 557
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03844v1/fig-019.webp",
+      "caption": "Table 10. Performance comparison of mitigation strategies for τneg across epochs.",
+      "page": 16,
+      "index": 19,
+      "width": 491,
+      "height": 254
+    }
+  ]
+}

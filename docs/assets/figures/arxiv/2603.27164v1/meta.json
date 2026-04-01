@@ -1,0 +1,150 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-001.webp",
+      "caption": "Figure 12: MMLU performance comparison across evaluation protocols. Panel (a) shows absolute scores under PPL-based and generative (CoT) evaluation. Panel (b) highlights the performance gap relative to Qwen-2.5-3B, demonstrating how models with extensive QA training exhibit amplified advantages in generative settings. The gap between OLMO-2-7B and Qwen-2.5-3B increases from -0.20% (PPL) to +2.90% (generative), a 3.10% swing that reverses the ranking.",
+      "page": 25,
+      "index": 1,
+      "width": 923,
+      "height": 425
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-002.webp",
+      "caption": "Figure 5: Stage 1 Training dynamics for the first 300k steps: (a) training loss curve demonstrating consistent convergence, and (b) gradient norm curve tracking optimization stability across the initial training phase.",
+      "page": 15,
+      "index": 2,
+      "width": 927,
+      "height": 487
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-003.webp",
+      "caption": "Figure 9: Performance comparison between continued data domain adjustment (stage 1-3) and QA introduction (Stage 2).",
+      "page": 21,
+      "index": 3,
+      "width": 927,
+      "height": 212
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-004.webp",
+      "caption": "Table 2: Data pool composition and token allocation across training stages. Shaded category rows show each category’s total pool size and the tokens allocated per stage; data source rows indicate whether the source is used (✓) or not used (–) in each stage.",
+      "page": 7,
+      "index": 4,
+      "width": 944,
+      "height": 817
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-005.webp",
+      "caption": "Figure 10: Stage 2 benchmark performance. Light curves show individual benchmarks; dark curves show category averages for general knowledge, code, and science. The vertical dashed lines indicate the boundaries between Substages 2-1, 2-2.",
+      "page": 22,
+      "index": 5,
+      "width": 929,
+      "height": 233
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-006.webp",
+      "caption": "Table 3: Domain coverage of QA data sources. Each source is categorized into one of three domains: General, Code, and Science (including Mathematics).",
+      "page": 10,
+      "index": 6,
+      "width": 862,
+      "height": 300
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-007.webp",
+      "caption": "Figure 4: Progressive training results across Stage 1-1 and Stage 1-2, with checkpoints evaluated every 5000 steps. The vertical dashed line indicate the boundary between two substages.",
+      "page": 14,
+      "index": 7,
+      "width": 931,
+      "height": 372
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-008.webp",
+      "caption": "Figure 2: Evolution of pretraining research depth across institutional structures. The y-axis represents research depth from surface-level artifacts (API-only access) to fundamental scientific questions. The xaxis shows the temporal progression from 2022 to 2026. Commercial entities (blue) possess computational resources but remain constrained to API-level access due to competitive pressures. Open-weight releases (green, e.g., Llama, Qwen) provide model artifacts but withhold design rationale and negative results. Academic efforts (orange, e.g., OLMo) achieve transparency and research freedom but face severe scale limitations—making systematic exploration with 200+ configurations structurally infeasible. The top tier remains largely unexplored, as it requires the rare alignment of large-scale computational resources with the research freedom to publish comprehensive findings. daVinci-LLM (purple) occupies this intersection, conducting the extensive ablations and systematic disclosures necessary to advance the science of pretraining. By releasing the complete decision-making logic alongside the model weights, we bridge the structural gap between industrial scale and scientific transparency.",
+      "page": 3,
+      "index": 8,
+      "width": 921,
+      "height": 420
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-009.webp",
+      "caption": "Figure 13: Impact of QA masking policy on three capability dimensions across training steps in Stage 2-2. The comparison between masked and unmasked configurations shows marginal improvements, with consistent but modest gains across all capability clusters.",
+      "page": 33,
+      "index": 9,
+      "width": 928,
+      "height": 261
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-010.webp",
+      "caption": "Figure 11: Code and science data ratio analysis. Notation: C-X-S-Y indicates X% code and Y% science. (a) Performance across code and science proportions (QA fixed at 30%, remainder allocated to CommonCrawl web data). (b) Data synergy effects across QA ratios in Stage 2-1.",
+      "page": 23,
+      "index": 10,
+      "width": 924,
+      "height": 407
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-011.webp",
+      "caption": "Table 5: Training hyperparameters of different training stages. Note that the Global Batch Size refers to the total number of sequences per training step; the total number of tokens per step is calculated as Global Batch Size × Sequence Length.",
+      "page": 13,
+      "index": 11,
+      "width": 944,
+      "height": 376
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-012.webp",
+      "caption": "Table 1: Transparency comparison across state-of-the-art LLMs. Unlike existing models, daVinci provides the complete scientific process, enabling the systematic investigation of pretraining dynamics. Symbols: ✓ fully open, ◎ patial disclosure or not released, p not disclosed.",
+      "page": 4,
+      "index": 12,
+      "width": 917,
+      "height": 325
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-013.webp",
+      "caption": "Figure 7: Effectiveness of CC-QA and CodeQA synthetic data in Stage 2-2.",
+      "page": 19,
+      "index": 13,
+      "width": 917,
+      "height": 408
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-014.webp",
+      "caption": "Table 6: Comprehensive evaluation across diverse capability benchmarks. daVinci-LLM-3B is compared against state-of-the-art open-weight models.",
+      "page": 17,
+      "index": 14,
+      "width": 944,
+      "height": 706
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-015.webp",
+      "caption": "Table 4: Architectural specification of daVinci-LLM.",
+      "page": 12,
+      "index": 15,
+      "width": 943,
+      "height": 190
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-016.webp",
+      "caption": "Figure 8: Stage 1 benchmark performance. Light curves show individual benchmarks; dark curves show category averages for general knowledge, code, and science. Two vertical dashed lines indicate the boundaries between substages 1-1, 1-2, and 1-3, respectively.",
+      "page": 20,
+      "index": 16,
+      "width": 929,
+      "height": 233
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-017.webp",
+      "caption": "Figure 3: Mapping of our pretraining data sources onto the Data Darwinism L0–L9 taxonomy across different training stage.",
+      "page": 5,
+      "index": 17,
+      "width": 943,
+      "height": 473
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27164v1/fig-018.webp",
+      "caption": "Figure 6: Progressive training results across Stage 2-1 and Stage 2-2, with checkpoints evaluated every 5000 steps. The vertical dashed line indicate the boundary between two substages.",
+      "page": 16,
+      "index": 18,
+      "width": 927,
+      "height": 370
+    }
+  ]
+}

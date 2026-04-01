@@ -1,0 +1,158 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-001.webp",
+      "caption": "Figure 14: Model scaling. We take our standard 4B token training setup and scale the parameter count to 4x parameter count. For a given size, we sweep for the optimal replay fraction ρ while reserving all the target data for Stage 2 (α = 1.0). We find that larger models still require replay data to get lower loss.",
+      "page": 25,
+      "index": 1,
+      "width": 798,
+      "height": 429
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-002.webp",
+      "caption": "Table 1: Model architecture configurations for different model sizes. All models use the Llama architecture with a standardized context length of 4096 tokens. We default to the 150M model if not specified.",
+      "page": 25,
+      "index": 2,
+      "width": 606,
+      "height": 274
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-003.webp",
+      "caption": "Figure 15: Mid-training tuning repetitions. We show that across our mid-training domains, we can tolerate maximum 32 repetitions of the original data before overfitting to the target data. Note that the x-axis is more comprehensive compared to 18.",
+      "page": 26,
+      "index": 3,
+      "width": 994,
+      "height": 229
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-004.webp",
+      "caption": "Figure 19: Power law fit. We fit a power law to the loss of the reference algorithm (uniform mixing) as it receives more target data. We note that we use these laws in the interpolation regime since we train models with hypothetically 16× more data than we actually train with.",
+      "page": 30,
+      "index": 4,
+      "width": 994,
+      "height": 323
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-005.webp",
+      "caption": "Figure 20: Learning rate schedule. This figure shows the shape of a WSD learning rate schedule in contrast to a cosine learning rate schedule (both without warmup). Figure is taken from Schaipp et al. [2025], Figure 2 left.",
+      "page": 30,
+      "index": 5,
+      "width": 400,
+      "height": 317
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-006.webp",
+      "caption": "Figure 1: Replaying the generic distribution can improve target performance. Standard fine-tuning trains on all target data (blue) after all generic data (purple). We find that replaying generic data during fine-tuning can surprisingly improve performance on the target domain, both for fine-tuning and mid-training (e.g. 1.87× and 2.06× for FineMath, respectively). We find that replay is most helpful when there is less target data present during pre-training.",
+      "page": 2,
+      "index": 6,
+      "width": 798,
+      "height": 381
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-007.webp",
+      "caption": "Figure 6: Controlled mid-training visualization. We explore the space of data schedules when training on T tokens where a γ fraction of the steps are on target data. A data schedule allocates an α fraction to Stage 2 where Stage 2 has a replay fraction ρ. Standard fine-tuning puts all target data at the end with no replay (α = 1, ρ = 0). We use a WSD learning rate schedule across both stages.",
+      "page": 7,
+      "index": 7,
+      "width": 753,
+      "height": 312
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-008.webp",
+      "caption": "Figure 11: Train loss spike. We notice a large loss spike during the first few steps of training across our settings. This represents one barrier to training with a limited number of samples. Replay might help either because (1) there is less distribution shift between Stage 1 and Stage 2 or (2) there is more time to recover from the spike.",
+      "page": 22,
+      "index": 8,
+      "width": 798,
+      "height": 482
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-009.webp",
+      "caption": "Figure 24: Basque training with different token counts. We try Basque training with 40M and 200M tokens to confirm that the gain in accuracy is real.",
+      "page": 33,
+      "index": 9,
+      "width": 994,
+      "height": 318
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-010.webp",
+      "caption": "Figure 12: Linear regression with replay. We plot the loss of a linear regression model as a function of the number of fine-tuning points n for different values of the replay fraction ρ. We see that for n < d, the model overfits to the noise in the fine-tuning data, resulting in higher error than random guessing. We plot the gray line to track the best possible error achievable by the model for a given n by using any sample count up to n. Replay significantly reduces the overfitting, resulting in better MSE than random guessing. We track the best possible error as a function of n for the best ρ as the red line. For a regime of some but not too many target points, replay improves over standard fine-tuning.",
+      "page": 23,
+      "index": 10,
+      "width": 698,
+      "height": 452
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-011.webp",
+      "caption": "Figure 18: Fine-tuning repetitions. We show that across our fine-tuning domains, we can tolerate 64 repetitions of the original data before overfitting to the target data.",
+      "page": 28,
+      "index": 11,
+      "width": 994,
+      "height": 229
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-012.webp",
+      "caption": "Figure 17: Full data schedule sweep for forgetting. We take the same data schedules in 7 and instead plot loss on the generic domain (C4) instead of loss on the target domain, quantifying the amount of forgetting. We find that replay and introducing target data early both significantly reduce forgetting.",
+      "page": 28,
+      "index": 12,
+      "width": 994,
+      "height": 525
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-013.webp",
+      "caption": "Figure 8: Importance of replay fraction depends on rarity. When all the target data is seen during fine-tuning, tuning the replay fraction becomes critical to improve loss (blue line). When we change pre-training to see some of the target data, tuning the replay fraction is not important and can sometimes hurt loss (purple line).",
+      "page": 8,
+      "index": 13,
+      "width": 498,
+      "height": 350
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-014.webp",
+      "caption": "Figure 7: Full data schedule sweep. We sweep over data schedules, parameterized by their replay fraction and fraction of target data allocated to Stage 2. Standard fine-tuning (no replay and all target data in Stage 2, top right corner) achieves the worst loss for FineMath and Flan. This can be improved by adding replay data (right column). This can also be solved by adding some target data to Stage 1, in which case replay becomes less important.",
+      "page": 8,
+      "index": 14,
+      "width": 994,
+      "height": 525
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-015.webp",
+      "caption": "Figure 3: Controlled fine-tuning visualization. We systematically explore the benefit of replaying generic data while fine-tuning on the target data. On the right, we show standard fine-tuning for T steps where γ fraction of the steps are on target data. On the left, we show fine-tuning with replay fraction ρ (where we shorten pre-training to keep the total number of steps fixed). We use (independently tuned) cosine learning rate schedules for each stage, with an optimizer state reset between the stages to simulate standard practice for fine-tuning open-weight models.",
+      "page": 4,
+      "index": 15,
+      "width": 753,
+      "height": 313
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-016.webp",
+      "caption": "Figure 16: Tuning weight decay. We tune the weight decay for the fine-tuning baseline fixed to our above repetition count and learning rate cooldown. The effect is small and noisy, so we default to 0.1, at the upper range of weight decays used in the literature.",
+      "page": 27,
+      "index": 16,
+      "width": 450,
+      "height": 311
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-017.webp",
+      "caption": "Figure 13: Linear regression with ridge regularization. We follow the same setup as in Figure 12, but instead of tuning replay fraction, we tune the ridge regularization parameter λ. We see that the optimal ridge parameter is non-zero and that the best ridge parameter achieves much better loss than tuned replay count.",
+      "page": 24,
+      "index": 17,
+      "width": 698,
+      "height": 452
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-018.webp",
+      "caption": "Figure 21: Loss curves. This figure shows the loss curves for a WSD learning rate schedule and a cosine learning rate schedule. Note that the loss of a WSD schedule initially makes slower progress than a cosine schedule and then makes up for it with much faster loss improvement at the end. Figure is taken from Schaipp et al. [2025], Figure 1 left.",
+      "page": 31,
+      "index": 18,
+      "width": 400,
+      "height": 309
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04964v1/fig-019.webp",
+      "caption": "Figure 4: Replay improves loss on target data. We show that across our target domains, the correct amount of replay (starred points) beats the no replay baseline (dotted line). Though data distributions closer to pre-training (Flan) can tolerate more replay compared to further domains (StarCoder), the loss improvement is relatively constant across domains.",
+      "page": 5,
+      "index": 19,
+      "width": 450,
+      "height": 310
+    }
+  ]
+}

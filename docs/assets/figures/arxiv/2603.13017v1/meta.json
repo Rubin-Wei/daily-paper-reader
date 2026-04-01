@@ -1,0 +1,94 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.13017v1/fig-001.webp",
+      "caption": "Table 2: Corpus statistics from 6 months of production AI coding sessions across 6 projects. Token counts based on cl100k_base encoding, measured on corpus totals (overlapping conversations only).",
+      "page": 6,
+      "index": 1,
+      "width": 746,
+      "height": 276
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13017v1/fig-002.webp",
+      "caption": "Figure 2: Effect sizes (Cohen’s d) for per-mechanism comparisons (verbatim vs each distilled mode, averaging across fusion strategies within each mode) with 95% bootstrap confidence intervals. Grouped by mechanism.",
+      "page": 11,
+      "index": 2,
+      "width": 785,
+      "height": 540
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13017v1/fig-003.webp",
+      "caption": "Table 10: Mechanism-dependent quality preservation: per-mechanism pairwise comparisons (40 total). Baseline: Full Text (trivial fusion). Vector search (HNSW, Exact) shows non-significant degradation; keyword search (BM25) shows consistent significant degradation. Bonferroni-corrected α = 0.00125. † = best distilled MRR for this mechanism. *** = significant after Bonferroni (p < 0.00125). ** = significant at nominal α = 0.05 but not after Bonferroni correction. V = Full Text, D = Distill, F = Files, R = Rooms. Add = Additive, Wt = Weighted. Effect: N = negligible, S = small, M = medium.",
+      "page": 25,
+      "index": 3,
+      "width": 637,
+      "height": 652
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13017v1/fig-004.webp",
+      "caption": "Table 6: Retrieval quality across 107 configurations: verbatim baselines vs. distilled modes at 11× compression (201 queries, 0–3 relevance scale). Sorted by MRR descending. V = Full Text, D = Distill, F = Files, R = Rooms. Add = Additive, Wt = Weighted.",
+      "page": 21,
+      "index": 4,
+      "width": 965,
+      "height": 1173
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13017v1/fig-005.webp",
+      "caption": "Figure 1: MRR heatmap by mode and retrieval mechanism (best fusion per cell). Darker cells indicate higher MRR.",
+      "page": 10,
+      "index": 5,
+      "width": 784,
+      "height": 410
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13017v1/fig-006.webp",
+      "caption": "Figure 6: Query coverage overlap between Full Text and Distilled configurations (grade-3, P@1). Left: best single config from each family, showing near parity at 11× compression. Right: oracle over all configs per family, showing complementary retrieval pathways.",
+      "page": 14,
+      "index": 6,
+      "width": 881,
+      "height": 348
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13017v1/fig-007.webp",
+      "caption": "Table 8: Retrieval quality disaggregated by query type (± 95% CI). Row order follows Table 6 (MRR descending). Query types: conceptual (abstract topics), phrase (multi-word patterns), exact term (specific identifiers).",
+      "page": 23,
+      "index": 7,
+      "width": 950,
+      "height": 1080
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13017v1/fig-008.webp",
+      "caption": "Figure 5: Pairwise proportion agreement heatmap among 5 LLM graders. Values show the fraction of items where two graders assigned identical grades. Cohen’s κ values (Table 4 and Appendix A) are lower due to chance correction.",
+      "page": 13,
+      "index": 8,
+      "width": 636,
+      "height": 529
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13017v1/fig-009.webp",
+      "caption": "Table 1: Components of a distilled object.",
+      "page": 4,
+      "index": 9,
+      "width": 739,
+      "height": 252
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13017v1/fig-010.webp",
+      "caption": "Figure 4: Grade composition by search mode. Bars show the proportion of pooled results at grades 0–3 for each mode. Grade 3 is the largest bucket in every mode, but the overall profiles remain similar, with most mass concentrated in grades 1 and 3.",
+      "page": 12,
+      "index": 10,
+      "width": 790,
+      "height": 328
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13017v1/fig-011.webp",
+      "caption": "Figure 3: Distillation impact by query type. Heatmap showing mean grade delta relative to pooled verbatim baseline; negative values (red) indicate degradation, positive values (blue) indicate improvement.",
+      "page": 12,
+      "index": 11,
+      "width": 640,
+      "height": 360
+    }
+  ]
+}

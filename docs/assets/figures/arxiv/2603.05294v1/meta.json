@@ -1,0 +1,198 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-001.webp",
+      "caption": "Figure 4: Illustration of node state transitions during iterative modified greedy depth-first search on AND-OR tree. Unlike traditional depth-first search, nodes may be revisited and repeatedly transition through ENTERING, EXITING, and FAILED states.",
+      "page": 6,
+      "index": 1,
+      "width": 772,
+      "height": 247
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-002.webp",
+      "caption": "Table 23: Prompt for node repair",
+      "page": 43,
+      "index": 2,
+      "width": 772,
+      "height": 639
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-003.webp",
+      "caption": "Table 16: Prompt for global tree update.",
+      "page": 38,
+      "index": 3,
+      "width": 772,
+      "height": 451
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-004.webp",
+      "caption": "Table 17: Prompt for generating final task response from notes taken during execution.",
+      "page": 38,
+      "index": 4,
+      "width": 772,
+      "height": 350
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-005.webp",
+      "caption": "Table 9: AND/ORTree Node Attributes",
+      "page": 26,
+      "index": 5,
+      "width": 942,
+      "height": 237
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-006.webp",
+      "caption": "Table 18: Prompt for generating observation summary and contex summary.",
+      "page": 39,
+      "index": 6,
+      "width": 772,
+      "height": 915
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-007.webp",
+      "caption": "Table 12: Prompt for extracting task constraints for task completion evaluation.",
+      "page": 34,
+      "index": 7,
+      "width": 772,
+      "height": 364
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-008.webp",
+      "caption": "Figure 8: Pairwise disagreement rates (%) between LLM judges and human evaluators across three task categories. Disagreement rate measures the percentage of tasks where two evaluators produce different outcomes (success vs. failure). Amazon Hard exhibits the highest disagreement, particularly between LLM judges and human evaluators, suggesting it is the most challenging to evaluate consistently.",
+      "page": 10,
+      "index": 8,
+      "width": 655,
+      "height": 348
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-009.webp",
+      "caption": "Table 21: Prompt for extracting item-level constraints and attributes from task description.",
+      "page": 42,
+      "index": 9,
+      "width": 772,
+      "height": 306
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-010.webp",
+      "caption": "Table 22: Prompt for updating structured memory",
+      "page": 42,
+      "index": 10,
+      "width": 772,
+      "height": 625
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-011.webp",
+      "caption": "Figure 1: Illustration of STRUCTUREDAGENT solving a web task via greedy DFS of a dynamically constructed AND/OR tree. The root node represents the task objective and is expanded into subtasks that are progressively refined and executed. Node types are color-coded to distinguish OR (∨), AND (∧), and ACTION nodes. The top half tracks the corresponding DFS stack states, where each node enters the stack in one of three states: ENTERING (ENT), EXITING (EXT), or FAILED (FAIL). Node repair and pruning are supported but not triggered in this example, and human intervention is optional.",
+      "page": 3,
+      "index": 11,
+      "width": 746,
+      "height": 356
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-012.webp",
+      "caption": "Table 13: Prompt for evaluating completion of task based on observation summaries, actions, notes and final response of the agent.",
+      "page": 35,
+      "index": 12,
+      "width": 772,
+      "height": 946
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-013.webp",
+      "caption": "Figure 14: AgentOccam vs STRUCTUREDAGENT on a Pinterest task: AgentOccam terminates its search prematurely when it fails to explore the third trend. On the other hand, STRUCTUREDAGENT is able to successfully retrieve items for all three trending women’s ethnic wear styles.",
+      "page": 28,
+      "index": 13,
+      "width": 748,
+      "height": 431
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-014.webp",
+      "caption": "Table 1: Success rates (%) across Amazon Easy, Amazon Hard, and WebVoyager Easy task sets. All methods use Claude 3.5 Sonnet as the backbone and are evaluated with three LLM judges: Kimi-k2, Gemini-2.5-Flash, and GPT-4.1. Human evaluation scores are additionally reported for Amazon Hard. Bold indicates the best performance per column. STRUCTUREDAGENT achieves the highest average on Amazon Easy (83.3%), while StructuredAgentMem leads on Amazon Hard (37.8%).",
+      "page": 8,
+      "index": 14,
+      "width": 950,
+      "height": 202
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-015.webp",
+      "caption": "Table 19: Prompt for generating notes summary.",
+      "page": 40,
+      "index": 15,
+      "width": 772,
+      "height": 581
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-016.webp",
+      "caption": "Figure 2: Distribution of average HTML observation lengths (in tokens) per timestep across agent trajectories for WebVoyager and WebArena. Token counts reflect only raw web page content, excluding any additional context provided to the agent.",
+      "page": 4,
+      "index": 16,
+      "width": 820,
+      "height": 183
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-017.webp",
+      "caption": "Table 14: Prompt for node expansion. 36",
+      "page": 36,
+      "index": 17,
+      "width": 772,
+      "height": 1367
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-018.webp",
+      "caption": "Figure 13: Human Decomposition Intervention in AND/OR Tree Planning to Correct Bad Subtask Decomposition. The diagram illustrates how a human decomposition intervention can redirect an AI agent that has produced an incorrect subgoal breakdown for a multi-step task. The task requires finding the driving route between the home cities of the 1980 and 1991 Super Bowl champions. Without intervention (bottom), the agent incorrectly assumes destinations a priori, defaulting to Pittsburgh, PA and Washington, DC, without first verifying which teams won in those respective years, resulting in a hallucinated but confidently stated incorrect answer. With intervention (top), a human intercepts the agent’s flawed decomposition and injects three corrective subgoals into the AND/OR tree: (1) identify the 1980 Super Bowl champions and their home city, (2) identify the 1991 Super Bowl champions and their home city, and (3) return to the mapping tool with the verified locations. This human-guided correction grounds the plan in factual information before execution continues, yielding the correct route from Pittsburgh, PA (Pittsburgh Steelers) to East Rutherford, NJ (New York Giants) at 599 km and approximately 7 hours 23 minutes. For simplicity, we illustrate the human intervention at the first level of the AND/OR planning tree; however, such human decomposition interventions can be applied at any level of the tree, allowing a human operator to catch and correct errors in subgoal formulation at whatever level of abstraction they arise.",
+      "page": 17,
+      "index": 18,
+      "width": 744,
+      "height": 497
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-019.webp",
+      "caption": "Table 20: Prompt for extracting candidate items to add to structured memory",
+      "page": 41,
+      "index": 19,
+      "width": 772,
+      "height": 1061
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-020.webp",
+      "caption": "Table 10: Planning tree for the task “Research Pinterest to identify the top 3 women’s ethnic wear trends for Diwali. For each trend: 1) Specify the signature color currently trending. 2) Find one matching footwear style and one purse, both in the same color (same color as the trend) from the Pinterest Shop. 3) Provide the name of a potential brand or seller for each footwear and purse, and include a direct source or pin link if possible. Focus on vibrant, festive, and popular looks. Do not end your search early. Limit your review to only the first 2 scrolls of results. Do not click on external links.” 27",
+      "page": 27,
+      "index": 20,
+      "width": 772,
+      "height": 1236
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-021.webp",
+      "caption": "Table 6: Node Status Definitions in STRUCTUREDAGENT Framework",
+      "page": 24,
+      "index": 21,
+      "width": 850,
+      "height": 544
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-022.webp",
+      "caption": "Table 15: Prompt for evaluating if an AND node’s objective has been achieved.",
+      "page": 37,
+      "index": 22,
+      "width": 772,
+      "height": 1106
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-023.webp",
+      "caption": "Figure 3: Illustration of the STRUCTUREDAGENT Framework.",
+      "page": 5,
+      "index": 23,
+      "width": 662,
+      "height": 282
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05294v1/fig-024.webp",
+      "caption": "Table 5: Internal Representations Maintained by STRUCTUREDAGENT",
+      "page": 16,
+      "index": 24,
+      "width": 844,
+      "height": 206
+    }
+  ]
+}

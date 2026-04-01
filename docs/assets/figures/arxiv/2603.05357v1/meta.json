@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.05357v1/fig-001.webp",
+      "caption": "Table 1. Mean accuracy (± standard deviation) across six mathematical and general reasoning benchmarks under test-time adaptation. Results are averaged over independent runs with different random seeds. DiSCTT consistently outperforms the Base model and prior test-time adaptation baselines across model families and scales. Bold denotes the best-performance for each benchmark and model size.",
+      "page": 6,
+      "index": 1,
+      "width": 1008,
+      "height": 619
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05357v1/fig-002.webp",
+      "caption": "Figure 5. Difficulty-level accuracy dynamics on MATH-500 under different training paradigms. We compare (a) SFT-only, (b) RL-only (GRPO), and (c) DiSCTT across five difficulty levels (L1–L5) over adaptation steps.",
+      "page": 8,
+      "index": 2,
+      "width": 808,
+      "height": 236
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05357v1/fig-003.webp",
+      "caption": "Table 3. Compute efficiency comparison between DiSCTT and TTRL. Tables present (a) total training compute in FLOPs and (b) wall-clock training time. By routing high-consensus instances to SFT and applying RL only to low-consensus instances, DiSCTT substantially reduces compute relative to RL-only TTRL. Cost Ratio denotes relative compute cost (DiSCTT/TTRL).",
+      "page": 8,
+      "index": 3,
+      "width": 998,
+      "height": 507
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05357v1/fig-004.webp",
+      "caption": "Figure 3. Overview of DiSCTT. For each input, multiple reasoning completions are sampled and evaluated for consensus. High-consensus inputs are routed to supervised fine-tuning using majority-agreed solutions as pseudo-labels, while low-consensus inputs are optimized via reinforcement learning. This difficulty-aware bifurcation is periodically recomputed, yielding a self-evolving test-time curriculum.",
+      "page": 4,
+      "index": 4,
+      "width": 917,
+      "height": 542
+    }
+  ]
+}

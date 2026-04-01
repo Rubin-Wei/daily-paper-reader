@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.15723v1/fig-001.webp",
+      "caption": "Figure 2: Context-length robustness across tasks and models. (a) Mean exact match accuracy as a function of total context length. (b) Accuracy with 95% bootstrap confidence intervals computed over evaluation instances. Performance degradation on HotpotQA remains consistent under uncertainty, while SQuAD exhibits comparatively stable behavior across context lengths.",
+      "page": 6,
+      "index": 1,
+      "width": 829,
+      "height": 269
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15723v1/fig-002.webp",
+      "caption": "Figure 1: Controlled context construction used to evaluate context-length robustness. For each question, an answer-bearing signal segment is preserved across all settings, while increasing amounts of irrelevant context are added to reach target context lengths. This design isolates the effect of total context length while keeping the available evidence fixed.",
+      "page": 4,
+      "index": 2,
+      "width": 594,
+      "height": 419
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.16500v1/fig-001.webp",
+      "caption": "Table 2: Complete voting accuracy comparison results of different test-time scaling strategies under varying sampling budgets across 5 benchmarks using DeepSeek-R1-8B, averaged over 64 repetitions.",
+      "page": 15,
+      "index": 1,
+      "width": 776,
+      "height": 830
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16500v1/fig-002.webp",
+      "caption": "Figure 1: Overview of DistriTTRL. During the pseudo-label estimation process at each step, we first calibrate the Global Confidence Distribution from previous steps using the Local Confidence Distribution of all queries in the current step, then guide the distribution of specific queries in the current step with the calibrated distribution prior. Additionally, we computes diversity from each query’s rollouts and adjusts the advantage accordingly.",
+      "page": 2,
+      "index": 2,
+      "width": 802,
+      "height": 471
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16500v1/fig-003.webp",
+      "caption": "Figure 5: Impact of voting budget on the accuracy of different TTS strategies, evaluated on AIME2024 using DeepSeek-R1-8B (64 repeats). Complete results provided in Appendix §B.",
+      "page": 10,
+      "index": 3,
+      "width": 651,
+      "height": 370
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16500v1/fig-004.webp",
+      "caption": "Figure 6: Impact of sampling budget on the accuracy of different test-time scaling strategies across four additional benchmarks (DeepSeek-R1-8B, averaged over 64 runs).",
+      "page": 14,
+      "index": 4,
+      "width": 821,
+      "height": 537
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16500v1/fig-005.webp",
+      "caption": "Table 1: Main Results of DistriTTRL across benchmarks (16 repeats). -GT denotes using ground truth directly as labels to measure the upper bound of the method. -WSC denotes using Weighted Self-Consistency (Weighted Majority Voting) as the voting method, while -GMM denotes using DistriVoting as the voting method. Bold and underline respectively indicate the optimal and suboptimal results excluding GT.",
+      "page": 8,
+      "index": 5,
+      "width": 776,
+      "height": 744
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16500v1/fig-006.webp",
+      "caption": "Figure 2: Confidence distribution shift across training steps. Trained on AMC using Qwen38B with 32 samples per question. Each distribution aggregates 15 consecutive steps. Inspired by this phenomenon, during the progressive construction of the confidence distribution in the training phase, we primarily use the current step’s distribution to perform shift correction on the global confidence, which is detailed in §4.2.1.",
+      "page": 4,
+      "index": 6,
+      "width": 530,
+      "height": 308
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16500v1/fig-007.webp",
+      "caption": "Figure 3: Trend of majority ratio (left) and accuracy (right, average of 16) during the TTT process of training Qwen2.5-7B on AIME2024. GT denotes direct supervision with ground truth, while Voting denotes using Majority Voting for pseudo-label estimation.",
+      "page": 4,
+      "index": 7,
+      "width": 810,
+      "height": 195
+    },
+    {
+      "url": "assets/figures/arxiv/2603.16500v1/fig-008.webp",
+      "caption": "Figure 4: Effect of diversity-targeted penalty in DistriTTRL on mitigating consistency reward hacking, training Qwen2.5-7B on AIME2024.",
+      "page": 9,
+      "index": 8,
+      "width": 652,
+      "height": 316
+    }
+  ]
+}

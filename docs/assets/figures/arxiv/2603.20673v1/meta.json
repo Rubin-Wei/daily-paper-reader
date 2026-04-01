@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.20673v1/fig-001.webp",
+      "caption": "Figure 1: High-level view of PAVE. Instead of committing immediately to a final answer, the system inserts an explicit validation stage between retrieval and answer finalization: retrieved context is decomposed into atomic facts, used to draft an answer and short rationale, scored for evidence support, and revised only when the support signal is insufficient.",
+      "page": 2,
+      "index": 1,
+      "width": 812,
+      "height": 309
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20673v1/fig-002.webp",
+      "caption": "Figure 2: Illustrative execution trace for PAVE on a traffic-rule question. The retrieved context is decomposed into atomic premises, used to produce a draft answer and rationale, scored for support, and then finalized. In this example, the decomposition makes the governing rule, the relevant condition, and the exception explicit before final answer commitment.",
+      "page": 3,
+      "index": 2,
+      "width": 826,
+      "height": 256
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20673v1/fig-003.webp",
+      "caption": "Figure 3: Paired outcome transition on 100 shared SQuAD examples comparing the support-scoring variant with PAVE.",
+      "page": 7,
+      "index": 3,
+      "width": 484,
+      "height": 352
+    }
+  ]
+}

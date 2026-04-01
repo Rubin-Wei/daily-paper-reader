@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.09185v1/fig-001.webp",
+      "caption": "Figure 2: Retrieval performance with respect to the number of optimization steps on NegConstraint.",
+      "page": 6,
+      "index": 1,
+      "width": 458,
+      "height": 346
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09185v1/fig-002.webp",
+      "caption": "Figure 3: Retrieval performance with respect to the number of optimization steps on COCO-Neg.",
+      "page": 6,
+      "index": 2,
+      "width": 458,
+      "height": 343
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09185v1/fig-003.webp",
+      "caption": "Figure 4: Examples of query decomposition. In NegConstraint (a) and COCO-Neg (b), the LLM decomposes queries into positive sub-queries capturing desired elements and negative sub-queries targeting excluded concepts.",
+      "page": 7,
+      "index": 3,
+      "width": 461,
+      "height": 748
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09185v1/fig-004.webp",
+      "caption": "Figure 5: Trajectory of optimized query embedding eu in PCA-projected space. The initial embedding (black •) moves toward the final state (blue •). Positive examples (green △) and the ground-truth (yellow ⋆) act as attractors, while negative examples (red ×) exert repelling forces. Other corpus embeddings are shown in light gray.",
+      "page": 7,
+      "index": 4,
+      "width": 458,
+      "height": 367
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09185v1/fig-005.webp",
+      "caption": "Figure 1: Overview of the proposed Direct Embedding Optimization (DEO). (a) Given an input query containing negation, we use an LLM to decompose it into positive and negative sub-queries. (b) The input query embedding is then optimized with a contrastive loss by pulling it closer to positive query embeddings and pushing it farther from negative query embeddings, enabling negation- and exclusion-aware retrieval.",
+      "page": 3,
+      "index": 5,
+      "width": 928,
+      "height": 303
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09185v1/fig-006.webp",
+      "caption": "Figure 6: Optimization trajectory of eu in PCAprojected CLIP space. Initial (black •) embedding evolves toward final state (blue •), attracted by positives (green △) and ground-truth (yellow ⋆) while repelled by negatives (red ×). Gray points denote the corpus.",
+      "page": 8,
+      "index": 6,
+      "width": 461,
+      "height": 358
+    }
+  ]
+}

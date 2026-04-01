@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.08391v2/fig-001.webp",
+      "caption": "Table 3: Full results at the final checkpoint. Best result within each group is bolded. Base = standard transformer; LN = Loop-N ; L3IF = iso-FLOP for Loop-3; M-BIP = memory iso-parameter baseline; Mg0 = memory model with gate init g0; M-BIF = memory iso-FLOP baseline.",
+      "page": 11,
+      "index": 1,
+      "width": 706,
+      "height": 708
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08391v2/fig-002.webp",
+      "caption": "Figure 1: Architecture overview. Left: A standard transformer passes hidden states through L unique blocks. Center: Our loop model allows each block to iterate up to N times, with a learned halting mechanism that produces a weighted combination of intermediate states. Per-step scales ζ(sn) are initialized near zero for training stability. Right: The combined model additionally retrieves from local (per-layer) and global (shared) memory banks, gated by learned input-dependent scalars.",
+      "page": 2,
+      "index": 2,
+      "width": 794,
+      "height": 473
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08391v2/fig-003.webp",
+      "caption": "Figure 4: Memory gate activations across layers and training. Left: Local memory gate values show high variance across layers while later layers tend to have higher gate activations, and the spread increases over training. Right: Global memory gate values increase during training but converge to a more uniform profile across layers, with activations rising up to approximately layer 5 and then plateauing.",
+      "page": 10,
+      "index": 3,
+      "width": 821,
+      "height": 243
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08391v2/fig-004.webp",
+      "caption": "Table 2: Model configurations. All models use the same base transformer architecture. Loop parameters include per-step scales and halting router weights. Memory parameters include local/global key-value banks and gating networks. Iso-parameter baselines add extra FFN capacity to match the corresponding model’s parameter count. Iso-FLOP baselines use 36 layers to approximate the forward-pass cost of 3-loop models.",
+      "page": 10,
+      "index": 4,
+      "width": 727,
+      "height": 197
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08391v2/fig-005.webp",
+      "caption": "Table 5: Results at the mid checkpoint (step 20000).",
+      "page": 13,
+      "index": 5,
+      "width": 706,
+      "height": 685
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08391v2/fig-006.webp",
+      "caption": "Table 1: Summary of results, averaged across benchmarks within each group. CS = commonsense; BPB = bits per byte (lower is better, see Appendix A.2 for details). Best result per column within each model group is bolded. Full per-benchmark breakdowns are in Appendix A.4.",
+      "page": 4,
+      "index": 6,
+      "width": 656,
+      "height": 332
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08391v2/fig-007.webp",
+      "caption": "Table 4: Results at the early checkpoint (step 5000).",
+      "page": 12,
+      "index": 7,
+      "width": 706,
+      "height": 685
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08391v2/fig-008.webp",
+      "caption": "Figure 3: Expected loop iterations vs. validation cross-entropy for all configurations. Each point represents one evaluation during training; curves are colored by model configuration. Across all looped models, the expected number of iterations begins to increase rapidly once the cross-entropy drops below approximately 3.27± 0.59. This phase transition is consistent across Loop-3, Loop-5, and Loop-7 configurations, suggesting it depends on the model’s language competence rather than the maximum number of allowed iterations.",
+      "page": 9,
+      "index": 8,
+      "width": 818,
+      "height": 237
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08391v2/fig-009.webp",
+      "caption": "Figure 2: Expected number of loop iterations per layer over training. Left: Each curve represents one layer. Early layers (lighter colors) consistently use fewer iterations than later layers (darker colors). Middle: Expected steps at the end of training. Right: All models show a characteristic transition which occurs at approximately the same cross-entropy value across configurations (see Figure 3 in the Appendix for all configurations).",
+      "page": 5,
+      "index": 9,
+      "width": 817,
+      "height": 244
+    }
+  ]
+}

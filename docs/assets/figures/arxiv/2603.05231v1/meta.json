@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.05231v1/fig-001.webp",
+      "caption": "Figure 1: Overview of test-time adaptation strategies under noisy conditions. (a) Confidence-driven adaptation reinforces incorrect but high-probability predictions (e.g., word), leading to persistent errors. (b) Our reward-guided adaptation ASR-TRA favors semantically accurate alternatives (e.g., world) through reinforcement learning, even when their initial confidence is low.",
+      "page": 1,
+      "index": 1,
+      "width": 498,
+      "height": 298
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05231v1/fig-002.webp",
+      "caption": "Table 1: WER (%) and inference latency (seconds) on Whisper-Tiny under eight noise conditions from MS-SNSD (SNR = 10 dB). Best values per row are in bold.",
+      "page": 6,
+      "index": 2,
+      "width": 864,
+      "height": 264
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05231v1/fig-003.webp",
+      "caption": "Table 3: Ablation study of accuracy–latency trade-offs under different adaptation configurations on noisy LibriSpeech testother. Each row enables a combination of prompt tuning, parameter finetuning, and reward feedback (CLAP, LLM, or both). WER (↓) and average inference latency (s/utterance) are reported for Whisper-Tiny and Whisper-Base.",
+      "page": 7,
+      "index": 3,
+      "width": 776,
+      "height": 208
+    },
+    {
+      "url": "assets/figures/arxiv/2603.05231v1/fig-004.webp",
+      "caption": "Figure 4: Test-time self-adaptation for Whisper. A baseline transcript is decoded from the input Mel-spectrogram; soft-prompted variants are then sampled at varied temperatures, CLAP scores them all, and the aggregated rewards update the model, achieving on-the-fly correction without labels.",
+      "page": 4,
+      "index": 4,
+      "width": 1047,
+      "height": 275
+    }
+  ]
+}

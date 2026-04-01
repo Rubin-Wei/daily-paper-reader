@@ -1,0 +1,142 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-001.webp",
+      "caption": "Figure 9: Aggregated material footprint tied to the training of our models. Estimations were made using the parameter count of each model, the amount of tokens each run took, an average MFU of 60%, and an assumed GPU lifespan of 3 years.",
+      "page": 43,
+      "index": 1,
+      "width": 622,
+      "height": 486
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-002.webp",
+      "caption": "Table 4: Dataset composition after filtering.",
+      "page": 38,
+      "index": 2,
+      "width": 394,
+      "height": 326
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-003.webp",
+      "caption": "Figure 2: Pretraining loss curve across 195,000 steps (∼408B tokens).",
+      "page": 30,
+      "index": 3,
+      "width": 790,
+      "height": 450
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-004.webp",
+      "caption": "Figure 3: Normalized Preferred Metric (NPM) scores on the Easy Set evaluations.",
+      "page": 30,
+      "index": 4,
+      "width": 790,
+      "height": 454
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-005.webp",
+      "caption": "Table B.1: Training configurations for Educational and Toxicity Annotators.",
+      "page": 62,
+      "index": 5,
+      "width": 660,
+      "height": 279
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-006.webp",
+      "caption": "Table 5: Post-training results for Instruct variants.",
+      "page": 39,
+      "index": 6,
+      "width": 690,
+      "height": 336
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-007.webp",
+      "caption": "Table 1: Tokenizer evaluation on Portuguese text (600,000 words). Our tokenizer achieves the best compression efficiency across all metrics.",
+      "page": 22,
+      "index": 7,
+      "width": 664,
+      "height": 213
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-008.webp",
+      "caption": "Table 3: Aggregate benchmark results (NPM) comparisons against other baselines.",
+      "page": 34,
+      "index": 8,
+      "width": 548,
+      "height": 358
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-009.webp",
+      "caption": "Table D.5: Seed datasets used for synthetic data generation.",
+      "page": 66,
+      "index": 9,
+      "width": 798,
+      "height": 391
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-010.webp",
+      "caption": "Table 8: Estimated energy consumption and carbon footprint per project phase.",
+      "page": 42,
+      "index": 10,
+      "width": 664,
+      "height": 202
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-011.webp",
+      "caption": "Figure C.2: Visualizations for the excluded subset. Left: Token distribution per data source. Right: Quality and toxicity score distributions per data source.",
+      "page": 65,
+      "index": 11,
+      "width": 826,
+      "height": 202
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-012.webp",
+      "caption": "Figure 8: Per-benchmark comparison for the Think variant.",
+      "page": 40,
+      "index": 12,
+      "width": 790,
+      "height": 394
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-013.webp",
+      "caption": "Figure 7: Per-benchmark comparison of Tucano2-qwen-3.7B-Instruct against Qwen3-4B and Gemma-3-Gaia-PT-BR-4b-it.",
+      "page": 40,
+      "index": 13,
+      "width": 790,
+      "height": 394
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-014.webp",
+      "caption": "Figure D.3: Token distribution. (a) Distribution across the three Qwen2.5 generator models. (b) Distribution across the 15 seed datasets.",
+      "page": 67,
+      "index": 14,
+      "width": 826,
+      "height": 240
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-015.webp",
+      "caption": "Figure 1: Impact of Educational & Synthetic Data (46B tokens). The Edu+Synth and Edu mixtures achieve the best performance across benchmarks, substantially outperforming the Non-Edu mixture and the Tucano-2b4 baseline. The percentage values represent the relative increase/decrease in performance with regard to the Tucano-2b4 baseline.",
+      "page": 19,
+      "index": 15,
+      "width": 790,
+      "height": 444
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-016.webp",
+      "caption": "Figure 4: Comparison of our 0.6-Base model against Tucano-1b1 and Curió-edu-1b1.",
+      "page": 31,
+      "index": 16,
+      "width": 790,
+      "height": 393
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03543v1/fig-017.webp",
+      "caption": "Table B.2: Performance metrics for Educational and Toxicity Annotators.",
+      "page": 63,
+      "index": 17,
+      "width": 786,
+      "height": 347
+    }
+  ]
+}

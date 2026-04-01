@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.22340v1/fig-001.webp",
+      "caption": "Figure 3: Sample Example of LPG Node Design",
+      "page": 11,
+      "index": 1,
+      "width": 688,
+      "height": 539
+    },
+    {
+      "url": "assets/figures/arxiv/2603.22340v1/fig-002.webp",
+      "caption": "Table 2: Number of correct, partial, and incorrect responses for each method and intent.",
+      "page": 10,
+      "index": 2,
+      "width": 558,
+      "height": 302
+    },
+    {
+      "url": "assets/figures/arxiv/2603.22340v1/fig-003.webp",
+      "caption": "Figure 1: Overview of the RDF-based pipeline for Graph RAG.",
+      "page": 8,
+      "index": 3,
+      "width": 833,
+      "height": 500
+    },
+    {
+      "url": "assets/figures/arxiv/2603.22340v1/fig-004.webp",
+      "caption": "Figure 2: Overview of the LPG-based pipeline for Graph RAG.",
+      "page": 8,
+      "index": 4,
+      "width": 833,
+      "height": 415
+    },
+    {
+      "url": "assets/figures/arxiv/2603.22340v1/fig-005.webp",
+      "caption": "Figure 4: Full Graph RDF structure: This figure illustrates the complete end-to-end pipeline, including all agentic components responsible for query rewriting, normalization, similar query generation, and other orchestration steps.",
+      "page": 17,
+      "index": 5,
+      "width": 931,
+      "height": 702
+    },
+    {
+      "url": "assets/figures/arxiv/2603.22340v1/fig-006.webp",
+      "caption": "Table 5: Representative examples of queries for each intent category.",
+      "page": 16,
+      "index": 6,
+      "width": 720,
+      "height": 212
+    }
+  ]
+}

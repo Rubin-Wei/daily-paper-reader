@@ -1,0 +1,198 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-001.webp",
+      "caption": "Table 18: Generative Token Accuracy Comparison",
+      "page": 25,
+      "index": 1,
+      "width": 982,
+      "height": 377
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-002.webp",
+      "caption": "Table 19: Held-Out Completion (Selected Categories)",
+      "page": 25,
+      "index": 2,
+      "width": 668,
+      "height": 254
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-003.webp",
+      "caption": "Figure 10: FullStackBench C++ Evaluation — Compile rate and test pass rate on general C++ programming tasks. The fine-tuned model shows minimal degradation (-3.8% compile rate, -2.8% pass rate), indicating that domain-specific CPT does not cause catastrophic forgetting of general programming capabilities.",
+      "page": 26,
+      "index": 3,
+      "width": 836,
+      "height": 310
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-004.webp",
+      "caption": "Table 7: Bayesian Sweep Results",
+      "page": 15,
+      "index": 4,
+      "width": 1029,
+      "height": 480
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-005.webp",
+      "caption": "Table 15: Perplexity Convergence (Selected Checkpoints)",
+      "page": 21,
+      "index": 5,
+      "width": 664,
+      "height": 254
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-006.webp",
+      "caption": "Table 2: Held-Out Evaluation Repositories",
+      "page": 7,
+      "index": 6,
+      "width": 744,
+      "height": 450
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-007.webp",
+      "caption": "Table 16: In-Domain Perplexity by Category (Checkpoint-15000)",
+      "page": 22,
+      "index": 7,
+      "width": 610,
+      "height": 401
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-008.webp",
+      "caption": "Figure 7: Category Perplexity — In-domain perplexity comparison across 13 categories. Improvement percentages shown above each category.",
+      "page": 22,
+      "index": 8,
+      "width": 1044,
+      "height": 584
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-009.webp",
+      "caption": "Table 6: Fixed Hyperparameters Across All Sweep Configurations",
+      "page": 14,
+      "index": 9,
+      "width": 540,
+      "height": 396
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-010.webp",
+      "caption": "Figure 2: Bayesian Hyperparameter Sweep: Training dynamics for 10 configurations. Each curve represents a unique (rank, target, LR) triple. Top-left: Training loss stratified by rank. Top-center: Learning rate schedules. Top-right: Post-clip gradient norms. Bottom: Global step and epoch progression. Labels encode rank (r), target (A = attention-only, F = full), and learning rate.",
+      "page": 14,
+      "index": 10,
+      "width": 782,
+      "height": 433
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-011.webp",
+      "caption": "Table 11: Computational Cost of the Bayesian Hyperparameter Sweep",
+      "page": 18,
+      "index": 11,
+      "width": 568,
+      "height": 254
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-012.webp",
+      "caption": "Figure 3: Training Loss — Training cross-entropy loss as a function of optimizer steps for the hero run. The raw loss (light trace) and smoothed loss (bold trace, window=20) both exhibit monotonically decreasing behavior from 0.88 to 0.25 with no instabilities throughout the entire 294.7-hour run.",
+      "page": 18,
+      "index": 12,
+      "width": 836,
+      "height": 414
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-013.webp",
+      "caption": "Table 17: In-Domain Completion (Checkpoint-15000, Selected Categories)",
+      "page": 23,
+      "index": 13,
+      "width": 852,
+      "height": 250
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-014.webp",
+      "caption": "Table 12: Training Progress (From W&B Logs)",
+      "page": 19,
+      "index": 14,
+      "width": 648,
+      "height": 283
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-015.webp",
+      "caption": "Figure 4: Hero Run LR Schedule and Token Accuracy — Left: Cosine LR schedule with 10% warmup. Right: Mean token accuracy climbing monotonically from 86% to 93.5%.",
+      "page": 19,
+      "index": 15,
+      "width": 1044,
+      "height": 436
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-016.webp",
+      "caption": "Table 10: Mapping from Sweep Findings to Production Configuration",
+      "page": 17,
+      "index": 16,
+      "width": 1013,
+      "height": 474
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-017.webp",
+      "caption": "Figure 8: Token Accuracy Comparison — Generative token accuracy across 13 embedded domains for all four models.",
+      "page": 24,
+      "index": 17,
+      "width": 1044,
+      "height": 531
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-018.webp",
+      "caption": "Figure 9: BLEU-4 Comparison — BLEU-4 scores for the same comparison. Spark Preview achieves the highest BLEU-4 on 8 of 13 categories.",
+      "page": 24,
+      "index": 18,
+      "width": 1044,
+      "height": 531
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-019.webp",
+      "caption": "Table 4: Training Hyperparameters",
+      "page": 9,
+      "index": 19,
+      "width": 677,
+      "height": 452
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-020.webp",
+      "caption": "Table 13: LoRA Configuration",
+      "page": 20,
+      "index": 20,
+      "width": 976,
+      "height": 198
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-021.webp",
+      "caption": "Figure 5: Throughput — Left: tokens per second, showing a sharp transition from ∼11,000 tok/s (steps 0-6,000) to ∼7,000 tok/s (steps 7,000+). Right: step time showing the corresponding increase from ∼45s to ∼70s per step.",
+      "page": 20,
+      "index": 21,
+      "width": 1044,
+      "height": 437
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-022.webp",
+      "caption": "Figure 1: Dataset Composition — Left: Training pool category distribution across 818 pairs. Right: Top 10 manufacturers by pair count.",
+      "page": 5,
+      "index": 22,
+      "width": 1044,
+      "height": 444
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-023.webp",
+      "caption": "Table 8: Marginal Effect of Each Hyperparameter Axis on Final Loss",
+      "page": 16,
+      "index": 23,
+      "width": 882,
+      "height": 277
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11139v2/fig-024.webp",
+      "caption": "Table 9: Gradient Norm Statistics Across Sweep Configurations",
+      "page": 16,
+      "index": 24,
+      "width": 932,
+      "height": 365
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-001.webp",
+      "caption": "Table 3: Simplified client–server execution pipeline with MCP tool mapping.",
+      "page": 6,
+      "index": 1,
+      "width": 977,
+      "height": 436
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-002.webp",
+      "caption": "Table 5: Six-method ensemble conflict detector weights used for Type I conflict detection.",
+      "page": 11,
+      "index": 2,
+      "width": 971,
+      "height": 187
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-003.webp",
+      "caption": "Table 25: Hyperparameter settings used by the main PRECEPT subsystems.",
+      "page": 43,
+      "index": 3,
+      "width": 969,
+      "height": 733
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-004.webp",
+      "caption": "Table 16: Primary Exp3 results (N=5, 10 seeds per β). Bold = best P1/Steps. Significance (paired t-test): ∗p<0.05, ∗∗p<0.01, ∗∗∗p<0.001. P1 columns: markers on d values. Steps columns: markers on baseline values indicate PRECEPT-vs-baseline step significance.",
+      "page": 25,
+      "index": 4,
+      "width": 972,
+      "height": 272
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-005.webp",
+      "caption": "Figure 10: P1 and Avg Steps vs Training Exposure (β effect) across both domains. PRECEPT achieves 100% P1 on integration at β≥3 and 87.5–92.5% on logistics, with near-optimal 2.0-step efficiency.",
+      "page": 26,
+      "index": 5,
+      "width": 976,
+      "height": 827
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-006.webp",
+      "caption": "Figure 6: COMPASS: Complexity-Optimized Multi-strategy Pareto Adaptive Search. (a) End-toend pipeline from task complexity analysis through Pareto-optimal prompt selection. (b) Pareto selection mechanism: candidates are evaluated on two objectives (success rate, step efficiency); dominated candidates (gray) are filtered, and the winner (orange star) is chosen from the non-dominated Pareto front (blue) by maximum hypervolume contribution. (c) Verified prompt evolution: the agent predicts solutions, the environment verifies internally, and only binary signals drive evolution—no expected solutions are ever exposed to the agent.",
+      "page": 15,
+      "index": 6,
+      "width": 983,
+      "height": 561
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-007.webp",
+      "caption": "Table 11: Cross-experiment protocol summary, clarifying which evaluation regime is used in each experiment.",
+      "page": 21,
+      "index": 7,
+      "width": 980,
+      "height": 398
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-008.webp",
+      "caption": "Table 12: COMPASS hyperparameters used in all reported experiments.",
+      "page": 21,
+      "index": 8,
+      "width": 706,
+      "height": 202
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-009.webp",
+      "caption": "Table 27: MCP client–server component mapping for the evaluated implementation.",
+      "page": 47,
+      "index": 9,
+      "width": 940,
+      "height": 573
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-010.webp",
+      "caption": "Figure 12: Experiment 5 rule persistence after session restart. PRECEPT retains learned rules far more faithfully than the approximate-retrieval baselines.",
+      "page": 30,
+      "index": 10,
+      "width": 976,
+      "height": 385
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-011.webp",
+      "caption": "Table 19: Experiment 5 rule persistence after session restart across integration and logistics.",
+      "page": 30,
+      "index": 11,
+      "width": 969,
+      "height": 348
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-012.webp",
+      "caption": "Figure 4: Complete PRECEPT execution pipeline. Tasks flow through the COMPASS Monitor (O(1) constraint check), three-mode retrieval (exact-match, semantic, compositional), Bayesian conflict resolution via Thompson sampling, execution with deterministic pruning via RefineInterceptor, and threshold-based rule invalidation (θ=2). On success, rules are persisted; on state-change events, the COMPASS Architect (low-frequency loop, dashed teal) triggers prompt evolution and Pareto selection. On failure, the retry loop (dashed red) returns to the Monitor with the failed option pruned.",
+      "page": 7,
+      "index": 12,
+      "width": 856,
+      "height": 434
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-013.webp",
+      "caption": "Table 13: Experiment 1 first-try success (P1) across the three main domains.",
+      "page": 22,
+      "index": 13,
+      "width": 969,
+      "height": 197
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-014.webp",
+      "caption": "Table 21: Theory–experiment alignment for Type I conflict resolution across 40 trace-analyzed runs. The empirical results confirm the predictions of Definition 4.1, Algorithms 4.1a–4.1b, Theorem B.1, and the stationary-segment interpretation of Theorem 4.1.",
+      "page": 34,
+      "index": 14,
+      "width": 971,
+      "height": 419
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-015.webp",
+      "caption": "Figure 1: PRECEPT architecture overview. The client handles orchestration, high-frequency monitoring, retrieval-time decision support, and learning updates; the server handles MCP dispatch, conflict-aware retrieval, low-frequency COMPASS evolution, domain execution, and persistent memory. The dashed arrow denotes the evolved prompt flowing from the server-side architect back to the client monitor.",
+      "page": 3,
+      "index": 15,
+      "width": 945,
+      "height": 637
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-016.webp",
+      "caption": "Figure 14: Experiment 7 rule drift adaptation. After the train–test mapping shift, PRECEPT shows the strongest recovery across encounters in both domains.",
+      "page": 35,
+      "index": 16,
+      "width": 976,
+      "height": 384
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-017.webp",
+      "caption": "Table 22: Experiment 7 rule drift adaptation across encounters after a train–test mapping shift.",
+      "page": 35,
+      "index": 17,
+      "width": 971,
+      "height": 300
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-018.webp",
+      "caption": "Table 8: Summary of theoretical bounds. Full proofs in Appendix B.",
+      "page": 18,
+      "index": 18,
+      "width": 914,
+      "height": 369
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-019.webp",
+      "caption": "Figure 7: COMPASS dual-frequency control loop. The high-frequency monitor runs at every agent step with O(1) cost for real-time constraint checking and pattern learning. When trigger events are emitted (new rule discovered, goal failure, phase change), the low-frequency architect activates for strategic re-planning: context compilation, GEPA-based prompt evolution, Pareto selection of candidates, and MAP-Elites-guided memory pruning.",
+      "page": 18,
+      "index": 19,
+      "width": 881,
+      "height": 374
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-020.webp",
+      "caption": "Figure 8: Experiment 1 main comparison across the three evaluated domains: first-try success and step efficiency.",
+      "page": 23,
+      "index": 20,
+      "width": 976,
+      "height": 358
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-021.webp",
+      "caption": "Figure 11: Experiment 4 continuous learning. PRECEPT improves fastest across repeated encounters, reaching 100% P1 by encounter 4 on logistics and 70.4% on integration while maintaining the lowest step count.",
+      "page": 28,
+      "index": 21,
+      "width": 976,
+      "height": 806
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-022.webp",
+      "caption": "Table 1: Code-to-theory mapping for PRECEPT’s major components.",
+      "page": 4,
+      "index": 22,
+      "width": 977,
+      "height": 643
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-023.webp",
+      "caption": "Table 31: Paper-to-repository mapping from experiment numbers to scripts and result artifacts.",
+      "page": 49,
+      "index": 23,
+      "width": 926,
+      "height": 916
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-024.webp",
+      "caption": "Figure 13: Experiment 6 static-knowledge ablation (Type I conflict). Adversarial in-vocabulary static knowledge harms first-try performance, but PRECEPT retains the largest margins and the strongest retrytime recovery.",
+      "page": 32,
+      "index": 24,
+      "width": 980,
+      "height": 946
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-025.webp",
+      "caption": "Table 20: Static knowledge ablation: impact of in-vocabulary adversarial static knowledge on all agents across both domains (N=10 seeds). Adversarial SK recommends valid but incorrect options drawn from the same solution pool agents choose from.",
+      "page": 32,
+      "index": 25,
+      "width": 973,
+      "height": 195
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-026.webp",
+      "caption": "Figure 5: Evo-Memory lifecycle for Type II (rule drift) handling. On success, the failure counter resets and confidence increases; on failure, confidence decays by half (c× 0.5) and the failure counter increments. When f ≥ θ (θ=2 by default), the rule is invalidated via record_rule_failure(), triggering re-learning. This yields stale-rule persistence probability (1−d)θ ≤ 0.0025 for PRECEPT (Corollary 6.7).",
+      "page": 12,
+      "index": 26,
+      "width": 895,
+      "height": 331
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-027.webp",
+      "caption": "Table 26: Notation and parameter definitions used in the theoretical analysis.",
+      "page": 44,
+      "index": 27,
+      "width": 971,
+      "height": 481
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-028.webp",
+      "caption": "Table 24: PRECEPT vs. DRQ: original contributions beyond evolutionary inspiration.",
+      "page": 41,
+      "index": 28,
+      "width": 973,
+      "height": 181
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-029.webp",
+      "caption": "Figure 9: Experiment 2 compositional generalization across logistics and integration. PRECEPT reaches 100% P1 on 2-way logistics compositions and shows the strongest overall compositional performance.",
+      "page": 24,
+      "index": 29,
+      "width": 976,
+      "height": 475
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-030.webp",
+      "caption": "Table 23: Capability matrix summarizing which properties are fully, partially, or not supported across methods.",
+      "page": 37,
+      "index": 30,
+      "width": 971,
+      "height": 278
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-031.webp",
+      "caption": "Figure 2: Complete seven-phase execution flow of the PRECEPT agent: (1) Task parsing with hybrid rule+LLM fallback, (2) COMPASS complexity evaluation with block/proceed/fast-path decisions, (3) Threemode context retrieval (compositional, hybrid, semantic), (4) Solution derivation with tier-sorted priority, (5) Domain action execution, (6) Outcome processing with threshold-based invalidation (θ=2), and (7) Knowledge update via atomic precept extraction. Dashed arrow indicates the retry loop.",
+      "page": 5,
+      "index": 31,
+      "width": 898,
+      "height": 248
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-032.webp",
+      "caption": "Figure 3: Knowledge Layer with three retrieval modes: exact-match O(1) via dictionary lookup (highest priority), semantic similarity O(log n) via hybrid BM25+embedding search, and compositional retrieval via atomic precept decomposition with tier-sorted stacking. Conflicts are resolved through Bayesian Thompson sampling respecting the Safety > Compliance > Preferences hierarchy.",
+      "page": 5,
+      "index": 32,
+      "width": 910,
+      "height": 485
+    },
+    {
+      "url": "assets/figures/arxiv/2603.09641v1/fig-033.webp",
+      "caption": "Table 28: Extended agent features used in the evaluated PRECEPT system.",
+      "page": 48,
+      "index": 33,
+      "width": 973,
+      "height": 184
+    }
+  ]
+}

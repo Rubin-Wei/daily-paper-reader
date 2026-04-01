@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.07931v1/fig-001.webp",
+      "caption": "Figure 2: Distribution of QA instances by hop depth, number of distinct pages involved, and hop pattern, broken down by question type (Abstractive, Causal, Comparative)",
+      "page": 2,
+      "index": 1,
+      "width": 492,
+      "height": 340
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07931v1/fig-002.webp",
+      "caption": "Table 2: Unified evaluation results. LLM-based judge metrics (Audit, Accuracy, Fidelity) and N-gram-based lexical metrics (ROUGE-L, BLEU). Higher is better for all metrics.",
+      "page": 3,
+      "index": 2,
+      "width": 502,
+      "height": 352
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07931v1/fig-003.webp",
+      "caption": "Table 1: Comparison with existing multi-hop QA benchmarks. MH: Multi-hop; Type: Question types (Ab: Abstractive; Cp: Comparative; Re: Causal Reasoning); Ann.: Explicit multi-hop annotation; Evl.: Step-by-step multi-hop evaluation; MM: Multimodal evidence.",
+      "page": 1,
+      "index": 3,
+      "width": 506,
+      "height": 250
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07931v1/fig-004.webp",
+      "caption": "Table 4: Question-type breakdown. We normalize variant labels (e.g., TABLE/FIGURE-first) into three core types. We report judge-based metrics: audit_score (Audit), answer accuracy (Acc), and evidence fidelity (Fid).",
+      "page": 4,
+      "index": 4,
+      "width": 506,
+      "height": 362
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07931v1/fig-005.webp",
+      "caption": "Table 7: Performance by primary evidence modality (Text, Table, Figure), aggregated over prompting strategies. N denotes the number of instances whose dominant supporting evidence belongs to each modality.",
+      "page": 4,
+      "index": 5,
+      "width": 386,
+      "height": 313
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07931v1/fig-006.webp",
+      "caption": "Table 5: Performance across page-depth bins, grouped by the furthest evidence page involved (best strategy per model by audit_score).",
+      "page": 4,
+      "index": 6,
+      "width": 468,
+      "height": 289
+    },
+    {
+      "url": "assets/figures/arxiv/2603.07931v1/fig-007.webp",
+      "caption": "Table 6: Performance by hop depth (1-hop, 2-hop, 3+-hop).",
+      "page": 4,
+      "index": 7,
+      "width": 464,
+      "height": 313
+    }
+  ]
+}

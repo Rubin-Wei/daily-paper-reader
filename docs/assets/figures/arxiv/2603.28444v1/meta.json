@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.28444v1/fig-001.webp",
+      "caption": "Figure 1: Pseudo-code for ECR without external algorithm packages.",
+      "page": 6,
+      "index": 1,
+      "width": 896,
+      "height": 310
+    },
+    {
+      "url": "assets/figures/arxiv/2603.28444v1/fig-002.webp",
+      "caption": "Table 1: Key subsystems implemented in our system that support ECR and the full end-to-end pipeline.",
+      "page": 11,
+      "index": 2,
+      "width": 922,
+      "height": 400
+    },
+    {
+      "url": "assets/figures/arxiv/2603.28444v1/fig-003.webp",
+      "caption": "Figure 3: Schematic entropy trajectories consistent with the measured endpoints: ECR reaches H ≤ ϵ quickly, whereas relevance-only and random baselines typically remain above ϵ at matched claim budgets.",
+      "page": 14,
+      "index": 3,
+      "width": 906,
+      "height": 373
+    },
+    {
+      "url": "assets/figures/arxiv/2603.28444v1/fig-004.webp",
+      "caption": "Figure 2: System overview: Entropic Claim Resolution (ECR) operates as an inference-time controller between competitive retrieval and answer synthesis. Given a retrieved claim set, ECR sequentially selects evidence to minimize hypothesis entropy and terminates when epistemic sufficiency is reached.",
+      "page": 8,
+      "index": 4,
+      "width": 738,
+      "height": 458
+    },
+    {
+      "url": "assets/figures/arxiv/2603.28444v1/fig-005.webp",
+      "caption": "Figure A.1: Ambiguity exposure as a function of the coherence weight λconflict under structured contradiction injection. Empirically, ambiguity exposure exhibits a sharp phase transition: for α = 0.5, exposure jumps from 0 to 1 for any tested λ > 0, while remaining 0 for α ≤ 0.3 across all tested settings.",
+      "page": 19,
+      "index": 5,
+      "width": 894,
+      "height": 291
+    },
+    {
+      "url": "assets/figures/arxiv/2603.28444v1/fig-006.webp",
+      "caption": "Table A.1: λ-sweep summary statistics (offline, deterministic). Values are aggregated over 300 questions.",
+      "page": 19,
+      "index": 6,
+      "width": 820,
+      "height": 185
+    },
+    {
+      "url": "assets/figures/arxiv/2603.28444v1/fig-007.webp",
+      "caption": "Table 6: Offline contradiction-injection ablation (300 questions). Paired contradictions are injected into the candidate claim pool at rate α after retrieval and before evidence selection. EM is reported only as a sanity anchor under a deterministic offline answerer; the key signals are Ambiguity Exposure and Overconfident Error (epistemic collapse). ECR exhibits a phase transition from epistemic sufficiency to principled non-convergence as contradictions accumulate, while baseline RAG remains uniformly overconfident. Counts indicate number of runs terminating for each reason.",
+      "page": 16,
+      "index": 7,
+      "width": 925,
+      "height": 195
+    }
+  ]
+}

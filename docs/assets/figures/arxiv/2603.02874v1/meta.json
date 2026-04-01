@@ -1,0 +1,182 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-001.webp",
+      "caption": "Figure 4: (a) Illustration of the suffix (top) / prefix n-gram retrieval (bottom) variants. In the suffix version the query is given at the end of the input sequence, while in the prefix version the query is provided at the beginning. (b) When training with sequences ≤ 100 Mamba2 exhibits greater generalization than a Transformer with RoPE embeddings, while hybrid models show near-perfect generalization abilities. (c) On the prefix variant, Mamba2 performs even better given the lower memory requirements of the task, while Transformers exhibit a slight performance boost.",
+      "page": 6,
+      "index": 1,
+      "width": 972,
+      "height": 270
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-002.webp",
+      "caption": "Figure 10: We track the cosine similarities between embeddings of position tokens projected using PCA (dim=32). (a) Transformer with RoPE positional embeddings (b) Transformer without positional embeddings, (c) Mamba2, and (d) Hybrid with interleaved Mamba2 and Transformer blocks. Each row corresponds to 25% of the training progress relative to each model. Models with SSM blocks produce similar embeddings for tokens that describe nearby indices in the sequence as elements near the main diagonal have very high similarity scores. Transformers do not have this property as they learn a mapping between inputs-outputs without taking into account adjacent positions.",
+      "page": 11,
+      "index": 2,
+      "width": 976,
+      "height": 850
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-003.webp",
+      "caption": "Figure 21: We plot the cosine similarities between embeddings of position tokens projected using PCA (dim=32/64/128) in rows one to three, and without any dimensionality reduction shown in the last row. Each column corresponds to a hybrid interleaved model.",
+      "page": 25,
+      "index": 3,
+      "width": 976,
+      "height": 849
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-004.webp",
+      "caption": "Figure 22: We plot the cosine similarities between embeddings of position tokens projected using PCA (dim=32/64/128) in rows one to three, and without any dimensionality reduction shown in the last row. (a) Transformer with RoPE positional embeddings (b) Transformer without positional embeddings, (c) Mamba2, and (d) Hybrid with interleaved Mamba2 and Transformer blocks.",
+      "page": 26,
+      "index": 4,
+      "width": 976,
+      "height": 843
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-005.webp",
+      "caption": "Figure 15: Error rates with non unique n-gram suffix queries of each hybrid interleaved model. All variants have significantly lower error rates compared to Transformers, and Mamba2 models (Figure 14).",
+      "page": 21,
+      "index": 5,
+      "width": 963,
+      "height": 403
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-006.webp",
+      "caption": "Figure 16: Preference rates with non unique n-gram suffix (top) and prefix (bottom) queries across different bins within sequences for each hybrid interleaved. Each row in the heatmap corresponds to dividing the sequence into s = {2, 3, 4, 10} segments containing duplicate queries.",
+      "page": 21,
+      "index": 6,
+      "width": 979,
+      "height": 293
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-007.webp",
+      "caption": "Figure 5: Error rates with non unique n-gram suffix queries of a model from each family: (a) Transformer, (b) SSM: Mamba2, (c): HybridI with interleaved Mamba2 and Transformer blocks. Mamba2 fails to match the query n-gram to any candidate within the sequence, while a Transformer and the hybrid models maintain low miss rate even for sequences with many duplicates.",
+      "page": 7,
+      "index": 7,
+      "width": 963,
+      "height": 203
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-008.webp",
+      "caption": "Figure 6: Preference rates with non unique n-gram suffix (top) and prefix (bottom) queries across different bins within sequences for each model: (a) Transformer, (b) SSM: Mamba2, (c): HybridI with interleaved Mamba2 and Transformer blocks. Each row in the heatmap corresponds to dividing the sequence into s = {2, 3, 4, 10} segments containing duplicate queries.",
+      "page": 7,
+      "index": 8,
+      "width": 979,
+      "height": 292
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-009.webp",
+      "caption": "Figure 9: We track the embeddings of the position tokens in a 2D plane across training for (a) Transformer with RoPE positional embeddings (b) Transformer without positional embeddings, (c) Mamba2, and (d) Hybrid with interleaved Mamba2 and Transformer blocks. Each row corresponds to 25% of the training progress relative to each model, while warmer colors in the spectrum correspond to positional tokens pointing to the start of the sequence. SSMs learn a smooth, continuous mapping of positions by converging to localityaware embeddings that form a two-dimensional spiral. Transformers learn a mapping between the positional token and the actual position in the sequence without any particular structure.",
+      "page": 10,
+      "index": 9,
+      "width": 976,
+      "height": 871
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-010.webp",
+      "caption": "Table 1: Model configuration. We consider models with ≈150-160M parameters. Hybrid models with interleaved Transformer and Mamba blocks are denoted as NM(2)/1T where N denotes the number of Mamba (M) or Mamba2 (M2) blocks preceding a Transformer block. Models with a two-stream hybrid block are denoted as ||, where the output of the two streams is combined via a learnable gated tanh mechanism. The gate is a scalar value initialized to zero, meaning that the Transformer stream is inactive at the start of the training. All parameters are computed excluding the embedding table as the vocabulary size differs between the two tasks.",
+      "page": 18,
+      "index": 10,
+      "width": 940,
+      "height": 467
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-011.webp",
+      "caption": "Figure 19: Left: Data efficiency on the position retrieval. The two stream hybrid with reverse gating (Hybrid2SR), where Mamba output edits the hidden states of a Transformer, converges faster than Hybrid2S and even approximates the performance of the Transformer (RoPE) shown here as a purple dashed line. Right: The per-token performance of Hybrid2SR.",
+      "page": 23,
+      "index": 11,
+      "width": 958,
+      "height": 349
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-012.webp",
+      "caption": "Figure 18: Gating of effect of Hybrid2S for the task of position retrieval. Deeper layers have stronger gate activation indicating late fusion.",
+      "page": 23,
+      "index": 12,
+      "width": 451,
+      "height": 346
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-013.webp",
+      "caption": "Figure 1: Overview of the synthetic in-context retrieval tasks. Left: For the task of n-gram retrieval, the",
+      "page": 4,
+      "index": 13,
+      "width": 976,
+      "height": 313
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-014.webp",
+      "caption": "Figure 2: Illustration of hybrid architectures. Left: Interleaved Mamba and Transformer blocks. A Transformer block is inserted every N Mamba blocks. Right: Two stream block with a gate mechanism. The outputs from both streams are fused with a learnable gating mechanism.",
+      "page": 4,
+      "index": 14,
+      "width": 882,
+      "height": 344
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-015.webp",
+      "caption": "Figure 12: Test-time extrapolation of different hybrid interleaved configurations for the (a) suffix, and (b) prefix n-gram retrieval tasks. Hybrid models exhibit longer length generalization capabilities compared to Transformers and SSMs. The best configuration corresponds to hybrid models with Mamba2 and low frequency Transformer blocks.",
+      "page": 19,
+      "index": 15,
+      "width": 858,
+      "height": 323
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-016.webp",
+      "caption": "Table 2: Training hyperparameters used across all models and tasks. All experiments were conducted using the Hugging Face library (Wolf et al., 2020) (v4.57.3).",
+      "page": 19,
+      "index": 16,
+      "width": 456,
+      "height": 388
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-017.webp",
+      "caption": "Figure 11: Average absolute distance of K-nearest neighbors of position embeddings.",
+      "page": 12,
+      "index": 17,
+      "width": 444,
+      "height": 283
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-018.webp",
+      "caption": "Figure 20: We track the embeddings of the position tokens in a 2D plane across training for hybrid models. Each row corresponds to 25% of the training progress relative to each model, while warmer colors in the spectrum correspond to positional tokens pointing to the start of the sequence. Models with SSM blocks create locality-aware embeddings forming a two-dimensional spiral, while Transformers learn a mapping between the positional token and the actual position in the sequence without any particular structure.",
+      "page": 24,
+      "index": 18,
+      "width": 976,
+      "height": 719
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-019.webp",
+      "caption": "Figure 8: We track the per-token performance of a model from each family: (a) Transformer, (b) SSM: Mamba2, (c): HybridI with interleaved Mamba2 and Transformer blocks. A Transformer model learns the task faster and with a uniform per-target-token performance distribution. Models with SSM blocks prioritize the performance at the beginning and end of the sequence, then gradually learn the task for the remaining positions. Hybrid models combine the prioritization of SSM models at the early training stages with the steep uniform distribution of Transformers.",
+      "page": 9,
+      "index": 19,
+      "width": 966,
+      "height": 210
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-020.webp",
+      "caption": "Figure 14: Error rates with non unique n-gram suffix (top) and prefix (bottom) queries of a model from each family: (a) Transformer, (b) SSM: Mamba2, (c): HybridI with interleaved Mamba2 and Transformer blocks. All models exhibit substantially higher error rates in the prefix n-gram variant apart from HybridI .",
+      "page": 20,
+      "index": 20,
+      "width": 963,
+      "height": 403
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-021.webp",
+      "caption": "Figure 13: We track the per-token performance of different hybrid interleaved configurations. All hybrid models tend to combine the start/end of sequence tokens of SSMs and the steep behavior of Transformers. Interchanging Mamba2 and Transformer blocks (N=1) results in more steep task acquisition, while for N > 1 hybrid models behave more like pure SSMs.",
+      "page": 20,
+      "index": 21,
+      "width": 962,
+      "height": 208
+    },
+    {
+      "url": "assets/figures/arxiv/2603.02874v1/fig-022.webp",
+      "caption": "Figure 3: (a) N-gram retrieval data efficiency. We train models to retrieve a sequence of k = 3 tokens that follow a randomly selected n-gram (n = 2) in a string of length ≤ 100, and evaluate on strings of length 100. While Transformers train significantly faster than SSMs, hybrid architectures are converging even faster. (b) Effect of state space dimension. We train SSM models with different state space dimension. Both Mamba versions benefit from a higher capacity state space, their performance is still inferior to that of a standard Transformer, shown here as a violet dashed line. (c) Effect of interleaved SSM/Transformer blocks in hybrid-interleaved models (HybridI). We explore the effect of a Transformer block after N = {1, 2, 3, 4} SSM blocks. A single Transformer layer complements the SSM stack by correcting the hidden state and yielding increased performance than a pure SSM model shown in green. Models with interleaving Transformer blocks after N < 4 SSM blocks even surpass the performance of a pure Transformer.",
+      "page": 5,
+      "index": 22,
+      "width": 969,
+      "height": 366
+    }
+  ]
+}

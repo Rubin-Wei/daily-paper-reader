@@ -1,0 +1,190 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-001.webp",
+      "caption": "Table 1: Evaluation of our reset via a comparison with",
+      "page": 6,
+      "index": 1,
+      "width": 460,
+      "height": 291
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-002.webp",
+      "caption": "Table 29: Performance comparison with state-of-the-art methods on CCC-Medium across nine variants: three corruption transition speeds (1000 / 2000 / 5000) and three corruption orderings that are determined by random seeds (43 / 44 / 45).",
+      "page": 25,
+      "index": 2,
+      "width": 756,
+      "height": 650
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-003.webp",
+      "caption": "Table 31: Accuracy (%) on CIN-C over ten random permutations of the corruption order.",
+      "page": 26,
+      "index": 3,
+      "width": 822,
+      "height": 490
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-004.webp",
+      "caption": "Table 30: Performance comparison with state-of-the-art methods on CCC-Hard across nine variants: three corruption transition speeds (1000 / 2000 / 5000) and three corruption orderings that are determined by random seeds (43 / 44 / 45).",
+      "page": 26,
+      "index": 4,
+      "width": 756,
+      "height": 648
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-005.webp",
+      "caption": "Table 9: Accuracy (%) under the standard and delaying reset settings on IN-C. Here, ε denotes the threshold for delaying a reset; a larger ε value encourages stronger reset delaying.",
+      "page": 15,
+      "index": 5,
+      "width": 827,
+      "height": 331
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-006.webp",
+      "caption": "Table 4: Comparison with state-of-the-art continual TTA approaches across four datasets using accuracy (%). Results for each level of CCC (Easy / Medium / Hard) are averaged over nine variations, considering three different corruption orderings and three corruption evolving speeds. CIN-C results are averaged over ten runs. In the non-i.i.d. setting, we use a Dirichlet parameter δ = 0.1, following prior works (Gong et al., 2022; Yuan et al., 2023). For IN-C and IN-D109, we report averages at the first and last (20th) visits, as well as overall averages across all visits. Gray denotes model collapse, indicating performance worse than that of the source model (Press et al., 2023).",
+      "page": 7,
+      "index": 6,
+      "width": 822,
+      "height": 282
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-007.webp",
+      "caption": "Table 23: Results on IN-C with CDC for δ = 10.0 across revisit steps.",
+      "page": 22,
+      "index": 7,
+      "width": 827,
+      "height": 200
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-008.webp",
+      "caption": "Figure 9: Histogram of predictions on CCC-Hard for randomly selected ten fixed class labels, comparing ETA, RDumb, and ASR to evaluate robustness against model collapse. Results are measured every 103 batches, with class labels color-coded consistently.",
+      "page": 10,
+      "index": 8,
+      "width": 825,
+      "height": 181
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-009.webp",
+      "caption": "Figure 2: Overview of our Adaptive and Selective Reset (ASR) scheme, which compares prediction concentration Ct with its cumulative counterpart C̄t−1 for each test batch from a long domain stream, triggers a reset when Ct > C̄t−1, indicating that the model is corrupted severely enough to collapse, and determines layers to reset based on Ct−C̄t−1, which reflects how severely the model is corrupted. On the upper side, icons inside dashed boxes, labeled with numbers, denote class labels. White icons represent correct predictions, while black icons represent incorrect predictions.",
+      "page": 3,
+      "index": 9,
+      "width": 822,
+      "height": 223
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-010.webp",
+      "caption": "Table 14: Hyperparameter settings for ResNet-50 and ViT-B-16 used across all benchmarks.",
+      "page": 18,
+      "index": 10,
+      "width": 827,
+      "height": 302
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-011.webp",
+      "caption": "Figure 15: Comparison of ETA / ROID and their variants combined with RDumb or ASR across three levels of CIFAR100-C using accuracy (%), averaged over 1000 recurring visits of corruptions.",
+      "page": 23,
+      "index": 11,
+      "width": 824,
+      "height": 200
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-012.webp",
+      "caption": "Figure 14: Comparison of ETA / ROID and their variants combined with RDumb or ASR across three levels of CIFAR10-C using accuracy (%), averaged over 1000 recurring visits of corruptions.",
+      "page": 23,
+      "index": 12,
+      "width": 817,
+      "height": 200
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-013.webp",
+      "caption": "Table 37: Performance comparison with state-of-the-art methods on CCC-Hard across nine variants: three corruption transition speeds (1000 / 2000 / 5000) and three corruption orderings that are determined by random seeds (43 / 44 / 45).",
+      "page": 28,
+      "index": 13,
+      "width": 818,
+      "height": 282
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-014.webp",
+      "caption": "Table 36: Performance comparison with state-of-the-art methods on CCC-Medium across nine variants: three corruption transition speeds (1000 / 2000 / 5000) and three corruption orderings that are determined by random seeds (43 / 44 / 45).",
+      "page": 28,
+      "index": 14,
+      "width": 818,
+      "height": 281
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-015.webp",
+      "caption": "Table 35: Performance comparison with state-of-the-art methods on CCC-Easy across nine variants: three corruption transition speeds (1000 / 2000 / 5000) and three corruption orderings that are determined by random seeds (43 / 44 / 45).",
+      "page": 28,
+      "index": 15,
+      "width": 818,
+      "height": 277
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-016.webp",
+      "caption": "Table 15: Corruption types in a transition path for each adaptation difficulty.",
+      "page": 19,
+      "index": 16,
+      "width": 802,
+      "height": 229
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-017.webp",
+      "caption": "Figure 12: Hyperparameter sensitivity analysis showing robustness to variations around the default.",
+      "page": 17,
+      "index": 17,
+      "width": 812,
+      "height": 512
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-018.webp",
+      "caption": "Table 32: Accuracy (%) on non-i.i.d. CIN-C over ten random permutations of the corruption order.",
+      "page": 27,
+      "index": 18,
+      "width": 822,
+      "height": 489
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-019.webp",
+      "caption": "Table 33: Accuracy (%) on IN-C across 20 recurring visits of the domain sequence.",
+      "page": 27,
+      "index": 19,
+      "width": 822,
+      "height": 326
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-020.webp",
+      "caption": "Table 34: Accuracy (%) on IN-D109 across 20 recurring visits of the domain sequence.",
+      "page": 27,
+      "index": 20,
+      "width": 822,
+      "height": 324
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-021.webp",
+      "caption": "Table 28: Performance comparison with state-of-the-art methods on CCC-Easy across nine variants: three corruption transition speeds (1000 / 2000 / 5000) and three corruption orderings that are determined by random seeds (43 / 44 / 45).",
+      "page": 24,
+      "index": 21,
+      "width": 756,
+      "height": 650
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-022.webp",
+      "caption": "Figure 8: Performance comparison over revisits on IN-C with CDC settings. Domains dynamically change over time, controlled by δ, and are color-coded to visualize their dynamics.",
+      "page": 9,
+      "index": 22,
+      "width": 825,
+      "height": 277
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03796v1/fig-023.webp",
+      "caption": "Table 12: Accuracy (%) comparison across multiple revisits on IN-C.",
+      "page": 16,
+      "index": 23,
+      "width": 648,
+      "height": 196
+    }
+  ]
+}

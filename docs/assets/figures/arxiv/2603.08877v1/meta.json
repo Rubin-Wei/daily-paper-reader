@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.08877v1/fig-001.webp",
+      "caption": "Table 1: Full accuracy data (%) for all models across all datasets and BCAS budget configurations. Highest values for each row are bolded. Note that for TriviaQA, the performance was nearly flat across the board.",
+      "page": 6,
+      "index": 1,
+      "width": 879,
+      "height": 384
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08877v1/fig-002.webp",
+      "caption": "Figure 2: Search scaling and context scaling performance across TriviaQA, HotpotQA, and 2WikiMultihopQA. The \"Planning\" columns show the impact of adding pre-planning and reflection (RF) strategies. This figure provides the primary data for analyzing the accuracy-budget trade-off (RQ3). Confidence intervals computed using 95% Wilson score interval (Wilson, 1927).",
+      "page": 6,
+      "index": 2,
+      "width": 939,
+      "height": 433
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08877v1/fig-003.webp",
+      "caption": "Figure 1: An example of DeepSeek V3 (0324) solving a HotpotQA ‘hard’ problem using BCAS with 4 searches and planning. This demonstrates the core principles of BCAS: the model operates within a strict 4-search budget (RQ1, RQ3) while leveraging system components like planning and iterative search to efficiently locate the answer (RQ2) and terminate early.",
+      "page": 3,
+      "index": 3,
+      "width": 937,
+      "height": 266
+    }
+  ]
+}

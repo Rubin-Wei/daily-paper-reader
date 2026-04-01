@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.11721v1/fig-001.webp",
+      "caption": "Figure 1. Architecture of the Agentic Operating System for Hospital. The system comprises three layers. (Agent Layer) Each participant role—patient, clinician, triage, specialist—maps to a dedicated agent process executing within an OS-enforced isolated namespace; agents interact with the environment solely through two operations: invoking pre-audited medical skills and reading or writing shared clinical documents. (Interface Layer) The Medical Skills Library exposes a curated set of statically typed workflow modules; the Document Store maintains per-role document collections linked by an append-only mutation event stream dispatched by the Event Broker. (OS Enforcement Layer) Linux user isolation, file permission bits, seccomp filters, AppArmor policies, and the auditd/inotify subsystem collectively enforce all access boundaries at the kernel level, independent of model behaviour. Critically, no agent communicates with another through a direct channel; all inter-agent coordination is realised exclusively through document writes and event notifications.",
+      "page": 7,
+      "index": 1,
+      "width": 990,
+      "height": 663
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11721v1/fig-002.webp",
+      "caption": "Figure 2. Page-indexed memory architecture and progressive disclosure retrieval. (Left) The memory lifecycle consists of three stages: Capture (observations are written as structured pages), Store (pages are consolidated into a rooted document hierarchy with a manifest file at each internal node), and Recall (the agent navigates the hierarchy through successive manifest reads). (Right) The document tree is organised by patient, care episode, and document group; each internal node carries a manifest (badge M) listing its children with natural-language scope descriptions, while leaf nodes contain primary clinical content. Given a query, the agent issues an LLM-Select call at each level to identify relevant subtrees (highlighted in green) and prune irrelevant branches without reading them (shown in grey, labelled “pruned”). This design requires no vector embeddings; retrieval accuracy depends solely on the agent’s language-reasoning capability applied to manifest text, and the sequence of manifests consulted constitutes an inherently interpretable access trace.",
+      "page": 10,
+      "index": 2,
+      "width": 990,
+      "height": 663
+    },
+    {
+      "url": "assets/figures/arxiv/2603.11721v1/fig-003.webp",
+      "caption": "Figure 3. Clinical application scenarios enabled by the Agentic Operating System for Hospital. The nine-panel grid illustrates representative use cases realised by the proposed architecture. The central panel summarises the four core mechanisms shared across all scenarios: least-privilege execution, document-mutation coordination, manifest-guided memory retrieval, and ad-hoc skill composition. The surrounding eight panels cover scheduled care (Continuous Monitoring, Medication Management), reactive workflows (Triage, Emergency Escalation), longitudinal analysis (Proactive Risk Identification, Population Health), multi-agent coordination (Cross-Specialty Coordination), and infrastructure (Safety, Audit & Governance). Each scenario is realised entirely through the composition of medical skills, document writes, event subscriptions, and manifest navigation—without any bespoke architectural extension. The diversity of use cases demonstrates that a single unified infrastructure layer is sufficient to address both routine and exceptional clinical needs across the full spectrum of hospital workflows.",
+      "page": 14,
+      "index": 3,
+      "width": 990,
+      "height": 992
+    }
+  ]
+}

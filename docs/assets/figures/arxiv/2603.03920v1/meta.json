@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.03920v1/fig-001.webp",
+      "caption": "Figure 1. Averaged normalized accuracy under different distribution shift settings across multiple benchmarks.",
+      "page": 2,
+      "index": 1,
+      "width": 1020,
+      "height": 232
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03920v1/fig-002.webp",
+      "caption": "Figure 4. Evaluation of BD-Merging under test-time bias across various models.",
+      "page": 7,
+      "index": 2,
+      "width": 878,
+      "height": 286
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03920v1/fig-003.webp",
+      "caption": "Figure 5. Performance vs. time cost of MM methods.",
+      "page": 8,
+      "index": 3,
+      "width": 444,
+      "height": 281
+    },
+    {
+      "url": "assets/figures/arxiv/2603.03920v1/fig-004.webp",
+      "caption": "Figure 2. The process of BD-Merging. BD-Merging includes three modules: (1) Modeling uncertainty using a Dirichlet-based evidential head; (2) Constructing an adjacency set and calculating the ADS to measure evidential alignment; and (3) Performing discrepancy-aware contrastive MM with a debiased router, guided by ADS. Stage (a)-(d) demonstrates the evolution of samples in the feature space through various stages.",
+      "page": 4,
+      "index": 4,
+      "width": 1036,
+      "height": 419
+    }
+  ]
+}

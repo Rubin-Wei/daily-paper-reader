@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.12191v1/fig-001.webp",
+      "caption": "Table 1. Comparison of encoder architectures for the Polish language. The upper section of the table presents our trained models with extended context, while the lower section lists popular base-sized models supporting Polish. We report the model size in terms of total parameters and parameters excluding the embedding layer, the number of encoder layers, and the estimated number of floating-point operations required for a single forward pass with a sequence length of 512 tokens.",
+      "page": 4,
+      "index": 1,
+      "width": 714,
+      "height": 186
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12191v1/fig-002.webp",
+      "caption": "Table 2. A detailed comparison of fine-tuning polish-roberta-8k, polish-roberta-large-v2, and herbert-large-cased models on 25 tasks. The reported scores are averaged across five independent training runs.",
+      "page": 8,
+      "index": 2,
+      "width": 735,
+      "height": 623
+    },
+    {
+      "url": "assets/figures/arxiv/2603.12191v1/fig-003.webp",
+      "caption": "Table 3. Comparison of Polish and multilingual models.",
+      "page": 9,
+      "index": 3,
+      "width": 733,
+      "height": 388
+    }
+  ]
+}

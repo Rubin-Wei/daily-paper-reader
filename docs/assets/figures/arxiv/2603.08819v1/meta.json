@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.08819v1/fig-001.webp",
+      "caption": "Table 1: Retrieval Evaluation on NeuCLIR24 and RAG24. Columns marked with (R) indicate that the qrels for that metric are the relevance-based qrels instead of the nugget-based ones. All metrics in this table use a rank cutoff of 20.",
+      "page": 6,
+      "index": 1,
+      "width": 906,
+      "height": 450
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08819v1/fig-002.webp",
+      "caption": "Table 2: Nugget Coverage of RAG responses on NeuCLIR24 and RAG24 using AutoARGUE.",
+      "page": 6,
+      "index": 2,
+      "width": 898,
+      "height": 449
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08819v1/fig-003.webp",
+      "caption": "Table 4: System-level Pearson correlation between RAG Nugget Coverage and respective retrieval metrics and tasks. Cells with a yellow background indicate correlations on the same task (i.e., same objective) and same benchmark; ones with a purple background indicate correlations on the same benchmark but different tasks (i.e., different objectives). All correlations are calculated across RAG pipelines using 15 different retrieval stacks. All metrics in this table use a rank cutoff of 20.",
+      "page": 8,
+      "index": 3,
+      "width": 940,
+      "height": 281
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08819v1/fig-004.webp",
+      "caption": "Table 5: System-level Pearson correlation between InfoR from MiRAGE and retrieval metrics on NeuCLIR24. The top row additionally reports the macro-averaged InfoR values across all 15 retrieval stacks for each RAG pipeline. Retrieval metrics reported in this table use a rank cutoff of 20.",
+      "page": 8,
+      "index": 4,
+      "width": 502,
+      "height": 355
+    },
+    {
+      "url": "assets/figures/arxiv/2603.08819v1/fig-005.webp",
+      "caption": "Table 6: Multimodal Retrieval and Report Generation Evaluation Results on WikiVideo using MiRAGE. All retrieval metrics use a rank cutoff at 10 since there are at most 10 relevant videos for each topic.",
+      "page": 9,
+      "index": 5,
+      "width": 868,
+      "height": 335
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-001.webp",
+      "caption": "Figure 15: Three intent-aligned queries generated from the provisional hypothesis: answer support, alternative discrimination, and clue verification.",
+      "page": 21,
+      "index": 1,
+      "width": 950,
+      "height": 300
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-002.webp",
+      "caption": "Figure 14: Illustrative provisional output of the Hypothesis Formulator. The working hypothesis is used to steer retrieval and may later be confirmed or overturned by the retrieved evidence.",
+      "page": 21,
+      "index": 2,
+      "width": 950,
+      "height": 315
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-003.webp",
+      "caption": "Figure 13: Representative MedQA example used to illustrate the end-to-end HCQR workflow.",
+      "page": 21,
+      "index": 3,
+      "width": 950,
+      "height": 348
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-004.webp",
+      "caption": "Figure 1: HCQR pipeline. A hypothesis formulator proposes a lightweight working hypothesis together with the evidence expected under that hypothesis. The query rewriter turns this state into three verification-oriented queries. The working hypothesis steers retrieval but is not shown to the generator by default.",
+      "page": 2,
+      "index": 4,
+      "width": 939,
+      "height": 292
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-005.webp",
+      "caption": "Table 1: Accuracy (%) on MedQA and MMLU-Med for HCQR and baseline methods under the shared 15-document final-context budget. HCQR achieves the best performance in every reported dataset-model cell.",
+      "page": 7,
+      "index": 5,
+      "width": 919,
+      "height": 198
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-006.webp",
+      "caption": "Table 2: Decision-Useful Rate (ENTAILED + USEFUL) on MedQA and MMLU-Med for HCQR and baseline methods. HCQR yields the highest rate of decision-useful retrieved contexts across all reported dataset-model cells.",
+      "page": 7,
+      "index": 6,
+      "width": 919,
+      "height": 181
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-007.webp",
+      "caption": "Figure 16: Representative passages retrieved by the generated queries. The retrieved set can contain both supporting and corrective evidence, allowing the final generator to revise the provisional hypothesis when necessary.",
+      "page": 22,
+      "index": 7,
+      "width": 950,
+      "height": 302
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-008.webp",
+      "caption": "Figure 17: Raw generator output for the representative MedQA example. The output shows that the final generator answers from the retrieved evidence and the original question rather than from the provisional hypothesis alone, and in this case correctly arrives at the gold answer after revising the initial guess. The text is reproduced verbatim except for formatting.",
+      "page": 22,
+      "index": 8,
+      "width": 950,
+      "height": 490
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-009.webp",
+      "caption": "Figure 8: The prompt used for Agent-2 (Judge) in the MAIN-RAG baseline to evaluate the decision-usefulness and reliability of the retrieved document.",
+      "page": 18,
+      "index": 9,
+      "width": 950,
+      "height": 533
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-010.webp",
+      "caption": "Figure 7: The prompt used for Agent-1 (Predictor) in the MAIN-RAG baseline to generate document-conditioned answers for the Document-Query-Answer triplet.",
+      "page": 18,
+      "index": 10,
+      "width": 950,
+      "height": 388
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-011.webp",
+      "caption": "Table 11: Full context-utility breakdown underlying Table 3. For each method, we report the rates (%) of ENTAILED, USEFUL-BUT-NOT-ENTAILED (USEFUL), and NOT USEFUL contexts across all four model configurations and their average.",
+      "page": 13,
+      "index": 11,
+      "width": 939,
+      "height": 375
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-012.webp",
+      "caption": "Table 12: Full model-by-model values underlying Table 4. Each cell is reported as accuracy / ∆CoT.",
+      "page": 13,
+      "index": 12,
+      "width": 939,
+      "height": 373
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-013.webp",
+      "caption": "Figure 9: Prompt used for the HCQR hypothesis-formulation stage.",
+      "page": 19,
+      "index": 13,
+      "width": 950,
+      "height": 491
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-014.webp",
+      "caption": "Figure 10: The prompt used for the Hypothesis Formulator (Stage 1) without options for ablation.",
+      "page": 19,
+      "index": 14,
+      "width": 950,
+      "height": 406
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-015.webp",
+      "caption": "Figure 4: The prompt used for Rewriting baseline.",
+      "page": 17,
+      "index": 15,
+      "width": 950,
+      "height": 367
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-016.webp",
+      "caption": "Figure 5: The prompt used for Rewriting with options ablation.",
+      "page": 17,
+      "index": 16,
+      "width": 950,
+      "height": 432
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-017.webp",
+      "caption": "Figure 3: Prompt used for the no-retrieval CoT baseline.",
+      "page": 17,
+      "index": 17,
+      "width": 950,
+      "height": 369
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-018.webp",
+      "caption": "Figure 12: The standard generator prompt (MIRAGE template) used uniformly across all evaluated methods, including Simple RAG, all baselines, and our proposed HCQR, to strictly control the post-retrieval generation phase.",
+      "page": 20,
+      "index": 18,
+      "width": 950,
+      "height": 429
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-019.webp",
+      "caption": "Figure 11: Prompt used for the HCQR query-rewriting stage.",
+      "page": 20,
+      "index": 19,
+      "width": 950,
+      "height": 533
+    },
+    {
+      "url": "assets/figures/arxiv/2603.19008v1/fig-020.webp",
+      "caption": "Figure 2: Prompt used for the context-utility judge.",
+      "page": 16,
+      "index": 20,
+      "width": 950,
+      "height": 1121
+    }
+  ]
+}

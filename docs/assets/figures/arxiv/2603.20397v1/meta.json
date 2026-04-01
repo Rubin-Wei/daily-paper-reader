@@ -1,0 +1,118 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.20397v1/fig-001.webp",
+      "caption": "Figure 6: Upper plots illustrate symbolic plots of an attention map deploying different KV cache policies in LLM generation. Lower right: contrasts their accuracy-memory trade-off. Left: the overview of H2O framework [1].",
+      "page": 6,
+      "index": 1,
+      "width": 882,
+      "height": 457
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20397v1/fig-002.webp",
+      "caption": "Figure 10: vLLM system overview [22].",
+      "page": 11,
+      "index": 2,
+      "width": 590,
+      "height": 308
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20397v1/fig-003.webp",
+      "caption": "Figure 12: Standard linear attention (top) vs. loglinear attention (bottom). The input consists of query, key, and value vectors [30].",
+      "page": 15,
+      "index": 3,
+      "width": 590,
+      "height": 594
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20397v1/fig-004.webp",
+      "caption": "Figure 1: Autoregressive generation, at each step the new token (orange) attends to all prior tokens (cyan). Without caching, keys and values for every past token would be recomputed from scratch at each step. The KV cache avoids this by storing and reusing them.",
+      "page": 2,
+      "index": 4,
+      "width": 546,
+      "height": 322
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20397v1/fig-005.webp",
+      "caption": "Figure 7: The graph shows the simplified workflow of SnapKV, where the orange area represents the cluster of features per head selected by SnapKV. These features are then used to form new Key-Value pairs concatenated with the features in the observation window. Together, the selected prefix and observation windows constitute the new KV cache utilized for the generation. [2].",
+      "page": 7,
+      "index": 5,
+      "width": 882,
+      "height": 280
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20397v1/fig-006.webp",
+      "caption": "Figure 2: Data-flow of the KV cache within a single transformer layer. Input token xt fans into three projections; Kt and Vt are appended to their respective caches (teal); Qt attends over the full caches to produce output ot. Cache size grows as O(T ) per head per layer.",
+      "page": 3,
+      "index": 6,
+      "width": 828,
+      "height": 410
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20397v1/fig-007.webp",
+      "caption": "Figure 3: KV cache memory as a function of context length for three LLaMA-2 model variants under fp16 precision. Dashed lines mark GPU VRAM limits; dotted lines mark model parameter memory. At 128K tokens, a 7B model’s KV cache (≈64 GB) exceeds the capacity of an A100 GPU, illustrating the memory bottleneck that motivates KV cache optimization. Values computed as 2× L×Hkv × dh × 2 bytes per token; 70B uses GQA with 8 KV heads.",
+      "page": 3,
+      "index": 7,
+      "width": 646,
+      "height": 433
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20397v1/fig-008.webp",
+      "caption": "Table 6: Comparison of KV Cache Optimization Techniques",
+      "page": 18,
+      "index": 8,
+      "width": 990,
+      "height": 755
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20397v1/fig-009.webp",
+      "caption": "Figure 4: Causal self-attention weight matrix for “The apple tastes sweet.” visualised with the Viridis colormap (dark purple = low, yellow = high). Gray cells are causally masked future tokens. Each row sums to 1 (post-softmax). Query “sweet” concentrates 65% of its attention on “apple”, demonstrating that KV entries carry highly non-uniform importance, the core premise of attention-score-driven eviction methods such as H2O and SnapKV.",
+      "page": 4,
+      "index": 9,
+      "width": 588,
+      "height": 394
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20397v1/fig-010.webp",
+      "caption": "Figure 14: System overview of TailorKV. Offline identification categorizes the layers into quantization-friendly and sparsity-friendly. For quantization-friendly layers, we employ aggressive static quantization. For sparsity-friendly layers, we dynamically retrieve Top-K tokens. Critical current query and critical key cache represent the outliers in the query and key cache, respectively. [36].",
+      "page": 17,
+      "index": 10,
+      "width": 976,
+      "height": 326
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20397v1/fig-011.webp",
+      "caption": "Figure 13: During Pre-filling, ShadowKV offloads the value cache to the CPU while maintaining a low-rank key cache, landmarks, and outliers on the GPU. During decoding, it employs landmarks for sparse attention. [35].",
+      "page": 17,
+      "index": 11,
+      "width": 979,
+      "height": 195
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20397v1/fig-012.webp",
+      "caption": "Figure 11: Operation flow of the prefetching module of InfiniGen. [23].",
+      "page": 12,
+      "index": 12,
+      "width": 590,
+      "height": 225
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20397v1/fig-013.webp",
+      "caption": "Figure 9: Palu’s low-rank projection method for KV-cache reduction. A weight matrix W of linear projection is decomposed into two low-rank matrices. Input X is down-projected to a latent representation H, which is cached. Y can be reconstructed from H using the up-projection matrix B. [19].",
+      "page": 9,
+      "index": 13,
+      "width": 490,
+      "height": 304
+    },
+    {
+      "url": "assets/figures/arxiv/2603.20397v1/fig-014.webp",
+      "caption": "Figure 5: Taxonomy of KV cache optimization techniques surveyed in this paper, organized into five major categories.",
+      "page": 5,
+      "index": 14,
+      "width": 983,
+      "height": 240
+    }
+  ]
+}

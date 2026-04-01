@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.23989v1/fig-001.webp",
+      "caption": "Figure 1: Example of RAG based on the concept-oriented",
+      "page": 2,
+      "index": 1,
+      "width": 498,
+      "height": 288
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23989v1/fig-002.webp",
+      "caption": "Figure 4: The evaluation results illustrate trends in 𝐴𝑐𝑐. ↑ and 𝐴𝑈𝐶 ↑ on the EntityQuestion dataset, following the same axis and",
+      "page": 7,
+      "index": 2,
+      "width": 1029,
+      "height": 438
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23989v1/fig-003.webp",
+      "caption": "Figure 3: The evaluation results depict trends in 𝐴𝑐𝑐. ↑ and 𝐴𝑈𝐶 ↑ on the PopQA dataset. The vertical axis denotes 𝐴𝑐𝑐, while",
+      "page": 7,
+      "index": 3,
+      "width": 1029,
+      "height": 437
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23989v1/fig-004.webp",
+      "caption": "Figure 2: The overview of the Concept-oriented Context Reconstruction RAG framework, which consists of three components: (a)",
+      "page": 4,
+      "index": 4,
+      "width": 979,
+      "height": 486
+    }
+  ]
+}

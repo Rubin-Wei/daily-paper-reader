@@ -1,0 +1,150 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-001.webp",
+      "caption": "Figure 5. Impact on safety (top row) and reasoning (bottom row) for Qwen-0.5B-Instruct, Llama3.2-3B-Instruct, and Llama3-8B-Instruct models (left to right) after injecting benign instruction-following prompts. The ASR is reported on the JailbreakV-28k prompts.",
+      "page": 6,
+      "index": 1,
+      "width": 1004,
+      "height": 385
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-002.webp",
+      "caption": "Table 5. Parameters used in the Test-Time Reinforcement Learning (TTRL) setup.",
+      "page": 11,
+      "index": 2,
+      "width": 602,
+      "height": 534
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-003.webp",
+      "caption": "Figure 12. Impact on safety and reasoning for Llama-1B-Instruct model after harmful prompt injection across three jailbreak datasets, JailbreakV-28k, WildJailbreak, and Llama Artifacts (left to right, respectively) during TTRL, for safety (top row) and AMC accuracy (bottom row).",
+      "page": 15,
+      "index": 3,
+      "width": 1004,
+      "height": 381
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-004.webp",
+      "caption": "Figure 13. Impact on safety and reasoning for Llama-3B-Instruct model after harmful prompt injection across three jailbreak datasets, JailbreakV-28k, WildJailbreak, and Llama Artifacts (left to right, respectively) during TTRL, for safety (top row) and AMC accuracy (bottom row).",
+      "page": 15,
+      "index": 4,
+      "width": 1004,
+      "height": 384
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-005.webp",
+      "caption": "Table 4. Left: Attack Success Rate (ASR, %) before and after TTRL when validating on JailbreakV-28k prompts after injecting instruction-following prompts from UltraFeedback (UF) dataset. Right: AMC accuracy, default post-TTRL (p-TTRL) performance, and the reasoning tax (δ) after UltraFeedback (UF) injection. ∆ denotes Final − Initial (ASR) and Injected − Default (reasoning), in percentage points.",
+      "page": 7,
+      "index": 5,
+      "width": 1008,
+      "height": 202
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-006.webp",
+      "caption": "Figure 6. Harmfulness amplification under HarmInject experiments. The top row shows ASR for Qwen-1.5B-Instruct, Qwen-0.5B-Instruct, and Llama3-8B-Instruct, respectively. The evaluation is on held-out JailbreakV-28k prompts. The top row shows the ASR (%) on all three models from left to right, respectively, and the bottom row shows the corresponding AMC accuracy for each of the models after injecting the HarmIject prompts.",
+      "page": 7,
+      "index": 6,
+      "width": 1004,
+      "height": 382
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-007.webp",
+      "caption": "Figure 11. Impact on safety and reasoning for Qwen-0.5B-Instruct model after harmful prompt injection across three jailbreak datasets, JailbreakV-28k, WildJailbreak, and Llama Artifacts (left to right, respectively) during TTRL, for safety (top row) and AMC accuracy (bottom row).",
+      "page": 14,
+      "index": 7,
+      "width": 1004,
+      "height": 380
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-008.webp",
+      "caption": "Figure 10. Impact on safety and reasoning for Llama3-8B-Instruct model after harmful prompt injection across three jailbreak datasets, JailbreakV-28k, WildJailbreak, and Llama Artifacts (left to right, respectively) during TTRL, for safety (top row) and AMC accuracy (bottom row).",
+      "page": 14,
+      "index": 8,
+      "width": 999,
+      "height": 382
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-009.webp",
+      "caption": "Figure 2. ASR measured across three jailbreak datasets, JailbreakV-28k, WildJailbreak, and Llama Artifacts (left to right, respectively) during TTRL, for Qwen-1.5B-Instruct (top row) and Llama-3-8B-Instruct (bottom row).",
+      "page": 3,
+      "index": 9,
+      "width": 1004,
+      "height": 401
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-010.webp",
+      "caption": "Figure 17. Impact of HarmInject prompts during TTRL on the AMC dataset. (a) Attack success rate (ASR) for Qwen-1.5B-Instruct with HarmInject prompts constructed from Llama artifacts; evaluation on held-out JailbreakV-28k prompts. (b) AMC accuracy for Qwen-1.5B-Instruct after TTRL on HarmInject prompts constructed from Llama artifacts. (c) ASR for Llama-3-8B-Instruct with HarmInject prompts constructed from JailbreakV-28k prompts; evaluation on held-out JailbreakV-28k prompts. (d) AMC accuracy for Llama-3-8B-Instruct after TTRL on HarmInject prompts constructed from JailbreakV-28k prompts.",
+      "page": 18,
+      "index": 10,
+      "width": 1002,
+      "height": 549
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-011.webp",
+      "caption": "Figure 9. ASR measured across three jailbreak datasets, JailbreakV-28k, WildJailbreak, and Llama Artifacts (left to right, respectively) during TTRL, for Qwen-0.5B-Instruct (top row) and Llama-3B-Instruct (bottom row).",
+      "page": 13,
+      "index": 11,
+      "width": 1004,
+      "height": 401
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-012.webp",
+      "caption": "Figure 7. RQ5. Impact of simple filtering on harmfulness and reasoning. (a) and (d) show the ASR on JailbreakV-28k and reasoning on AMC for Qwen-0.5B-Instruct when JailbreakV-28k prompts are injected. (b), (c), (e), and (f) are for the Qwen-0.5B-Instruct and Qwen-1.5B-Instruct under the HarmInject prompts, where ASR is on JailbreakV-28k.",
+      "page": 8,
+      "index": 12,
+      "width": 1004,
+      "height": 381
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-013.webp",
+      "caption": "Table 2. Safety/harmfulness amplification given by ASR (%) before and after TTRL under different jailbreak prompt injections and validated on the same held-out jailbreak prompts. ∆ denotes amplification magnitude in percentage points (Final − Initial).",
+      "page": 4,
+      "index": 13,
+      "width": 879,
+      "height": 222
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-014.webp",
+      "caption": "Figure 3. Impact on safety and reasoning for Qwen-1.5B-Instruct model after harmful prompt injection across three jailbreak datasets, JailbreakV-28k, WildJailbreak, and Llama Artifacts (left to right, respectively) during TTRL, for safety (top row) and AMC accuracy (bottom row).",
+      "page": 4,
+      "index": 14,
+      "width": 999,
+      "height": 381
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-015.webp",
+      "caption": "Figure 15. Impact on safety (top row) and reasoning (bottom row) for Llama-1B-Instruct (left column) and Qwen-1.5B-Instruct (right column) after injecting benign instruction-following prompts. The ASR is reported on the held-out JailbreakV-28k prompts.",
+      "page": 17,
+      "index": 15,
+      "width": 1003,
+      "height": 537
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-016.webp",
+      "caption": "Figure 16. ASR for the Qwen1.5B-Instruct model with TTRL on the different injection ratios of AMC and JailbreakV-28k dataset, where the top row, from left to right is the injection ratio of 5%, 10%, 20% respectively, and the bottomr, from left to right is the injection ratio of 30%, 40%, and 60%, respectively.",
+      "page": 17,
+      "index": 16,
+      "width": 1004,
+      "height": 403
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-017.webp",
+      "caption": "Figure 8. Default AMC accuracy (%) during TTRL on all the instruction-tuned models.",
+      "page": 12,
+      "index": 17,
+      "width": 1002,
+      "height": 551
+    },
+    {
+      "url": "assets/figures/arxiv/2603.15417v1/fig-018.webp",
+      "caption": "Figure 14. Safety and harmfulness amplification phenomenon after the harmful prompts injection, and the resulting impact on the AMC accuracy.",
+      "page": 16,
+      "index": 18,
+      "width": 999,
+      "height": 809
+    }
+  ]
+}

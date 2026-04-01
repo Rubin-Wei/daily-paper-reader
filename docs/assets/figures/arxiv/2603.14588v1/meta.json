@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.14588v1/fig-001.webp",
+      "caption": "Table 1: The SLM-V3 retrieval architecture. Four core channels produce independent ranked lists fused via weighted reciprocal rank fusion (Section 4.3). Three supplementary stages augment the core channels for entity-centric, narrative, and multi-hop queries. Mathematical channels are formalized in Section 5; engineering channels use established techniques with citations.",
+      "page": 11,
+      "index": 1,
+      "width": 930,
+      "height": 454
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14588v1/fig-002.webp",
+      "caption": "Figure 3: Mathematical layers improve retrieval quality by an average of +12.7 pp across six conversations. The improvement is largest on harder conversations (conv-44: +19.9 pp, conv-49: +18.8 pp), suggesting that information-geometric retrieval provides the greatest benefit where heuristic similarity measures struggle most.",
+      "page": 26,
+      "index": 2,
+      "width": 882,
+      "height": 470
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14588v1/fig-003.webp",
+      "caption": "Table 7: Per-conversation Mode A Raw accuracy on LoCoMo. Partial indicates the container completed a subset of questions before timeout. Aggregate is the question-weighted mean across all 1,276 scored questions.",
+      "page": 42,
+      "index": 3,
+      "width": 593,
+      "height": 378
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14588v1/fig-004.webp",
+      "caption": "Table 3: Results on the LoCoMo benchmark [30]. Scores are accuracy (%) per category and as the macro aggregate. Best per-column in bold. Mode A scores are averaged across 10 conversations (1,276 questions). Mode C is from conv-30 (81 questions).",
+      "page": 23,
+      "index": 4,
+      "width": 821,
+      "height": 282
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14588v1/fig-005.webp",
+      "caption": "Figure 5: Ablation study on conv-30 (81 scored questions). Cross-encoder reranking is the single largest contributor (−30.7 pp when removed), followed by Fisher metric (−10.8 pp) and BM25 (−6.5 pp). The three mathematical layers contribute −7.6 pp in aggregate.",
+      "page": 28,
+      "index": 5,
+      "width": 878,
+      "height": 469
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14588v1/fig-006.webp",
+      "caption": "Table 6: System components and their configurable parameters. All values were determined via grid search on a held-out LoCoMo validation split. Exact configurations are available in the open-source repository; parameters may evolve across versions.",
+      "page": 41,
+      "index": 6,
+      "width": 925,
+      "height": 313
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14588v1/fig-007.webp",
+      "caption": "Figure 4: Per-category ablation on conv-30. Multi-hop questions show the largest sensitivity to component removal: cross-encoder removal drops multi-hop from 50% to 15%, BM25 removal drops it to 23%, and disabling all math layers drops it to 38%. Open-domain questions are more robust across configurations.",
+      "page": 27,
+      "index": 7,
+      "width": 878,
+      "height": 469
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14588v1/fig-008.webp",
+      "caption": "Table 4: Ablation study on LoCoMo (conv-30). Each row disables one component of the full SLM-V3 system. ∆ denotes the change in accuracy relative to the full system.",
+      "page": 24,
+      "index": 8,
+      "width": 696,
+      "height": 294
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14588v1/fig-009.webp",
+      "caption": "Figure 2: Competitive landscape of agent memory systems (March 2026) evaluated on LoCoMo. All systems above SLM-V3 require cloud LLM dependency. SLM-V3 Mode A Retrieval (74.8%) is the highest reported score achievable without cloud dependency during retrieval. Stars (⋆) denote zero-LLM configurations.",
+      "page": 24,
+      "index": 9,
+      "width": 881,
+      "height": 427
+    }
+  ]
+}

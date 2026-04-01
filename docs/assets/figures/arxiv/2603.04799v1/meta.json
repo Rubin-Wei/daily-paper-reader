@@ -1,0 +1,86 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.04799v1/fig-001.webp",
+      "caption": "Figure 1: Data Label Distributions of Lotus and Ours (CSV)",
+      "page": 1,
+      "index": 1,
+      "width": 470,
+      "height": 400
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04799v1/fig-002.webp",
+      "caption": "Figure 3: An Running Example of Clustering-Sampling-Voting (CSV) with UniVote on IMDB-Review Dataset",
+      "page": 6,
+      "index": 2,
+      "width": 1056,
+      "height": 234
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04799v1/fig-003.webp",
+      "caption": "Table 4: Ablation Study of Re-clustering",
+      "page": 11,
+      "index": 3,
+      "width": 452,
+      "height": 270
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04799v1/fig-004.webp",
+      "caption": "Figure 5: Hyper-parameter Effects on Query Time, # LLM Calls and Token Usage for Semantic Filter",
+      "page": 10,
+      "index": 4,
+      "width": 490,
+      "height": 496
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04799v1/fig-005.webp",
+      "caption": "Figure 2: Probability Distribution Across Distance",
+      "page": 4,
+      "index": 5,
+      "width": 492,
+      "height": 286
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04799v1/fig-006.webp",
+      "caption": "Figure 6: UniCSV and SimCSV on Synthetic Queries",
+      "page": 12,
+      "index": 6,
+      "width": 499,
+      "height": 981
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04799v1/fig-007.webp",
+      "caption": "Table 3: Hyper-parameter Effects on the Performance of UniCSV and SimCSV",
+      "page": 9,
+      "index": 7,
+      "width": 846,
+      "height": 317
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04799v1/fig-008.webp",
+      "caption": "Table 1: Profile of Test Semantic Queries",
+      "page": 9,
+      "index": 8,
+      "width": 882,
+      "height": 206
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04799v1/fig-009.webp",
+      "caption": "Table 2: The Accuracy and F1 Score of Semantic Filter Queries",
+      "page": 9,
+      "index": 9,
+      "width": 898,
+      "height": 217
+    },
+    {
+      "url": "assets/figures/arxiv/2603.04799v1/fig-010.webp",
+      "caption": "Figure 4: Comparisons of Query Time, # LLM Calls and Token Usage for Semantic Filter",
+      "page": 9,
+      "index": 10,
+      "width": 1043,
+      "height": 195
+    }
+  ]
+}

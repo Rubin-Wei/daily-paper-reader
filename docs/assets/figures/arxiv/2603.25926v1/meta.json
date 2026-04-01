@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.25926v1/fig-001.webp",
+      "caption": "Figure 4: Accuracy vs. Average Compression Ratio for fixed-ratio vs. semidynamic mean-pooling. For the semi-dynamic, the scale parameter is varied across {−2,−1.5,−1,−0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4} to achieve gradually growing compression ratio. The baseline dashed line represents not using compression.",
+      "page": 7,
+      "index": 1,
+      "width": 498,
+      "height": 283
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25926v1/fig-002.webp",
+      "caption": "Figure 3: Accuracy vs. Average Compression Ratio across three feature extraction methods (mean-pooling, last tokens, compression tokens), evaluated under fixed-ratio and fixedlength settings.",
+      "page": 7,
+      "index": 2,
+      "width": 582,
+      "height": 245
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25926v1/fig-003.webp",
+      "caption": "Figure 2: Our semi-dynamic context compression method, utilizing mean-pooling as the optimal structural backbone.",
+      "page": 4,
+      "index": 3,
+      "width": 582,
+      "height": 263
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25926v1/fig-004.webp",
+      "caption": "Figure 1: Three typical feature extraction mechanisms for soft context compression.",
+      "page": 3,
+      "index": 4,
+      "width": 498,
+      "height": 302
+    }
+  ]
+}

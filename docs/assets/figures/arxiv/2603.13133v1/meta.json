@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.13133v1/fig-001.webp",
+      "caption": "Table 1. Experimental results on the Val-Unseen dataset of R2R-CE and RxR-CE. * indicates training with additional large-scale datasets. Our method outperforms all approaches on the same benchmarks, even surpassing certain VLN models that were trained with additional large-scale datasets, without using global priors or multi-sensor inputs.",
+      "page": 6,
+      "index": 1,
+      "width": 1069,
+      "height": 629
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13133v1/fig-002.webp",
+      "caption": "Figure 2. Evaluate success rates for various K values and hyperparameters on R2R Val-Unseen.",
+      "page": 6,
+      "index": 2,
+      "width": 483,
+      "height": 301
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13133v1/fig-003.webp",
+      "caption": "Figure 8. Real-world navigation results of DecoVLN across diverse scenarios. The robot accurately follows complex natural language instructions involving spatial reasoning and object grounding, demonstrating robust performance and strong sim-to-real generalization under challenging conditions.",
+      "page": 15,
+      "index": 3,
+      "width": 1036,
+      "height": 912
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13133v1/fig-004.webp",
+      "caption": "Figure 3. Comparison of Uniform Sampling strategy and Adaptive Memory Refinement mechanism. The history obtained via the uniform sampling strategy captures a large number of instructionirrelevant images, such as walls and corners. This irrelevant semantic information severely impacts the model’s reasoning performance. In contrast, the Adaptive Memory Refinement mechanism can effectively extract the key navigation points (indicated in red) from the instruction to achieve efficient and accurate navigation.",
+      "page": 7,
+      "index": 4,
+      "width": 496,
+      "height": 343
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13133v1/fig-005.webp",
+      "caption": "Figure 7. Visual comparison between uniform sampling and adaptive memory refinement. Frames selected by the proposed method exhibit higher information density and stronger semantic alignment with the navigation instructions, while effectively filtering redundant observations.",
+      "page": 14,
+      "index": 5,
+      "width": 1036,
+      "height": 612
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13133v1/fig-006.webp",
+      "caption": "Figure 1. The framework of DecoVLN. DecoVLN decouples the agent’s observation and reasoning processes. The agent can perceive the environment continuously while in motion and, based on the Adaptive Memory Refinement (AMR) mechanism, it filters and stores high-information-density state representations into a memory bank. During the generation phase, the LLM outputs the action chunk which is comprising multiple consecutive actions-based on the input instruction, the current frame, and the memory bank. Subsequently, we construct an error-correction strategy based on state-action pairs. The model autonomously explores according to the instruction and collects State-Action Pairs within a trusted region for error-correction fine-tuning. This process not only enhances data utilization efficiency but also equips the model with introspective and self-correction capabilities.",
+      "page": 3,
+      "index": 6,
+      "width": 1036,
+      "height": 376
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13133v1/fig-007.webp",
+      "caption": "Figure 4. The robot accurately follows complex natural language instructions involving spatial reasoning and object grounding, demonstrating robust performance and strong sim-to-real generalization under challenging conditions.",
+      "page": 8,
+      "index": 7,
+      "width": 1036,
+      "height": 479
+    },
+    {
+      "url": "assets/figures/arxiv/2603.13133v1/fig-008.webp",
+      "caption": "Figure 6. Comparison between the pipelines of Streaming VLN and DecoVLN. (a) Streaming VLN paradigm requires storing all historical observation sequences, sampling them during inference, and repeatedly transferring the selected frames between RAM and VRAM. This tight coupling of observation and reasoning leads to high storage overhead and inefficient data transfer. (b) Our DecoVLN, in contrast, introduces an adaptive memory-refinement mechanism during the observation phase. This design selectively preserves high-value semantic information in a VRAM-resident memory bank, which is directly consumed by the VLN model during inference. Our approach significantly reduces storage overhead and improves data transfer efficiency.",
+      "page": 12,
+      "index": 8,
+      "width": 496,
+      "height": 466
+    }
+  ]
+}

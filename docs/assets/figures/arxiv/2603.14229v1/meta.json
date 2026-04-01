@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.14229v1/fig-001.webp",
+      "caption": "Figure 1: Question Answering over Hybrid Data Lakes",
+      "page": 1,
+      "index": 1,
+      "width": 477,
+      "height": 477
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14229v1/fig-002.webp",
+      "caption": "Table 4: In this example, the venue information is available in the structured data, but still the answer-text retrieves the same information from the unstructured context.",
+      "page": 11,
+      "index": 2,
+      "width": 882,
+      "height": 802
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14229v1/fig-003.webp",
+      "caption": "Table 3: In this example, the Great Smoky Mountains National Park is not available from the milvus chunks so the vectorstore retriever fails to gather the information or the document id to pass it to the next iceberg query.",
+      "page": 10,
+      "index": 3,
+      "width": 882,
+      "height": 965
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14229v1/fig-004.webp",
+      "caption": "Figure 2: Agentic DAG-Orchestrated (A.DOT) Planner Architecture",
+      "page": 3,
+      "index": 4,
+      "width": 1054,
+      "height": 479
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14229v1/fig-005.webp",
+      "caption": "Figure 3: Example DAG plan",
+      "page": 8,
+      "index": 5,
+      "width": 488,
+      "height": 856
+    },
+    {
+      "url": "assets/figures/arxiv/2603.14229v1/fig-006.webp",
+      "caption": "Table 5: In this example, the milvus retriever only retrieves the 3 chunks instead of 4",
+      "page": 12,
+      "index": 6,
+      "width": 882,
+      "height": 577
+    }
+  ]
+}

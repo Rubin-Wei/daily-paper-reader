@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.28886v1/fig-001.webp",
+      "caption": "Table 8: Retrieval on MuSiQue hard-slice (66 queries, top-10). Bold: best; underline: tied at PIT-fusion ceiling (78.8%). ∗∗∗: p < 0.001 vs. vector only (McNemar).",
+      "page": 9,
+      "index": 1,
+      "width": 442,
+      "height": 311
+    },
+    {
+      "url": "assets/figures/arxiv/2603.28886v1/fig-002.webp",
+      "caption": "Figure 6: Fusion strategy ablation on MuSiQue hardslice (n=66, LASTHOP@10 vs. vector-only). Four PIT-normalized strategies tie at the 26-win ceiling; only Ising coupled reranking breaks through to 27.",
+      "page": 9,
+      "index": 2,
+      "width": 449,
+      "height": 353
+    },
+    {
+      "url": "assets/figures/arxiv/2603.28886v1/fig-003.webp",
+      "caption": "Figure 3: Effect of normalization. Top row: PIT maps both distributions to approximately uniform [0, 1], making them commensurable. Bottom row: min-max normalization preserves the power-law spike in PPR scores, producing unequal marginals. Dashed line: expected uniform count per bin.",
+      "page": 5,
+      "index": 3,
+      "width": 445,
+      "height": 316
+    }
+  ]
+}
