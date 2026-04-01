@@ -223,6 +223,78 @@ subscriptions:
           source: manual
           note: ''
       updated_at: '2026-04-01T03:05:00.372Z'
+    - tag: LCP
+      description: 长上下文处理
+      enabled: true
+      paper_sources:
+        - arxiv
+      keywords:
+        - keyword: Context Compression
+          keyword_cn: 上下文压缩
+          query: Context Compression
+        - keyword: Context Window Extension
+          keyword_cn: 上下文窗口扩展
+          query: Context Window Extension
+        - keyword: Long-context Modeling
+          keyword_cn: 长上下文建模
+          query: Long-context Modeling
+        - keyword: Long-context Processing
+          keyword_cn: 长上下文处理
+          query: Long-context Processing
+      intent_queries:
+        - query: efficient attention and compression for long context modeling
+          query_cn: 面向长上下文建模的高效注意力与压缩方法
+          enabled: true
+          source: manual
+          note: ''
+        - query: scaling context windows for language models
+          query_cn: 语言模型上下文窗口扩展方法
+          enabled: true
+          source: manual
+          note: ''
+        - query: long sequence modeling for transformers and LLMs
+          query_cn: 面向 Transformer 和大模型的长序列建模方法
+          enabled: true
+          source: manual
+          note: ''
+        - query: methods for long context processing in large language models
+          query_cn: 大语言模型中的长上下文处理方法
+          enabled: true
+          source: manual
+          note: ''
+      updated_at: '2026-04-01T03:07:13.558Z'
+    - tag: RAG
+      description: RAG
+      enabled: true
+      paper_sources:
+        - arxiv
+      keywords:
+        - keyword: Agentic RAG
+          keyword_cn: 智能体式 RAG
+          query: Agentic RAG
+        - keyword: Multi-hop Retrieval
+          keyword_cn: 多跳检索
+          query: Multi-hop Retrieval
+        - keyword: Retrieval-Augmented Generation
+          keyword_cn: 检索增强生成
+          query: Retrieval-Augmented Generation
+      intent_queries:
+        - query: multi hop retrieval for knowledge grounded generation
+          query_cn: 面向知识增强生成的多跳检索方法
+          enabled: true
+          source: manual
+          note: ''
+        - query: agentic RAG for complex question answering
+          query_cn: 用于复杂问答的智能体式 RAG 方法
+          enabled: true
+          source: manual
+          note: ''
+        - query: retrieval augmented generation for large language models
+          query_cn: 面向大语言模型的检索增强生成方法
+          enabled: true
+          source: manual
+          note: ''
+      updated_at: '2026-04-01T03:08:36.187Z'
 source_backends:
   arxiv:
     papers_table: arxiv_papers
