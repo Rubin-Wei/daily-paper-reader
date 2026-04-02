@@ -1,0 +1,86 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.01170v1/fig-001.webp",
+      "caption": "Table 2: In-distribution early-stopping performance on the 5K test set (Qwen2.5-32B, ϵ=0.05). TTT-Probe (no-QK) improves savings by 24.9% relative over the static baseline.",
+      "page": 7,
+      "index": 1,
+      "width": 636,
+      "height": 253
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01170v1/fig-002.webp",
+      "caption": "Table 1: Notation summary.",
+      "page": 3,
+      "index": 2,
+      "width": 830,
+      "height": 280
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01170v1/fig-003.webp",
+      "caption": "Table 9: Step-level vs. token-level savings (δ=0.1, supervised). The two metrics are highly consistent across models.",
+      "page": 18,
+      "index": 3,
+      "width": 460,
+      "height": 317
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01170v1/fig-004.webp",
+      "caption": "Table 3: OOD generalization at δ=0.1. The TTT-Probe achieves 2.6–2.7× the baseline savings on MATH-500 under supervised labels.",
+      "page": 8,
+      "index": 4,
+      "width": 752,
+      "height": 253
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01170v1/fig-005.webp",
+      "caption": "Figure 1: Framework of Online Reasoning Calibration (ORCA).",
+      "page": 4,
+      "index": 5,
+      "width": 824,
+      "height": 261
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01170v1/fig-006.webp",
+      "caption": "Figure 3: Actual error rate vs. target risk δ (supervised, Qwen2.5-32B). All methods track the diagonal, confirming valid risk control. Points below the diagonal satisfy the LTT guarantee.",
+      "page": 19,
+      "index": 6,
+      "width": 360,
+      "height": 348
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01170v1/fig-007.webp",
+      "caption": "Table 5: Core mechanism ablation (supervised, δ=0.1). Standard supervised training on the same architecture underperforms the static baseline (no-QK) or only matches it (QK). TTT meta-learning with online updates is necessary for substantial improvement. Rows marked with ∗ use random initialization.",
+      "page": 17,
+      "index": 7,
+      "width": 781,
+      "height": 223
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01170v1/fig-008.webp",
+      "caption": "Table 6: Architecture ablation (supervised, dh=128, δ=0.1).",
+      "page": 17,
+      "index": 8,
+      "width": 677,
+      "height": 252
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01170v1/fig-009.webp",
+      "caption": "Figure 5: Probe score trajectories for a test problem (Qwen2.5-32B, δ=0.1). The green line marks the first correct step. The static probe (top) never crosses its threshold and saves 0%. The TTT no-QK probe (bottom) crosses the threshold at step 22 and saves 41%.",
+      "page": 20,
+      "index": 9,
+      "width": 562,
+      "height": 463
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01170v1/fig-010.webp",
+      "caption": "Figure 2: Compute savings vs. risk tolerance δ for supervised (left) and consistent (right) labels (Qwen2.5-32B). TTT no-QK consistently outperforms the baseline across all risk levels, with the largest gap at low δ.",
+      "page": 16,
+      "index": 10,
+      "width": 813,
+      "height": 291
+    }
+  ]
+}

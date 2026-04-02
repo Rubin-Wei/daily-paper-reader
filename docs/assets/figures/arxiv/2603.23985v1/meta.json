@@ -1,0 +1,118 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.23985v1/fig-001.webp",
+      "caption": "Table 3: Real-time efficiency comparison between original model and DIET-pruned model on Gemma-2 2B. Latency is measured in milliseconds (ms), memory denotes peak GPU memory usage in megabytes (MB), and FLOPs are computed per forward pass (1012).",
+      "page": 6,
+      "index": 1,
+      "width": 441,
+      "height": 281
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23985v1/fig-002.webp",
+      "caption": "Table 2: Zero-shot accuracy comparisons of DIET against baseline pruning algorithms on Gemma-2 9B on seven NLP benchmarks. The best performances are marked in bold, and the runner-up is marked with underline. Tasks with * are presented with acc_norm and remaining tasks with acc.",
+      "page": 6,
+      "index": 2,
+      "width": 902,
+      "height": 320
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23985v1/fig-003.webp",
+      "caption": "Table 14: Example data from ARC-CHALLENGE.",
+      "page": 15,
+      "index": 3,
+      "width": 806,
+      "height": 194
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23985v1/fig-004.webp",
+      "caption": "Table 17: Basic prompts used for our evaluation (lm-eval-harness defaults).",
+      "page": 15,
+      "index": 4,
+      "width": 921,
+      "height": 636
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23985v1/fig-005.webp",
+      "caption": "Figure 1: Step 1. Task-wise activation profiling is performed on a dense LLM with hidden width d. Step 2. A global pruning mask is constructed via task-aware aggregation: for each task t, a binary selector selects low-importance dimensions based on activation scores. These task-wise votes are aggregated through majority voting to produce the global mask m ∈ {0, 1}d. Step 3. The mask is applied across all layers, reducing the residual width from d to d′.",
+      "page": 3,
+      "index": 5,
+      "width": 921,
+      "height": 373
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23985v1/fig-006.webp",
+      "caption": "Table 11: Example data from HELLASWAG.",
+      "page": 13,
+      "index": 6,
+      "width": 806,
+      "height": 234
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23985v1/fig-007.webp",
+      "caption": "Figure 2: Consensus-vote histogram by dimension across 7 tasks on Gemma-2 2B. Numbers show total counts (and share of d=2304).",
+      "page": 8,
+      "index": 7,
+      "width": 446,
+      "height": 273
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23985v1/fig-008.webp",
+      "caption": "Figure 3: Zero-shot accuracy by activation-profiling sample size on Gemma-2 2B across seven benchmarks. Benchmarks with * use acc_norm.",
+      "page": 8,
+      "index": 8,
+      "width": 446,
+      "height": 271
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23985v1/fig-009.webp",
+      "caption": "Table 23: Zero-shot accuracy comparisons on IFEval for Gemma-2 2B and 9B. All values are reported as accuracy scores.",
+      "page": 17,
+      "index": 9,
+      "width": 854,
+      "height": 266
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23985v1/fig-010.webp",
+      "caption": "Table 9: Example data from BOOLQ.",
+      "page": 12,
+      "index": 10,
+      "width": 806,
+      "height": 256
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23985v1/fig-011.webp",
+      "caption": "Table 1: Zero-shot accuracy comparisons of DIET against baseline pruning algorithms on Gemma-2 2B on seven NLP benchmarks. The best performances are marked in bold, and the runner-up is marked with underline. Tasks with * are presented with acc_norm and remaining tasks with acc.",
+      "page": 5,
+      "index": 11,
+      "width": 902,
+      "height": 320
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23985v1/fig-012.webp",
+      "caption": "Table 18: Zero-shot accuracy of SliceGPT on Gemma-2 2B on seven NLP benchmarks, using WikiText2 and seven benchmarks. Tasks with * are presented with acc_norm and remaining tasks with acc.",
+      "page": 16,
+      "index": 12,
+      "width": 902,
+      "height": 192
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23985v1/fig-013.webp",
+      "caption": "Table 19: Zero-shot accuracy comparisons of DIET against baseline pruning algorithms on Gemma-2 2B on seven NLP benchmarks. The best performances are marked in bold, and the runner-up is marked with underline. Tasks with * are presented with acc_norm and remaining tasks with acc.",
+      "page": 16,
+      "index": 13,
+      "width": 902,
+      "height": 211
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23985v1/fig-014.webp",
+      "caption": "Table 20: Zero-shot accuracy comparisons of DIET against baseline pruning algorithms on Gemma-2 9B on seven NLP benchmarks. The best performances are marked in bold, and the runner-up is marked with underline. Tasks with * are presented with acc_norm and remaining tasks with acc. All values are reported as percentages (%).",
+      "page": 16,
+      "index": 14,
+      "width": 902,
+      "height": 210
+    }
+  ]
+}

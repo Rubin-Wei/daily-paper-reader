@@ -1,0 +1,134 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-001.webp",
+      "caption": "Figure 4: Speedup ratios of the 2B Dense model under different MTP methods and K settings across multiple benchmarks, where the inference speed of 1 head MTP serves as the baseline.",
+      "page": 6,
+      "index": 1,
+      "width": 393,
+      "height": 422
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-002.webp",
+      "caption": "Table 1: Cumulative acceptance rate and acceptance rate of MTP heads for the 2B Dense and A1B MoE models across multiple benchmarks. Here, H denotes the index of the MTP head. For the K = 1 group, the CAR is identical to the AR. For the K = 4 group, each cell reports CAR/AR (%) values. The best CARs of different MTP heads are highlighted in bold. For 2B Dense (A1B) with 1 head, MTP-D improves the average acceptance rate by 3.09% (4.11%). With 4 heads, the improvement is 3.91% (4.73%) for the fourth head.",
+      "page": 6,
+      "index": 2,
+      "width": 946,
+      "height": 565
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-003.webp",
+      "caption": "Table 2: Ablation results for MTP-D with 1 head across multiple benchmarks. Each cell shows two numbers separated by “|” (left: main-head accuracy; right: MTP-head AR). The MTP-D configuration is as follows: detach, TopN = 10,000, βk = 1.0, and the KL function is the forward KL. Underlined entries indicate strategies that significantly reduce main-head performance.",
+      "page": 7,
+      "index": 3,
+      "width": 956,
+      "height": 369
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-004.webp",
+      "caption": "Figure 9: Ablation experiments for MTP-D and its variants with loss as metrics. Orange indicates losses better than MTP-D, while green indicates worse performance.",
+      "page": 14,
+      "index": 4,
+      "width": 457,
+      "height": 615
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-005.webp",
+      "caption": "Figure 1: Overview of the gradient-detached, TopN -logits-selected self-distillation method.",
+      "page": 3,
+      "index": 5,
+      "width": 931,
+      "height": 400
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-006.webp",
+      "caption": "Figure 8: Speedup ratios of the A1B MoE model under different MTP methods and K settings across multiple benchmarks, where the inference speed of 2B Dense DeepSeek MTP with K = 1 serves as the baseline.",
+      "page": 13,
+      "index": 6,
+      "width": 442,
+      "height": 474
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-007.webp",
+      "caption": "Figure 6: Illustration of the probability distributions of the main head logits for the t-th token under different TopN settings.",
+      "page": 13,
+      "index": 7,
+      "width": 941,
+      "height": 426
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-008.webp",
+      "caption": "Figure 2: Illustration of the training strategy for looped extension of MTP-D. The gray blocks represent the frozen main model and the trained MTP heads from 1 to m. The weights of the MTP heads from 1 to m are copied to initialize the MTP heads from m+1 to 2m. The orange blocks denote the trainable MTP heads.",
+      "page": 4,
+      "index": 8,
+      "width": 741,
+      "height": 333
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-009.webp",
+      "caption": "Figure 3: Acceptance rate and cumulative acceptance rate of MTP heads for different models under trainingfree looped extension. Using the AGIEval-en benchmark as an example, (a) shows the cumulative acceptance rate as the loop is extended to 8 MTP heads for different models, while (b) presents the acceptance rate of each MTP head.",
+      "page": 4,
+      "index": 9,
+      "width": 458,
+      "height": 617
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-010.webp",
+      "caption": "Table 8: Speedup ratios of different loop strategies for MTP-D and MTP during continued pre-training. Except for MTP-D with 350B data sizes, all other continued pre-training experiments use a data size of 70B tokens. * indicates Training Free.",
+      "page": 17,
+      "index": 10,
+      "width": 825,
+      "height": 485
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-011.webp",
+      "caption": "Figure 14: Cumulative acceptance rates on multiple pretraining benchmarks with the looped MTP scaled up to 16.",
+      "page": 17,
+      "index": 11,
+      "width": 944,
+      "height": 340
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-012.webp",
+      "caption": "Figure 13: Cumulative acceptance rates on multiple pretraining benchmarks with the looped MTP scaled up to 8.",
+      "page": 17,
+      "index": 12,
+      "width": 944,
+      "height": 339
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-013.webp",
+      "caption": "Table 4: Training hyperparameter details for MTP-D and looped MTP",
+      "page": 12,
+      "index": 13,
+      "width": 431,
+      "height": 477
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-014.webp",
+      "caption": "Table 7: MTP-head AR and CAR for MTP-D with 4 heads across benchmarks, comparing three groups with similar main-head performance.",
+      "page": 16,
+      "index": 14,
+      "width": 925,
+      "height": 375
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-015.webp",
+      "caption": "Figure 12: Acceptance rates on multiple pretraining benchmarks with the training-free looped MTP scaled up to 8.",
+      "page": 16,
+      "index": 15,
+      "width": 945,
+      "height": 334
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23911v1/fig-016.webp",
+      "caption": "Figure 11: Cumulative acceptance rates on multiple pretraining benchmarks with the training-free looped MTP scaled up to 8.",
+      "page": 16,
+      "index": 16,
+      "width": 944,
+      "height": 342
+    }
+  ]
+}

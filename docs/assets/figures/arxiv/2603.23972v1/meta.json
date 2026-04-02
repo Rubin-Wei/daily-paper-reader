@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.23972v1/fig-001.webp",
+      "caption": "Table 2 Distribution of retrieval question types, their counts, and example of each",
+      "page": 11,
+      "index": 1,
+      "width": 766,
+      "height": 542
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23972v1/fig-002.webp",
+      "caption": "Table 8 Fanar error example",
+      "page": 21,
+      "index": 2,
+      "width": 775,
+      "height": 987
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23972v1/fig-003.webp",
+      "caption": "Table 1 Intent categories, their descriptions, relevant data fields sent to the LLM, and prompting strategies.",
+      "page": 10,
+      "index": 3,
+      "width": 798,
+      "height": 427
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23972v1/fig-004.webp",
+      "caption": "Fig. 2 Distribution of absolute score differences between human evaluators and the Gemini 2.5 Pro automated judge (N = 200). The chart demonstrates strong agreement, with 83% of evaluations resulting in an exact match (0-point difference) and over 95% deviated by no more than a single rubric category (≤25 points).",
+      "page": 14,
+      "index": 4,
+      "width": 520,
+      "height": 420
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23972v1/fig-005.webp",
+      "caption": "Table 7: Error analysis of Fanar and ALLaM models.",
+      "page": 18,
+      "index": 5,
+      "width": 777,
+      "height": 289
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23972v1/fig-006.webp",
+      "caption": "Fig. 3 Performance of Fanar and ALLaM across six question types, with the highest scores on Author of Citation and Contextual Meaning, and the lowest on Part of Speech.",
+      "page": 18,
+      "index": 6,
+      "width": 752,
+      "height": 364
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23972v1/fig-007.webp",
+      "caption": "Fig. 1 Overview of our RAG methodology. The pipeline consists of query analysis, retrieval, and re-ranking, and intent-driven routing for prompt construction. The LLM generates the final answer using a selected prompt template, where the template choice depends on the user intent extracted in the query analysis stage (e.g., PM: Meaning, PA: Author, PS: Source, etc.).",
+      "page": 4,
+      "index": 7,
+      "width": 719,
+      "height": 225
+    }
+  ]
+}

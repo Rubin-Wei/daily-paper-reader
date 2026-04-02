@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.25737v1/fig-001.webp",
+      "caption": "Table 2: Main results across six benchmarks, four RAG methods, and two LLMs. +WB denotes WRITEBACK-RAG using write-back RAG. Numbers in parentheses show absolute gains over the corresponding retrieval baseline.",
+      "page": 6,
+      "index": 1,
+      "width": 921,
+      "height": 542
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25737v1/fig-002.webp",
+      "caption": "Figure 2: The WRITEBACK-RAG pipeline. During training (top), a two-stage gating mechanism identifies examples where retrieval helps and selects contributing documents. An LLM distiller fuses the selected evidence into a compact knowledge unit, which is indexed into a separate write-back corpus. During testing (bottom), the retriever searches combined knowledge source with no changes to the retriever or generator.",
+      "page": 3,
+      "index": 2,
+      "width": 929,
+      "height": 565
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25737v1/fig-003.webp",
+      "caption": "Figure 5: Source evidence length versus distilled writeback knowledge length for six benchmarks.",
+      "page": 13,
+      "index": 3,
+      "width": 442,
+      "height": 321
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25737v1/fig-004.webp",
+      "caption": "Table 5: Detailed dataset statistics used in our experiments, following the FlashRAG benchmark release (Jin et al., 2025). All datasets use the FlashRAG-provided Wikipedia corpus (wiki18_100w) as external knowledge.",
+      "page": 12,
+      "index": 4,
+      "width": 941,
+      "height": 292
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25737v1/fig-005.webp",
+      "caption": "Table 6: Full hyperparameter settings used in the main experiments.",
+      "page": 12,
+      "index": 5,
+      "width": 473,
+      "height": 519
+    }
+  ]
+}

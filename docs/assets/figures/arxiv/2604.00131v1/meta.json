@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.00131v1/fig-001.webp",
+      "caption": "Figure 2: (a) Ebbinghaus forgetting curve showing decay patterns with reinforcement. (b) Retention distributions at time steps t ∈ {50, 100, 150} for temperature T ∈ {1, 3, 5, 10, 20, 50}. (c) Reinforcement fraction over time.",
+      "page": 6,
+      "index": 1,
+      "width": 887,
+      "height": 244
+    },
+    {
+      "url": "assets/figures/arxiv/2604.00131v1/fig-002.webp",
+      "caption": "Table 1: LONGMEMEVAL results in accuracy (%): Oracle (clean) vs. S (noisy). For close comparisons in EVERMEMOS (Hu et al., 2026), we report only GPT-4o-mini and GPT-4.1-mini.",
+      "page": 5,
+      "index": 2,
+      "width": 948,
+      "height": 198
+    },
+    {
+      "url": "assets/figures/arxiv/2604.00131v1/fig-003.webp",
+      "caption": "Table 2: Evaluation results of GOODAILTM as solved scenarios out of (11, 10, 11, 11) for given memory span settings respectively. † Selected models are instruct.",
+      "page": 5,
+      "index": 3,
+      "width": 454,
+      "height": 344
+    },
+    {
+      "url": "assets/figures/arxiv/2604.00131v1/fig-004.webp",
+      "caption": "Figure 1: OBLIVION facilitates memory-augmented agents by decay-driven activation over hierarchical memory traces. The Executor orchestrates the read path for uncertainty-gated retrieval (⋄); and the write path for feedback-driven updates (⋄), enabling dynamic control over memory activation.",
+      "page": 1,
+      "index": 4,
+      "width": 449,
+      "height": 347
+    }
+  ]
+}

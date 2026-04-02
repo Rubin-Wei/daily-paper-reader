@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.24564v1/fig-001.webp",
+      "caption": "Figure 1: A general workflow for gang creation and member registration.",
+      "page": 5,
+      "index": 1,
+      "width": 968,
+      "height": 717
+    },
+    {
+      "url": "assets/figures/arxiv/2603.24564v1/fig-002.webp",
+      "caption": "Figure 2: System overview of certified memory accumulation across VMPL0 and VMPL3. VMPL3 hosts the agent runtime and working memory, while VMPL0 is the trusted domain responsible for provider authentication, prompt/response measurement and anchored-root accumulation.",
+      "page": 6,
+      "index": 2,
+      "width": 574,
+      "height": 327
+    },
+    {
+      "url": "assets/figures/arxiv/2603.24564v1/fig-003.webp",
+      "caption": "Figure 3: Selective disclosure over a measured interaction log. TEE/VMPL0 measures each prompt-response pair into per-field digests and then into a per-interaction digest, while continuously accumulating an anchored root over the interaction sequence. During trade, selected fields may be disclosed in plaintext and hidden fields only as digests, enabling the buyer to verify consistency with the anchored root without learning undisclosed content.",
+      "page": 7,
+      "index": 3,
+      "width": 938,
+      "height": 383
+    }
+  ]
+}

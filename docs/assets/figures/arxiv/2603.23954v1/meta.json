@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.23954v1/fig-001.webp",
+      "caption": "Fig. 4. RQ1 – Comparative evaluation of retrieval pipelines (KGR and VSR) across datasets.",
+      "page": 7,
+      "index": 1,
+      "width": 504,
+      "height": 267
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23954v1/fig-002.webp",
+      "caption": "TABLE III AGGREGATE MODEL SUSTAINABILITY AND PERFORMANCE SUMMARY",
+      "page": 7,
+      "index": 2,
+      "width": 529,
+      "height": 666
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23954v1/fig-003.webp",
+      "caption": "TABLE V COMPARISON OF RELATED WORK IN RETRIEVAL, PROMPTING, AND SUSTAINABLE REQUIREMENT RELATIONSHIP ANALYSIS",
+      "page": 10,
+      "index": 3,
+      "width": 1064,
+      "height": 318
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23954v1/fig-004.webp",
+      "caption": "Fig. 5. Answering RQ2 - Macro F1-score and Total carbon emission for the three SLMs used for evaluating the five datasets. Mistral SLM fairs well on both for all the datasets",
+      "page": 8,
+      "index": 4,
+      "width": 782,
+      "height": 422
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23954v1/fig-005.webp",
+      "caption": "Fig. 1. Overall study design: Our proposed KGR approach is compared with VSR and Baseline using five datasets and various evaluation measures.",
+      "page": 4,
+      "index": 5,
+      "width": 682,
+      "height": 391
+    },
+    {
+      "url": "assets/figures/arxiv/2603.23954v1/fig-006.webp",
+      "caption": "Fig. 2. Knowledge graph–based retrieval via shared entities. Two requirements, Requirement R1: The UAV shall land automatically when Pilot communication is restored and estimated flight time lapsed is more than 5 minutes and Requirement R2: The UAV shall land automatically when Pilot communication is lost and the estimated flight time remaining is more than 5 minutes, are connected through overlapping structured entities, enabling explainable graph traversal.",
+      "page": 4,
+      "index": 6,
+      "width": 529,
+      "height": 262
+    }
+  ]
+}
