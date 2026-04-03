@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.25183v1/fig-001.webp",
+      "caption": "Figure 1: Distribution of COMET differences between sentence-level (Sent) and context-aware (Ctx) English–German translations produced by Qwen3-8B.",
+      "page": 1,
+      "index": 1,
+      "width": 433,
+      "height": 341
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25183v1/fig-002.webp",
+      "caption": "Figure 4: Case studies illustrating that CPL benefits from informative context.",
+      "page": 14,
+      "index": 2,
+      "width": 902,
+      "height": 1267
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25183v1/fig-003.webp",
+      "caption": "Figure 2: Illustration of our approach.",
+      "page": 3,
+      "index": 3,
+      "width": 896,
+      "height": 284
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25183v1/fig-004.webp",
+      "caption": "Figure 9: Prompt used for GPT-as-Judge.",
+      "page": 18,
+      "index": 4,
+      "width": 950,
+      "height": 1300
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25183v1/fig-005.webp",
+      "caption": "Table 11: Results of different systems on sentence-level BLEU metric. Best scores are shown in dark red and",
+      "page": 13,
+      "index": 5,
+      "width": 941,
+      "height": 686
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25183v1/fig-006.webp",
+      "caption": "Figure 6: Strict JSON schema used to constrain model outputs in batched API inference.",
+      "page": 17,
+      "index": 6,
+      "width": 950,
+      "height": 905
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25183v1/fig-007.webp",
+      "caption": "Table 10: Results of different systems on document-level COMET metric. Best scores are shown in dark red and",
+      "page": 12,
+      "index": 7,
+      "width": 941,
+      "height": 686
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25183v1/fig-008.webp",
+      "caption": "Table 2: Results of different systems on COMET metric. Best scores are shown in dark red and second-best scores",
+      "page": 5,
+      "index": 8,
+      "width": 941,
+      "height": 686
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25183v1/fig-009.webp",
+      "caption": "Figure 5: Prompt used for context-dependency evaluation of sentence-level translation.",
+      "page": 16,
+      "index": 9,
+      "width": 950,
+      "height": 1300
+    }
+  ]
+}

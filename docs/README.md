@@ -6,262 +6,274 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-04-02
-- 运行时间：2026-04-02 20:46:35 UTC
+- 最新运行日期：2026-04-03
+- 运行时间：2026-04-03 19:50:56 UTC
 - 运行状态：成功
-- 本次总论文数：80
-- 精读区：65
+- 本次总论文数：84
+- 精读区：69
 - 速读区：15
 
 ### 今日简报（AI）
-今日深度研读 80 篇 AI 论文，聚焦具身智能鲁棒性突破与大模型百科知识的规模化构建。
-满分力作 SOMA 与 LLMpedia 分别在 VLA 模型上下文适配及知识透明化领域取得关键进展。
-建议优先关注具身智能的自我进化机制，并同步防范边缘侧大模型的安全漏洞。
-- 详情：[/202604/02/README](/202604/02/README)
+今日精选 84 篇前沿论文，深度解析长文本压缩与跨域个性化记忆等满分研究。
+重点关注半动态上下文压缩技术及 LLM 智能体在长程跨域场景下的用户记忆基准。
+建议优先研读满分论文以掌握长文本处理前沿，并关注 RAG 权威性感知等实用基准。
+- 详情：[/202604/03/README](/202604/03/README)
 
 ### 精读区论文标签
-1. [SOMA: Strategic Orchestration and Memory-Augmented System for Vision-Language-Action Model Robustness via In-Context Adaptation](/202604/02/2603.24060v2-soma-strategic-orchestration-and-memory-augmented-system-for-vision-language-action-model-robustness-via-in-context-adaptation)  
-   标签：评分：10.0/10、query:am
-   evidence：机器人智能体的记忆增强系统与长期记忆
-2. [LLMpedia: A Transparent Framework to Materialize an LLM's Encyclopedic Knowledge at Scale](/202604/02/2603.24080v1-llmpedia-a-transparent-framework-to-materialize-an-llms-encyclopedic-knowledge-at-scale)  
-   标签：评分：10.0/10、query:pm
-   evidence：来自参数化记忆的百科知识
-3. [ElephantBroker: A Knowledge-Grounded Cognitive Runtime for Trustworthy AI Agents](/202604/02/2603.25097v1-elephantbroker-a-knowledge-grounded-cognitive-runtime-for-trustworthy-ai-agents)  
-   标签：评分：10.0/10、query:am
-   evidence：使用知识图谱的持久且可验证的智能体记忆
-4. [Density-aware Soft Context Compression with Semi-Dynamic Compression Ratio](/202604/02/2603.25926v1-density-aware-soft-context-compression-with-semi-dynamic-compression-ratio)  
+1. [Density-aware Soft Context Compression with Semi-Dynamic Compression Ratio](/202604/03/2603.25926v1-density-aware-soft-context-compression-with-semi-dynamic-compression-ratio)  
    标签：评分：10.0/10、query:cd
-   evidence：基于信息密度的半动态上下文压缩
-5. [MemoryCD: Benchmarking Long-Context User Memory of LLM Agents for Lifelong Cross-Domain Personalization](/202604/02/2603.25973v1-memorycd-benchmarking-long-context-user-memory-of-llm-agents-for-lifelong-cross-domain-personalization)  
+   evidence：具有半动态压缩率的软上下文压缩
+2. [MemoryCD: Benchmarking Long-Context User Memory of LLM Agents for Lifelong Cross-Domain Personalization](/202604/03/2603.25973v1-memorycd-benchmarking-long-context-user-memory-of-llm-agents-for-lifelong-cross-domain-personalization)  
    标签：评分：10.0/10、query:am
-   evidence：评估大模型智能体的长上下文用户记忆基准
-6. [AcTTA: Rethinking Test-Time Adaptation via Dynamic Activation](/202604/02/2603.26096v1-actta-rethinking-test-time-adaptation-via-dynamic-activation)  
-   标签：评分：10.0/10、query:ttt
-   evidence：通过动态激活实现基础模型的测试时训练方法
-7. [KVSculpt: KV Cache Compression as Distillation](/202604/02/2603.27819v1-kvsculpt-kv-cache-compression-as-distillation)  
+   evidence：评估LLM智能体长上下文用户记忆的基准
+3. [GAAMA: Graph Augmented Associative Memory for Agents](/202604/03/2603.27910v1-gaama-graph-augmented-associative-memory-for-agents)  
+   标签：评分：10.0/10、query:am
+   evidence：智能体的图增强关联记忆
+4. [GEMS: Agent-Native Multimodal Generation with Memory and Skills](/202604/03/2603.28088v1-gems-agent-native-multimodal-generation-with-memory-and-skills)  
+   标签：评分：10.0/10、query:am
+   evidence：提供持久轨迹级记忆的智能体记忆
+5. [Developing Adaptive Context Compression Techniques for Large Language Models (LLMs) in Long-Running Interactions](/202604/03/2603.29193v1-developing-adaptive-context-compression-techniques-for-large-language-models-llms-in-long-running-interactions)  
    标签：评分：10.0/10、query:cd
-   evidence：KV 缓存压缩作为蒸馏手段
-8. [GAAMA: Graph Augmented Associative Memory for Agents](/202604/02/2603.27910v1-gaama-graph-augmented-associative-memory-for-agents)  
-   标签：评分：10.0/10、query:am
-   evidence：面向智能体的图增强关联记忆与长期记忆
-9. [GEMS: Agent-Native Multimodal Generation with Memory and Skills](/202604/02/2603.28088v1-gems-agent-native-multimodal-generation-with-memory-and-skills)  
-   标签：评分：10.0/10、query:am
-   evidence：智能体记忆提供持久的轨迹级记忆
-10. [Human-Like Lifelong Memory: A Neuroscience-Grounded Architecture for Infinite Interaction](/202604/02/2603.29023v1-human-like-lifelong-memory-a-neuroscience-grounded-architecture-for-infinite-interaction)  
-   标签：评分：10.0/10、query:am
-   evidence：基于神经科学的终身记忆架构用于无限交互
-11. [MemFactory: Unified Inference & Training Framework for Agent Memory](/202604/02/2603.29493v1-memfactory-unified-inference--training-framework-for-agent-memory)  
+   evidence：大语言模型的自适应上下文压缩框架
+6. [MemFactory: Unified Inference & Training Framework for Agent Memory](/202604/03/2603.29493v1-memfactory-unified-inference--training-framework-for-agent-memory)  
    标签：评分：10.0/10、query:am
    evidence：智能体记忆训练与推理的统一框架
-12. [MemFactory: Unified Inference & Training Framework for Agent Memory](/202604/02/2603.29493v2-memfactory-unified-inference--training-framework-for-agent-memory)  
+7. [MemFactory: Unified Inference & Training Framework for Agent Memory](/202604/03/2603.29493v3-memfactory-unified-inference--training-framework-for-agent-memory)  
    标签：评分：10.0/10、query:am
-   evidence：智能体记忆的统一训练与推理框架
-13. [Oblivion: Self-Adaptive Agentic Memory Control through Decay-Driven Activation](/202604/02/2604.00131v1-oblivion-self-adaptive-agentic-memory-control-through-decay-driven-activation)  
+   evidence：智能体记忆操作与训练的统一框架
+8. [Oblivion: Self-Adaptive Agentic Memory Control through Decay-Driven Activation](/202604/03/2604.00131v1-oblivion-self-adaptive-agentic-memory-control-through-decay-driven-activation)  
    标签：评分：10.0/10、query:am
-   evidence：通过衰减驱动激活的自适应智能体记忆控制
-14. [Adaptive Parallel Monte Carlo Tree Search for Efficient Test-time Compute Scaling](/202604/02/2604.00510v1-adaptive-parallel-monte-carlo-tree-search-for-efficient-test-time-compute-scaling)  
+   evidence：大模型智能体的衰减驱动记忆控制
+9. [Learning from Many and Adapting to the Unknown in Open-set Test Streams](/202604/03/2604.00533v1-learning-from-many-and-adapting-to-the-unknown-in-open-set-test-streams)  
    标签：评分：10.0/10、query:ttt
-   evidence：用于提高推理性能的测试时计算缩放方法
-15. [Learning from Many and Adapting to the Unknown in Open-set Test Streams](/202604/02/2604.00533v1-learning-from-many-and-adapting-to-the-unknown-in-open-set-test-streams)  
-   标签：评分：10.0/10、query:ttt
-   evidence：大语言模型的测试时自适应 (TTA)
-16. [HabitatAgent: An End-to-End Multi-Agent System for Housing Consultation](/202604/02/2604.00556v1-habitatagent-an-end-to-end-multi-agent-system-for-housing-consultation)  
+   evidence：大语言模型的参数高效测试时自适应
+10. [HabitatAgent: An End-to-End Multi-Agent System for Housing Consultation](/202604/03/2604.00556v1-habitatagent-an-end-to-end-multi-agent-system-for-housing-consultation)  
    标签：评分：10.0/10、query:am
-   evidence：包含专门记忆智能体的多智能体架构，用于长期用户记忆
-17. [TTA-Vid: Generalized Test-Time Adaptation for Video Reasoning](/202604/02/2604.00696v1-tta-vid-generalized-test-time-adaptation-for-video-reasoning)  
-   标签：评分：10.0/10、query:ttt
-   evidence：基础模型的测试时训练方法
-18. [To Memorize or to Retrieve: Scaling Laws for RAG-Considerate Pretraining](/202604/02/2604.00715v1-to-memorize-or-to-retrieve-scaling-laws-for-rag-considerate-pretraining)  
+   evidence：用于住房咨询的多层用户记忆智能体
+11. [To Memorize or to Retrieve: Scaling Laws for RAG-Considerate Pretraining](/202604/03/2604.00715v1-to-memorize-or-to-retrieve-scaling-laws-for-rag-considerate-pretraining)  
    标签：评分：10.0/10、query:pm
    evidence：参数化知识与检索之间的权衡
-19. [Learning to Learn-at-Test-Time: Language Agents with Learnable Adaptation Policies](/202604/02/2604.00830v1-learning-to-learn-at-test-time-language-agents-with-learnable-adaptation-policies)  
+12. [Learning to Learn-at-Test-Time: Language Agents with Learnable Adaptation Policies](/202604/03/2604.00830v2-learning-to-learn-at-test-time-language-agents-with-learnable-adaptation-policies)  
    标签：评分：10.0/10、query:ttt
-   evidence：引入Meta-TTL以在测试时发现有效的自适应策略
-20. [Doctor-RAG: Failure-Aware Repair for Agentic Retrieval-Augmented Generation](/202604/02/2604.00865v1-doctor-rag-failure-aware-repair-for-agentic-retrieval-augmented-generation)  
+   evidence：具有可学习自适应策略的语言智能体测试时学习
+13. [Doctor-RAG: Failure-Aware Repair for Agentic Retrieval-Augmented Generation](/202604/03/2604.00865v1-doctor-rag-failure-aware-repair-for-agentic-retrieval-augmented-generation)  
    标签：评分：10.0/10、query:rag
-   evidence：智能体检索增强生成的故障感知修复
-21. [PsychAgent: An Experience-Driven Lifelong Learning Agent for Self-Evolving Psychological Counselor](/202604/02/2604.00931v1-psychagent-an-experience-driven-lifelong-learning-agent-for-self-evolving-psychological-counselor)  
+   evidence：智能体RAG的故障感知修复
+14. [PsychAgent: An Experience-Driven Lifelong Learning Agent for Self-Evolving Psychological Counselor](/202604/03/2604.00931v1-psychagent-an-experience-driven-lifelong-learning-agent-for-self-evolving-psychological-counselor)  
    标签：评分：10.0/10、query:am
-   evidence：用于纵向交互的记忆增强规划引擎
-22. [OmniMem: Autoresearch-Guided Discovery of Lifelong Multimodal Agent Memory](/202604/02/2604.01007v1-omnimem-autoresearch-guided-discovery-of-lifelong-multimodal-agent-memory)  
+   evidence：智能体记忆增强规划引擎
+15. [PsychAgent: An Experience-Driven Lifelong Learning Agent for Self-Evolving Psychological Counselor](/202604/03/2604.00931v2-psychagent-an-experience-driven-lifelong-learning-agent-for-self-evolving-psychological-counselor)  
    标签：评分：10.0/10、query:am
-   evidence：终身多模态智能体记忆
-23. [Online Reasoning Calibration: Test-Time Training Enables Generalizable Conformal LLM Reasoning](/202604/02/2604.01170v1-online-reasoning-calibration-test-time-training-enables-generalizable-conformal-llm-reasoning)  
+   evidence：智能体记忆增强规划引擎
+16. [OmniMem: Autoresearch-Guided Discovery of Lifelong Multimodal Agent Memory](/202604/03/2604.01007v1-omnimem-autoresearch-guided-discovery-of-lifelong-multimodal-agent-memory)  
+   标签：评分：10.0/10、query:am
+   evidence：终身AI智能体的统一多模态记忆框架
+17. [Omni-SimpleMem: Autoresearch-Guided Discovery of Lifelong Multimodal Agent Memory](/202604/03/2604.01007v2-omni-simplemem-autoresearch-guided-discovery-of-lifelong-multimodal-agent-memory)  
+   标签：评分：10.0/10、query:am
+   evidence：终身多模态智能体记忆框架
+18. [Online Reasoning Calibration: Test-Time Training Enables Generalizable Conformal LLM Reasoning](/202604/03/2604.01170v1-online-reasoning-calibration-test-time-training-enables-generalizable-conformal-llm-reasoning)  
    标签：评分：10.0/10、query:ttt
-   evidence：用于校准 LLM 推理的测试时训练
-24. [AnalogAgent: Self-Improving Analog Circuit Design Automation with LLM Agents](/202604/02/2603.23910v1-analogagent-self-improving-analog-circuit-design-automation-with-llm-agents)  
+   evidence：用于校准大模型推理的测试时训练
+19. [DeltaMem: Towards Agentic Memory Management via Reinforcement Learning](/202604/03/2604.01560v1-deltamem-towards-agentic-memory-management-via-reinforcement-learning)  
+   标签：评分：10.0/10、query:am
+   evidence：针对人格中心记忆的智能体记忆管理系统
+20. [ByteRover: Agent-Native Memory Through LLM-Curated Hierarchical Context](/202604/03/2604.01599v1-byterover-agent-native-memory-through-llm-curated-hierarchical-context)  
+   标签：评分：10.0/10、query:am
+   evidence：智能体原生记忆架构
+21. [Hierarchical Memory Orchestration for Personalized Persistent Agents](/202604/03/2604.01670v1-hierarchical-memory-orchestration-for-personalized-persistent-agents)  
+   标签：评分：10.0/10、query:am
+   evidence：智能体的长期记忆与分层记忆编排
+22. [Memory in the LLM Era: Modular Architectures and Strategies in a Unified Framework](/202604/03/2604.01707v1-memory-in-the-llm-era-modular-architectures-and-strategies-in-a-unified-framework)  
+   标签：评分：10.0/10、query:am
+   evidence：智能体记忆方法的统一框架
+23. [Novel Memory Forgetting Techniques for Autonomous AI Agents: Balancing Relevance and Efficiency](/202604/03/2604.02280v1-novel-memory-forgetting-techniques-for-autonomous-ai-agents-balancing-relevance-and-efficiency)  
+   标签：评分：10.0/10、query:am
+   evidence：长周期对话智能体的自适应预算化遗忘机制
+24. [ElephantBroker: A Knowledge-Grounded Cognitive Runtime for Trustworthy AI Agents](/202604/03/2603.25097v1-elephantbroker-a-knowledge-grounded-cognitive-runtime-for-trustworthy-ai-agents)  
    标签：评分：9.0/10、query:am
-   evidence：具有自我演化记忆的电路设计智能体框架
-25. [Grounding Arabic LLMs in the Doha Historical Dictionary: Retrieval-Augmented Understanding of Quran and Hadith](/202604/02/2603.23972v1-grounding-arabic-llms-in-the-doha-historical-dictionary-retrieval-augmented-understanding-of-quran-and-hadith)  
+   evidence：结合知识图谱的持久可验证智能体记忆
+25. [Supercharging Federated Intelligence Retrieval](/202604/03/2603.25374v1-supercharging-federated-intelligence-retrieval)  
    标签：评分：9.0/10、query:rag
-   evidence：针对阿拉伯语大模型的检索增强生成 (RAG) 框架
-26. [CoCR-RAG: Enhancing Retrieval-Augmented Generation in Web Q&A via Concept-oriented Context Reconstruction](/202604/02/2603.23989v1-cocr-rag-enhancing-retrieval-augmented-generation-in-web-qa-via-concept-oriented-context-reconstruction)  
-   标签：评分：9.0/10、query:rag
-   evidence：通过上下文重构增强检索增强生成
-27. [Schema on the Inside: A Two-Phase Fine-Tuning Method for High-Efficiency Text-to-SQL at Scale](/202604/02/2603.24023v1-schema-on-the-inside-a-two-phase-fine-tuning-method-for-high-efficiency-text-to-sql-at-scale)  
+   evidence：针对分布式知识孤岛的联邦RAG系统
+26. [The Rules-and-Facts Model for Simultaneous Generalization and Memorization in Neural Networks](/202604/03/2603.25579v1-the-rules-and-facts-model-for-simultaneous-generalization-and-memorization-in-neural-networks)  
    标签：评分：9.0/10、query:pm
-   evidence：将数据库模式内化到模型参数中，从而消除长上下文提示词的需求
-28. [SOMA: Strategic Orchestration and Memory-Augmented System for Vision-Language-Action Model Robustness via In-Context Adaptation](/202604/02/2603.24060v1-soma-strategic-orchestration-and-memory-augmented-system-for-vision-language-action-model-robustness-via-in-context-adaptation)  
+   evidence：神经网络权重中事实记忆的理论模型
+27. [Social Hippocampus Memory Learning](/202604/03/2603.25614v1-social-hippocampus-memory-learning)  
    标签：评分：9.0/10、query:am
-   evidence：具有长期记忆的机器人智能体记忆增强系统
-29. [SumRank: Aligning Summarization Models for Long-Document Listwise Reranking](/202604/02/2603.24204v1-sumrank-aligning-summarization-models-for-long-document-listwise-reranking)  
-   标签：评分：9.0/10、query:cd
-   evidence：将长文档压缩为简洁摘要以进行重排序
-30. [Evaluating Chunking Strategies For Retrieval-Augmented Generation in Oil and Gas Enterprise Documents](/202604/02/2603.24556v1-evaluating-chunking-strategies-for-retrieval-augmented-generation-in-oil-and-gas-enterprise-documents)  
-   标签：评分：9.0/10、query:rag
-   evidence：评估检索增强生成 (RAG) 中的分块策略
-31. [Experiential Reflective Learning for Self-Improving LLM Agents](/202604/02/2603.24639v1-experiential-reflective-learning-for-self-improving-llm-agents)  
-   标签：评分：9.0/10、query:am
-   evidence：通过经验学习实现LLM智能体的记忆机制
-32. [Experiential Reflective Learning for Self-Improving LLM Agents](/202604/02/2603.24639v2-experiential-reflective-learning-for-self-improving-llm-agents)  
-   标签：评分：9.0/10、query:am
-   evidence：用于自我改进LLM智能体的经验反射学习
-33. [GraphER: An Efficient Graph-Based Enrichment and Reranking Method for Retrieval-Augmented Generation](/202604/02/2603.24925v1-grapher-an-efficient-graph-based-enrichment-and-reranking-method-for-retrieval-augmented-generation)  
-   标签：评分：9.0/10、query:rag
-   evidence：用于检索增强生成的基于图的富化与重排序
-34. [Social Hippocampus Memory Learning](/202604/02/2603.25614v1-social-hippocampus-memory-learning)  
-   标签：评分：9.0/10、query:am
-   evidence：面向异构智能体的以记忆为中心的社交机器学习框架
-35. [Training the Knowledge Base through Evidence Distillation and Write-Back Enrichment](/202604/02/2603.25737v1-training-the-knowledge-base-through-evidence-distillation-and-write-back-enrichment)  
+   evidence：协作智能体的以记忆为中心的社交机器学习
+28. [Training the Knowledge Base through Evidence Distillation and Write-Back Enrichment](/202604/03/2603.25737v1-training-the-knowledge-base-through-evidence-distillation-and-write-back-enrichment)  
    标签：评分：9.0/10、query:rag
    evidence：将文档蒸馏为RAG的紧凑知识单元
-36. [Retrieval-Augmented Generation Based Nurse Observation Extraction](/202604/02/2603.26046v1-retrieval-augmented-generation-based-nurse-observation-extraction)  
-   标签：评分：9.0/10、query:rag
-   evidence：用于临床观察提取的检索增强生成
-37. [AgenticRS-Architecture: System Design for Agentic Recommender Systems](/202604/02/2603.26085v1-agenticrs-architecture-system-design-for-agentic-recommender-systems)  
-   标签：评分：9.0/10、query:am
-   evidence：具有长期记忆的智能体
-38. [Switch Attention: Towards Dynamic and Fine-grained Hybrid Transformers](/202604/02/2603.26380v1-switch-attention-towards-dynamic-and-fine-grained-hybrid-transformers)  
-   标签：评分：9.0/10、query:lcp
-   evidence：长上下文建模的混合Transformer
-39. [Sharp Capacity Scaling of Spectral Optimizers in Learning Associative Memory](/202604/02/2603.26554v1-sharp-capacity-scaling-of-spectral-optimizers-in-learning-associative-memory)  
+29. [AcTTA: Rethinking Test-Time Adaptation via Dynamic Activation](/202604/03/2603.26096v1-actta-rethinking-test-time-adaptation-via-dynamic-activation)  
+   标签：评分：9.0/10、query:ttt
+   evidence：在推理过程中更新模型参数以进行适配
+30. [Meta-Learned Adaptive Optimization for Robust Human Mesh Recovery with Uncertainty-Aware Parameter Updates](/202604/03/2603.26447v1-meta-learned-adaptive-optimization-for-robust-human-mesh-recovery-with-uncertainty-aware-parameter-updates)  
+   标签：评分：9.0/10、query:ttt
+   evidence：用于测试时细化和参数更新 元学习
+31. [Sharp Capacity Scaling of Spectral Optimizers in Learning Associative Memory](/202604/03/2603.26554v1-sharp-capacity-scaling-of-spectral-optimizers-in-learning-associative-memory)  
    标签：评分：9.0/10、query:pm
-   evidence：Transformer权重中的关联记忆与事实召回
-40. [A Step Toward Federated Pretraining of Multimodal Large Language Models](/202604/02/2603.26786v1-a-step-toward-federated-pretraining-of-multimodal-large-language-models)  
+   evidence：Transformer模型中用于事实召回的关联记忆
+32. [A Provable Energy-Guided Test-Time Defense Boosting Adversarial Robustness of Large Vision-Language Models](/202604/03/2603.26984v1-a-provable-energy-guided-test-time-defense-boosting-adversarial-robustness-of-large-vision-language-models)  
+   标签：评分：9.0/10、query:ttt
+   evidence：用于增强对抗鲁棒性的测试时变换
+33. [A Provable Energy-Guided Test-Time Defense Boosting Adversarial Robustness of Large Vision-Language Models](/202604/03/2603.26984v2-a-provable-energy-guided-test-time-defense-boosting-adversarial-robustness-of-large-vision-language-models)  
+   标签：评分：9.0/10、query:ttt
+   evidence：用于在推理时增强鲁棒性的测试时变换 (TTT)
+34. [Red-MIRROR: Agentic LLM-based Autonomous Penetration Testing with Reflective Verification and Knowledge-augmented Interaction](/202604/03/2603.27127v1-red-mirror-agentic-llm-based-autonomous-penetration-testing-with-reflective-verification-and-knowledge-augmented-interaction)  
+   标签：评分：9.0/10、query:am
+   evidence：具有会话记忆和知识增强的智能体LLM系统
+35. [ScoutAttention: Efficient KV Cache Offloading via Layer-Ahead CPU Pre-computation for LLM Inference](/202604/03/2603.27138v1-scoutattention-efficient-kv-cache-offloading-via-layer-ahead-cpu-pre-computation-for-llm-inference)  
+   标签：评分：9.0/10、query:lcp
+   evidence：长上下文推理中的KV缓存卸载
+36. [MediHive: A Decentralized Agent Collective for Medical Reasoning](/202604/03/2603.27150v1-medihive-a-decentralized-agent-collective-for-medical-reasoning)  
+   标签：评分：9.0/10、query:am
+   evidence：为去中心化多智能体框架集成共享内存池
+37. [Beyond Completion: Probing Cumulative State Tracking to Predict LLM Agent Performance](/202604/03/2603.27343v1-beyond-completion-probing-cumulative-state-tracking-to-predict-llm-agent-performance)  
+   标签：评分：9.0/10、query:am
+   evidence：探测LLM智能体中的累积状态追踪能力
+38. [Falcon Perception](/202604/03/2603.27365v1-falcon-perception)  
    标签：评分：9.0/10、query:pretrain
-   evidence：多模态大语言模型的联邦预训练
-41. [A Provable Energy-Guided Test-Time Defense Boosting Adversarial Robustness of Large Vision-Language Models](/202604/02/2603.26984v1-a-provable-energy-guided-test-time-defense-boosting-adversarial-robustness-of-large-vision-language-models)  
-   标签：评分：9.0/10、query:ttt
-   evidence：基础模型的测试时训练方法
-42. [A Provable Energy-Guided Test-Time Defense Boosting Adversarial Robustness of Large Vision-Language Models](/202604/02/2603.26984v2-a-provable-energy-guided-test-time-defense-boosting-adversarial-robustness-of-large-vision-language-models)  
-   标签：评分：9.0/10、query:ttt
-   evidence：测试时变换 (TTT) 以增强推理时的鲁棒性
-43. [Red-MIRROR: Agentic LLM-based Autonomous Penetration Testing with Reflective Verification and Knowledge-augmented Interaction](/202604/02/2603.27127v1-red-mirror-agentic-llm-based-autonomous-penetration-testing-with-reflective-verification-and-knowledge-augmented-interaction)  
+   evidence：具有共享参数空间的统一稠密 Transformer 架构
+39. [MuSEAgent: A Multimodal Reasoning Agent with Stateful Experiences](/202604/03/2603.27813v1-museagent-a-multimodal-reasoning-agent-with-stateful-experiences)  
    标签：评分：9.0/10、query:am
-   evidence：智能体的会话记忆与知识增强交互
-44. [ScoutAttention: Efficient KV Cache Offloading via Layer-Ahead CPU Pre-computation for LLM Inference](/202604/02/2603.27138v1-scoutattention-efficient-kv-cache-offloading-via-layer-ahead-cpu-pre-computation-for-llm-inference)  
-   标签：评分：9.0/10、query:lcp
-   evidence：针对长上下文推理和GPU显存限制的KV缓存卸载
-45. [PubMed Reasoner: Dynamic Reasoning-based Retrieval for Evidence-Grounded Biomedical Question Answering](/202604/02/2603.27335v1-pubmed-reasoner-dynamic-reasoning-based-retrieval-for-evidence-grounded-biomedical-question-answering)  
+   evidence：多模态推理智能体的有状态经验库
+40. [KVSculpt: KV Cache Compression as Distillation](/202604/03/2603.27819v1-kvsculpt-kv-cache-compression-as-distillation)  
+   标签：评分：9.0/10、query:cd
+   evidence：将KV缓存压缩视为长上下文推理的蒸馏过程
+41. [Entropic Claim Resolution: Uncertainty-Driven Evidence Selection for RAG](/202604/03/2603.28444v1-entropic-claim-resolution-uncertainty-driven-evidence-selection-for-rag)  
    标签：评分：9.0/10、query:rag
-   evidence：具有动态推理检索能力的生物医学问答智能体
-46. [AgentSwing: Adaptive Parallel Context Management Routing for Long-Horizon Web Agents](/202604/02/2603.27490v1-agentswing-adaptive-parallel-context-management-routing-for-long-horizon-web-agents)  
+   evidence：RAG 系统中不确定性驱动的证据选择
+42. [HISA: Efficient Hierarchical Indexing for Fine-Grained Sparse Attention](/202604/03/2603.28458v1-hisa-efficient-hierarchical-indexing-for-fine-grained-sparse-attention)  
+   标签：评分：9.0/10、query:lcp
+   evidence：用于处理不断增长的上下文长度的稀疏注意力分层索引
+43. [HISA: Efficient Hierarchical Indexing for Fine-Grained Sparse Attention](/202604/03/2603.28458v2-hisa-efficient-hierarchical-indexing-for-fine-grained-sparse-attention)  
+   标签：评分：9.0/10、query:lcp
+   evidence：长上下文细粒度稀疏注意力的分层索引
+44. [Understand and Accelerate Memory Processing Pipeline for Disaggregated LLM Inference](/202604/03/2603.29002v1-understand-and-accelerate-memory-processing-pipeline-for-disaggregated-llm-inference)  
+   标签：评分：9.0/10、query:lcp
+   evidence：加速长上下文和 RAG 的记忆处理
+45. [Human-Like Lifelong Memory: A Neuroscience-Grounded Architecture for Infinite Interaction](/202604/03/2603.29023v1-human-like-lifelong-memory-a-neuroscience-grounded-architecture-for-infinite-interaction)  
    标签：评分：9.0/10、query:am
-   evidence：长程智能体的上下文管理
-47. [MuSEAgent: A Multimodal Reasoning Agent with Stateful Experiences](/202604/02/2603.27813v1-museagent-a-multimodal-reasoning-agent-with-stateful-experiences)  
-   标签：评分：9.0/10、query:am
-   evidence：智能体的有状态经验库
-48. [Entropic Claim Resolution: Uncertainty-Driven Evidence Selection for RAG](/202604/02/2603.28444v1-entropic-claim-resolution-uncertainty-driven-evidence-selection-for-rag)  
+   evidence：受生物启发、用于长期交互和结构化记忆的记忆框架
+46. [PAR$^2$-RAG: Planned Active Retrieval and Reasoning for Multi-Hop Question Answering](/202604/03/2603.29085v1-par2-rag-planned-active-retrieval-and-reasoning-for-multi-hop-question-answering)  
    标签：评分：9.0/10、query:rag
-   evidence：RAG中基于不确定性驱动的证据选择
-49. [HISA: Efficient Hierarchical Indexing for Fine-Grained Sparse Attention](/202604/02/2603.28458v1-hisa-efficient-hierarchical-indexing-for-fine-grained-sparse-attention)  
-   标签：评分：9.0/10、query:lcp
-   evidence：长上下文稀疏注意力的有效分层索引
-50. [HISA: Efficient Hierarchical Indexing for Fine-Grained Sparse Attention](/202604/02/2603.28458v2-hisa-efficient-hierarchical-indexing-for-fine-grained-sparse-attention)  
-   标签：评分：9.0/10、query:lcp
-   evidence：用于处理长上下文的稀疏注意力分层索引
-51. [Understand and Accelerate Memory Processing Pipeline for Disaggregated LLM Inference](/202604/02/2603.29002v1-understand-and-accelerate-memory-processing-pipeline-for-disaggregated-llm-inference)  
-   标签：评分：9.0/10、query:lcp
-   evidence：长上下文处理与压缩上下文记忆
-52. [PAR$^2$-RAG: Planned Active Retrieval and Reasoning for Multi-Hop Question Answering](/202604/02/2603.29085v1-par2-rag-planned-active-retrieval-and-reasoning-for-multi-hop-question-answering)  
-   标签：评分：9.0/10、query:rag
-   evidence：用于多跳问答的主动检索与推理RAG
-53. [Developing Adaptive Context Compression Techniques for Large Language Models (LLMs) in Long-Running Interactions](/202604/02/2603.29193v1-developing-adaptive-context-compression-techniques-for-large-language-models-llms-in-long-running-interactions)  
+   evidence：用于 RAG 的规划式主动检索与推理
+47. [MemRerank: Preference Memory for Personalized Product Reranking](/202604/03/2603.29247v1-memrerank-preference-memory-for-personalized-product-reranking)  
    标签：评分：9.0/10、query:am
-   evidence：针对长期交互和记忆选择的自适应上下文压缩
-54. [MemRerank: Preference Memory for Personalized Product Reranking](/202604/02/2603.29247v1-memrerank-preference-memory-for-personalized-product-reranking)  
+   evidence：购物智能体的偏好记忆框架
+48. [MemRerank: Preference Memory for Personalized Product Reranking](/202604/03/2603.29247v2-memrerank-preference-memory-for-personalized-product-reranking)  
    标签：评分：9.0/10、query:am
-   evidence：用于个性化智能体的偏好记忆框架
-55. [VecAttention: Vector-wise Sparse Attention for Accelerating Long Context Inference](/202604/02/2603.29494v1-vecattention-vector-wise-sparse-attention-for-accelerating-long-context-inference)  
+   evidence：个性化购物智能体的偏好记忆框架
+49. [Scaling the Long Video Understanding of Multimodal Large Language Models via Visual Memory Mechanism](/202604/03/2603.29252v1-scaling-the-long-video-understanding-of-multimodal-large-language-models-via-visual-memory-mechanism)  
    标签：评分：9.0/10、query:lcp
-   evidence：用于加速长上下文推理的向量级稀疏注意力机制
-56. [An Empirical Study of Multi-Agent Collaboration for Automated Research](/202604/02/2603.29632v1-an-empirical-study-of-multi-agent-collaboration-for-automated-research)  
+   evidence：用于长视频理解的视觉记忆机制
+50. [VecAttention: Vector-wise Sparse Attention for Accelerating Long Context Inference](/202604/03/2603.29494v1-vecattention-vector-wise-sparse-attention-for-accelerating-long-context-inference)  
+   标签：评分：9.0/10、query:lcp
+   evidence：通过稀疏注意力加速长上下文推理
+51. [An Empirical Study of Multi-Agent Collaboration for Automated Research](/202604/03/2603.29632v1-an-empirical-study-of-multi-agent-collaboration-for-automated-research)  
    标签：评分：9.0/10、query:am
    evidence：具有显式全局记忆的多智能体协作
-57. [KEditVis: A Visual Analytics System for Knowledge Editing of Large Language Models](/202604/02/2603.29689v1-keditvis-a-visual-analytics-system-for-knowledge-editing-of-large-language-models)  
-   标签：评分：9.0/10、query:pm
-   evidence：用于纠正LLM中事实信息的知识编辑技术
-58. [Temporal Memory for Resource-Constrained Agents: Continual Learning via Stochastic Compress-Add-Smooth](/202604/02/2604.00067v1-temporal-memory-for-resource-constrained-agents-continual-learning-via-stochastic-compress-add-smooth)  
+52. [Temporal Memory for Resource-Constrained Agents: Continual Learning via Stochastic Compress-Add-Smooth](/202604/03/2604.00067v1-temporal-memory-for-resource-constrained-agents-continual-learning-via-stochastic-compress-add-smooth)  
    标签：评分：9.0/10、query:am
-   evidence：资源受限智能体的时序记忆
-59. [MAC-Attention: a Match-Amend-Complete Scheme for Fast and Accurate Attention Computation](/202604/02/2604.00235v1-mac-attention-a-match-amend-complete-scheme-for-fast-and-accurate-attention-computation)  
-   标签：评分：9.0/10、query:lcp
-   evidence：长上下文解码的快速注意力计算
-60. [Agent Q-Mix: Selecting the Right Action for LLM Multi-Agent Systems through Reinforcement Learning](/202604/02/2604.00344v1-agent-q-mix-selecting-the-right-action-for-llm-multi-agent-systems-through-reinforcement-learning)  
-   标签：评分：9.0/10、query:am
-   evidence：LLM智能体的记忆机制
-61. [Spectral Compact Training: Pre-Training Large Language Models via Permanent Truncated SVD and Stiefel QR Retraction](/202604/02/2604.00733v1-spectral-compact-training-pre-training-large-language-models-via-permanent-truncated-svd-and-stiefel-qr-retraction)  
-   标签：评分：9.0/10、query:pretrain
-   evidence：通过永久截断SVD进行LLM预训练以减少内存占用
-62. [Experience as a Compass: Multi-agent RAG with Evolving Orchestration and Agent Prompts](/202604/02/2604.00901v1-experience-as-a-compass-multi-agent-rag-with-evolving-orchestration-and-agent-prompts)  
-   标签：评分：9.0/10、query:rag
-   evidence：具有演化编排的多智能体RAG
-63. [Brainstacks: Cross-Domain Cognitive Capabilities via Frozen MoE-LoRA Stacks for Continual LLM Learning](/202604/02/2604.01152v1-brainstacks-cross-domain-cognitive-capabilities-via-frozen-moe-lora-stacks-for-continual-llm-learning)  
-   标签：评分：9.0/10、query:pretrain
-   evidence：通过冻结适配器堆栈实现大模型持续学习的模块化架构
-64. [Screening Is Enough](/202604/02/2604.01178v1-screening-is-enough)  
-   标签：评分：9.0/10、query:pretrain
-   evidence：取代标准softmax注意力的新型语言模型架构
-65. [Universal YOCO for Efficient Depth Scaling](/202604/02/2604.01220v1-universal-yoco-for-efficient-depth-scaling)  
+   evidence：通过随机过程为智能体提供时间记忆
+53. [Adaptive Parallel Monte Carlo Tree Search for Efficient Test-time Compute Scaling](/202604/03/2604.00510v1-adaptive-parallel-monte-carlo-tree-search-for-efficient-test-time-compute-scaling)  
    标签：评分：9.0/10、query:ttt
-   evidence：推理过程中的测试时缩放和高效推理计算
+   evidence：通过MCTS进行测试时计算缩放
+54. [TTA-Vid: Generalized Test-Time Adaptation for Video Reasoning](/202604/03/2604.00696v1-tta-vid-generalized-test-time-adaptation-for-video-reasoning)  
+   标签：评分：9.0/10、query:ttt
+   evidence：视频推理模型的测试时自适应
+55. [Spectral Compact Training: Pre-Training Large Language Models via Permanent Truncated SVD and Stiefel QR Retraction](/202604/03/2604.00733v1-spectral-compact-training-pre-training-large-language-models-via-permanent-truncated-svd-and-stiefel-qr-retraction)  
+   标签：评分：9.0/10、query:pretrain
+   evidence：使用永久截断SVD进行高效预训练的新模型架构
+56. [Learning to Learn-at-Test-Time: Language Agents with Learnable Adaptation Policies](/202604/03/2604.00830v1-learning-to-learn-at-test-time-language-agents-with-learnable-adaptation-policies)  
+   标签：评分：9.0/10、query:ttt
+   evidence：智能体测试时学习的可学习自适应策略
+57. [Universal YOCO for Efficient Depth Scaling](/202604/03/2604.01220v1-universal-yoco-for-efficient-depth-scaling)  
+   标签：评分：9.0/10、query:pretrain
+   evidence：用于高效测试时缩放的新模型架构
+58. [HippoCamp: Benchmarking Contextual Agents on Personal Computers](/202604/03/2604.01221v1-hippocamp-benchmarking-contextual-agents-on-personal-computers)  
+   标签：评分：9.0/10、query:am
+   evidence：基于个人文件记忆的上下文智能体基准测试
+59. [Procedural Knowledge at Scale Improves Reasoning](/202604/03/2604.01348v1-procedural-knowledge-at-scale-improves-reasoning)  
+   标签：评分：9.0/10、query:rag
+   evidence：程序性知识的检索增强生成
+60. [Friends and Grandmothers in Silico: Localizing Entity Cells in Language Models](/202604/03/2604.01404v1-friends-and-grandmothers-in-silico-localizing-entity-cells-in-language-models)  
+   标签：评分：9.0/10、query:pm
+   evidence：定位用于事实知识检索的实体选择性MLP神经元
+61. [Thinking While Listening: Fast-Slow Recurrence for Long-Horizon Sequential Modeling](/202604/03/2604.01577v1-thinking-while-listening-fast-slow-recurrence-for-long-horizon-sequential-modeling)  
+   标签：评分：9.0/10、query:lcp
+   evidence：用于长程序列建模的快慢循环机制
+62. [ContextBudget: Budget-Aware Context Management for Long-Horizon Search Agents](/202604/03/2604.01664v1-contextbudget-budget-aware-context-management-for-long-horizon-search-agents)  
+   标签：评分：9.0/10、query:cd
+   evidence：针对长程智能体的预算感知上下文管理与历史压缩
+63. [MiCA Learns More Knowledge Than LoRA and Full Fine-Tuning](/202604/03/2604.01694v1-mica-learns-more-knowledge-than-lora-and-full-fine-tuning)  
+   标签：评分：9.0/10、query:pm
+   evidence：用于提升权重中知识获取的参数高效微调
+64. [From BM25 to Corrective RAG: Benchmarking Retrieval Strategies for Text-and-Table Documents](/202604/03/2604.01733v1-from-bm25-to-corrective-rag-benchmarking-retrieval-strategies-for-text-and-table-documents)  
+   标签：评分：9.0/10、query:rag
+   evidence：检索增强生成 (RAG) 检索策略的基准测试
+65. [CANDI: Curated Test-Time Adaptation for Multivariate Time-Series Anomaly Detection Under Distribution Shift](/202604/03/2604.01845v1-candi-curated-test-time-adaptation-for-multivariate-time-series-anomaly-detection-under-distribution-shift)  
+   标签：评分：9.0/10、query:ttt
+   evidence：测试时自适应 (TTA) 在线更新预训练模型
+66. [Learn by Surprise, Commit by Proof](/202604/03/2604.01951v1-learn-by-surprise-commit-by-proof)  
+   标签：评分：9.0/10、query:pm
+   evidence：自主知识获取与参数中既有知识的强化
+67. [Test-Time Adaptation for Height Completion via Self-Supervised ViT Features and Monocular Foundation Models](/202604/03/2604.02009v1-test-time-adaptation-for-height-completion-via-self-supervised-vit-features-and-monocular-foundation-models)  
+   标签：评分：9.0/10、query:ttt
+   evidence：地理空间任务中基础模型的测试时自适应
+68. [Neuro-RIT: Neuron-Guided Instruction Tuning for Robust Retrieval-Augmented Language Model](/202604/03/2604.02194v1-neuro-rit-neuron-guided-instruction-tuning-for-robust-retrieval-augmented-language-model)  
+   标签：评分：9.0/10、query:rag
+   evidence：用于鲁棒RAG的神经元引导指令微调
+69. [Stop Wandering: Efficient Vision-Language Navigation via Metacognitive Reasoning](/202604/03/2604.02318v1-stop-wandering-efficient-vision-language-navigation-via-metacognitive-reasoning)  
+   标签：评分：9.0/10、query:am
+   evidence：导航智能体的空间记忆与历史感知规划
 
 ### 速读区论文标签
-1. [How Vulnerable Are Edge LLMs?](/202604/02/2603.23822v1-how-vulnerable-are-edge-llms)  
-   标签：评分：8.0/10、query:pm
-   evidence：从量化边缘LLM的参数中进行基于查询的知识提取
-2. [ELITE: Experiential Learning and Intent-Aware Transfer for Self-improving Embodied Agents](/202604/02/2603.24018v1-elite-experiential-learning-and-intent-aware-transfer-for-self-improving-embodied-agents)  
+1. [AuthorityBench: Benchmarking LLM Authority Perception for Reliable Retrieval-Augmented Generation](/202604/03/2603.25092v1-authoritybench-benchmarking-llm-authority-perception-for-reliable-retrieval-augmented-generation)  
+   标签：评分：8.0/10、query:rag
+   evidence：评估可靠RAG中的权威感知基准
+2. [Vision Hopfield Memory Networks](/202604/03/2603.25157v1-vision-hopfield-memory-networks)  
+   标签：评分：8.0/10、query:pretrain
+   evidence：具有分层记忆机制的类脑基础骨干网络
+3. [Trace2Skill: Distill Trajectory-Local Lessons into Transferable Agent Skills](/202604/03/2603.25158v1-trace2skill-distill-trajectory-local-lessons-into-transferable-agent-skills)  
    标签：评分：8.0/10、query:am
-   evidence：具身智能体的经验学习与知识迁移
-3. [Towards Effective Experiential Learning: Dual Guidance for Utilization and Internalization](/202604/02/2603.24093v1-towards-effective-experiential-learning-dual-guidance-for-utilization-and-internalization)  
-   标签：评分：8.0/10、query:pm
-   evidence：将有用的轨迹内化为权重中的稳定知识
-4. [TuneShift-KD: Knowledge Distillation and Transfer for Fine-tuned Models](/202604/02/2603.24518v1-tuneshift-kd-knowledge-distillation-and-transfer-for-fine-tuned-models)  
-   标签：评分：8.0/10、query:pm
-   evidence：将专门知识从微调参数蒸馏至目标模型
-5. [Infrastructure for Valuable, Tradable, and Verifiable Agent Memory](/202604/02/2603.24564v1-infrastructure-for-valuable-tradable-and-verifiable-agent-memory)  
+   evidence：从执行经验中蒸馏智能体技能
+4. [Trace2Skill: Distill Trajectory-Local Lessons into Transferable Agent Skills](/202604/03/2603.25158v2-trace2skill-distill-trajectory-local-lessons-into-transferable-agent-skills)  
    标签：评分：8.0/10、query:am
-   evidence：可验证和可交易的智能体记忆基础设施
-6. [Self-Evolving Multi-Agent Framework for Efficient Decision Making in Real-Time Strategy Scenarios](/202604/02/2603.23875v1-self-evolving-multi-agent-framework-for-efficient-decision-making-in-real-time-strategy-scenarios)  
-   标签：评分：7.0/10、query:am
-   evidence：用于自主智能体决策的多智能体框架
-7. [From AI Assistant to AI Scientist: Autonomous Discovery of LLM-RL Algorithms with LLM Agents](/202604/02/2603.23951v1-from-ai-assistant-to-ai-scientist-autonomous-discovery-of-llm-rl-algorithms-with-llm-agents)  
-   标签：评分：7.0/10、query:am
-   evidence：使用结构化经验证据存档的LLM智能体
-8. [Diet Your LLM: Dimension-wise Global Pruning of LLMs via Merging Task-specific Importance Score](/202604/02/2603.23985v1-diet-your-llm-dimension-wise-global-pruning-of-llms-via-merging-task-specific-importance-score)  
+   evidence：将执行经验蒸馏为可迁移的智能体技能
+5. [Trace2Skill: Distill Trajectory-Local Lessons into Transferable Agent Skills](/202604/03/2603.25158v3-trace2skill-distill-trajectory-local-lessons-into-transferable-agent-skills)  
+   标签：评分：8.0/10、query:am
+   evidence：将轨迹局部经验蒸馏为可迁移的智能体技能
+6. [Estimating near-verbatim extraction risk in language models with decoding-constrained beam search](/202604/03/2603.24917v1-estimating-near-verbatim-extraction-risk-in-language-models-with-decoding-constrained-beam-search)  
+   标签：评分：7.0/10、query:pm
+   evidence：量化大模型中的记忆与提取风险
+7. [Beyond Attention Magnitude: Leveraging Inter-layer Rank Consistency for Efficient Vision-Language-Action Models](/202604/03/2603.24941v1-beyond-attention-magnitude-leveraging-inter-layer-rank-consistency-for-efficient-vision-language-action-models)  
+   标签：评分：7.0/10、query:cd
+   evidence：视觉-语言-动作模型高效推理的动态令牌选择
+8. [GIFT: Global Irreplaceability Frame Targeting for Efficient Video Understanding](/202604/03/2603.25072v1-gift-global-irreplaceability-frame-targeting-for-efficient-video-understanding)  
+   标签：评分：7.0/10、query:cd
+   evidence：高效视频上下文压缩的全局帧定位
+9. [Separate Before You Compress: The WWHO Tokenization Architecture](/202604/03/2603.25309v1-separate-before-you-compress-the-wwho-tokenization-architecture)  
    标签：评分：7.0/10、query:pretrain
-   evidence：通过剪枝实现基础模型的高效架构
-9. [MoE-Sieve: Routing-Guided LoRA for Efficient MoE Fine-Tuning](/202604/02/2603.24044v1-moe-sieve-routing-guided-lora-for-efficient-moe-fine-tuning)  
-   标签：评分：7.0/10、query:pretrain
-   evidence：高效MoE微调与模型架构
-10. [CarePilot: A Multi-Agent Framework for Long-Horizon Computer Task Automation in Healthcare](/202604/02/2603.24157v1-carepilot-a-multi-agent-framework-for-long-horizon-computer-task-automation-in-healthcare)  
-   标签：评分：7.0/10、query:am
-   evidence：智能体的长跨度计算机任务自动化
-11. [Efficient Benchmarking of AI Agents](/202604/02/2603.23749v1-efficient-benchmarking-of-ai-agents)  
+   evidence：用于高效LLM推理的新型分词架构
+10. [Investigating the Fundamental Limit: A Feasibility Study of Hybrid-Neural Archival](/202604/03/2603.25526v1-investigating-the-fundamental-limit-a-feasibility-study-of-hybrid-neural-archival)  
+   标签：评分：7.0/10、query:cd
+   evidence：基于LLM的归档与无损压缩可行性研究
+11. [Context-Mediated Domain Adaptation in Multi-Agent Sensemaking Systems](/202604/03/2603.24858v1-context-mediated-domain-adaptation-in-multi-agent-sensemaking-systems)  
    标签：评分：6.0/10、query:am
-   evidence：AI智能体基准测试与智能体脚手架评估
-12. [Self-Distillation for Multi-Token Prediction](/202604/02/2603.23911v1-self-distillation-for-multi-token-prediction)  
-   标签：评分：6.0/10、query:pretrain
-   evidence：用于推理加速的高效模型架构
-13. [Towards Energy-aware Requirements Dependency Classification: Knowledge-Graph vs. Vector-Retrieval Augmented Inference with SLMs](/202604/02/2603.23954v1-towards-energy-aware-requirements-dependency-classification-knowledge-graph-vs-vector-retrieval-augmented-inference-with-slms)  
-   标签：评分：6.0/10、query:rag
-   evidence：知识图谱与向量检索增强推理的对比
-14. [OneSearch-V2: The Latent Reasoning Enhanced Self-distillation Generative Search Framework](/202604/02/2603.24422v1-onesearch-v2-the-latent-reasoning-enhanced-self-distillation-generative-search-framework)  
+   evidence：多智能体系统中的上下文介导领域自适应
+12. [Cross-Preference Learning for Sentence-Level and Context-Aware Machine Translation](/202604/03/2603.25183v1-cross-preference-learning-for-sentence-level-and-context-aware-machine-translation)  
+   标签：评分：6.0/10、query:lcp
+   evidence：利用文档级信息的上下文感知机器翻译
+13. [CLIP-RD: Relational Distillation for Efficient CLIP Knowledge Distillation](/202604/03/2603.25383v2-clip-rd-relational-distillation-for-efficient-clip-knowledge-distillation)  
    标签：评分：6.0/10、query:cd
-   evidence：自蒸馏生成式搜索
-15. [Context-Mediated Domain Adaptation in Multi-Agent Sensemaking Systems](/202604/02/2603.24858v1-context-mediated-domain-adaptation-in-multi-agent-sensemaking-systems)  
-   标签：评分：6.0/10、query:am
-   evidence：由上下文重塑的多智能体推理行为
+   evidence：用于高效学生模型的关系知识蒸馏
+14. [VeRA+: Vector-Based Lightweight Digital Compensation for Drift-Resilient RRAM In-Memory Computing](/202604/03/2603.26016v1-vera-vector-based-lightweight-digital-compensation-for-drift-resilient-rram-in-memory-computing)  
+   标签：评分：6.0/10、query:pm
+   evidence：具有漂移韧性的存内计算以保证长期准确性
+15. [On associative neural networks for sparse patterns with huge capacities](/202604/03/2603.26217v1-on-associative-neural-networks-for-sparse-patterns-with-huge-capacities)  
+   标签：评分：6.0/10、query:pm
+   evidence：关联记忆模型与存储容量
 
 
 <div class="dpr-home-promo-card">

@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.26447v1/fig-001.webp",
+      "caption": "Table 4: Out-of-domain generalization analysis. ∆ MPJPE represents performance degradation compared to in-domain training.",
+      "page": 7,
+      "index": 1,
+      "width": 794,
+      "height": 258
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26447v1/fig-002.webp",
+      "caption": "Figure 2: Convergence analysis of our adaptive optimization framework.",
+      "page": 7,
+      "index": 2,
+      "width": 1010,
+      "height": 285
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26447v1/fig-003.webp",
+      "caption": "Table 1: Quantitative comparison with state-of-the-art methods on 3DPW (Von Marcard et al. 2018) and Human3.6M (Ionescu et al. 2013) datasets. Best results in bold.",
+      "page": 6,
+      "index": 3,
+      "width": 1044,
+      "height": 385
+    },
+    {
+      "url": "assets/figures/arxiv/2603.26447v1/fig-004.webp",
+      "caption": "Figure 1: Overview of our meta-learned adaptive optimization framework for human mesh recovery.",
+      "page": 3,
+      "index": 4,
+      "width": 1006,
+      "height": 643
+    }
+  ]
+}

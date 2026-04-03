@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.25092v1/fig-001.webp",
+      "caption": "Table 1: Results on DomainAuth (fine-grained, 10-level) reported as Spearman’s ρ (%) and Kendall’s τ (%). Bold: best; underline: second best, per LLM.",
+      "page": 6,
+      "index": 1,
+      "width": 944,
+      "height": 340
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25092v1/fig-002.webp",
+      "caption": "Figure 5: An example from the RAGAuth dataset. Each instance includes a yes/no question, the ground-truth answer, and a list of 10 retrieved documents with their source URL, domain, PageRank score, and text snippet. The task is to generate a correct answer based on this information.",
+      "page": 15,
+      "index": 2,
+      "width": 458,
+      "height": 519
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25092v1/fig-003.webp",
+      "caption": "Figure 1: An illustration of the authority perception challenge in RAG. When faced with conflicting information from sources of varying authority (e.g., a high-authority medical institution like Mayo Clinic vs. lower-authority lifestyle blogs), an LLM must correctly discern which source to trust to provide a reliable answer. Our work investigates this capability.",
+      "page": 2,
+      "index": 3,
+      "width": 854,
+      "height": 433
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25092v1/fig-004.webp",
+      "caption": "Figure 4: Authority-aware RAG pipeline: retrieved documents are LLM-scored; top-k go to the generator. Filtering signals: (a) w/o Filter; (b) Relevance Filter; (c) Utility Filter; (d) Authority Filter (source URL only; no document content). All prompts in this section are provided in Appendix A.",
+      "page": 7,
+      "index": 4,
+      "width": 458,
+      "height": 350
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25092v1/fig-005.webp",
+      "caption": "Table 2: Results on DomainAuth (coarse-grained, 5-level) reported as Spearman’s ρ (%) and Kendall’s τ (%). Bold: best; underline: second best, per model.",
+      "page": 7,
+      "index": 5,
+      "width": 944,
+      "height": 340
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25092v1/fig-006.webp",
+      "caption": "Table 4: Results on EntityAuth (fine-grained, 10-level, w/o text) across three domains reported as Spearman’s ρ (%) and Kendall’s τ (%). Bold: best; underline: second best, per LLM per domain.",
+      "page": 8,
+      "index": 6,
+      "width": 946,
+      "height": 406
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25092v1/fig-007.webp",
+      "caption": "Table 5: Answer accuracy (%) on RAGAuth across four models under different filtering strategies and topk settings (k ∈ {1, 3, 5}). Bold: best per LLM per k.",
+      "page": 8,
+      "index": 7,
+      "width": 448,
+      "height": 489
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25092v1/fig-008.webp",
+      "caption": "Figure 2: An overview of AuthorityBench. It consists of three sub-tasks: DomainAuth for source authority, EntityAuth for entity authority, and RAGAuth for downstream RAG evaluation. The outer rings show the topic distribution within each dataset.",
+      "page": 4,
+      "index": 8,
+      "width": 415,
+      "height": 413
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25092v1/fig-009.webp",
+      "caption": "Table 9: PairJudge ranking derivation methods on DomainAuth (fine-grained). Spearman’s ρ (%). Bold: best; underline: second best, per row.",
+      "page": 17,
+      "index": 9,
+      "width": 467,
+      "height": 308
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25092v1/fig-010.webp",
+      "caption": "Table 10: PairJudge ranking derivation methods on DomainAuth (coarse-grained). Spearman’s ρ (%). Bold: best; underline: second best, per row.",
+      "page": 17,
+      "index": 10,
+      "width": 467,
+      "height": 307
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25092v1/fig-011.webp",
+      "caption": "Figure 6: Heatmap of prediction bias (predicted - true score) on DomainAuth for the Pointwise-Judge. Red cells indicate overestimation, while blue cells indicate underestimation. Most models tend to overestimate low-authority sources and underestimate high-authority ones.",
+      "page": 17,
+      "index": 11,
+      "width": 444,
+      "height": 389
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25092v1/fig-012.webp",
+      "caption": "Table 7: Overview of the AuthorityBench. Corpus is the number of unique items. †Listwise instances are split between N=5 and N=10 formats. ‡Pairwise instances are split between hard (0 < ∆PageRank≤2) and easy (∆PageRank≥5) pairs. EntityAuth uses only N=10 lists and does not include a Pairwise setting. For RAGAuth, each query is paired with 10 retrieved webpage documents.",
+      "page": 16,
+      "index": 12,
+      "width": 971,
+      "height": 220
+    },
+    {
+      "url": "assets/figures/arxiv/2603.25092v1/fig-013.webp",
+      "caption": "Table 6: Results on EntityAuth (coarse-grained, 5-level, w/o text) across three domains reported as Spearman’s ρ and Kendall’s τ (%). Bold: best; underline: second best, per model per domain.",
+      "page": 16,
+      "index": 13,
+      "width": 946,
+      "height": 489
+    }
+  ]
+}
