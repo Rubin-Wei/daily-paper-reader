@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.01350v1/fig-001.webp",
+      "caption": "Figure 2: Overview of the shared-state agent architecture. Multiple users in a shared environment interact with the same LLM agent, which reads from and writes to persistent shared state. We study two instantiations: a shared memory bank (e.g., EHRAgent) and a shared conversational context (e.g., MURMUR). We further evaluate a write-time defense, Sanitized Shared Interaction (i.e., SSI, covered in Section 4), which sanitizes interaction traces before they enter the shared store.",
+      "page": 3,
+      "index": 1,
+      "width": 824,
+      "height": 286
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01350v1/fig-002.webp",
+      "caption": "Table 5: eICU source conventions.",
+      "page": 18,
+      "index": 2,
+      "width": 798,
+      "height": 798
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01350v1/fig-003.webp",
+      "caption": "Figure 3: Contamination rates (%) with and without SSI, broken down by contamination type and dataset. SSI nearly eliminates contamination on Slack (57% → 6%) but leaves substantial residual risk on EHRAgent, particularly for procedural contamination.",
+      "page": 8,
+      "index": 3,
+      "width": 812,
+      "height": 230
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01350v1/fig-004.webp",
+      "caption": "Table 6: Slack source conventions.",
+      "page": 19,
+      "index": 4,
+      "width": 798,
+      "height": 662
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01350v1/fig-005.webp",
+      "caption": "Table 4: MIMIC-III source conventions.",
+      "page": 17,
+      "index": 5,
+      "width": 798,
+      "height": 634
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01350v1/fig-006.webp",
+      "caption": "Table 1: Taxonomy of contamination types. Each type reflects a different way in which a locally valid convention can be incorrectly reused for a later user.",
+      "page": 5,
+      "index": 6,
+      "width": 822,
+      "height": 209
+    }
+  ]
+}

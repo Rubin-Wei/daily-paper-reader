@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.27008v1/fig-001.webp",
+      "caption": "Figure 1: Evolution of research directions leading to the RASPRef framework.",
+      "page": 3,
+      "index": 1,
+      "width": 829,
+      "height": 416
+    },
+    {
+      "url": "assets/figures/arxiv/2603.27008v1/fig-002.webp",
+      "caption": "Figure 2: Iterative prompt refinement workflow of the RASPRef framework.",
+      "page": 6,
+      "index": 2,
+      "width": 827,
+      "height": 529
+    }
+  ]
+}
