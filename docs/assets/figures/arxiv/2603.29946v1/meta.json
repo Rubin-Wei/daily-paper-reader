@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2603.29946v1/fig-001.webp",
+      "caption": "Table 1: ROC-AUC benchmark across tabular datasets. Foundation models are separated from classical baselines. Datasets are split into HPO and Eval-only subsets, with per-group averages. ShapPFN(+loss) is the proposed full method; ShapPFN(arch) is the same architecture with loss weight set to 0. Best score per row is in bold and highlighted in gold; second/third best are highlighted in silver/bronze. 4",
+      "page": 4,
+      "index": 1,
+      "width": 826,
+      "height": 1284
+    },
+    {
+      "url": "assets/figures/arxiv/2603.29946v1/fig-002.webp",
+      "caption": "Table 2: SHAP values quality and computational efficiency. SHAP approximation quality and computation time across datasets. Quality metrics: R2, Cosine similarity, Spearman correlation (vs KernelSHAP). ShapPFN(+loss) is the full model with SHAP loss; ShapPFN(arch) uses the same architecture without SHAP loss. SHAP values are computed using a background set of 150 samples and explanations are generated for 50 test instances per dataset. Times in seconds; speedup uses geometric mean.",
+      "page": 5,
+      "index": 2,
+      "width": 830,
+      "height": 675
+    },
+    {
+      "url": "assets/figures/arxiv/2603.29946v1/fig-003.webp",
+      "caption": "Table 3: Sequential hyperparameter optimization. Each block optimizes one parameter (highlighted in gray) while keeping others fixed. Best ROC AUC in each block shown in bold.",
+      "page": 7,
+      "index": 3,
+      "width": 518,
+      "height": 361
+    }
+  ]
+}

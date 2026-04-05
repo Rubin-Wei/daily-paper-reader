@@ -1,0 +1,2642 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-04-05T19:42:04.825825+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 5,
+    "deep_divecandidates": 75,
+    "deep_cap": 10,
+    "deep_selected": 46,
+    "quick_candidates": 72,
+    "quick_skim_target": 15,
+    "quick_selected": 15
+  },
+  "deep_dive": [
+    {
+      "id": "2603.27910v1",
+      "source": "arxiv",
+      "title": "GAAMA: Graph Augmented Associative Memory for Agents",
+      "abstract": "AI agents that interact with users across multiple sessions require persistent long-term memory to maintain coherent, personalized behavior. Current approaches either rely on flat retrieval-augmented generation (RAG), which loses structural relationships between memories, or use memory compression and vector retrieval that cannot capture the associative structure of multi-session conversations. There are few graph based techniques proposed in the literature, however they still suffer from hub dominated retrieval and poor hierarchical reasoning over evolving memory. We propose GAAMA, a graph-augmented associative memory system that constructs a concept-mediated hierarchical knowledge graph through a three-step pipeline: (1)~verbatim episode preservation from raw conversations, (2)~LLM-based extraction of atomic facts and topic-level concept nodes, and (3)~synthesis of higher-order reflections. The resulting graph uses four node types (episode, fact, reflection, concept) connected by five structural edge types, with concept nodes providing cross-cutting traversal paths that complement semantic similarity. Retrieval combines cosine-similarity-based $k$-nearest neighbor search with edge-type-aware Personalized PageRank (PPR) through an additive scoring function. On the LoCoMo-10 benchmark (1,540 questions across 10 multi-session conversations), GAAMA achieves 78.9\\% mean reward, outperforming a tuned RAG baseline (75.0\\%), HippoRAG (69.9\\%), A-Mem (47.2\\%), and Nemori (52.1\\%). Ablation analysis shows that augmenting graph-traversal-based ranking (Personalized PageRank) with semantic search consistently improves over pure semantic search on graph nodes (+1.0 percentage point overall).",
+      "authors": [
+        "Swarna Kamal Paul",
+        "Shubhendu Sharma",
+        "Nitin Sareen"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.IR",
+        "cs.MA"
+      ],
+      "published": "2026-03-29T23:33:38+00:00",
+      "link": "https://arxiv.org/pdf/2603.27910v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:PM",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "graph-augmented associative memory system for agents",
+      "llm_evidence_cn": "面向智能体的图增强关联记忆系统",
+      "llm_evidence": "面向智能体的图增强关联记忆系统",
+      "canonical_evidence": "面向智能体的图增强关联记忆系统",
+      "llm_tldr_en": "Proposes GAAMA, a hierarchical knowledge graph memory system for persistent long-term agent interactions.",
+      "llm_tldr_cn": "提出 GAAMA，一种基于层次化知识图谱的智能体长期记忆系统，增强关联推理能力。",
+      "llm_tldr": "提出 GAAMA，一种基于层次化知识图谱的智能体长期记忆系统，增强关联推理能力。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.28088v1",
+      "source": "arxiv",
+      "title": "GEMS: Agent-Native Multimodal Generation with Memory and Skills",
+      "abstract": "Recent multimodal generation models have achieved remarkable progress on general-purpose generation tasks, yet continue to struggle with complex instructions and specialized downstream tasks. Inspired by the success of advanced agent frameworks such as Claude Code, we propose \\textbf{GEMS} (Agent-Native Multimodal \\textbf{GE}neration with \\textbf{M}emory and \\textbf{S}kills), a framework that pushes beyond the inherent limitations of foundational models on both general and downstream tasks. GEMS is built upon three core components. Agent Loop introduces a structured multi-agent framework that iteratively improves generation quality through closed-loop optimization. Agent Memory provides a persistent, trajectory-level memory that hierarchically stores both factual states and compressed experiential summaries, enabling a global view of the optimization process while reducing redundancy. Agent Skill offers an extensible collection of domain-specific expertise with on-demand loading, allowing the system to effectively handle diverse downstream applications. Across five mainstream tasks and four downstream tasks, evaluated on multiple generative backends, GEMS consistently achieves significant performance gains. Most notably, it enables the lightweight 6B model Z-Image-Turbo to surpass the state-of-the-art Nano Banana 2 on GenEval2, demonstrating the effectiveness of agent harness in extending model capabilities beyond their original limits.",
+      "authors": [
+        "Zefeng He",
+        "Siyuan Huang",
+        "Xiaoye Qu",
+        "Yafu Li",
+        "Tong Zhu",
+        "Yu Cheng",
+        "Yang Yang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-03-30T06:42:55+00:00",
+      "link": "https://arxiv.org/pdf/2603.28088v1",
+      "tags": [
+        "keyword:AM",
+        "query:AM"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Agent Memory provides persistent trajectory-level memory",
+      "llm_evidence_cn": "智能体记忆提供持久的轨迹级存储",
+      "llm_evidence": "智能体记忆提供持久的轨迹级存储",
+      "canonical_evidence": "智能体记忆提供持久的轨迹级存储",
+      "llm_tldr_en": "Introduces GEMS, a framework using agent memory and skills to improve multimodal generation quality.",
+      "llm_tldr_cn": "引入了 GEMS 框架，利用智能体记忆和技能来提高多模态生成的质量。",
+      "llm_tldr": "引入了 GEMS 框架，利用智能体记忆和技能来提高多模态生成的质量。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.29085v1",
+      "source": "arxiv",
+      "title": "PAR$^2$-RAG: Planned Active Retrieval and Reasoning for Multi-Hop Question Answering",
+      "abstract": "Large language models (LLMs) remain brittle on multi-hop question answering (MHQA), where answering requires combining evidence across documents through retrieval and reasoning. Iterative retrieval systems can fail by locking onto an early low-recall trajectory and amplifying downstream errors, while planning-only approaches may produce static query sets that cannot adapt when intermediate evidence changes. We propose \\textbf{Planned Active Retrieval and Reasoning RAG (PAR$^2$-RAG)}, a two-stage framework that separates \\emph{coverage} from \\emph{commitment}. PAR$^2$-RAG first performs breadth-first anchoring to build a high-recall evidence frontier, then applies depth-first refinement with evidence sufficiency control in an iterative loop. Across four MHQA benchmarks, PAR$^2$-RAG consistently outperforms existing state-of-the-art baselines, compared with IRCoT, PAR$^2$-RAG achieves up to \\textbf{23.5\\%} higher accuracy, with retrieval gains of up to \\textbf{10.5\\%} in NDCG.",
+      "authors": [
+        "Xingyu Li",
+        "Rongguang Wang",
+        "Yuying Wang",
+        "Mengqing Guo",
+        "Chenyang Li",
+        "Tao Sheng",
+        "Sujith Ravi",
+        "Dan Roth"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-03-30T23:52:54+00:00",
+      "link": "https://arxiv.org/pdf/2603.29085v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:PM",
+        "keyword:TTT",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Planned Active Retrieval and Reasoning RAG",
+      "llm_evidence_cn": "规划的主动检索与推理 RAG",
+      "llm_evidence": "规划的主动检索与推理 RAG",
+      "canonical_evidence": "规划的主动检索与推理 RAG",
+      "llm_tldr_en": "A two-stage RAG framework that improves multi-hop question answering through planned active retrieval.",
+      "llm_tldr_cn": "一种两阶段 RAG 框架，通过规划的主动检索改进多跳问答。",
+      "llm_tldr": "一种两阶段 RAG 框架，通过规划的主动检索改进多跳问答。",
+      "llm_tags": [
+        "query:rag:composite"
+      ],
+      "matched_query_tag": "query:rag:composite",
+      "matched_query_text": "Papers central to RAG, especially work that connects or combines: Agentic RAG; agentic RAG for complex question answering; retrieval augmented generation for large language models.",
+      "matched_requirement_id": "req-composite-rag",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.29493v1",
+      "source": "arxiv",
+      "title": "MemFactory: Unified Inference & Training Framework for Agent Memory",
+      "abstract": "Memory-augmented Large Language Models (LLMs) are essential for developing capable, long-term AI agents. Recently, applying Reinforcement Learning (RL) to optimize memory operations, such as extraction, updating, and retrieval, has emerged as a highly promising research direction. However, existing implementations remain highly fragmented and task-specific, lacking a unified infrastructure to streamline the integration, training, and evaluation of these complex pipelines. To address this gap, we present MemFactory, the first unified, highly modular training and inference framework specifically designed for memory-augmented agents. Inspired by the success of unified fine-tuning frameworks like LLaMA-Factory, MemFactory abstracts the memory lifecycle into atomic, plug-and-play components, enabling researchers to seamlessly construct custom memory agents via a \"Lego-like\" architecture. Furthermore, the framework natively integrates Group Relative Policy Optimization (GRPO) to fine-tune internal memory management policies driven by multi-dimensional environmental rewards. MemFactory provides out-of-the-box support for recent cutting-edge paradigms, including Memory-R1, RMM, and MemAgent. We empirically validate MemFactory on the open-source MemAgent architecture using its publicly available training and evaluation data. Across both in-domain and out-of-distribution evaluation sets, MemFactory consistently improves performance over the corresponding base models, with relative gains of up to 14.8%. By providing a standardized, extensible, and easy-to-use infrastructure, MemFactory significantly lowers the barrier to entry, paving the way for future innovations in memory-driven AI agents.",
+      "authors": [
+        "Ziliang Guo",
+        "Ziheng Li",
+        "Zhiyu Li"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-03-31T09:38:21+00:00",
+      "link": "https://arxiv.org/pdf/2603.29493v1",
+      "tags": [
+        "keyword:AM",
+        "query:AM",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "unified framework for memory-augmented agents",
+      "llm_evidence_cn": "记忆增强型智能体的统一框架",
+      "llm_evidence": "记忆增强型智能体的统一框架",
+      "canonical_evidence": "记忆增强型智能体的统一框架",
+      "llm_tldr_en": "Presents MemFactory, a modular framework for training and inferring memory-augmented LLM agents.",
+      "llm_tldr_cn": "推出MemFactory，一个专门用于记忆增强型大模型智能体训练与推理的统一模块化框架。",
+      "llm_tldr": "推出MemFactory，一个专门用于记忆增强型大模型智能体训练与推理的统一模块化框架。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.29493v3",
+      "source": "arxiv",
+      "title": "MemFactory: Unified Inference & Training Framework for Agent Memory",
+      "abstract": "Memory-augmented Large Language Models (LLMs) are essential for developing capable, long-term AI agents. Recently, applying Reinforcement Learning (RL) to optimize memory operations, such as extraction, updating, and retrieval, has emerged as a highly promising research direction. However, existing implementations remain highly fragmented and task-specific, lacking a unified infrastructure to streamline the integration, training, and evaluation of these complex pipelines. To address this gap, we present MemFactory, the first unified, highly modular training and inference framework specifically designed for memory-augmented agents. Inspired by the success of unified fine-tuning frameworks like LLaMA-Factory, MemFactory abstracts the memory lifecycle into atomic, plug-and-play components, enabling researchers to seamlessly construct custom memory agents via a \"Lego-like\" architecture. Furthermore, the framework natively integrates Group Relative Policy Optimization (GRPO) to fine-tune internal memory management policies driven by multi-dimensional environmental rewards. MemFactory provides out-of-the-box support for recent cutting-edge paradigms, including Memory-R1, RMM, and MemAgent. We empirically validate MemFactory on the open-source MemAgent architecture using its publicly available training and evaluation data. Across the evaluation sets, MemFactory improves performance over the corresponding base models on average, with relative gains of up to 14.8%. By providing a standardized, extensible, and easy-to-use infrastructure, MemFactory significantly lowers the barrier to entry, paving the way for future innovations in memory-driven AI agents.",
+      "authors": [
+        "Ziliang Guo",
+        "Ziheng Li",
+        "Bo Tang",
+        "Feiyu Xiong",
+        "Zhiyu Li"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-03-31T09:38:21+00:00",
+      "link": "https://arxiv.org/pdf/2603.29493v3",
+      "tags": [
+        "keyword:AM",
+        "query:AM",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Unified framework for memory-augmented agents and memory lifecycle management",
+      "llm_evidence_cn": "记忆增强型智能体的统一框架及记忆生命周期管理",
+      "llm_evidence": "记忆增强型智能体的统一框架及记忆生命周期管理",
+      "canonical_evidence": "记忆增强型智能体的统一框架及记忆生命周期管理",
+      "llm_tldr_en": "MemFactory is a modular framework for training and evaluating memory-augmented LLM agents using RL.",
+      "llm_tldr_cn": "MemFactory 是首个专为记忆增强型智能体设计的统一模块化训练与推理框架。",
+      "llm_tldr": "MemFactory 是首个专为记忆增强型智能体设计的统一模块化训练与推理框架。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.29494v1",
+      "source": "arxiv",
+      "title": "VecAttention: Vector-wise Sparse Attention for Accelerating Long Context Inference",
+      "abstract": "Long-context video understanding and generation pose a significant computational challenge for Transformer-based video models due to the quadratic complexity of self-attention. While existing sparse attention methods employ coarse-grained patterns to improve efficiency, they typically incur redundant computation and suboptimal performance. To address this issue, in this paper, we propose \\textbf{VecAttention}, a novel framework of vector-wise sparse attention that achieves superior accuracy-efficiency trade-offs for video models. We observe that video attention maps exhibit a strong vertical-vector sparse pattern, and further demonstrate that this vertical-vector pattern offers consistently better accuracy-sparsity trade-offs compared with existing coarse-grained sparse patterns. Based on this observation, VecAttention dynamically selects and processes only informative vertical vectors through a lightweight important-vector selection that minimizes memory access overhead and an optimized kernel of vector sparse attention. Comprehensive evaluations on video understanding (VideoMME, LongVideoBench, and VCRBench) and generation (VBench) tasks show that VecAttention delivers a 2.65$\\times$ speedup over full attention and a 1.83$\\times$ speedup over state-of-the-art sparse attention methods, with comparable accuracy to full attention. Our code is available at https://github.com/anminliu/VecAttention.",
+      "authors": [
+        "Anmin Liu",
+        "Ruixuan Yang",
+        "Huiqiang Jiang",
+        "Bin Lin",
+        "Minmin Sun",
+        "Yong Li",
+        "Chen Zhang",
+        "Tao Xie"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-03-31T09:38:31+00:00",
+      "link": "https://arxiv.org/pdf/2603.29494v1",
+      "tags": [
+        "keyword:LCP"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "vector-wise sparse attention for accelerating long context inference",
+      "llm_evidence_cn": "用于加速长上下文推理的向量级稀疏注意力",
+      "llm_evidence": "用于加速长上下文推理的向量级稀疏注意力",
+      "canonical_evidence": "用于加速长上下文推理的向量级稀疏注意力",
+      "llm_tldr_en": "VecAttention accelerates long-context video inference using a novel vector-wise sparse attention pattern.",
+      "llm_tldr_cn": "VecAttention利用一种新型的向量级稀疏注意力模式加速了长上下文视频推理。",
+      "llm_tldr": "VecAttention利用一种新型的向量级稀疏注意力模式加速了长上下文视频推理。",
+      "llm_tags": [
+        "query:lcp:composite"
+      ],
+      "matched_query_tag": "query:lcp:composite",
+      "matched_query_text": "Papers central to 长上下文处理, especially work that connects or combines: Long-context Processing; methods for long context processing in large language models.",
+      "matched_requirement_id": "req-composite-lcp",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.00131v1",
+      "source": "arxiv",
+      "title": "Oblivion: Self-Adaptive Agentic Memory Control through Decay-Driven Activation",
+      "abstract": "Human memory adapts through selective forgetting: experiences become less accessible over time but can be reactivated by reinforcement or contextual cues. In contrast, memory-augmented LLM agents rely on \"always-on\" retrieval and \"flat\" memory storage, causing high interference and latency as histories grow. We introduce Oblivion, a memory control framework that casts forgetting as decay-driven reductions in accessibility, not explicit deletion. Oblivion decouples memory control into read and write paths. The read path decides when to consult memory, based on agent uncertainty and memory buffer sufficiency, avoiding redundant always-on access. The write path decides what to strengthen, by reinforcing memories contributing to forming the response. Together, this enables hierarchical memory organization that maintains persistent high-level strategies while dynamically loading details as needed. We evaluate on both static and dynamic long-horizon interaction benchmarks. Results show that Oblivion dynamically adapts memory access and reinforcement, balancing learning and forgetting under shifting contexts, highlighting that memory control is essential for effective LLM-agentic reasoning. The source code is available at https://github.com/nec-research/oblivion.",
+      "authors": [
+        "Ashish Rana",
+        "Chia-Chien Hung",
+        "Qumeng Sun",
+        "Julian Martin Kunkel",
+        "Carolin Lawrence"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-03-31T18:37:35+00:00",
+      "link": "https://arxiv.org/pdf/2604.00131v1",
+      "tags": [
+        "keyword:AM",
+        "query:AM"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "self-adaptive agentic memory control through decay-driven activation",
+      "llm_evidence_cn": "通过衰减驱动激活的自适应智能体记忆控制",
+      "llm_evidence": "通过衰减驱动激活的自适应智能体记忆控制",
+      "canonical_evidence": "通过衰减驱动激活的自适应智能体记忆控制",
+      "llm_tldr_en": "Introduces Oblivion, a framework for selective forgetting and memory reactivation in LLM agents.",
+      "llm_tldr_cn": "引入Oblivion框架，为大模型智能体实现基于衰减的选择性遗忘与记忆激活。",
+      "llm_tldr": "引入Oblivion框架，为大模型智能体实现基于衰减的选择性遗忘与记忆激活。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.00533v1",
+      "source": "arxiv",
+      "title": "Learning from Many and Adapting to the Unknown in Open-set Test Streams",
+      "abstract": "Large Language Models (LLMs) generalize across tasks via reusable representations and flexible reasoning, yet remain brittle in real deployment under evolving tasks and continual distribution shift. A common approach is Test-Time Adaptation (TTA), existing ones of which updates models with hand-designed unsupervised objectives over the full parameter space and mostly overlook preserving shared source knowledge and the reliability of adaptation signals. Drawing on molecular signaling cascades of memory updating in Drosophila, we propose Synapse Consolidation (SyCo), a parameter-efficient LLM adaptation method that updates low-rank adapters through Rac1 and MAPK pathways under the guidance of a structured TTA objective driven by problem understanding, process understanding, and source-domain guardrail. Rac1 confines plasticity to a tail-gradient subspace that is less critical for source knowledge, enabling rapid specialization while preserving source representations. MAPK uses a tiered controller to suppress noisy updates and consolidate useful adaptations under non-stationary streams. To model real deployments with multiple sources and continually emerging tasks, we introduce Multi-source Open-set Adaptation (MOA) setting, where a model is trained on multiple labeled source tasks and then adapts on open, non-stationary unlabeled test streams that mix seen and unseen tasks with partial overlap in label and intent space. Across 18 NLP datasets and the MOA setting, SyCo consistently outperforms strong baselines, achieving 78.31\\% on unseen-task adaptation and 85.37\\% on unseen-data shifts.",
+      "authors": [
+        "Xiao Zhang",
+        "Juntao Lyu",
+        "Tianyu Hu",
+        "Qianchuan Zhao",
+        "Huimin Ma"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.IT"
+      ],
+      "published": "2026-04-01T06:23:24+00:00",
+      "link": "https://arxiv.org/pdf/2604.00533v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:LCP",
+        "keyword:TTT",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Parameter-efficient LLM adaptation at test-time",
+      "llm_evidence_cn": "测试时的参数高效LLM自适应",
+      "llm_evidence": "测试时的参数高效LLM自适应",
+      "canonical_evidence": "测试时的参数高效LLM自适应",
+      "llm_tldr_en": "Proposes SyCo for parameter-efficient test-time adaptation of LLMs under distribution shifts.",
+      "llm_tldr_cn": "提出SyCo方法，用于LLM在分布偏移下的参数高效测试时自适应。",
+      "llm_tldr": "提出SyCo方法，用于LLM在分布偏移下的参数高效测试时自适应。",
+      "llm_tags": [
+        "query:ttt:composite"
+      ],
+      "matched_query_tag": "query:ttt:composite",
+      "matched_query_text": "Papers central to 测试时训练, especially work that connects or combines: L; test time training methods for foundation models.",
+      "matched_requirement_id": "req-composite-ttt",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.00556v1",
+      "source": "arxiv",
+      "title": "HabitatAgent: An End-to-End Multi-Agent System for Housing Consultation",
+      "abstract": "Housing selection is a high-stakes and largely irreversible decision problem. We study housing consultation as a decision-support interface for housing selection. Existing housing platforms and many LLM-based assistants often reduce this process to ranking or recommendation, resulting in opaque reasoning, brittle multi-constraint handling, and limited guarantees on factuality.   We present HabitatAgent, the first LLM-powered multi-agent architecture for end-to-end housing consultation. HabitatAgent comprises four specialized agent roles: Memory, Retrieval, Generation, and Validation. The Memory Agent maintains multi-layer user memory through internal stages for constraint extraction, memory fusion, and verification-gated updates; the Retrieval Agent performs hybrid vector--graph retrieval (GraphRAG); the Generation Agent produces evidence-referenced recommendations and explanations; and the Validation Agent applies multi-tier verification and targeted remediation. Together, these agents provide an auditable and reliable workflow for end-to-end housing consultation.   We evaluate HabitatAgent on 100 real user consultation scenarios (300 multi-turn question--answer pairs) under an end-to-end correctness protocol. A strong single-stage baseline (Dense+Rerank) achieves 75% accuracy, while HabitatAgent reaches 95%.",
+      "authors": [
+        "Hongyang Yang",
+        "Yanxin Zhang",
+        "Yang She",
+        "Yue Xiao",
+        "Hao Wu",
+        "Yiyang Zhang",
+        "Jiapeng Hou",
+        "Rongshan Zhang"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.ET",
+        "q-fin.CP",
+        "q-fin.RM"
+      ],
+      "published": "2026-04-01T06:59:50+00:00",
+      "link": "https://arxiv.org/pdf/2604.00556v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:PM",
+        "keyword:TTT"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Multi-layer user memory agent for housing consultation",
+      "llm_evidence_cn": "用于住房咨询的多层用户记忆智能体",
+      "llm_evidence": "用于住房咨询的多层用户记忆智能体",
+      "canonical_evidence": "用于住房咨询的多层用户记忆智能体",
+      "llm_tldr_en": "Presents a multi-agent system featuring a specialized Memory Agent for constraint fusion and updates.",
+      "llm_tldr_cn": "展示了一个包含专门记忆智能体的多智能体系统，用于约束融合和更新。",
+      "llm_tldr": "展示了一个包含专门记忆智能体的多智能体系统，用于约束融合和更新。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.00696v1",
+      "source": "arxiv",
+      "title": "TTA-Vid: Generalized Test-Time Adaptation for Video Reasoning",
+      "abstract": "Recent video reasoning models have shown strong results on temporal and multimodal understanding, yet they depend on large-scale supervised data and multi-stage training pipelines, making them costly to train and difficult to adapt to new domains. In this work, we leverage the paradigm of Test-Time Reinforcement Learning on video-language data to allow for adapting a pretrained model to incoming video samples at test-time without explicit labels. The proposed test-time adaptation for video approach (TTA-Vid) combines two components that work simultaneously: (1) a test-time adaptation that performs step-by-step reasoning at inference time on multiple frame subsets. We then use a batch-aware frequency-based reward computed across different frame subsets as pseudo ground truth to update the model. It shows that the resulting model trained on a single batch or even a single sample from a dataset, is able to generalize at test-time to the whole dataset and even across datasets. Because the adaptation occurs entirely at test time, our method requires no ground-truth annotations or dedicated training splits. Additionally, we propose a multi-armed bandit strategy for adaptive frame selection that learns to prioritize informative frames, guided by the same reward formulation. Our evaluation shows that TTA-Vid yields consistent improvements across various video reasoning tasks and is able to outperform current state-of-the-art methods trained on large-scale data. This highlights the potential of test-time reinforcement learning for temporal multimodal understanding.",
+      "authors": [
+        "Soumya Shamarao Jahagirdar",
+        "Edson Araujo",
+        "Anna Kukleva",
+        "M. Jehanzeb Mirza",
+        "Saurabhchand Bhati",
+        "Samuel Thomas",
+        "Brian Kingsbury",
+        "Rogerio Feris",
+        "James R. Glass",
+        "Hilde Kuehne"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-04-01T09:52:57+00:00",
+      "link": "https://arxiv.org/pdf/2604.00696v1",
+      "tags": [
+        "keyword:TTT",
+        "query:TTT"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "test-time adaptation for video reasoning without explicit labels",
+      "llm_evidence_cn": "无需显式标签的视频推理测试时自适应",
+      "llm_evidence": "无需显式标签的视频推理测试时自适应",
+      "canonical_evidence": "无需显式标签的视频推理测试时自适应",
+      "llm_tldr_en": "TTA-Vid uses test-time reinforcement learning to adapt pretrained video models to new samples during inference.",
+      "llm_tldr_cn": "TTA-Vid利用测试时强化学习，在推理过程中使预训练视频模型适应新样本。",
+      "llm_tldr": "TTA-Vid利用测试时强化学习，在推理过程中使预训练视频模型适应新样本。",
+      "llm_tags": [
+        "query:ttt:composite"
+      ],
+      "matched_query_tag": "query:ttt:composite",
+      "matched_query_text": "Papers central to 测试时训练, especially work that connects or combines: L; test time training methods for foundation models.",
+      "matched_requirement_id": "req-composite-ttt",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.00830v1",
+      "source": "arxiv",
+      "title": "Learning to Learn-at-Test-Time: Language Agents with Learnable Adaptation Policies",
+      "abstract": "Test-Time Learning (TTL) enables language agents to iteratively refine their performance through repeated interactions with the environment at inference time. At the core of TTL is an adaptation policy that updates the actor policy based on experience from previous episodes, thereby improving future behavior. Existing methods rely on fixed, hand-crafted adaptation policies rather than optimizing them for downstream improvement. We argue that optimal adaptation policies should be learned from task environments, not hand-engineered based on human intuition. To achieve this, we introduce Meta-TTL, a framework that formulates the discovery of effective adaptation policies as a bi-level optimization problem. Within this framework, the inner loop executes the standard TTL process, measuring how effectively a candidate adaptation policy helps an agent correct errors across sequential episodes. Guided by the agent's performance, the outer loop employs evolutionary search over a diverse distribution of training tasks to iteratively refine the adaptation policy. We evaluate Meta-TTL on Jericho and WebArena-Lite across both in-distribution (ID) and out-of-distribution (OOD) settings, using multiple meta-agent backbones. Results on both benchmarks show that Meta-TTL consistently outperforms hand-crafted baselines, suggesting that the optimized adaptation policy encodes transferable strategies that generalize beyond the training task distribution.",
+      "authors": [
+        "Zhanzhi Lou",
+        "Hui Chen",
+        "Yibo Li",
+        "Qian Wang",
+        "Bryan Hooi"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-04-01T12:41:01+00:00",
+      "link": "https://arxiv.org/pdf/2604.00830v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:TTT",
+        "query:AM",
+        "query:CD",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Test-time learning for language agents to refine performance",
+      "llm_evidence_cn": "语言智能体通过测试时学习优化性能",
+      "llm_evidence": "语言智能体通过测试时学习优化性能",
+      "canonical_evidence": "语言智能体通过测试时学习优化性能",
+      "llm_tldr_en": "Meta-TTL learns optimal adaptation policies for language agents at test-time.",
+      "llm_tldr_cn": "Meta-TTL为语言智能体在测试时学习最优的自适应策略。",
+      "llm_tldr": "Meta-TTL为语言智能体在测试时学习最优的自适应策略。",
+      "llm_tags": [
+        "query:ttt"
+      ],
+      "matched_query_tag": "query:ttt",
+      "matched_query_text": "test time training methods for foundation models",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.00830v2",
+      "source": "arxiv",
+      "title": "Learning to Learn-at-Test-Time: Language Agents with Learnable Adaptation Policies",
+      "abstract": "Test-Time Learning (TTL) enables language agents to iteratively refine their performance through repeated interactions with the environment at inference time. At the core of TTL is an adaptation policy that updates the actor policy based on experience from previous episodes, thereby improving future behavior. Existing methods rely on fixed, hand-crafted adaptation policies rather than optimizing them for downstream improvement. We argue that optimal adaptation policies should be learned from task environments, not hand-engineered based on human intuition. To achieve this, we introduce Meta-TTL, a framework that formulates the discovery of effective adaptation policies as a bi-level optimization problem. Within this framework, the inner loop executes the standard TTL process, measuring how effectively a candidate adaptation policy helps an agent correct errors across sequential episodes. Guided by the agent's performance, the outer loop employs evolutionary search over a diverse distribution of training tasks to iteratively refine the adaptation policy. We evaluate Meta-TTL on Jericho and WebArena-Lite across both in-distribution (ID) and out-of-distribution (OOD) settings, using multiple meta-agent backbones. Results on both benchmarks show that Meta-TTL consistently outperforms hand-crafted baselines, suggesting that the optimized adaptation policy encodes transferable strategies that generalize beyond the training task distribution.",
+      "authors": [
+        "Zhanzhi Lou",
+        "Hui Chen",
+        "Yibo Li",
+        "Qian Wang",
+        "Bryan Hooi"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-04-01T12:41:01+00:00",
+      "link": "https://arxiv.org/pdf/2604.00830v2",
+      "tags": [
+        "keyword:AM",
+        "keyword:TTT",
+        "query:AM",
+        "query:CD",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Test-Time Learning (TTL) for language agents to refine performance at inference time",
+      "llm_evidence_cn": "语言智能体的测试时学习（TTL），用于在推理阶段优化性能",
+      "llm_evidence": "语言智能体的测试时学习（TTL），用于在推理阶段优化性能",
+      "canonical_evidence": "语言智能体的测试时学习（TTL），用于在推理阶段优化性能",
+      "llm_tldr_en": "Introduces Meta-TTL to learn optimal adaptation policies for language agents during test-time interactions.",
+      "llm_tldr_cn": "引入 Meta-TTL 框架，通过双层优化学习语言智能体在测试时的最佳自适应策略。",
+      "llm_tldr": "引入 Meta-TTL 框架，通过双层优化学习语言智能体在测试时的最佳自适应策略。",
+      "llm_tags": [
+        "query:ttt:composite"
+      ],
+      "matched_query_tag": "query:ttt:composite",
+      "matched_query_text": "Papers central to 测试时训练, especially work that connects or combines: L; test time training methods for foundation models.",
+      "matched_requirement_id": "req-composite-ttt",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.01007v1",
+      "source": "arxiv",
+      "title": "OmniMem: Autoresearch-Guided Discovery of Lifelong Multimodal Agent Memory",
+      "abstract": "AI agents increasingly operate over extended time horizons, yet their ability to retain, organize, and recall multimodal experiences remains a critical bottleneck. Building effective lifelong memory requires navigating a vast design space spanning architecture, retrieval strategies, prompt engineering, and data pipelines; this space is too large and interconnected for manual exploration or traditional AutoML to explore effectively. We deploy an autonomous research pipeline to discover OmniMem, a unified multimodal memory framework for lifelong AI agents. Starting from a naïve baseline (F1=0.117 on LoCoMo), the pipeline autonomously executes ${\\sim}50$ experiments across two benchmarks, diagnosing failure modes, proposing architectural modifications, and repairing data pipeline bugs, all without human intervention in the inner loop. The resulting system achieves state-of-the-art on both benchmarks, improving F1 by +411% on LoCoMo (0.117$\\to$0.598) and +214% on Mem-Gallery (0.254$\\to$0.797) relative to the initial configurations. Critically, the most impactful discoveries are not hyperparameter adjustments: bug fixes (+175%), architectural changes (+44%), and prompt engineering (+188\\% on specific categories) each individually exceed the cumulative contribution of all hyperparameter tuning, demonstrating capabilities fundamentally beyond the reach of traditional AutoML. We provide a taxonomy of six discovery types and identify four properties that make multimodal memory particularly suited for autoresearch, offering guidance for applying autonomous research pipelines to other AI system domains. Code is available at this https://github.com/aiming-lab/OmniMem.",
+      "authors": [
+        "Jiaqi Liu",
+        "Zipeng Ling",
+        "Shi Qiu",
+        "Yanqing Liu",
+        "Siwei Han",
+        "Peng Xia",
+        "Haoqin Tu",
+        "Zeyu Zheng",
+        "Cihang Xie",
+        "Charles Fleming",
+        "Mingyu Ding",
+        "Huaxiu Yao"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-04-01T15:06:23+00:00",
+      "link": "https://arxiv.org/pdf/2604.01007v1",
+      "tags": [
+        "keyword:AM",
+        "query:AM"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "discovery of lifelong multimodal agent memory",
+      "llm_evidence_cn": "终身多模态智能体记忆的自动发现",
+      "llm_evidence": "终身多模态智能体记忆的自动发现",
+      "canonical_evidence": "终身多模态智能体记忆的自动发现",
+      "llm_tldr_en": "OmniMem is a unified multimodal memory framework for lifelong agents discovered via autonomous research.",
+      "llm_tldr_cn": "OmniMem是通过自动研究发现的、用于终身智能体的统一多模态记忆框架。",
+      "llm_tldr": "OmniMem是通过自动研究发现的、用于终身智能体的统一多模态记忆框架。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.01007v2",
+      "source": "arxiv",
+      "title": "Omni-SimpleMem: Autoresearch-Guided Discovery of Lifelong Multimodal Agent Memory",
+      "abstract": "AI agents increasingly operate over extended time horizons, yet their ability to retain, organize, and recall multimodal experiences remains a critical bottleneck. Building effective lifelong memory requires navigating a vast design space spanning architecture, retrieval strategies, prompt engineering, and data pipelines; this space is too large and interconnected for manual exploration or traditional AutoML to explore effectively. We deploy an autonomous research pipeline to discover Omni-SimpleMem, a unified multimodal memory framework for lifelong AI agents. Starting from a naïve baseline (F1=0.117 on LoCoMo), the pipeline autonomously executes ${\\sim}50$ experiments across two benchmarks, diagnosing failure modes, proposing architectural modifications, and repairing data pipeline bugs, all without human intervention in the inner loop. The resulting system achieves state-of-the-art on both benchmarks, improving F1 by +411% on LoCoMo (0.117$\\to$0.598) and +214% on Mem-Gallery (0.254$\\to$0.797) relative to the initial configurations. Critically, the most impactful discoveries are not hyperparameter adjustments: bug fixes (+175%), architectural changes (+44%), and prompt engineering (+188% on specific categories) each individually exceed the cumulative contribution of all hyperparameter tuning, demonstrating capabilities fundamentally beyond the reach of traditional AutoML. We provide a taxonomy of six discovery types and identify four properties that make multimodal memory particularly suited for autoresearch, offering guidance for applying autonomous research pipelines to other AI system domains. Code is available at this https://github.com/aiming-lab/SimpleMem.",
+      "authors": [
+        "Jiaqi Liu",
+        "Zipeng Ling",
+        "Shi Qiu",
+        "Yanqing Liu",
+        "Siwei Han",
+        "Peng Xia",
+        "Haoqin Tu",
+        "Zeyu Zheng",
+        "Cihang Xie",
+        "Charles Fleming",
+        "Mingyu Ding",
+        "Huaxiu Yao"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-04-01T15:06:23+00:00",
+      "link": "https://arxiv.org/pdf/2604.01007v2",
+      "tags": [
+        "keyword:AM",
+        "query:AM"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "unified multimodal memory framework for lifelong AI agents",
+      "llm_evidence_cn": "终身AI智能体的统一多模态记忆框架",
+      "llm_evidence": "终身AI智能体的统一多模态记忆框架",
+      "canonical_evidence": "终身AI智能体的统一多模态记忆框架",
+      "llm_tldr_en": "Discovers Omni-SimpleMem, a multimodal memory framework for lifelong agents using an autonomous research pipeline.",
+      "llm_tldr_cn": "利用自动研究流水线为终身AI智能体发现了一种统一的多模态记忆框架。",
+      "llm_tldr": "利用自动研究流水线为终身AI智能体发现了一种统一的多模态记忆框架。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.01170v1",
+      "source": "arxiv",
+      "title": "Online Reasoning Calibration: Test-Time Training Enables Generalizable Conformal LLM Reasoning",
+      "abstract": "While test-time scaling has enabled large language models to solve highly difficult tasks, state-of-the-art results come at exorbitant compute costs. These inefficiencies can be attributed to the miscalibration of post-trained language models, and the lack of calibration in popular sampling techniques. Here, we present Online Reasoning Calibration (ORCA), a framework for calibrating the sampling process that draws upon conformal prediction and test-time training. Specifically, we introduce a meta-learning procedure that updates the calibration module for each input. This allows us to provide valid confidence estimates under distributional shift, e.g. in thought patterns that occur across different stages of reasoning, or in prompt distributions between model development and deployment. ORCA not only provides theoretical guarantees on conformal risks, but also empirically shows higher efficiency and generalization across different reasoning tasks. At risk level $δ=0.1$, ORCA improves Qwen2.5-32B efficiency on in-distribution tasks with savings up to 47.5% with supervised labels and 40.7% with self-consistency labels. Under zero-shot out-of-domain settings, it improves MATH-500 savings from 24.8% of the static calibration baseline to 67.0% while maintaining a low empirical error rate, and the same trend holds across model families and downstream benchmarks. Our code is publicly available at https://github.com/wzekai99/ORCA.",
+      "authors": [
+        "Cai Zhou",
+        "Zekai Wang",
+        "Menghua Wu",
+        "Qianyu Julie Zhu",
+        "Flora C. Shi",
+        "Chenyu Wang",
+        "Ashia Wilson",
+        "Tommi Jaakkola",
+        "Stephen Bates"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL",
+        "stat.AP",
+        "stat.ML"
+      ],
+      "published": "2026-04-01T17:21:50+00:00",
+      "link": "https://arxiv.org/pdf/2604.01170v1",
+      "tags": [
+        "keyword:TTT",
+        "query:CD",
+        "query:TTT"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Test-time training for calibrating LLM reasoning",
+      "llm_evidence_cn": "用于校准LLM推理的测试时训练",
+      "llm_evidence": "用于校准LLM推理的测试时训练",
+      "canonical_evidence": "用于校准LLM推理的测试时训练",
+      "llm_tldr_en": "Introduces ORCA, using test-time training to calibrate LLM sampling and reasoning processes.",
+      "llm_tldr_cn": "引入ORCA框架，利用测试时训练来校准LLM的采样和推理过程。",
+      "llm_tldr": "引入ORCA框架，利用测试时训练来校准LLM的采样和推理过程。",
+      "llm_tags": [
+        "query:ttt"
+      ],
+      "matched_query_tag": "query:ttt",
+      "matched_query_text": "test time training methods for foundation models",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.01560v1",
+      "source": "arxiv",
+      "title": "DeltaMem: Towards Agentic Memory Management via Reinforcement Learning",
+      "abstract": "Recent advances in persona-centric memory have revealed the powerful capability of multi-agent systems in managing persona memory, especially in conversational scenarios. However, these complex frameworks often suffer from information loss and are fragile across varying scenarios, resulting in suboptimal performance. In this paper, we propose DeltaMem, an agentic memory management system that formulates persona-centric memory management as an end-to-end task within a single-agent setting. To further improve the performance of our agentic memory manager, we draw inspiration from the evolution of human memory and synthesize a user-assistant dialogue dataset along with corresponding operation-level memory updating labels. Building on this, we introduce a novel Memory-based Levenshtein Distance to formalize the memory updating reward, and propose a tailored reinforcement learning framework to further enhance the management capabilities of DeltaMem. Extensive experiments show that both training-free and RL-trained DeltaMem outperform all product-level baselines across diverse long-term memory benchmarks, including LoCoMo, HaluMem, and PersonaMem.",
+      "authors": [
+        "Qi Zhang",
+        "Shen Huang",
+        "Chu Liu",
+        "Shouqing Yang",
+        "Junbo Zhao",
+        "Haobo Wang",
+        "Pengjun Xie"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-04-02T03:13:53+00:00",
+      "link": "https://arxiv.org/pdf/2604.01560v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "query:AM",
+        "query:CD",
+        "query:PM"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "agentic memory management via reinforcement learning",
+      "llm_evidence_cn": "通过强化学习进行智能体记忆管理",
+      "llm_evidence": "通过强化学习进行智能体记忆管理",
+      "canonical_evidence": "通过强化学习进行智能体记忆管理",
+      "llm_tldr_en": "DeltaMem uses RL for end-to-end persona-centric memory management in LLM agents.",
+      "llm_tldr_cn": "DeltaMem利用强化学习实现以人格为中心的智能体端到端记忆管理。",
+      "llm_tldr": "DeltaMem利用强化学习实现以人格为中心的智能体端到端记忆管理。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.01670v1",
+      "source": "arxiv",
+      "title": "Hierarchical Memory Orchestration for Personalized Persistent Agents",
+      "abstract": "While long-term memory is essential for intelligent agents to maintain consistent historical awareness, the accumulation of extensive interaction data often leads to performance bottlenecks. Naive storage expansion increases retrieval noise and computational latency, overwhelming the reasoning capacity of models deployed on constrained personal devices. To address this, we propose Hierarchical Memory Orchestration (HMO), a framework that organizes interaction history into a three-tiered directory driven by user-centric contextual relevance. Our system maintains a compact primary cache, coupling recent and pivotal memories with an evolving user profile to ensure agent reasoning remains aligned with individual behavioral traits. This primary cache is complemented by a high-priority secondary layer, both of which are managed within a global archive of the full interaction history. Crucially, the user persona dictates memory redistribution across this hierarchy, promoting records mapped to long-term patterns toward more active tiers while relegating less relevant information. This targeted orchestration surfaces historical knowledge precisely when needed while maintaining a lean and efficient active search space. Evaluations on multiple benchmarks achieve state-of-the-art performance. Real-world deployments in ecosystems like OpenClaw demonstrate that HMO significantly enhances agent fluidity and personalization.",
+      "authors": [
+        "Junming Liu",
+        "Yifei Sun",
+        "Weihua Cheng",
+        "Haodong Lei",
+        "Yuqi Li",
+        "Yirong Chen",
+        "Ding Wang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-04-02T06:16:53+00:00",
+      "link": "https://arxiv.org/pdf/2604.01670v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:PM",
+        "query:AM",
+        "query:PM"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "hierarchical memory orchestration for persistent agents",
+      "llm_evidence_cn": "持久化智能体的分层记忆编排",
+      "llm_evidence": "持久化智能体的分层记忆编排",
+      "canonical_evidence": "持久化智能体的分层记忆编排",
+      "llm_tldr_en": "HMO organizes agent interaction history into a three-tiered memory system for personalized persistence.",
+      "llm_tldr_cn": "HMO框架通过三层目录组织交互历史，实现智能体的个性化长效记忆。",
+      "llm_tldr": "HMO框架通过三层目录组织交互历史，实现智能体的个性化长效记忆。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.01707v1",
+      "source": "arxiv",
+      "title": "Memory in the LLM Era: Modular Architectures and Strategies in a Unified Framework",
+      "abstract": "Memory emerges as the core module in the large language model (LLM)-based agents for long-horizon complex tasks (e.g., multi-turn dialogue, game playing, scientific discovery), where memory can enable knowledge accumulation, iterative reasoning and self-evolution. A number of memory methods have been proposed in the literature. However, these methods have not been systematically and comprehensively compared under the same experimental settings. In this paper, we first summarize a unified framework that incorporates all the existing agent memory methods from a high-level perspective. We then extensively compare representative agent memory methods on two well-known benchmarks and examine the effectiveness of all methods, providing a thorough analysis of those methods. As a byproduct of our experimental analysis, we also design a new memory method by exploiting modules in the existing methods, which outperforms the state-of-the-art methods. Finally, based on these findings, we offer promising future research opportunities. We believe that a deeper understanding of the behavior of existing methods can provide valuable new insights for future research.",
+      "authors": [
+        "Yanchen Wu",
+        "Tenghui Lin",
+        "Yingli Zhou",
+        "Fangyuan Zhang",
+        "Qintian Guo",
+        "Xun Zhou",
+        "Sibo Wang",
+        "Xilin Liu",
+        "Yuchi Ma",
+        "Yixiang Fang"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.DB"
+      ],
+      "published": "2026-04-02T07:19:20+00:00",
+      "link": "https://arxiv.org/pdf/2604.01707v1",
+      "tags": [
+        "keyword:AM",
+        "query:AM",
+        "query:PM"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Unified framework for agent memory methods",
+      "llm_evidence_cn": "智能体记忆方法的统一框架",
+      "llm_evidence": "智能体记忆方法的统一框架",
+      "canonical_evidence": "智能体记忆方法的统一框架",
+      "llm_tldr_en": "Provides a comprehensive survey and unified framework for memory mechanisms in LLM-based agents.",
+      "llm_tldr_cn": "为基于 LLM 的智能体记忆机制提供了全面的综述和统一框架。",
+      "llm_tldr": "为基于 LLM 的智能体记忆机制提供了全面的综述和统一框架。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.26984v1",
+      "source": "arxiv",
+      "title": "A Provable Energy-Guided Test-Time Defense Boosting Adversarial Robustness of Large Vision-Language Models",
+      "abstract": "Despite the rapid progress in multimodal models and Large Visual-Language Models (LVLM), they remain highly susceptible to adversarial perturbations, raising serious concerns about their reliability in real-world use. While adversarial training has become the leading paradigm for building models that are robust to adversarial attacks, Test-Time Transformations (TTT) have emerged as a promising strategy to boost robustness at inference.In light of this, we propose Energy-Guided Test-Time Transformation (ET3), a lightweight, training-free defense that enhances the robustness by minimizing the energy of the input samples.Our method is grounded in a theory that proves our transformation succeeds in classification under reasonable assumptions. We present extensive experiments demonstrating that ET3 provides a strong defense for classifiers, zero-shot classification with CLIP, and also for boosting the robustness of LVLMs in tasks such as Image Captioning and Visual Question Answering. Code is available at github.com/OmnAI-Lab/Energy-Guided-Test-Time-Defense .",
+      "authors": [
+        "Mujtaba Hussain Mirza",
+        "Antonio D'Orazio",
+        "Odelia Melamed",
+        "Iacopo Masi"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-03-27T20:53:04+00:00",
+      "link": "https://arxiv.org/pdf/2603.26984v1",
+      "tags": [
+        "keyword:TTT",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "energy-guided test-time transformation for vision-language models",
+      "llm_evidence_cn": "视觉语言模型的能量引导测试时变换",
+      "llm_evidence": "视觉语言模型的能量引导测试时变换",
+      "canonical_evidence": "视觉语言模型的能量引导测试时变换",
+      "llm_tldr_en": "Proposes a training-free test-time defense to boost adversarial robustness in large vision-language models.",
+      "llm_tldr_cn": "提出一种无需训练的测试时防御方法，以增强大型视觉语言模型的对抗鲁棒性。",
+      "llm_tldr": "提出一种无需训练的测试时防御方法，以增强大型视觉语言模型的对抗鲁棒性。",
+      "llm_tags": [
+        "query:ttt:composite"
+      ],
+      "matched_query_tag": "query:ttt:composite",
+      "matched_query_text": "Papers central to 测试时训练, especially work that connects or combines: L; test time training methods for foundation models.",
+      "matched_requirement_id": "req-composite-ttt",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.26984v2",
+      "source": "arxiv",
+      "title": "A Provable Energy-Guided Test-Time Defense Boosting Adversarial Robustness of Large Vision-Language Models",
+      "abstract": "Despite the rapid progress in multimodal models and Large Visual-Language Models (LVLM), they remain highly susceptible to adversarial perturbations, raising serious concerns about their reliability in real-world use. While adversarial training has become the leading paradigm for building models that are robust to adversarial attacks, Test-Time Transformations (TTT) have emerged as a promising strategy to boost robustness at inference. In light of this, we propose Energy-Guided Test-Time Transformation (ET3), a lightweight, training-free defense that enhances the robustness by minimizing the energy of the input samples. Our method is grounded in a theory that proves our transformation succeeds in classification under reasonable assumptions. We present extensive experiments demonstrating that ET3 provides a strong defense for classifiers, zero-shot classification with CLIP, and also for boosting the robustness of LVLMs in tasks such as Image Captioning and Visual Question Answering. Code is available at github.com/OmnAI-Lab/Energy-Guided-Test-Time-Defense .",
+      "authors": [
+        "Mujtaba Hussain Mirza",
+        "Antonio D'Orazio",
+        "Odelia Melamed",
+        "Iacopo Masi"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-03-27T20:53:04+00:00",
+      "link": "https://arxiv.org/pdf/2603.26984v2",
+      "tags": [
+        "keyword:TTT",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Test-Time Transformations (TTT) for robustness",
+      "llm_evidence_cn": "用于鲁棒性的测试时变换 (TTT)",
+      "llm_evidence": "用于鲁棒性的测试时变换 (TTT)",
+      "canonical_evidence": "用于鲁棒性的测试时变换 (TTT)",
+      "llm_tldr_en": "Proposes an energy-guided test-time transformation to boost adversarial robustness in vision-language models.",
+      "llm_tldr_cn": "提出了一种能量引导的测试时变换方法，以增强视觉语言模型的对抗鲁棒性。",
+      "llm_tldr": "提出了一种能量引导的测试时变换方法，以增强视觉语言模型的对抗鲁棒性。",
+      "llm_tags": [
+        "query:ttt:composite"
+      ],
+      "matched_query_tag": "query:ttt:composite",
+      "matched_query_text": "Papers central to 测试时训练, especially work that connects or combines: L; test time training methods for foundation models.",
+      "matched_requirement_id": "req-composite-ttt",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.27127v1",
+      "source": "arxiv",
+      "title": "Red-MIRROR: Agentic LLM-based Autonomous Penetration Testing with Reflective Verification and Knowledge-augmented Interaction",
+      "abstract": "Web applications remain the dominant attack surface in cybersecurity, where vulnerabilities such as SQL injection, XSS, and business logic flaws continue to cause significant data breaches. While penetration testing is effective for identifying these weaknesses, traditional manual approaches are time-consuming and heavily dependent on scarce expert knowledge. Recent Large Language Models (LLM)-based multi-agent systems have shown promise in automating penetration testing, yet they still suffer from critical limitations: over-reliance on parametric knowledge, fragmented session memory, and insufficient validation of attack payloads and responses. This paper proposes Red-MIRROR, a novel multi-agent automated penetration testing system that introduces a tightly coupled memory-reflection backbone to explicitly govern inter-agent reasoning. By synthesizing Retrieval-Augmented Generation (RAG) for external knowledge augmentation, a Shared Recurrent Memory Mechanism (SRMM) for persistent state management, and a Dual-Phase Reflection mechanism for adaptive validation, Red-MIRROR provides a robust solution for complex web exploitation. Empirical evaluation on the XBOW benchmark and Vulhub CVEs shows that Red-MIRROR achieves performance comparable to state-of-the-art agents on Vulhub scenarios, while demonstrating a clear advantage on the XBOW benchmark. On the XBOW benchmark, Red-MIRROR attains an overall success rate of 86.0 percent, outperforming PentestAgent (50.0 percent), AutoPT (46.0 percent), and the VulnBot baseline (6.0 percent). Furthermore, the system achieves a 93.99 percent subtask completion rate, indicating strong long-horizon reasoning and payload refinement capability. Finally, we discuss ethical implications and propose safeguards to mitigate misuse risks.",
+      "authors": [
+        "Tran Vy Khang",
+        "Nguyen Dang Nguyen Khang",
+        "Nghi Hoang Khoa",
+        "Do Thi Thu Hien",
+        "Van-Hau Pham",
+        "Phan The Duy"
+      ],
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR"
+      ],
+      "published": "2026-03-28T04:34:09+00:00",
+      "link": "https://arxiv.org/pdf/2603.27127v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:PM",
+        "query:AM",
+        "query:PM"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "agentic system with session memory and knowledge interaction",
+      "llm_evidence_cn": "具备会话记忆与知识交互的智能体系统",
+      "llm_evidence": "具备会话记忆与知识交互的智能体系统",
+      "canonical_evidence": "具备会话记忆与知识交互的智能体系统",
+      "llm_tldr_en": "An autonomous penetration testing agent using reflective verification and session memory management.",
+      "llm_tldr_cn": "一种利用反射验证和会话记忆管理进行自动渗透测试的自主智能体。",
+      "llm_tldr": "一种利用反射验证和会话记忆管理进行自动渗透测试的自主智能体。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.27138v1",
+      "source": "arxiv",
+      "title": "ScoutAttention: Efficient KV Cache Offloading via Layer-Ahead CPU Pre-computation for LLM Inference",
+      "abstract": "Large language models encounter critical GPU memory capacity constraints during long-context inference, where KV cache memory consumption severely limits decode batch sizes. While existing research has explored offloading KV cache to DRAM, these approaches either demand frequent GPU-CPU data transfers or impose extensive CPU computation requirements, resulting in poor GPU utilization as the system waits for I/O operations or CPU processing to complete.   We propose ScoutAttention, a novel KV cache offloading framework that accelerates LLM inference through collaborative GPU-CPU attention computation. To prevent CPU computation from bottlenecking the system, ScoutAttention introduces GPU-CPU collaborative block-wise sparse attention that significantly reduces CPU load. Unlike conventional parallel computing approaches, our framework features a novel layer-ahead CPU pre-computation algorithm, enabling the CPU to initiate attention computation one layer in advance, complemented by asynchronous periodic recall mechanisms to maintain minimal CPU compute load. Experimental results demonstrate that ScoutAttention maintains accuracy within 2.4% of baseline while achieving 2.1x speedup compared to existing offloading methods.",
+      "authors": [
+        "Qiuyang Zhang",
+        "Kai Zhou",
+        "Ding Tang",
+        "Kai Lu",
+        "Cheng Li",
+        "Zhenyu Yang",
+        "Peng Xu",
+        "Jiguang Wan"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-03-28T05:06:05+00:00",
+      "link": "https://arxiv.org/pdf/2603.27138v1",
+      "tags": [
+        "keyword:CD",
+        "keyword:LCP",
+        "query:AM",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Efficient KV cache offloading for long-context inference",
+      "llm_evidence_cn": "长上下文推理中的高效 KV 缓存卸载",
+      "llm_evidence": "长上下文推理中的高效 KV 缓存卸载",
+      "canonical_evidence": "长上下文推理中的高效 KV 缓存卸载",
+      "llm_tldr_en": "ScoutAttention optimizes long-context LLM inference by offloading KV cache to CPU with pre-computation.",
+      "llm_tldr_cn": "ScoutAttention 通过 GPU-CPU 协同预计算优化长上下文推理中的 KV 缓存卸载。",
+      "llm_tldr": "ScoutAttention 通过 GPU-CPU 协同预计算优化长上下文推理中的 KV 缓存卸载。",
+      "llm_tags": [
+        "query:lcp:composite"
+      ],
+      "matched_query_tag": "query:lcp:composite",
+      "matched_query_text": "Papers central to 长上下文处理, especially work that connects or combines: Long-context Processing; methods for long context processing in large language models.",
+      "matched_requirement_id": "req-composite-lcp",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.27150v1",
+      "source": "arxiv",
+      "title": "MediHive: A Decentralized Agent Collective for Medical Reasoning",
+      "abstract": "Large language models (LLMs) have revolutionized medical reasoning tasks, yet single-agent systems often falter on complex, interdisciplinary problems requiring robust handling of uncertainty and conflicting evidence. Multi-agent systems (MAS) leveraging LLMs enable collaborative intelligence, but prevailing centralized architectures suffer from scalability bottlenecks, single points of failure, and role confusion in resource-constrained environments. Decentralized MAS (D-MAS) promise enhanced autonomy and resilience via peer-to-peer interactions, but their application to high-stakes healthcare domains remains underexplored. We introduce MediHive, a novel decentralized multi-agent framework for medical question answering that integrates a shared memory pool with iterative fusion mechanisms. MediHive deploys LLM-based agents that autonomously self-assign specialized roles, conduct initial analyses, detect divergences through conditional evidence-based debates, and locally fuse peer insights over multiple rounds to achieve consensus. Empirically, MediHive outperforms single-LLM and centralized baselines on MedQA and PubMedQA datasets, attaining accuracies of 84.3% and 78.4%, respectively. Our work advances scalable, fault-tolerant D-MAS for medical AI, addressing key limitations of centralized designs while demonstrating superior performance in reasoning-intensive tasks.",
+      "authors": [
+        "Xiaoyang Wang",
+        "Christopher C. Yang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.MA"
+      ],
+      "published": "2026-03-28T05:57:58+00:00",
+      "link": "https://arxiv.org/pdf/2603.27150v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:PM",
+        "keyword:TTT",
+        "query:AM"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Multi-agent framework integrating a shared memory pool",
+      "llm_evidence_cn": "集成共享记忆池的多智能体框架",
+      "llm_evidence": "集成共享记忆池的多智能体框架",
+      "canonical_evidence": "集成共享记忆池的多智能体框架",
+      "llm_tldr_en": "MediHive uses a shared memory pool in a decentralized multi-agent system for medical reasoning.",
+      "llm_tldr_cn": "MediHive在去中心化多智能体系统中使用共享记忆池进行医疗推理。",
+      "llm_tldr": "MediHive在去中心化多智能体系统中使用共享记忆池进行医疗推理。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.27365v1",
+      "source": "arxiv",
+      "title": "Falcon Perception",
+      "abstract": "Perception-centric systems are typically implemented with a modular encoder-decoder pipeline: a vision backbone for feature extraction and a separate decoder (or late-fusion module) for task prediction. This raises a central question: is this architectural separation essential or can a single early-fusion stack do both perception and task modeling at scale? We introduce Falcon Perception, a unified dense Transformer that processes image patches and text tokens in a shared parameter space from the first layer, using a hybrid attention pattern (bidirectional among image tokens, causal for prediction tokens) to combine global visual context with autoregressive, variable-length instance generation. To keep dense outputs practical, Falcon Perception retains a lightweight token interface and decodes continuous spatial outputs with specialized heads, enabling parallel high-resolution mask prediction.   Our design promotes simplicity: we keep a single scalable backbone and shift complexity toward data and training signals, adding only small heads where outputs are continuous and dense. On SA-Co, Falcon Perception improves mask quality to 68.0 Macro-F$_1$ compared to 62.3 of SAM3. We also introduce PBench, a benchmark targeting compositional prompts (OCR, spatial constraints, relations) and dense long-context regimes, where the model shows better gains. Finally, we extend the same early-fusion recipe to Falcon OCR: a compact 300M-parameter model which attains 80.3% on olmOCR and 88.64 on OmniDocBench.",
+      "authors": [
+        "Aviraj Bevli",
+        "Sofian Chaybouti",
+        "Yasser Dahou",
+        "Hakim Hacid",
+        "Ngoc Dung Huynh",
+        "Phuc H. Le Khac",
+        "Sanath Narayan",
+        "Wamiq Reyaz Para",
+        "Ankit Singh"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-03-28T18:23:20+00:00",
+      "link": "https://arxiv.org/pdf/2603.27365v1",
+      "tags": [
+        "keyword:LCP"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified dense Transformer architecture for perception",
+      "llm_evidence_cn": "用于感知的统一稠密Transformer架构",
+      "llm_evidence": "用于感知的统一稠密Transformer架构",
+      "canonical_evidence": "用于感知的统一稠密Transformer架构",
+      "llm_tldr_en": "Falcon Perception introduces a unified Transformer architecture that merges vision and text processing.",
+      "llm_tldr_cn": "Falcon Perception引入了一种统一的Transformer架构，融合了视觉和文本处理。",
+      "llm_tldr": "Falcon Perception引入了一种统一的Transformer架构，融合了视觉和文本处理。",
+      "llm_tags": [
+        "query:pretrain:composite"
+      ],
+      "matched_query_tag": "query:pretrain:composite",
+      "matched_query_text": "Papers central to 预训练&新架构, especially work that connects or combines: Model Architecture; Pretraining; efficient model architectures for foundation models; new model architectures beyond standard transformers; recent advances in large scale pretraining for foundation models.",
+      "matched_requirement_id": "req-composite-pretrain",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.27813v1",
+      "source": "arxiv",
+      "title": "MuSEAgent: A Multimodal Reasoning Agent with Stateful Experiences",
+      "abstract": "Research agents have recently achieved significant progress in information seeking and synthesis across heterogeneous textual and visual sources. In this paper, we introduce MuSEAgent, a multimodal reasoning agent that enhances decision-making by extending the capabilities of research agents to discover and leverage stateful experiences. Rather than relying on trajectory-level retrieval, we propose a stateful experience learning paradigm that abstracts interaction data into atomic decision experiences through hindsight reasoning. These experiences are organized into a quality-filtered experience bank that supports policy-driven experience retrieval at inference time. Specifically, MuSEAgent enables adaptive experience exploitation through complementary wide- and deep-search strategies, allowing the agent to dynamically retrieve multimodal guidance across diverse compositional semantic viewpoints. Extensive experiments demonstrate that MuSEAgent consistently outperforms strong trajectory-level experience retrieval baselines on both fine-grained visual perception and complex multimodal reasoning tasks. These results validate the effectiveness of stateful experience modeling in improving multimodal agent reasoning.",
+      "authors": [
+        "Shijian Wang",
+        "Jiarui Jin",
+        "Runhao Fu",
+        "Zexuan Yan",
+        "Xingjian Wang",
+        "Mengkang Hu",
+        "Eric Wang",
+        "Xiaoxi Li",
+        "Kangning Zhang",
+        "Li Yao",
+        "Wenxiang Jiao",
+        "Xuelian Cheng",
+        "Yuan Lu",
+        "Zongyuan Ge"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-03-29T18:54:31+00:00",
+      "link": "https://arxiv.org/pdf/2603.27813v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:LCP",
+        "keyword:PM",
+        "query:AM"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "multimodal reasoning agent with stateful experiences",
+      "llm_evidence_cn": "具有状态经验的多模态推理智能体",
+      "llm_evidence": "具有状态经验的多模态推理智能体",
+      "canonical_evidence": "具有状态经验的多模态推理智能体",
+      "llm_tldr_en": "MuSEAgent leverages a stateful experience bank to enhance decision-making in multimodal research agents.",
+      "llm_tldr_cn": "MuSEAgent通过构建状态经验库，增强了多模态研究智能体的决策能力。",
+      "llm_tldr": "MuSEAgent通过构建状态经验库，增强了多模态研究智能体的决策能力。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.28444v1",
+      "source": "arxiv",
+      "title": "Entropic Claim Resolution: Uncertainty-Driven Evidence Selection for RAG",
+      "abstract": "Current Retrieval-Augmented Generation (RAG) systems predominantly rely on relevance-based dense retrieval, sequentially fetching documents to maximize semantic similarity with the query. However, in knowledge-intensive and real-world scenarios characterized by conflicting evidence or fundamental query ambiguity, relevance alone is insufficient for resolving epistemic uncertainty. We introduce Entropic Claim Resolution (ECR), a novel inference-time algorithm that reframes RAG reasoning as entropy minimization over competing semantic answer hypotheses. Unlike action-driven agentic frameworks (e.g., ReAct) or fixed-pipeline RAG architectures, ECR sequentially selects atomic evidence claims by maximizing Expected Entropy Reduction (EER), a decision-theoretic criterion for the value of information. The process dynamically terminates when the system reaches a mathematically defined state of epistemic sufficiency (H <= epsilon, subject to epistemic coherence). We integrate ECR into a production-grade multi-strategy retrieval pipeline (CSGR++) and analyze its theoretical properties. Our framework provides a rigorous foundation for uncertainty-aware evidence selection, shifting the paradigm from retrieving what is most relevant to retrieving what is most discriminative.",
+      "authors": [
+        "Davide Di Gioia"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-03-30T13:49:03+00:00",
+      "link": "https://arxiv.org/pdf/2603.28444v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:PM",
+        "keyword:TTT"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "uncertainty-driven evidence selection for RAG systems",
+      "llm_evidence_cn": "RAG系统中不确定性驱动的证据选择",
+      "llm_evidence": "RAG系统中不确定性驱动的证据选择",
+      "canonical_evidence": "RAG系统中不确定性驱动的证据选择",
+      "llm_tldr_en": "ECR improves RAG by selecting evidence through entropy minimization to resolve epistemic uncertainty.",
+      "llm_tldr_cn": "ECR通过熵最小化选择证据来解决认知不确定性，从而改进了RAG系统。",
+      "llm_tldr": "ECR通过熵最小化选择证据来解决认知不确定性，从而改进了RAG系统。",
+      "llm_tags": [
+        "query:rag:composite"
+      ],
+      "matched_query_tag": "query:rag:composite",
+      "matched_query_text": "Papers central to RAG, especially work that connects or combines: Agentic RAG; agentic RAG for complex question answering; retrieval augmented generation for large language models.",
+      "matched_requirement_id": "req-composite-rag",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.28458v1",
+      "source": "arxiv",
+      "title": "HISA: Efficient Hierarchical Indexing for Fine-Grained Sparse Attention",
+      "abstract": "Token-level sparse attention mechanisms, exemplified by DeepSeek Sparse Attention (DSA), achieve fine-grained key selection by scoring every historical token for each query using a lightweight indexer, and then computing attention only over the selected subset. While the downstream sparse attention scales efficiently, the indexer still scans the entire prefix for every query, introducing an O($L^2$) per-layer bottleneck that becomes prohibitive as context length grows. We propose HISA (Hierarchical Indexed Sparse Attention), a drop-in replacement for the indexer that transforms the search process from a flat token scan into a two-stage hierarchical procedure. First, a block-level coarse filter scores pooled block representatives to prune irrelevant regions. Then, a token-level refinement applies the original indexer only within the remaining candidate blocks. HISA preserves the exact token-level top-k sparsity pattern required by the downstream Sparse MLA operator and requires no additional training. On kernel-level benchmarks, HISA achieves a 2$\\times$ speedup at 32K context length and 4$\\times$ at 128K. On Needle-in-a-Haystack and LongBench, we directly replace the indexer in DeepSeek-V3.2 with HISA, without any fine-tuning. HISA closely matches the original DSA in quality while significantly outperforming block-sparse baselines. Moreover, the token selection sets produced by HISA and the original DSA exhibit a mean IoU greater than 99%, indicating that the efficiency gains come with virtually no impact on selection fidelity.",
+      "authors": [
+        "Yufei Xu",
+        "Fanxu Meng",
+        "Fan Jiang",
+        "Yuxuan Wang",
+        "Ruijie Zhou",
+        "Jiexi Wu",
+        "Zhixin Pan",
+        "Zhaohui Wang",
+        "Xiaojuan Tang",
+        "Wenjie Pei",
+        "Tongxuan Liu",
+        "Di yin",
+        "Xing Sun",
+        "Muhan Zhang"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-03-30T13:59:51+00:00",
+      "link": "https://arxiv.org/pdf/2603.28458v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:PM",
+        "keyword:TTT",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Efficient hierarchical indexing for sparse attention in long contexts",
+      "llm_evidence_cn": "长上下文中的高效分层索引稀疏注意力机制",
+      "llm_evidence": "长上下文中的高效分层索引稀疏注意力机制",
+      "canonical_evidence": "长上下文中的高效分层索引稀疏注意力机制",
+      "llm_tldr_en": "Proposes HISA to solve the quadratic bottleneck in sparse attention for long-context processing.",
+      "llm_tldr_cn": "提出HISA机制，通过分层索引解决长上下文处理中稀疏注意力的计算瓶颈。",
+      "llm_tldr": "提出HISA机制，通过分层索引解决长上下文处理中稀疏注意力的计算瓶颈。",
+      "llm_tags": [
+        "query:lcp:composite"
+      ],
+      "matched_query_tag": "query:lcp:composite",
+      "matched_query_text": "Papers central to 长上下文处理, especially work that connects or combines: Long-context Processing; methods for long context processing in large language models.",
+      "matched_requirement_id": "req-composite-lcp",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.28458v2",
+      "source": "arxiv",
+      "title": "HISA: Efficient Hierarchical Indexing for Fine-Grained Sparse Attention",
+      "abstract": "Token-level sparse attention mechanisms, exemplified by DeepSeek Sparse Attention (DSA), achieve fine-grained key selection by scoring every historical key for each query through a lightweight indexer, then computing attention only on the selected subset. While the downstream sparse attention itself scales favorably, the indexer must still scan the entire prefix for every query, introducing an per-layer bottleneck that grows prohibitively with context length. We propose HISA (Hierarchical Indexed Sparse Attention), a plug-and-play replacement for the indexer that rewrites the search path from a flat token scan into a two-stage hierarchical procedure: (1) a block-level coarse filtering stage that scores pooled block representations to discard irrelevant regions, followed by (2) a token-level refinement stage that applies the original indexer exclusively within the retained candidate blocks. HISA preserves the identical token-level top-sparse pattern consumed by the downstream Sparse MLA operator and requires no additional training. On kernel-level benchmarks, HISA achieves up to speedup at 64K context. On Needle-in-a-Haystack and LongBench, we directly replace the indexer in DeepSeek-V3.2 and GLM-5 with our HISA indexer, without any finetuning. HISA closely matches the original DSA in quality, while substantially outperforming block-sparse baselines.",
+      "authors": [
+        "Yufei Xu",
+        "Fanxu Meng",
+        "Fan Jiang",
+        "Yuxuan Wang",
+        "Ruijie Zhou",
+        "Zhaohui Wang",
+        "Jiexi Wu",
+        "Zhixin Pan",
+        "Xiaojuan Tang",
+        "Wenjie Pei",
+        "Tongxuan Liu",
+        "Di yin",
+        "Xing Sun",
+        "Muhan Zhang"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-03-30T13:59:51+00:00",
+      "link": "https://arxiv.org/pdf/2603.28458v2",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:PM",
+        "keyword:TTT",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "hierarchical indexing for sparse attention in long context",
+      "llm_evidence_cn": "长上下文中稀疏注意力的分层索引",
+      "llm_evidence": "长上下文中稀疏注意力的分层索引",
+      "canonical_evidence": "长上下文中稀疏注意力的分层索引",
+      "llm_tldr_en": "Proposes HISA to eliminate the linear scan bottleneck in sparse attention, enabling efficient long-context processing.",
+      "llm_tldr_cn": "提出HISA分层索引机制，消除了稀疏注意力中的线性扫描瓶颈，支持高效的长上下文处理。",
+      "llm_tldr": "提出HISA分层索引机制，消除了稀疏注意力中的线性扫描瓶颈，支持高效的长上下文处理。",
+      "llm_tags": [
+        "query:lcp:composite"
+      ],
+      "matched_query_tag": "query:lcp:composite",
+      "matched_query_text": "Papers central to 长上下文处理, especially work that connects or combines: Long-context Processing; methods for long context processing in large language models.",
+      "matched_requirement_id": "req-composite-lcp",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.29002v1",
+      "source": "arxiv",
+      "title": "Understand and Accelerate Memory Processing Pipeline for Disaggregated LLM Inference",
+      "abstract": "Modern large language models (LLMs) increasingly depends on efficient long-context processing and generation mechanisms, including sparse attention, retrieval-augmented generation (RAG), and compressed contextual memory, to support complex reasoning. We show that these optimizations can be unified into a four-step memory processing pipeline: Prepare Memory, Compute Relevancy, Retrieval, and Apply to Inference. Through systematic profiling, we identify a 22%-97% memory processing overhead in LLM inference and strong heterogeneity in its computational characteristics. Motivated by this insight, we argue that \\textbf{heterogeneous systems} are well-suited to accelerate memory processing and thus end-to-end inference. We demonstrate this approach on a GPU-FPGA system by offloading sparse, irregular, and memory-bounded operations to FPGAs while retaining compute-intensive operations on GPUs. Evaluated on an AMD MI210 GPU and an Alveo U55C FPGA, our system is $1.04\\sim2.2\\times$ faster and requires $1.11\\sim4.7\\times$ less energy across multiple LLM inference optimizations than the GPU baseline (similar results hold on NVIDIA A100). These results establish heterogeneous systems as a practical direction for efficient LLM memory processing and inform future heterogeneous hardware design.",
+      "authors": [
+        "Zifan He",
+        "Rui Ma",
+        "Yizhou Sun",
+        "Jason Cong"
+      ],
+      "primary_category": "cs.DC",
+      "categories": [
+        "cs.DC",
+        "cs.AI"
+      ],
+      "published": "2026-03-30T21:03:39+00:00",
+      "link": "https://arxiv.org/pdf/2603.29002v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:LCP",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "efficient long-context processing and compressed contextual memory",
+      "llm_evidence_cn": "高效的长上下文处理和压缩上下文记忆",
+      "llm_evidence": "高效的长上下文处理和压缩上下文记忆",
+      "canonical_evidence": "高效的长上下文处理和压缩上下文记忆",
+      "llm_tldr_en": "Analyzes and accelerates the memory processing pipeline for long-context LLM inference on heterogeneous systems.",
+      "llm_tldr_cn": "分析并加速了异构系统上长上下文LLM推理的记忆处理流水线。",
+      "llm_tldr": "分析并加速了异构系统上长上下文LLM推理的记忆处理流水线。",
+      "llm_tags": [
+        "query:lcp:composite"
+      ],
+      "matched_query_tag": "query:lcp:composite",
+      "matched_query_text": "Papers central to 长上下文处理, especially work that connects or combines: Long-context Processing; methods for long context processing in large language models.",
+      "matched_requirement_id": "req-composite-lcp",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.29193v1",
+      "source": "arxiv",
+      "title": "Developing Adaptive Context Compression Techniques for Large Language Models (LLMs) in Long-Running Interactions",
+      "abstract": "Large Language Models (LLMs) often experience performance degradation during long-running interactions due to increasing context length, memory saturation, and computational overhead. This paper presents an adaptive context compression framework that integrates importance-aware memory selection, coherence-sensitive filtering, and dynamic budget allocation to retain essential conversational information while controlling context growth. The approach is evaluated on LOCOMO, LOCCO, and LongBench benchmarks to assess answer quality, retrieval accuracy, coherence preservation, and efficiency. Experimental results demonstrate that the proposed method achieves consistent improvements in conversational stability and retrieval performance while reducing token usage and inference latency compared with existing memory and compression-based approaches. These findings indicate that adaptive context compression provides an effective balance between long-term memory preservation and computational efficiency in persistent LLM interactions",
+      "authors": [
+        "Payal Fofadiya",
+        "Sunil Tiwari"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-03-31T02:57:48+00:00",
+      "link": "https://arxiv.org/pdf/2603.29193v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:PM",
+        "keyword:TTT",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "adaptive context compression for long-running interactions",
+      "llm_evidence_cn": "长期交互中的自适应上下文压缩",
+      "llm_evidence": "长期交互中的自适应上下文压缩",
+      "canonical_evidence": "长期交互中的自适应上下文压缩",
+      "llm_tldr_en": "Develops an adaptive context compression framework to maintain stability and efficiency in long-context LLM tasks.",
+      "llm_tldr_cn": "开发自适应上下文压缩框架，以维持大语言模型在长上下文任务中的稳定性和效率。",
+      "llm_tldr": "开发自适应上下文压缩框架，以维持大语言模型在长上下文任务中的稳定性和效率。",
+      "llm_tags": [
+        "query:lcp:composite"
+      ],
+      "matched_query_tag": "query:lcp:composite",
+      "matched_query_text": "Papers central to 长上下文处理, especially work that connects or combines: Long-context Processing; methods for long context processing in large language models.",
+      "matched_requirement_id": "req-composite-lcp",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.29247v1",
+      "source": "arxiv",
+      "title": "MemRerank: Preference Memory for Personalized Product Reranking",
+      "abstract": "LLM-based shopping agents increasingly rely on long purchase histories and multi-turn interactions for personalization, yet naively appending raw history to prompts is often ineffective due to noise, length, and relevance mismatch. We propose MemRerank, a preference memory framework that distills user purchase history into concise, query-independent signals for personalized product reranking. To study this problem, we build an end-to-end benchmark and evaluation framework centered on an LLM-based \\textbf{1-in-5} selection task, which measures both memory quality and downstream reranking utility. We further train the memory extractor with reinforcement learning (RL), using downstream reranking performance as supervision. Experiments with two LLM-based rerankers show that MemRerank consistently outperforms no-memory, raw-history, and off-the-shelf memory baselines, yielding up to \\textbf{+10.61} absolute points in 1-in-5 accuracy. These results suggest that explicit preference memory is a practical and effective building block for personalization in agentic e-commerce systems.",
+      "authors": [
+        "Zhiyuan Peng",
+        "Xuyang Wu",
+        "Huaixiao Tou",
+        "Yi Fang",
+        "Yi Gong"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-03-31T04:16:18+00:00",
+      "link": "https://arxiv.org/pdf/2603.29247v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:PM",
+        "keyword:TTT",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "preference memory framework for LLM-based shopping agents",
+      "llm_evidence_cn": "基于大语言模型购物智能体的偏好记忆框架",
+      "llm_evidence": "基于大语言模型购物智能体的偏好记忆框架",
+      "canonical_evidence": "基于大语言模型购物智能体的偏好记忆框架",
+      "llm_tldr_en": "Proposes MemRerank, a preference memory framework that distills history for personalized agent reranking.",
+      "llm_tldr_cn": "提出MemRerank框架，通过蒸馏历史记录为个性化智能体重排序提供偏好记忆。",
+      "llm_tldr": "提出MemRerank框架，通过蒸馏历史记录为个性化智能体重排序提供偏好记忆。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2603.29632v1",
+      "source": "arxiv",
+      "title": "An Empirical Study of Multi-Agent Collaboration for Automated Research",
+      "abstract": "As AI agents evolve, the community is rapidly shifting from single Large Language Models (LLMs) to Multi-Agent Systems (MAS) to overcome cognitive bottlenecks in automated research. However, the optimal multi-agent coordination framework for these autonomous agents remains largely unexplored. In this paper, we present a systematic empirical study investigating the comparative efficacy of distinct multi-agent structures for automated machine learning optimization. Utilizing a rigorously controlled, execution-based testbed equipped with Git worktree isolation and explicit global memory, we benchmark a single-agent baseline against two multi-agent paradigms: a subagent architecture (parallel exploration with post-hoc consolidation) and an agent team architecture (experts with pre-execution handoffs). By evaluating these systems under strictly fixed computational time budgets, our findings reveal a fundamental trade-off between operational stability and theoretical deliberation. The subagent mode functions as a highly resilient, high-throughput search engine optimal for broad, shallow optimizations under strict time constraints. Conversely, the agent team topology exhibits higher operational fragility due to multi-author code generation but achieves the deep theoretical alignment necessary for complex architectural refactoring given extended compute budgets. These empirical insights provide actionable guidelines for designing future autoresearch systems, advocating for dynamically routed architectures that adapt their collaborative structures to real-time task complexity.",
+      "authors": [
+        "Yang Shen",
+        "Zhenyi Yi",
+        "Ziyi Zhao",
+        "Lijun Sun",
+        "Dongyang Li",
+        "Chin-Teng Lin",
+        "Yuhui Shi"
+      ],
+      "primary_category": "cs.MA",
+      "categories": [
+        "cs.MA",
+        "cs.AI"
+      ],
+      "published": "2026-03-31T11:57:00+00:00",
+      "link": "https://arxiv.org/pdf/2603.29632v1",
+      "tags": [
+        "keyword:AM",
+        "query:AM"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Multi-agent coordination with explicit global memory",
+      "llm_evidence_cn": "具有显式全局记忆的多智能体协作",
+      "llm_evidence": "具有显式全局记忆的多智能体协作",
+      "canonical_evidence": "具有显式全局记忆的多智能体协作",
+      "llm_tldr_en": "This study benchmarks multi-agent structures for automated research using explicit global memory mechanisms.",
+      "llm_tldr_cn": "该研究通过显式全局记忆机制，对比分析了不同多智能体架构在自动化科研中的表现。",
+      "llm_tldr": "该研究通过显式全局记忆机制，对比分析了不同多智能体架构在自动化科研中的表现。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.00067v1",
+      "source": "arxiv",
+      "title": "Temporal Memory for Resource-Constrained Agents: Continual Learning via Stochastic Compress-Add-Smooth",
+      "abstract": "An agent that operates sequentially must incorporate new experience without forgetting old experience, under a fixed memory budget. We propose a framework in which memory is not a parameter vector but a stochastic process: a Bridge Diffusion on a replay interval $[0,1]$, whose terminal marginal encodes the present and whose intermediate marginals encode the past. New experience is incorporated via a three-step \\emph{Compress--Add--Smooth} (CAS) recursion. We test the framework on the class of models with marginal probability densities modeled via Gaussian mixtures of fixed number of components~$K$ in $d$ dimensions; temporal complexity is controlled by a fixed number~$L$ of piecewise-linear protocol segments whose nodes store Gaussian-mixture states. The entire recursion costs $O(LKd^2)$ flops per day -- no backpropagation, no stored data, no neural networks -- making it viable for controller-light hardware.   Forgetting in this framework arises not from parameter interference but from lossy temporal compression: the re-approximation of a finer protocol by a coarser one under a fixed segment budget. We find that the retention half-life scales linearly as $a_{1/2}\\approx c\\,L$ with a constant $c>1$ that depends on the dynamics but not on the mixture complexity~$K$, the dimension~$d$, or the geometry of the target family. The constant~$c$ admits an information-theoretic interpretation analogous to the Shannon channel capacity. The stochastic process underlying the bridge provides temporally coherent ``movie'' replay -- compressed narratives of the agent's history, demonstrated visually on an MNIST latent-space illustration. The framework provides a fully analytical ``Ising model'' of continual learning in which the mechanism, rate, and form of forgetting can be studied with mathematical precision.",
+      "authors": [
+        "Michael Chertkov"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cond-mat.stat-mech",
+        "cs.AI",
+        "eess.SY"
+      ],
+      "published": "2026-03-31T12:04:11+00:00",
+      "link": "https://arxiv.org/pdf/2604.00067v1",
+      "tags": [
+        "keyword:AM",
+        "query:AM",
+        "query:PM"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Temporal Memory for Resource-Constrained Agents",
+      "llm_evidence_cn": "资源受限智能体的时间记忆",
+      "llm_evidence": "资源受限智能体的时间记忆",
+      "canonical_evidence": "资源受限智能体的时间记忆",
+      "llm_tldr_en": "Proposes a stochastic process framework for agent memory to enable continual learning under fixed budgets.",
+      "llm_tldr_cn": "为智能体记忆提出了一种随机过程框架，以实现在固定预算下的持续学习。",
+      "llm_tldr": "为智能体记忆提出了一种随机过程框架，以实现在固定预算下的持续学习。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.00430v1",
+      "source": "arxiv",
+      "title": "Secure Forgetting: A Framework for Privacy-Driven Unlearning in Large Language Model (LLM)-Based Agents",
+      "abstract": "Large language model (LLM)-based agents have recently gained considerable attention due to the powerful reasoning capabilities of LLMs. Existing research predominantly focuses on enhancing the task performance of these agents in diverse scenarios. However, as LLM-based agents become increasingly integrated into real-world applications, significant concerns emerge regarding their accumulation of sensitive or outdated knowledge. Addressing these concerns requires the development of mechanisms that allow agents to selectively forget previously learned knowledge, giving rise to a new term LLM-based agent unlearning. This paper initiates research on unlearning in LLM-based agents. Specifically, we propose a novel and comprehensive framework that categorizes unlearning scenarios into three contexts: state unlearning (forgetting specific states or items), trajectory unlearning (forgetting sequences of actions) and environment unlearning (forgetting entire environments or categories of tasks). Within this framework, we introduce a natural language-based unlearning method that trains a conversion model to transform high-level unlearning requests into actionable unlearning prompts, guiding agents through a controlled forgetting process. Moreover, to evaluate the robustness of the proposed framework, we introduce an unlearning inference adversary capable of crafting prompts, querying agents, and observing their behaviors in an attempt to infer the forgotten knowledge. Experimental results show that our approach effectively enables agents to forget targeted knowledge while preserving performance on untargeted tasks, and prevents the adversary from inferring the forgotten knowledge.",
+      "authors": [
+        "Dayong Ye",
+        "Tainqing Zhu",
+        "Congcong Zhu",
+        "Feng He",
+        "Qi He",
+        "Shang Wang",
+        "Bo Liu",
+        "Wanlei Zhou"
+      ],
+      "primary_category": "cs.MA",
+      "categories": [
+        "cs.MA",
+        "cs.CR"
+      ],
+      "published": "2026-04-01T03:17:35+00:00",
+      "link": "https://arxiv.org/pdf/2604.00430v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Mechanisms for LLM-based agents to selectively forget previously learned knowledge",
+      "llm_evidence_cn": "LLM 智能体选择性遗忘先前学习知识的机制",
+      "llm_evidence": "LLM 智能体选择性遗忘先前学习知识的机制",
+      "canonical_evidence": "LLM 智能体选择性遗忘先前学习知识的机制",
+      "llm_tldr_en": "Proposes a framework for privacy-driven unlearning in LLM-based agents to handle sensitive or outdated data.",
+      "llm_tldr_cn": "提出 LLM 智能体隐私驱动的卸载框架，实现对敏感或过时知识的选择性遗忘。",
+      "llm_tldr": "提出 LLM 智能体隐私驱动的卸载框架，实现对敏感或过时知识的选择性遗忘。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.00715v1",
+      "source": "arxiv",
+      "title": "To Memorize or to Retrieve: Scaling Laws for RAG-Considerate Pretraining",
+      "abstract": "Retrieval-augmented generation (RAG) improves language model (LM) performance by providing relevant context at test time for knowledge-intensive situations. However, the relationship between parametric knowledge acquired during pretraining and non-parametric knowledge accessed via retrieval remains poorly understood, especially under fixed data budgets. In this work, we systematically study the trade-off between pretraining corpus size and retrieval store size across a wide range of model and data scales. We train OLMo-2-based LMs ranging from 30M to 3B parameters on up to 100B tokens of DCLM data, while varying both pretraining data scale (1-150x the number of parameters) and retrieval store size (1-20x), and evaluate performance across a diverse suite of benchmarks spanning reasoning, scientific QA, and open-domain QA. We find that retrieval consistently improves performance over parametric-only baselines across model scales and introduce a three-dimensional scaling framework that models performance as a function of model size, pretraining tokens, and retrieval corpus size. This scaling manifold enables us to estimate optimal allocations of a fixed data budget between pretraining and retrieval, revealing that the marginal utility of retrieval depends strongly on model scale, task type, and the degree of pretraining saturation. Our results provide a quantitative foundation for understanding when and how retrieval should complement pretraining, offering practical guidance for allocating data resources in the design of scalable language modeling systems.",
+      "authors": [
+        "Karan Singh",
+        "Michael Yu",
+        "Varun Gangal",
+        "Zhuofu Tao",
+        "Sachin Kumar",
+        "Emmy Liu",
+        "Steven Y. Feng"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-04-01T10:26:03+00:00",
+      "link": "https://arxiv.org/pdf/2604.00715v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:TTT",
+        "query:CD",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "trade-off between parametric knowledge and retrieval store size",
+      "llm_evidence_cn": "参数化知识与检索库大小之间的权衡",
+      "llm_evidence": "参数化知识与检索库大小之间的权衡",
+      "canonical_evidence": "参数化知识与检索库大小之间的权衡",
+      "llm_tldr_en": "Studies the scaling laws and trade-offs between pretraining parametric memory and RAG retrieval size.",
+      "llm_tldr_cn": "研究了预训练参数化记忆与 RAG 检索规模之间的缩放法则和权衡。",
+      "llm_tldr": "研究了预训练参数化记忆与 RAG 检索规模之间的缩放法则和权衡。",
+      "llm_tags": [
+        "query:rag:composite"
+      ],
+      "matched_query_tag": "query:rag:composite",
+      "matched_query_text": "Papers central to RAG, especially work that connects or combines: Agentic RAG; agentic RAG for complex question answering; retrieval augmented generation for large language models.",
+      "matched_requirement_id": "req-composite-rag",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.00733v1",
+      "source": "arxiv",
+      "title": "Spectral Compact Training: Pre-Training Large Language Models via Permanent Truncated SVD and Stiefel QR Retraction",
+      "abstract": "The memory wall remains the primary bottleneck for training large language models on consumer hardware. We introduce Spectral Compact Training (SCT), a method that replaces dense weight matrices with permanent truncated SVD factors W = U diag(s) V^T, where the full dense matrix is never materialized during training or inference. Gradients flow through the compact spectral factors via standard backpropagation, and U, V are retracted to the Stiefel manifold via QR decomposition after each optimizer step. SCT achieves up to 199x memory reduction per MLP layer at rank 32, enabling full training steps of 70B-parameter architectures on a Steam Deck handheld (7.2 GB peak memory vs. 1,245 GB for dense FP32 training with Adam). Rank-sweep experiments on SmolLM2-1.7B (ranks 32-256, 2000 steps, NVIDIA A100) show that all tested ranks converge to the same loss floor (~4.2-4.5), identifying the learning rate schedule -- not MLP rank -- as the primary bottleneck. Rank 128 emerges as the efficiency sweet spot at 11.7x MLP compression with the lowest perplexity. GPU memory drops 46% at rank 32 while training throughput doubles.",
+      "authors": [
+        "Björn Roman Kohlberger"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-04-01T10:53:56+00:00",
+      "link": "https://arxiv.org/pdf/2604.00733v1",
+      "tags": [
+        "keyword:LCP",
+        "query:CD",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "pre-training large language models via spectral compact training",
+      "llm_evidence_cn": "通过谱紧凑训练进行大语言模型预训练",
+      "llm_evidence": "通过谱紧凑训练进行大语言模型预训练",
+      "canonical_evidence": "通过谱紧凑训练进行大语言模型预训练",
+      "llm_tldr_en": "Proposes SCT to enable memory-efficient pre-training of large models by replacing dense matrices with SVD factors.",
+      "llm_tldr_cn": "提出 SCT 方法，通过 SVD 分解替代稠密矩阵，实现超低显存消耗的大模型预训练。",
+      "llm_tldr": "提出 SCT 方法，通过 SVD 分解替代稠密矩阵，实现超低显存消耗的大模型预训练。",
+      "llm_tags": [
+        "query:pretrain:composite"
+      ],
+      "matched_query_tag": "query:pretrain:composite",
+      "matched_query_text": "Papers central to 预训练&新架构, especially work that connects or combines: Model Architecture; Pretraining; efficient model architectures for foundation models; new model architectures beyond standard transformers; recent advances in large scale pretraining for foundation models.",
+      "matched_requirement_id": "req-composite-pretrain",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.00901v1",
+      "source": "arxiv",
+      "title": "Experience as a Compass: Multi-agent RAG with Evolving Orchestration and Agent Prompts",
+      "abstract": "Multi-agent Retrieval-Augmented Generation (RAG), wherein each agent takes on a specific role, supports hard queries that require multiple steps and sources, or complex reasoning. Existing approaches, however, rely on static agent behaviors and fixed orchestration strategies, leading to brittle performance on diverse, multi-hop tasks. We identify two key limitations: the lack of continuously adaptive orchestration mechanisms and the absence of behavior-level learning for individual agents. To this end, we propose HERA, a hierarchical framework that jointly evolves multi-agent orchestration and role-specific agent prompts. At the global level, HERA optimizes query-specific agent topologies through reward-guided sampling and experience accumulation. At the local level, Role-Aware Prompt Evolution refines agent behaviors via credit assignment and dual-axes adaptation along operational and behavioral principles, enabling targeted, role-conditioned improvements. On six knowledge-intensive benchmarks, HERA achieves an average improvement of 38.69\\% over recent baselines while maintaining robust generalization and token efficiency. Topological analyses reveal emergent self-organization, where sparse exploration yields compact, high-utility multi-agent networks, demonstrating both efficient coordination and robust reasoning.",
+      "authors": [
+        "Sha Li",
+        "Naren Ramakrishnan"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-04-01T13:45:52+00:00",
+      "link": "https://arxiv.org/pdf/2604.00901v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "query:AM"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "multi-agent RAG with evolving orchestration",
+      "llm_evidence_cn": "具有演化编排的多智能体RAG",
+      "llm_evidence": "具有演化编排的多智能体RAG",
+      "canonical_evidence": "具有演化编排的多智能体RAG",
+      "llm_tldr_en": "A hierarchical framework that evolves multi-agent orchestration and prompts for complex RAG tasks.",
+      "llm_tldr_cn": "一种通过演化多智能体编排和提示词来处理复杂RAG任务的分层框架。",
+      "llm_tldr": "一种通过演化多智能体编排和提示词来处理复杂RAG任务的分层框架。",
+      "llm_tags": [
+        "query:rag:composite"
+      ],
+      "matched_query_tag": "query:rag:composite",
+      "matched_query_text": "Papers central to RAG, especially work that connects or combines: Agentic RAG; agentic RAG for complex question answering; retrieval augmented generation for large language models.",
+      "matched_requirement_id": "req-composite-rag",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.01220v1",
+      "source": "arxiv",
+      "title": "Universal YOCO for Efficient Depth Scaling",
+      "abstract": "The rise of test-time scaling has remarkably boosted the reasoning and agentic proficiency of Large Language Models (LLMs). Yet, standard Transformers struggle to scale inference-time compute efficiently, as conventional looping strategies suffer from high computational overhead and a KV cache that inflates alongside model depth. We present Universal YOCO (YOCO-U), which combines the YOCO decoder-decoder architecture with recursive computation to achieve a synergistic effect greater than either alone. Built on the YOCO framework, YOCO-U implements a Universal Self-Decoder that performs multiple iterations via parameter sharing, while confining the iterative process to shallow, efficient-attention layers. This combination yields a favorable capability-efficiency tradeoff that neither YOCO nor recursion achieves independently. The YOCO architecture provides a constant global KV cache and linear pre-filling, while partial recursion enhances representational depth with limited overhead. Together, YOCO-U improves token utility and scaling behavior while maintaining efficient inference. Empirical results confirm that YOCO-U remains highly competitive in general and long-context benchmarks, demonstrating that the integration of efficient-attention architectures and recursive computation is a promising direction for scalable LLMs.",
+      "authors": [
+        "Yutao Sun",
+        "Li Dong",
+        "Tianzhu Ye",
+        "Shaohan Huang",
+        "Jianyong Wang",
+        "Furu Wei"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-04-01T17:58:21+00:00",
+      "link": "https://arxiv.org/pdf/2604.01220v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:TTT",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Efficient depth scaling and new decoder-decoder architecture",
+      "llm_evidence_cn": "高效深度缩放与新型解码器-解码器架构",
+      "llm_evidence": "高效深度缩放与新型解码器-解码器架构",
+      "canonical_evidence": "高效深度缩放与新型解码器-解码器架构",
+      "llm_tldr_en": "Introduces YOCO-U, an efficient architecture for test-time scaling and recursive computation in LLMs.",
+      "llm_tldr_cn": "引入 YOCO-U 架构，通过递归计算和参数共享实现高效的推理侧缩放。",
+      "llm_tldr": "引入 YOCO-U 架构，通过递归计算和参数共享实现高效的推理侧缩放。",
+      "llm_tags": [
+        "query:pretrain:composite"
+      ],
+      "matched_query_tag": "query:pretrain:composite",
+      "matched_query_text": "Papers central to 预训练&新架构, especially work that connects or combines: Model Architecture; Pretraining; efficient model architectures for foundation models; new model architectures beyond standard transformers; recent advances in large scale pretraining for foundation models.",
+      "matched_requirement_id": "req-composite-pretrain",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.01350v1",
+      "source": "arxiv",
+      "title": "No Attacker Needed: Unintentional Cross-User Contamination in Shared-State LLM Agents",
+      "abstract": "LLM-based agents increasingly operate across repeated sessions, maintaining task states to ensure continuity. In many deployments, a single agent serves multiple users within a team or organization, reusing a shared knowledge layer across user identities. This shared persistence expands the failure surface: information that is locally valid for one user can silently degrade another user's outcome when the agent reapplies it without regard for scope. We refer to this failure mode as unintentional cross-user contamination (UCC). Unlike adversarial memory poisoning, UCC requires no attacker; it arises from benign interactions whose scope-bound artifacts persist and are later misapplied. We formalize UCC through a controlled evaluation protocol, introduce a taxonomy of three contamination types, and evaluate the problem in two shared-state mechanisms. Under raw shared state, benign interactions alone produce contamination rates of 57--71%. A write-time sanitization is effective when shared state is conversational, but leaves substantial residual risk when shared state includes executable artifacts, with contamination often manifesting as silent wrong answers. These results indicate that shared-state agents need artifact-level defenses beyond text-level sanitization to prevent silent cross-user failures.",
+      "authors": [
+        "Tiankai Yang",
+        "Jiate Li",
+        "Yi Nian",
+        "Shen Dong",
+        "Ruiyao Xu",
+        "Ryan Rossi",
+        "Kaize Ding",
+        "Yue Zhao"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.CR"
+      ],
+      "published": "2026-04-01T20:03:56+00:00",
+      "link": "https://arxiv.org/pdf/2604.01350v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "query:AM"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "shared-state LLM agents and cross-user memory contamination",
+      "llm_evidence_cn": "共享状态LLM智能体与跨用户记忆污染",
+      "llm_evidence": "共享状态LLM智能体与跨用户记忆污染",
+      "canonical_evidence": "共享状态LLM智能体与跨用户记忆污染",
+      "llm_tldr_en": "Investigates unintentional memory contamination in multi-user LLM agents that maintain persistent task states.",
+      "llm_tldr_cn": "研究了在维持持久任务状态的多用户LLM智能体中出现的无意记忆污染问题。",
+      "llm_tldr": "研究了在维持持久任务状态的多用户LLM智能体中出现的无意记忆污染问题。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.01404v1",
+      "source": "arxiv",
+      "title": "Friends and Grandmothers in Silico: Localizing Entity Cells in Language Models",
+      "abstract": "Language models can answer many entity-centric factual questions, but it remains unclear which internal mechanisms are involved in this process. We study this question across multiple language models. We localize entity-selective MLP neurons using templated prompts about each entity, and then validate them with causal interventions on PopQA-based QA examples. On a curated set of 200 entities drawn from PopQA, localized neurons concentrate in early layers. Negative ablation produces entity-specific amnesia, while controlled injection at a placeholder token improves answer retrieval relative to mean-entity and wrong-cell controls. For many entities, activating a single localized neuron is sufficient to recover entity-consistent predictions once the context is initialized, consistent with compact entity retrieval rather than purely gradual enrichment across depth. Robustness to aliases, acronyms, misspellings, and multilingual forms supports a canonicalization interpretation. The effect is strong but not universal: not every entity admits a reliable single-neuron handle, and coverage is higher for popular entities. Overall, these results identify sparse, causally actionable access points for analyzing and modulating entity-conditioned factual behavior.",
+      "authors": [
+        "Itay Yona",
+        "Dan Barzilay",
+        "Michael Karasik",
+        "Mor Geva"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-04-01T21:09:06+00:00",
+      "link": "https://arxiv.org/pdf/2604.01404v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:PM",
+        "keyword:TTT",
+        "query:CD",
+        "query:LCP",
+        "query:PM"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "localizing entity-selective neurons for factual knowledge",
+      "llm_evidence_cn": "定位事实知识的实体选择性神经元",
+      "llm_evidence": "定位事实知识的实体选择性神经元",
+      "canonical_evidence": "定位事实知识的实体选择性神经元",
+      "llm_tldr_en": "Identifies internal mechanisms and specific neurons responsible for parametric factual memory in LLMs.",
+      "llm_tldr_cn": "识别大模型中负责参数化事实记忆的内部机制和特定神经元。",
+      "llm_tldr": "识别大模型中负责参数化事实记忆的内部机制和特定神经元。",
+      "llm_tags": [
+        "query:pm:composite"
+      ],
+      "matched_query_tag": "query:pm:composite",
+      "matched_query_text": "Papers central to 参数化记忆, especially work that connects or combines: p; parametric memory in large language models.",
+      "matched_requirement_id": "req-composite-pm",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.01430v1",
+      "source": "arxiv",
+      "title": "Improving Latent Generalization Using Test-time Compute",
+      "abstract": "Language Models (LMs) exhibit two distinct mechanisms for knowledge acquisition: in-weights learning (i.e., encoding information within the model weights) and in-context learning (ICL). Although these two modes offer complementary strengths, in-weights learning frequently struggles to facilitate deductive reasoning over the internalized knowledge. We characterize this limitation as a deficit in latent generalization, of which the reversal curse is one example. Conversely, in-context learning demonstrates highly robust latent generalization capabilities. To improve latent generalization from in-weights knowledge, prior approaches rely on train-time data augmentation, yet these techniques are task-specific, scale poorly, and fail to generalize to out-of-distribution knowledge. To overcome these shortcomings, this work studies how models can be taught to use test-time compute, or 'thinking', specifically to improve latent generalization. We use Reinforcement Learning (RL) from correctness feedback to train models to produce long chains-of-thought (CoTs) to improve latent generalization. Our experiments show that this thinking approach not only resolves many instances of latent generalization failures on in-distribution knowledge but also, unlike augmentation baselines, generalizes to new knowledge for which no RL was performed. Nevertheless, on pure reversal tasks, we find that thinking does not unlock direct knowledge inversion, but the generate-and-verify ability of thinking models enables them to get well above chance performance. The brittleness of factual self-verification means thinking models still remain well below the performance of in-context learning for this task. Overall, our results establish test-time thinking as a flexible and promising direction for improving the latent generalization of LMs.",
+      "authors": [
+        "Arslan Chaudhry",
+        "Sridhar Thiagarajan",
+        "Andrew Lampinen"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-04-01T22:10:21+00:00",
+      "link": "https://arxiv.org/pdf/2604.01430v1",
+      "tags": [
+        "keyword:TTT",
+        "query:CD",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "improving in-weights knowledge generalization using test-time compute",
+      "llm_evidence_cn": "利用测试时计算改进权重内知识的泛化",
+      "llm_evidence": "利用测试时计算改进权重内知识的泛化",
+      "canonical_evidence": "利用测试时计算改进权重内知识的泛化",
+      "llm_tldr_en": "Explores using test-time computation to improve the deductive reasoning and generalization of internalized LLM weights.",
+      "llm_tldr_cn": "探索利用测试时计算来改进LLM内部权重知识的演绎推理和潜在泛化能力。",
+      "llm_tldr": "探索利用测试时计算来改进LLM内部权重知识的演绎推理和潜在泛化能力。",
+      "llm_tags": [
+        "query:ttt:composite"
+      ],
+      "matched_query_tag": "query:ttt:composite",
+      "matched_query_text": "Papers central to 测试时训练, especially work that connects or combines: L; test time training methods for foundation models.",
+      "matched_requirement_id": "req-composite-ttt",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.01664v1",
+      "source": "arxiv",
+      "title": "ContextBudget: Budget-Aware Context Management for Long-Horizon Search Agents",
+      "abstract": "LLM-based agents show strong potential for long-horizon reasoning, yet their context size is limited by deployment factors (e.g., memory, latency, and cost), yielding a constrained context budget. As interaction histories grow, this induces a trade-off between retaining past information and staying within the context limit. To address this challenge, we propose Budget-Aware Context Management (BACM), which formulates context management as a sequential decision problem with a context budget constraint. It enables agents to assess the available budget before incorporating new observations and decide when and how much of the interaction history to compress. We further develop BACM-RL, an end-to-end curriculum-based reinforcement learning approach that learns compression strategies under varying context budgets. Experiments on compositional multi-objective QA and long-horizon web browsing benchmarks show that BACM-RL consistently outperforms prior methods across model scales and task complexities, achieving over $1.6\\times$ gains over strong baselines in high-complexity settings, while maintaining strong advantages as budgets shrink, where most methods exhibit a downward performance trend.",
+      "authors": [
+        "Yong Wu",
+        "YanZhao Zheng",
+        "TianZe Xu",
+        "ZhenTao Zhang",
+        "YuanQiang Yu",
+        "JiHuai Zhu",
+        "Chao Ma",
+        "BinBin Lin",
+        "BaoHua Dong",
+        "HangCheng Zhu",
+        "RuoHui Huang",
+        "Gang Yu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-04-02T06:09:22+00:00",
+      "link": "https://arxiv.org/pdf/2604.01664v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:TTT"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "budget-aware context management for long-horizon search agents",
+      "llm_evidence_cn": "长程搜索智能体的预算感知上下文管理",
+      "llm_evidence": "长程搜索智能体的预算感知上下文管理",
+      "canonical_evidence": "长程搜索智能体的预算感知上下文管理",
+      "llm_tldr_en": "Proposes a reinforcement learning approach for agents to manage and compress context within a fixed budget.",
+      "llm_tldr_cn": "提出一种强化学习方法，使智能体在固定预算内管理和压缩上下文历史。",
+      "llm_tldr": "提出一种强化学习方法，使智能体在固定预算内管理和压缩上下文历史。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.02091v1",
+      "source": "arxiv",
+      "title": "Optimizing RAG Rerankers with LLM Feedback via Reinforcement Learning",
+      "abstract": "Rerankers play a pivotal role in refining retrieval results for Retrieval-Augmented Generation. However, current reranking models are typically optimized on static human annotated relevance labels in isolation, decoupled from the downstream generation process. This isolation leads to a fundamental misalignment: documents identified as topically relevant by information retrieval metrics often fail to provide the actual utility required by the LLM for precise answer generation. To bridge this gap, we introduce ReRanking Preference Optimization (RRPO), a reinforcement learning framework that directly aligns reranking with the LLM's generation quality. By formulating reranking as a sequential decision-making process, RRPO optimizes for context utility using LLM feedback, thereby eliminating the need for expensive human annotations. To ensure training stability, we further introduce a reference-anchored deterministic baseline. Extensive experiments on knowledge-intensive benchmarks demonstrate that RRPO significantly outperforms strong baselines, including the powerful list-wise reranker RankZephyr. Further analysis highlights the versatility of our framework: it generalizes seamlessly to diverse readers (e.g., GPT-4o), integrates orthogonally with query expansion modules like Query2Doc, and remains robust even when trained with noisy supervisors.",
+      "authors": [
+        "Yuhang Wu",
+        "Xiangqing Shen",
+        "Fanfan Wang",
+        "Cangqi Zhou",
+        "Zhen Wu",
+        "Xinyu Dai",
+        "Rui Xia"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.IR"
+      ],
+      "published": "2026-04-02T14:19:47+00:00",
+      "link": "https://arxiv.org/pdf/2604.02091v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:PM",
+        "keyword:TTT",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Optimizing RAG rerankers with LLM feedback",
+      "llm_evidence_cn": "利用LLM反馈优化RAG重排序器",
+      "llm_evidence": "利用LLM反馈优化RAG重排序器",
+      "canonical_evidence": "利用LLM反馈优化RAG重排序器",
+      "llm_tldr_en": "Aligns RAG reranking with LLM generation quality using reinforcement learning.",
+      "llm_tldr_cn": "利用强化学习使RAG重排序过程与LLM生成质量直接对齐。",
+      "llm_tldr": "利用强化学习使RAG重排序过程与LLM生成质量直接对齐。",
+      "llm_tags": [
+        "query:rag:composite"
+      ],
+      "matched_query_tag": "query:rag:composite",
+      "matched_query_text": "Papers central to RAG, especially work that connects or combines: Agentic RAG; agentic RAG for complex question answering; retrieval augmented generation for large language models.",
+      "matched_requirement_id": "req-composite-rag",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.02194v1",
+      "source": "arxiv",
+      "title": "Neuro-RIT: Neuron-Guided Instruction Tuning for Robust Retrieval-Augmented Language Model",
+      "abstract": "Retrieval-Augmented Language Models (RALMs) have demonstrated significant potential in knowledge-intensive tasks; however, they remain vulnerable to performance degradation when presented with irrelevant or noisy retrieved contexts. Existing approaches to enhance robustness typically operate via coarse-grained parameter updates at the layer or module level, often overlooking the inherent neuron-level sparsity of Large Language Models (LLMs). To address this limitation, we propose Neuro-RIT (Neuron-guided Robust Instruction Tuning), a novel framework that shifts the paradigm from dense adaptation to precision-driven neuron alignment. Our method explicitly disentangles neurons that are responsible for processing relevant versus irrelevant contexts using attribution-based neuron mining. Subsequently, we introduce a two-stage instruction tuning strategy that enforces a dual capability for noise robustness: achieving direct noise suppression by functionally deactivating neurons exclusive to irrelevant contexts, while simultaneously optimizing targeted layers for evidence distillation. Extensive experiments across diverse QA benchmarks demonstrate that Neuro-RIT consistently outperforms strong baselines and robustness-enhancing methods.",
+      "authors": [
+        "Jaemin Kim",
+        "Jae O Lee",
+        "Sumyeong Ahn",
+        "Seo Yeon Park"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-04-02T15:49:50+00:00",
+      "link": "https://arxiv.org/pdf/2604.02194v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "neuron-guided instruction tuning for robust retrieval-augmented language models",
+      "llm_evidence_cn": "神经元引导的鲁棒检索增强语言模型指令微调",
+      "llm_evidence": "神经元引导的鲁棒检索增强语言模型指令微调",
+      "canonical_evidence": "神经元引导的鲁棒检索增强语言模型指令微调",
+      "llm_tldr_en": "Enhances RALM robustness by aligning specific neurons to process relevant versus irrelevant retrieved contexts.",
+      "llm_tldr_cn": "通过对齐特定神经元来处理相关与无关的检索上下文，增强检索增强语言模型的鲁棒性。",
+      "llm_tldr": "通过对齐特定神经元来处理相关与无关的检索上下文，增强检索增强语言模型的鲁棒性。",
+      "llm_tags": [
+        "query:rag:composite"
+      ],
+      "matched_query_tag": "query:rag:composite",
+      "matched_query_text": "Papers central to RAG, especially work that connects or combines: Agentic RAG; agentic RAG for complex question answering; retrieval augmented generation for large language models.",
+      "matched_requirement_id": "req-composite-rag",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.02259v1",
+      "source": "arxiv",
+      "title": "Retrieval-Augmented Question Answering over Scientific Literature for the Electron-Ion Collider",
+      "abstract": "To harness the power of Language Models in answering domain specific specialized technical questions, Retrieval Augmented Generation (RAG) is been used widely. In this work, we have developed a Q\\&A application inspired by the Retrieval Augmented Generation (RAG), which is comprised of an in-house database indexed on the arXiv articles related to the Electron-Ion Collider (EIC) experiment - one of the largest international scientific collaboration and incorporated an open-source LLaMA model for answer generation. This is an extension to it's proceeding application built on proprietary model and Cloud-hosted external knowledge-base for the EIC experiment. This locally-deployed RAG-system offers a cost-effective, resource-constraint alternative solution to build a RAG-assisted Q\\&A application on answering domain-specific queries in the field of experimental nuclear physics. This set-up facilitates data-privacy, avoids sending any pre-publication scientific data and information to public domain. Future improvement will expand the knowledge base to encompass heterogeneous EIC-related publications and reports and upgrade the application pipeline orchestration to the LangGraph framework.",
+      "authors": [
+        "Tina. J. Jat",
+        "T. Ghosh",
+        "Karthik Suresh"
+      ],
+      "primary_category": "hep-ex",
+      "categories": [
+        "hep-ex",
+        "cs.AI",
+        "physics.ins-det"
+      ],
+      "published": "2026-04-02T16:52:48+00:00",
+      "link": "https://arxiv.org/pdf/2604.02259v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:PM",
+        "keyword:TTT"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Retrieval-Augmented Generation for scientific literature",
+      "llm_evidence_cn": "针对科学文献的检索增强生成",
+      "llm_evidence": "针对科学文献的检索增强生成",
+      "canonical_evidence": "针对科学文献的检索增强生成",
+      "llm_tldr_en": "Develops a RAG system for answering specialized technical questions using an in-house scientific database.",
+      "llm_tldr_cn": "开发了一个 RAG 系统，利用内部科学数据库回答专门的技术问题。",
+      "llm_tldr": "开发了一个 RAG 系统，利用内部科学数据库回答专门的技术问题。",
+      "llm_tags": [
+        "query:rag:composite"
+      ],
+      "matched_query_tag": "query:rag:composite",
+      "matched_query_text": "Papers central to RAG, especially work that connects or combines: Agentic RAG; agentic RAG for complex question answering; retrieval augmented generation for large language models.",
+      "matched_requirement_id": "req-composite-rag",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.02318v1",
+      "source": "arxiv",
+      "title": "Stop Wandering: Efficient Vision-Language Navigation via Metacognitive Reasoning",
+      "abstract": "Training-free Vision-Language Navigation (VLN) agents powered by foundation models can follow instructions and explore 3D environments. However, existing approaches rely on greedy frontier selection and passive spatial memory, leading to inefficient behaviors such as local oscillation and redundant revisiting. We argue that this stems from a lack of metacognitive capabilities: the agent cannot monitor its exploration progress, diagnose strategy failures, or adapt accordingly. To address this, we propose MetaNav, a metacognitive navigation agent integrating spatial memory, history-aware planning, and reflective correction. Spatial memory builds a persistent 3D semantic map. History-aware planning penalizes revisiting to improve efficiency. Reflective correction detects stagnation and uses an LLM to generate corrective rules that guide future frontier selection. Experiments on GOAT-Bench, HM3D-OVON, and A-EQA show that MetaNav achieves state-of-the-art performance while reducing VLM queries by 20.7%, demonstrating that metacognitive reasoning significantly improves robustness and efficiency.",
+      "authors": [
+        "Xueying Li",
+        "Feng Lyu",
+        "Hao Wu",
+        "Mingliu Liu",
+        "Jia-Nan Liu",
+        "Guozi Liu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-04-02T17:58:08+00:00",
+      "link": "https://arxiv.org/pdf/2604.02318v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:LCP",
+        "query:AM",
+        "query:LCP",
+        "query:PM"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "metacognitive navigation agent integrating spatial memory",
+      "llm_evidence_cn": "集成空间记忆的元认知导航智能体",
+      "llm_evidence": "集成空间记忆的元认知导航智能体",
+      "canonical_evidence": "集成空间记忆的元认知导航智能体",
+      "llm_tldr_en": "Introduces MetaNav, which uses spatial memory and reflective reasoning to improve navigation efficiency.",
+      "llm_tldr_cn": "引入MetaNav，利用空间记忆和反思推理来提高视觉语言导航智能体的效率。",
+      "llm_tldr": "引入MetaNav，利用空间记忆和反思推理来提高视觉语言导航智能体的效率。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2603.27008v1",
+      "source": "arxiv",
+      "title": "RASPRef: Retrieval-Augmented Self-Supervised Prompt Refinement for Large Reasoning Models",
+      "abstract": "Recent reasoning-focused language models such as DeepSeek R1 and OpenAI o1 have demonstrated strong performance on structured reasoning benchmarks including GSM8K, MATH, and multi-hop question answering tasks. However, their performance remains highly sensitive to prompt formulation, and designing effective prompts is typically a manual and iterative process that does not scale well across tasks or domains. To address this limitation, we introduce Retrieval-Augmented Self-Supervised Prompt Refinement (RASPRef), a framework that improves prompts without requiring human annotations or task-specific supervision. The approach retrieves relevant examples and previously generated reasoning trajectories, and leverages signals such as multi-sample consistency, verifier feedback, and model-generated critiques to iteratively refine the prompt. Unlike prior approaches that focus primarily on improving model outputs, RASPRef directly treats the prompt as the optimization target and improves it through an iterative retrieval-guided refinement process. Experiments on GSM8K-style mathematical reasoning tasks show that retrieval-guided prompting improves performance compared with a static prompting baseline. We further discuss how retrieval quality, trajectory selection, and self-supervised feedback signals may influence the effectiveness of prompt refinement. These findings suggest that prompt design remains a critical factor for reasoning-oriented language models, and that self-improving prompts offer a practical and scalable strategy for improving reasoning performance.",
+      "authors": [
+        "Rahul Soni"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-03-27T21:49:21+00:00",
+      "link": "https://arxiv.org/pdf/2603.27008v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Retrieval-augmented framework that improves prompts using relevant examples",
+      "llm_evidence_cn": "利用相关示例改进提示词的检索增强框架",
+      "llm_evidence": "利用相关示例改进提示词的检索增强框架",
+      "canonical_evidence": "利用相关示例改进提示词的检索增强框架",
+      "llm_tldr_en": "Introduces RASPRef, a retrieval-augmented self-supervised framework to refine prompts for reasoning models.",
+      "llm_tldr_cn": "引入 RASPRef，一种检索增强的自监督框架，用于优化推理模型的提示词。",
+      "llm_tldr": "引入 RASPRef，一种检索增强的自监督框架，用于优化推理模型的提示词。",
+      "llm_tags": [
+        "query:rag:composite"
+      ],
+      "matched_query_tag": "query:rag:composite",
+      "matched_query_text": "Papers central to RAG, especially work that connects or combines: Agentic RAG; agentic RAG for complex question answering; retrieval augmented generation for large language models.",
+      "matched_requirement_id": "req-composite-rag",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2603.27349v1",
+      "source": "arxiv",
+      "title": "Inference-Time Structural Reasoning for Compositional Vision-Language Understanding",
+      "abstract": "Vision-language models (VLMs) excel at image-text retrieval yet persistently fail at compositional reasoning, distinguishing captions that share the same words but differ in relational structure. We present, a unified evaluation and augmentation framework benchmarking four architecturally diverse VLMs,CLIP, BLIP, LLaVA, and Qwen3-VL-8B-Thinking,on the Winoground benchmark under plain and scene-graph-augmented regimes. We introduce a dependency-based TextSceneGraphParser (spaCy) extracting subject-relation-object triples, and a Graph Asymmetry Scorer using optimal bipartite matching to inject structural relational priors. Caption ablation experiments (subject-object masking and swapping) reveal that Qwen3-VL-8B-Thinking achieves a group score of 62.75, far above all encoder-based models, while a proposed multi-turn SG filtering strategy further lifts it to 66.0, surpassing prior open-source state-of-the-art. We analyze the capability augmentation tradeoff and find that SG augmentation benefits already capable models while providing negligible or negative gains for weaker baselines. Code: https://github.com/amartyacodes/Inference-Time-Structural-Reasoning-for-Compositional-Vision-Language-Understanding",
+      "authors": [
+        "Amartya Bhattacharya"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.CL"
+      ],
+      "published": "2026-03-28T17:41:35+00:00",
+      "link": "https://arxiv.org/pdf/2603.27349v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:LCP",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Inference-time structural reasoning and augmentation for VLMs",
+      "llm_evidence_cn": "视觉语言模型的推理侧结构化推理与增强",
+      "llm_evidence": "视觉语言模型的推理侧结构化推理与增强",
+      "canonical_evidence": "视觉语言模型的推理侧结构化推理与增强",
+      "llm_tldr_en": "Introduces a framework for improving compositional reasoning in VLMs using inference-time structural priors.",
+      "llm_tldr_cn": "提出一种利用推理侧结构化先验提升视觉语言模型组合推理能力的框架。",
+      "llm_tldr": "提出一种利用推理侧结构化先验提升视觉语言模型组合推理能力的框架。",
+      "llm_tags": [
+        "query:ttt"
+      ],
+      "matched_query_tag": "query:ttt",
+      "matched_query_text": "test time training methods for foundation models",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2603.27768v1",
+      "source": "arxiv",
+      "title": "TailNLG: A Multilingual Benchmark Addressing Verbalization of Long-Tail Entities",
+      "abstract": "The automatic verbalization of structured knowledge is a key task for making knowledge graphs accessible to non-expert users and supporting retrieval-augmented generation systems. Although recent advances in Data-to-Text generation have improved multilingual coverage, little attention has been paid to potential biases in the verbalization of rare entities, frequently known as long-tail entities. In this work, we present the first systematic study of long-tail entities in Data-to-Text generation. We introduce TailNLG, a new multilingual benchmark in English, Italian, and Spanish, built from Wikidata and covering entities with varying levels of popularity. We evaluate three different families of large language models in zero-shot settings and compare their performance on rare versus common entities, as well as against the established WebNLG benchmark. Our results reveal a consistent bias against long-tail entities: embedding-based scores are lower, and model uncertainty is higher for rare entities. We further show that the impact of long-tail entities varies across models and languages, and that existing evaluation metrics do not consistently capture these differences, highlighting the need for more reliable evaluation frameworks.",
+      "authors": [
+        "Lia Draetta",
+        "Michael Oliverio",
+        "Virginia Ramón-Ferrer",
+        "Pier Felice Balestrucci",
+        "Flaviana Corallo",
+        "Carlos Badenes-Olmedo",
+        "Alessandro Mazzei",
+        "Marco Antonio Stranisci",
+        "Rossana Damiano"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-03-29T17:01:54+00:00",
+      "link": "https://arxiv.org/pdf/2603.27768v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:PM",
+        "keyword:TTT",
+        "query:CD",
+        "query:LCP",
+        "query:PM"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Benchmark for supporting retrieval-augmented generation systems with long-tail entities",
+      "llm_evidence_cn": "支持长尾实体检索增强生成系统的基准测试",
+      "llm_evidence": "支持长尾实体检索增强生成系统的基准测试",
+      "canonical_evidence": "支持长尾实体检索增强生成系统的基准测试",
+      "llm_tldr_en": "TailNLG is a multilingual benchmark for evaluating LLM performance on verbalizing rare entities in RAG contexts.",
+      "llm_tldr_cn": "TailNLG 是一个针对 RAG 系统中长尾实体语言化能力的跨语言基准测试。",
+      "llm_tldr": "TailNLG 是一个针对 RAG 系统中长尾实体语言化能力的跨语言基准测试。",
+      "llm_tags": [
+        "query:rag:composite"
+      ],
+      "matched_query_tag": "query:rag:composite",
+      "matched_query_text": "Papers central to RAG, especially work that connects or combines: Agentic RAG; agentic RAG for complex question answering; retrieval augmented generation for large language models.",
+      "matched_requirement_id": "req-composite-rag",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2603.27250v1",
+      "source": "arxiv",
+      "title": "IP-SAM: Prompt-Space Conditioning for Prompt-Absent Camouflaged Object Detection",
+      "abstract": "Prompt-conditioned foundation segmenters have emerged as a dominant paradigm for image segmentation, where explicit spatial prompts (e.g., points, boxes, masks) guide mask decoding. However, many real-world deployments require fully automatic segmentation, creating a structural mismatch: the decoder expects prompts that are unavailable at inference. Existing adaptations typically modify intermediate features, inadvertently bypassing the model's native prompt interface and weakening prompt-conditioned decoding. We propose IP-SAM, which revisits adaptation from a prompt-space perspective through prompt-space conditioning. Specifically, a Self-Prompt Generator (SPG) distills image context into complementary intrinsic prompts that serve as coarse regional anchors. These cues are projected through SAM2's frozen prompt encoder, restoring prompt-guided decoding without external intervention. To suppress background-induced false positives, Prompt-Space Gating (PSG) leverages the intrinsic background prompt as an asymmetric suppressive constraint prior to decoding. Under a deterministic no-external-prompt protocol, IP-SAM achieves state-of-the-art performance across four camouflaged object detection benchmarks (e.g., MAE 0.017 on COD10K) with only 21.26M trainable parameters (optimizing SPG, PSG, and a task-specific mask decoder trained from scratch, alongside image-encoder LoRA while keeping the prompt encoder frozen). Furthermore, the proposed conditioning strategy generalizes beyond COD to medical polyp segmentation, where a model trained solely on Kvasir-SEG exhibits strong zero-shot transfer to both CVC-ClinicDB and ETIS.",
+      "authors": [
+        "Huiyao Zhang",
+        "Jin Bai",
+        "Rui Guo",
+        "JianWen Tan",
+        "HongFei Wang",
+        "Ye Li"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-03-28T11:52:55+00:00",
+      "link": "https://arxiv.org/pdf/2603.27250v1",
+      "tags": [
+        "keyword:CD"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "distills image context into complementary intrinsic prompts",
+      "llm_evidence_cn": "将图像上下文蒸馏为互补的内在提示",
+      "llm_evidence": "将图像上下文蒸馏为互补的内在提示",
+      "canonical_evidence": "将图像上下文蒸馏为互补的内在提示",
+      "llm_tldr_en": "Uses context distillation to generate self-prompts for automatic segmentation in foundation models.",
+      "llm_tldr_cn": "利用上下文蒸馏生成自提示，用于基础模型中的自动分割。",
+      "llm_tldr": "利用上下文蒸馏生成自提示，用于基础模型中的自动分割。",
+      "llm_tags": [
+        "query:cd:composite"
+      ],
+      "matched_query_tag": "query:cd:composite",
+      "matched_query_text": "Papers central to 上下文蒸馏, especially work that connects or combines: Context Distillation; context distillation for large language models.",
+      "matched_requirement_id": "req-composite-cd",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2603.27737v1",
+      "source": "arxiv",
+      "title": "Synergizing Discriminative Exemplars and Self-Refined Experience for MLLM-based In-Context Learning in Medical Diagnosis",
+      "abstract": "General Multimodal Large Language Models (MLLMs) often underperform in capturing domain-specific nuances in medical diagnosis, trailing behind fully supervised baselines. Although fine-tuning provides a remedy, the high costs of expert annotation and massive computational overhead limit its scalability. To bridge this gap without updating the weights of the pre-trained backbone of the MLLM, we propose a Clinician Mimetic Workflow. This is a novel In-Context Learning (ICL) framework designed to synergize Discriminative Exemplar Coreset Selection (DECS) and Self-Refined Experience Summarization (SRES). Specifically, DECS simulates a clinician's ability to reference \"anchor cases\" by selecting discriminative visual coresets from noisy data at the computational level; meanwhile, SRES mimics the cognition and reflection in clinical diagnosis by distilling diverse rollouts into a dynamic textual Experience Bank. Extensive evaluation across all 12 datasets of the MedMNIST 2D benchmark demonstrates that our method outperforms zero-shot general and medical MLLMs. Simultaneously, it achieves performance levels comparable to fully supervised vision models and domain-specific fine-tuned MLLMs, setting a new benchmark for parameter-efficient medical in-context learning. Our code is available at an anonymous repository: https://anonymous.4open.science/r/Synergizing-Discriminative-Exemplars-and-Self-Refined-Experience-ED74.",
+      "authors": [
+        "Wenkai Zhao",
+        "Zipei Wang",
+        "Mengjie Fang",
+        "Di Dong",
+        "Jie Tian",
+        "Lingwei Zhang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-03-29T15:29:59+00:00",
+      "link": "https://arxiv.org/pdf/2603.27737v1",
+      "tags": [
+        "keyword:CD",
+        "query:CD"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Self-refined experience summarization for in-context learning",
+      "llm_evidence_cn": "用于上下文学习的自我精炼经验总结",
+      "llm_evidence": "用于上下文学习的自我精炼经验总结",
+      "canonical_evidence": "用于上下文学习的自我精炼经验总结",
+      "llm_tldr_en": "Proposes a workflow using exemplar selection and experience summarization to improve medical diagnosis in MLLMs.",
+      "llm_tldr_cn": "提出一种结合样本选择和经验总结的工作流，在不更新权重的情况下提升多模态模型医疗诊断能力。",
+      "llm_tldr": "提出一种结合样本选择和经验总结的工作流，在不更新权重的情况下提升多模态模型医疗诊断能力。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2603.28058v1",
+      "source": "arxiv",
+      "title": "Is One-Shot In-Context Learning Helpful for Data Selection in Task-Specific Fine-Tuning of Multimodal LLMs?",
+      "abstract": "Injecting world knowledge into pretrained multimodal large language models (MLLMs) is essential for domain-specific applications. Task-specific fine-tuning achieves this by tailoring MLLMs to high-quality in-domain data but encounters scalability challenges as datasets grow, necessitating a trade-off between performance and computational overhead. Existing data selection methods rely on additional scoring models or heuristic clustering, failing to concentrate on both data importance and diversity. Moreover, both methods overlook the interplay among training samples. To address these limitations, we propose CLIPPER, a training-free data selection pipeline that separates parameter and world knowledge, and leverages in-context learning to probe model responses to different demonstration-query combinations. CLIPPER identifies coresets that mirror the original dataset's perplexity distribution, preserving critical samples while maintaining diversity. Experiments on two MLLMs and three datasets show that CLIPPER matches full fine-tuning performance with significantly lower costs: Qwen2.5-VL-7B attains 47% data efficiency on VRSBench, and Llama-3.2-11B-Vision-Instruct reduces ScienceQA training time by 37%.",
+      "authors": [
+        "Xiao An",
+        "Jiaxing Sun",
+        "Ting Hu",
+        "Wei He"
+      ],
+      "primary_category": "cs.MM",
+      "categories": [
+        "cs.MM"
+      ],
+      "published": "2026-03-30T05:48:20+00:00",
+      "link": "https://arxiv.org/pdf/2603.28058v1",
+      "tags": [
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:TTT",
+        "query:CD",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "separates parameter and world knowledge",
+      "llm_evidence_cn": "分离参数知识和世界知识",
+      "llm_evidence": "分离参数知识和世界知识",
+      "canonical_evidence": "分离参数知识和世界知识",
+      "llm_tldr_en": "Proposes CLIPPER for data selection by distinguishing between model parameters and external world knowledge.",
+      "llm_tldr_cn": "提出了 CLIPPER，通过区分模型参数和外部世界知识来进行数据选择。",
+      "llm_tldr": "提出了 CLIPPER，通过区分模型参数和外部世界知识来进行数据选择。",
+      "llm_tags": [
+        "query:pm:composite"
+      ],
+      "matched_query_tag": "query:pm:composite",
+      "matched_query_text": "Papers central to 参数化记忆, especially work that connects or combines: p; parametric memory in large language models.",
+      "matched_requirement_id": "req-composite-pm",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2603.27481v1",
+      "source": "arxiv",
+      "title": "On Token's Dilemma: Dynamic MoE with Drift-Aware Token Assignment for Continual Learning of Large Vision Language Models",
+      "abstract": "Multimodal Continual Instruction Tuning aims to continually enhance Large Vision Language Models (LVLMs) by learning from new data without forgetting previously acquired knowledge. Mixture of Experts (MoE) architectures naturally facilitate this by incrementally adding new experts and expanding routers while keeping the existing ones frozen. However, despite expert isolation, MoE-based continual learners still suffer from forgetting due to routing-drift: old-task tokens become mistakenly attracted to newly added experts, degrading performance on prior tasks. We analyze the failure mode at the token level and reveal the token's dilemma: ambiguous and old tokens in new-task data offer minimal learning benefit yet induce forgetting when routed to new experts, due to their ambiguous routing assignment during training. Motivated by this, we propose LLaVA-DyMoE, a dynamic MoE framework that incrementally expands the MoE with drift-aware token assignment. We characterize token types via their routing score distributions and apply targeted regularization. Specifically, a token-level assignment guidance steers ambiguous and old tokens away from new experts to preserve established routing patterns and alleviate routing-drift, while complementary routing score regularizations enforce expert-group separation and promote new-expert specialization. Extensive experiments demonstrate that our LLaVA-DyMoE effectively mitigates routing-drift-induced forgetting, achieving over a 7% gain in mean final accuracy and a 12% reduction in forgetting compared to baselines. The project page is https://zhaoc5.github.io/DyMoE.",
+      "authors": [
+        "Chongyang Zhao",
+        "Mingsong Li",
+        "Haodong Lu",
+        "Dong Gong"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-03-29T02:30:55+00:00",
+      "link": "https://arxiv.org/pdf/2603.27481v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:LCP",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Dynamic MoE architecture for continual learning",
+      "llm_evidence_cn": "用于持续学习的动态MoE架构",
+      "llm_evidence": "用于持续学习的动态MoE架构",
+      "canonical_evidence": "用于持续学习的动态MoE架构",
+      "llm_tldr_en": "Addresses routing-drift in MoE architectures for continual learning of vision-language models.",
+      "llm_tldr_cn": "解决了视觉语言模型持续学习中MoE架构的路由漂移问题。",
+      "llm_tldr": "解决了视觉语言模型持续学习中MoE架构的路由漂移问题。",
+      "llm_tags": [
+        "query:pretrain:composite"
+      ],
+      "matched_query_tag": "query:pretrain:composite",
+      "matched_query_text": "Papers central to 预训练&新架构, especially work that connects or combines: Model Architecture; Pretraining; efficient model architectures for foundation models; new model architectures beyond standard transformers; recent advances in large scale pretraining for foundation models.",
+      "matched_requirement_id": "req-composite-pretrain",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2603.27859v1",
+      "source": "arxiv",
+      "title": "KazByte: Adapting Qwen models to Kazakh via Byte-level Adapter",
+      "abstract": "Large language models fragment Kazakh text into many more tokens than equivalent English text, because their tokenizers were built for high-resource languages. This tokenizer tax inflates compute, shortens the effective context window, and weakens the model's grip on Kazakh morphology. We propose to bypass the tokenizer entirely by feeding raw bytes through a small adapter that learns to speak the internal language of a frozen Qwen2.5-7B. Once the adapter is trained, we freeze it and fine-tune only the attention layers of Qwen on Kazakh text. Our central hypothesis is that this two-stage process -- first teach the interface, then adapt the model -- should match or exceed the accuracy of the original Qwen2.5-7B on standard Kazakh benchmarks. This report describes the ByteKaz architecture and training protocol. Empirical validation is ongoing; this version stakes the design and hypotheses for the record.",
+      "authors": [
+        "Rauan Akylzhanov"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "math.NA"
+      ],
+      "published": "2026-03-29T20:27:58+00:00",
+      "link": "https://arxiv.org/pdf/2603.27859v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:PM",
+        "keyword:TTT",
+        "query:CD",
+        "query:LCP",
+        "query:PM"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "new model architecture beyond standard transformers using byte-level adapters",
+      "llm_evidence_cn": "超越标准Transformer的新架构，使用字节级适配器",
+      "llm_evidence": "超越标准Transformer的新架构，使用字节级适配器",
+      "canonical_evidence": "超越标准Transformer的新架构，使用字节级适配器",
+      "llm_tldr_en": "Adapts LLMs to low-resource languages using byte-level adapters to bypass tokenizer limitations.",
+      "llm_tldr_cn": "通过字节级适配器绕过分词器限制，将大语言模型适配到低资源语言。",
+      "llm_tldr": "通过字节级适配器绕过分词器限制，将大语言模型适配到低资源语言。",
+      "llm_tags": [
+        "query:pretrain:composite"
+      ],
+      "matched_query_tag": "query:pretrain:composite",
+      "matched_query_text": "Papers central to 预训练&新架构, especially work that connects or combines: Model Architecture; Pretraining; efficient model architectures for foundation models; new model architectures beyond standard transformers; recent advances in large scale pretraining for foundation models.",
+      "matched_requirement_id": "req-composite-pretrain",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2603.29946v1",
+      "source": "arxiv",
+      "title": "Real-Time Explanations for Tabular Foundation Models",
+      "abstract": "Interpretability is central for scientific machine learning, as understanding \\emph{why} models make predictions enables hypothesis generation and validation. While tabular foundation models show strong performance, existing explanation methods like SHAP are computationally expensive, limiting interactive exploration. We introduce ShapPFN, a foundation model that integrates Shapley value regression directly into its architecture, producing both predictions and explanations in a single forward pass. On standard benchmarks, ShapPFN achieves competitive performance while producing high-fidelity explanations ($R^2$=0.96, cosine=0.99) over 1000\\times faster than KernelSHAP (0.06s vs 610s). Our code is available at https://github.com/kunumi/ShapPFN",
+      "authors": [
+        "Luan Borges Teodoro Reis Sena",
+        "Francisco Galuppo Azevedo"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-03-31T16:17:09+00:00",
+      "link": "https://arxiv.org/pdf/2603.29946v1",
+      "tags": [
+        "keyword:CD",
+        "query:TTT"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "foundation model architecture with integrated regression",
+      "llm_evidence_cn": "集成回归功能的基座模型架构",
+      "llm_evidence": "集成回归功能的基座模型架构",
+      "canonical_evidence": "集成回归功能的基座模型架构",
+      "llm_tldr_en": "ShapPFN is a tabular foundation model that integrates interpretability directly into its architecture.",
+      "llm_tldr_cn": "ShapPFN是一个将可解释性直接集成到架构中的表格基座模型。",
+      "llm_tldr": "ShapPFN是一个将可解释性直接集成到架构中的表格基座模型。",
+      "llm_tags": [
+        "query:pretrain:composite"
+      ],
+      "matched_query_tag": "query:pretrain:composite",
+      "matched_query_text": "Papers central to 预训练&新架构, especially work that connects or combines: Model Architecture; Pretraining; efficient model architectures for foundation models; new model architectures beyond standard transformers; recent advances in large scale pretraining for foundation models.",
+      "matched_requirement_id": "req-composite-pretrain",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2603.27819v1",
+      "source": "arxiv",
+      "title": "KVSculpt: KV Cache Compression as Distillation",
+      "abstract": "KV cache compression is critical for efficient long-context LLM inference. Approaches that reduce the per-pair footprint -- quantization and low-rank decomposition -- are orthogonal to those that reduce the sequence length of the cache. Along the sequence-length dimension, existing methods range from pure eviction -- selecting which KV pairs to keep -- to merging, which combines similar pairs into fewer ones. Both remain anchored to the original cache entries. We propose KVSculpt, which moves to the other end of this spectrum: instead of selecting or combining original pairs, we optimize a smaller set of unconstrained KV pairs in continuous embedding space to preserve each layer's attention behavior. Keys are optimized via L-BFGS and values are solved in closed form via least squares, alternating every few steps. On top of this, we introduce adaptive budget allocation, which uses a cheap pilot compression run to redistribute the compression budget across layers and KV heads based on per-component difficulty. On Qwen2.5-1.5B-Instruct with 2048-token contexts, KVSculpt reduces KL divergence by 3.5-4.1x compared to Select+Fit -- attention-score eviction with least-squares value fitting -- across compression ratios r in {0.3, 0.5, 0.7}. Adaptive allocation provides an additional 1.3x KL reduction at no extra inference cost. Analysis reveals that compression difficulty is highly non-uniform: per-layer pilot MSE varies by up to 100x across layers, and the two KV heads within a single layer can differ by up to 467x -- demonstrating that fine-grained budget allocation is essential.",
+      "authors": [
+        "Bo Jiang",
+        "Sian Jin"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-03-29T19:14:25+00:00",
+      "link": "https://arxiv.org/pdf/2603.27819v1",
+      "tags": [
+        "keyword:CD",
+        "keyword:LCP",
+        "query:CD",
+        "query:LCP",
+        "query:PM"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "KV cache compression as distillation for long-context LLM inference",
+      "llm_evidence_cn": "将KV缓存压缩视为长上下文推理中的蒸馏",
+      "llm_evidence": "将KV缓存压缩视为长上下文推理中的蒸馏",
+      "canonical_evidence": "将KV缓存压缩视为长上下文推理中的蒸馏",
+      "llm_tldr_en": "Proposes KVSculpt, a method to compress KV cache by optimizing unconstrained pairs via distillation-like objectives.",
+      "llm_tldr_cn": "提出KVSculpt，通过类似蒸馏的优化方法压缩KV缓存，提升长上下文推理效率。",
+      "llm_tldr": "提出KVSculpt，通过类似蒸馏的优化方法压缩KV缓存，提升长上下文推理效率。",
+      "llm_tags": [
+        "query:cd:composite"
+      ],
+      "matched_query_tag": "query:cd:composite",
+      "matched_query_text": "Papers central to 上下文蒸馏, especially work that connects or combines: Context Distillation; context distillation for large language models.",
+      "matched_requirement_id": "req-composite-cd",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2603.27960v1",
+      "source": "arxiv",
+      "title": "Efficient Inference of Large Vision Language Models",
+      "abstract": "Although Large Vision Language Models (LVLMs) have demonstrated impressive multimodal reasoning capabilities, their scalability and deployment are constrained by massive computational requirements. In particular, the massive amount of visual tokens from high-resolution input data aggravates the situation due to the quadratic complexity of attention mechanisms. To address these issues, the research community has developed several optimization frameworks. This paper presents a comprehensive survey of the current state-of-the-art techniques for accelerating LVLM inference. We introduce a systematic taxonomy that categorizes existing optimization frameworks into four primary dimensions: visual token compression, memory management and serving, efficient architectural design, and advanced decoding strategies. Furthermore, we critically examine the limitations of these current methodologies and identify critical open problems to inspire future research directions in efficient multimodal systems.",
+      "authors": [
+        "Surendra Pathak"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.CL",
+        "cs.CV"
+      ],
+      "published": "2026-03-30T02:23:37+00:00",
+      "link": "https://arxiv.org/pdf/2603.27960v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:LCP",
+        "keyword:TTT",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Efficient architectural design and memory management for LVLMs",
+      "llm_evidence_cn": "LVLM 的高效架构设计与内存管理",
+      "llm_evidence": "LVLM 的高效架构设计与内存管理",
+      "canonical_evidence": "LVLM 的高效架构设计与内存管理",
+      "llm_tldr_en": "Surveys optimization techniques for accelerating Large Vision Language Model inference, including architecture.",
+      "llm_tldr_cn": "综述了加速大型视觉语言模型推理的优化技术，包括架构设计。",
+      "llm_tldr": "综述了加速大型视觉语言模型推理的优化技术，包括架构设计。",
+      "llm_tags": [
+        "query:pretrain:composite"
+      ],
+      "matched_query_tag": "query:pretrain:composite",
+      "matched_query_text": "Papers central to 预训练&新架构, especially work that connects or combines: Model Architecture; Pretraining; efficient model architectures for foundation models; new model architectures beyond standard transformers; recent advances in large scale pretraining for foundation models.",
+      "matched_requirement_id": "req-composite-pretrain",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.00284v1",
+      "source": "arxiv",
+      "title": "Improvisational Games as a Benchmark for Social Intelligence of AI Agents: The Case of Connections",
+      "abstract": "We formally introduce a improvisational wordplay game called Connections to explore reasoning capabilities of AI agents. Playing Connections combines skills in knowledge retrieval, summarization and awareness of cognitive states of other agents. We show how the game serves as a good benchmark for social intelligence abilities of language model based agents that go beyond the agents' own memory and deductive reasoning and also involve gauging the understanding capabilities of other agents. Finally, we show how through communication with other agents in a constrained environment, AI agents must demonstrate social awareness and intelligence in games involving collaboration.",
+      "authors": [
+        "Gaurav Rajesh Parikh",
+        "Angikar Ghosal"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.MA"
+      ],
+      "published": "2026-03-31T22:16:25+00:00",
+      "link": "https://arxiv.org/pdf/2604.00284v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:PM",
+        "query:AM"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "AI agents' memory and reasoning in social games",
+      "llm_evidence_cn": "社交游戏中 AI 智能体的记忆与推理",
+      "llm_evidence": "社交游戏中 AI 智能体的记忆与推理",
+      "canonical_evidence": "社交游戏中 AI 智能体的记忆与推理",
+      "llm_tldr_en": "Uses wordplay games to benchmark social intelligence and memory capabilities of LLM-based agents.",
+      "llm_tldr_cn": "利用文字游戏来评估基于 LLM 的智能体的社交智能和记忆能力。",
+      "llm_tldr": "利用文字游戏来评估基于 LLM 的智能体的社交智能和记忆能力。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2603.28219v1",
+      "source": "arxiv",
+      "title": "Variational Neurons in Transformers for Language Modeling",
+      "abstract": "Transformers for language modeling usually rely on deterministic internal computation, with uncertainty expressed mainly at the output layer. We introduce variational neurons into Transformer feed-forward computation so that uncertainty becomes part of the internal computation itself. Concretely, we replace deterministic feed-forward units with local variational units based on EVE while preserving the overall Transformer backbone.   We evaluate this design in compact next-token language-modeling settings. We compare deterministic and variational variants with both predictive and probabilistic criteria. Alongside negative log-likelihood, perplexity and accuracy, we analyze calibration, conditional variance, mutual information and latent-usage statistics. The resulting picture is clear. Variational neurons integrate stably into Transformers, preserve strong predictive performance and produce informative uncertainty signals. The experiments also show that task quality, useful depth and internal stability are distinct properties.   These results establish variational Transformers as a practical form of uncertainty-aware language modeling. They show that Transformers can predict with an explicit internal structure of uncertainty, which supports stronger probabilistic evaluation and a more informative analysis of model behavior.",
+      "authors": [
+        "Yves Ruffenach"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-03-30T09:39:00+00:00",
+      "link": "https://arxiv.org/pdf/2603.28219v1",
+      "tags": [
+        "keyword:AM",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "New model architecture with variational neurons in Transformers",
+      "llm_evidence_cn": "Transformer中引入变分神经元的新架构",
+      "llm_evidence": "Transformer中引入变分神经元的新架构",
+      "canonical_evidence": "Transformer中引入变分神经元的新架构",
+      "llm_tldr_en": "Introduces variational neurons into Transformer feed-forward layers to model internal uncertainty.",
+      "llm_tldr_cn": "在Transformer前馈层引入变分神经元，以在内部计算中建模不确定性。",
+      "llm_tldr": "在Transformer前馈层引入变分神经元，以在内部计算中建模不确定性。",
+      "llm_tags": [
+        "query:pretrain:composite"
+      ],
+      "matched_query_tag": "query:pretrain:composite",
+      "matched_query_text": "Papers central to 预训练&新架构, especially work that connects or combines: Model Architecture; Pretraining; efficient model architectures for foundation models; new model architectures beyond standard transformers; recent advances in large scale pretraining for foundation models.",
+      "matched_requirement_id": "req-composite-pretrain",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2603.28052v1",
+      "source": "arxiv",
+      "title": "Meta-Harness: End-to-End Optimization of Model Harnesses",
+      "abstract": "The performance of large language model (LLM) systems depends not only on model weights, but also on their harness: the code that determines what information to store, retrieve, and present to the model. Yet harnesses are still designed largely by hand, and existing text optimizers are poorly matched to this setting because they compress feedback too aggressively. We introduce Meta-Harness, an outer-loop system that searches over harness code for LLM applications. It uses an agentic proposer that accesses the source code, scores, and execution traces of all prior candidates through a filesystem. On online text classification, Meta-Harness improves over a state-of-the-art context management system by 7.7 points while using 4x fewer context tokens. On retrieval-augmented math reasoning, a single discovered harness improves accuracy on 200 IMO-level problems by 4.7 points on average across five held-out models. On agentic coding, discovered harnesses surpass the best hand-engineered baselines on TerminalBench-2. Together, these results show that richer access to prior experience can enable automated harness engineering.",
+      "authors": [
+        "Yoonho Lee",
+        "Roshen Nair",
+        "Qizheng Zhang",
+        "Kangwook Lee",
+        "Omar Khattab",
+        "Chelsea Finn"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-03-30T05:33:50+00:00",
+      "link": "https://arxiv.org/pdf/2603.28052v1",
+      "tags": [
+        "keyword:AM",
+        "keyword:CD",
+        "keyword:LCP",
+        "keyword:TTT",
+        "query:AM",
+        "query:CD",
+        "query:LCP",
+        "query:PM",
+        "query:TTT"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Agentic proposer for context management and retrieval optimization",
+      "llm_evidence_cn": "用于上下文管理和检索优化的智能体建议器",
+      "llm_evidence": "用于上下文管理和检索优化的智能体建议器",
+      "canonical_evidence": "用于上下文管理和检索优化的智能体建议器",
+      "llm_tldr_en": "Optimizes LLM harnesses and context management using an agentic search system.",
+      "llm_tldr_cn": "使用智能体搜索系统优化LLM的应用框架和上下文管理。",
+      "llm_tldr": "使用智能体搜索系统优化LLM的应用框架和上下文管理。",
+      "llm_tags": [
+        "query:am:composite"
+      ],
+      "matched_query_tag": "query:am:composite",
+      "matched_query_text": "Papers central to Agent Memory, especially work that connects or combines: Memory-augmented Agents; A; memory mechanisms for LLM agents.",
+      "matched_requirement_id": "req-composite-am",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.00626v1",
+      "source": "arxiv",
+      "title": "A Survey of On-Policy Distillation for Large Language Models",
+      "abstract": "Knowledge distillation has become a primary mechanism for transferring reasoning and domain expertise from frontier Large Language Models (LLMs) to smaller, deployable students. However, the dominant paradigm remains \\textit{off-policy}: students train on static teacher-generated data and never encounter their own errors during learning. This train--test mismatch, an instance of \\textit{exposure bias}, causes prediction errors to compound autoregressively at inference time. On-Policy Distillation (OPD) addresses this by letting the student generate its own trajectories and receive teacher feedback on these self-generated outputs, grounding distillation in the theory of interactive imitation learning. Despite rapid growth spanning divergence minimization, reward-guided learning, and self-play, the OPD literature remains fragmented with no unified treatment. This survey provides the first comprehensive overview of OPD for LLMs. We introduce a unified $f$-divergence framework over on-policy samples and organize the landscape along three orthogonal dimensions: \\emph{feedback signal} (logit-based, outcome-based, or self-play), \\emph{teacher access} (white-box, black-box, or teacher-free), and \\emph{loss granularity} (token-level, sequence-level, or hybrid). We systematically analyze representative methods, examine industrial deployments, and identify open problems including distillation scaling laws, uncertainty-aware feedback, and agent-level distillation.",
+      "authors": [
+        "Mingyang Song",
+        "Mao Zheng"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "published": "2026-04-01T08:32:34+00:00",
+      "link": "https://arxiv.org/pdf/2604.00626v1",
+      "tags": [
+        "keyword:CD",
+        "keyword:TTT",
+        "query:CD",
+        "query:TTT"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "On-policy knowledge distillation for LLMs",
+      "llm_evidence_cn": "大语言模型的在线策略知识蒸馏",
+      "llm_evidence": "大语言模型的在线策略知识蒸馏",
+      "canonical_evidence": "大语言模型的在线策略知识蒸馏",
+      "llm_tldr_en": "Surveys on-policy distillation methods to address exposure bias in large language models.",
+      "llm_tldr_cn": "综述了解决大语言模型曝光偏差的在线策略蒸馏方法。",
+      "llm_tldr": "综述了解决大语言模型曝光偏差的在线策略蒸馏方法。",
+      "llm_tags": [
+        "query:cd:composite"
+      ],
+      "matched_query_tag": "query:cd:composite",
+      "matched_query_text": "Papers central to 上下文蒸馏, especially work that connects or combines: Context Distillation; context distillation for large language models.",
+      "matched_requirement_id": "req-composite-cd",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

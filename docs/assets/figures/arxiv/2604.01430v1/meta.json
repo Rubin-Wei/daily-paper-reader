@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.01430v1/fig-001.webp",
+      "caption": "Figure 6 | All F1 (BoN): Thinking consistently outperforms the baselines often matching the ICL performance.",
+      "page": 15,
+      "index": 1,
+      "width": 982,
+      "height": 270
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01430v1/fig-002.webp",
+      "caption": "Figure 7 | Scaling with N: Thinking scales better with more samples. In the out-of-distribution case, Augmentation fails to generalize completely similar to Finetuning.",
+      "page": 15,
+      "index": 2,
+      "width": 982,
+      "height": 331
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01430v1/fig-003.webp",
+      "caption": "Figure 1 | Comparison between train-time augmentation strategies vs test-time thinking to improve latent generalization.",
+      "page": 2,
+      "index": 3,
+      "width": 983,
+      "height": 538
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01430v1/fig-004.webp",
+      "caption": "Figure 5 | Effect of RL (without CoT reasoning) on baselines. All-F1 (top row), Train Recall (bottom row)",
+      "page": 14,
+      "index": 4,
+      "width": 982,
+      "height": 549
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01430v1/fig-005.webp",
+      "caption": "Figure 2 | Semantic Structure Experiment: F1 scores on in- and out-of-distribution holdouts. Both Finetuning and Augmentation undergo RL training as described in Section 3.2. Thinking shows significant and consistent improvement over the baselines on both in- and out-of-distribution holdout splits, particularly for those splits that require multi-hop reasoning. Train-time augmentations completely fail to generalize on a new knowledge structures (out-of-distribution generalization).",
+      "page": 8,
+      "index": 5,
+      "width": 933,
+      "height": 994
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01430v1/fig-006.webp",
+      "caption": "Figure 9 | Latent Generalization Metrics (BoN): In-Distribution (left), Out-Distribution (Right).",
+      "page": 17,
+      "index": 6,
+      "width": 982,
+      "height": 957
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01430v1/fig-007.webp",
+      "caption": "Figure 4 | Semantic Structure Benchmark: Train set examples of Wikipedia style documents and qa examples (left) and test set example (right).",
+      "page": 12,
+      "index": 7,
+      "width": 983,
+      "height": 264
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01430v1/fig-008.webp",
+      "caption": "Figure 3 | Pass@N Accuracy: Exact string match accuracy of reversal curse paper dataset. Finetuning completely fails to generalize even with multiple attempts. Thinking gives non-trivial generalization but overall for such strict reversals ICL is the strongest baseline.",
+      "page": 9,
+      "index": 8,
+      "width": 687,
+      "height": 333
+    },
+    {
+      "url": "assets/figures/arxiv/2604.01430v1/fig-009.webp",
+      "caption": "Figure 8 | Latent Generalization Metrics: In-Distribution (left), Out-Distribution (Right). When model is sampled only once.",
+      "page": 16,
+      "index": 9,
+      "width": 982,
+      "height": 957
+    }
+  ]
+}
