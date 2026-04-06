@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.02371v1/fig-001.webp",
+      "caption": "Table 9: Primary metrics used for each benchmark. All scores are normalized to 0–100 before averaging. ∗MMLongBench task-specific metrics: Visual RAG (infoseek, viquae): sub_em, ICL (cars196, food101, inat2021, sun397): cls_acc, Summarization (gov-report, multi-lexsum): judge_f1.",
+      "page": 14,
+      "index": 1,
+      "width": 823,
+      "height": 221
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02371v1/fig-002.webp",
+      "caption": "Figure 1: Our proposed synthetic reasoning pipeline. For a given document and question, we extract evidence and a relevance score from each page using a VLM, then select the top K pages and evidence sections, sort them, then pass them to a strong VLM and LLM respectively to generate an example’s final answer. Full examples are constructed with a token controlling the presence of thinking, the document, question, synthetic reasoning trace and the final answer from either branch.",
+      "page": 3,
+      "index": 2,
+      "width": 826,
+      "height": 272
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02371v1/fig-003.webp",
+      "caption": "Figure 4: An example from the v2 dataset.",
+      "page": 18,
+      "index": 3,
+      "width": 590,
+      "height": 1306
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02371v1/fig-004.webp",
+      "caption": "Table 6: Control token ablations on Qwen and Mistral, deltas relative to CoT-off + no-think models. These results affirm our earlier expectations, showing that reasoning improves performance (+3.3 and +9.9 VA for Qwen and Mistral respectively) and the capability learned from reasoning training is active and controllable at inference-time. CoT-on + no-think does not recover CoT-on + think performance.",
+      "page": 8,
+      "index": 4,
+      "width": 825,
+      "height": 190
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02371v1/fig-005.webp",
+      "caption": "Figure 2: Output length distributions for Qwen and Mistral under different evaluation + train settings on MMLBD. Generally we see CoT-on produces longer-tailed distributions, but minimally compared to the α = 0.5 model which explicitly reasons. Additionally, the control token determines output length distribution more than think vs no-think training.",
+      "page": 8,
+      "index": 5,
+      "width": 457,
+      "height": 267
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02371v1/fig-006.webp",
+      "caption": "Figure 3: An example from the v1 dataset.",
+      "page": 17,
+      "index": 6,
+      "width": 590,
+      "height": 1211
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02371v1/fig-007.webp",
+      "caption": "Table 14: Composition of the Smoltalk2 [1] SFT data mixture [43].",
+      "page": 16,
+      "index": 7,
+      "width": 544,
+      "height": 323
+    }
+  ]
+}
