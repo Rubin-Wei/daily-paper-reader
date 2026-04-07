@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.04552v1/fig-001.webp",
+      "caption": "Table 3: Sensitivity analysis of StableTTA over K and N . Results show robustness to K, consistent gains with larger N , and significant drops when logit processing is disabled (K = C).",
+      "page": 15,
+      "index": 1,
+      "width": 806,
+      "height": 502
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04552v1/fig-002.webp",
+      "caption": "Table 2: Ablation study of StableTTA versus standard TTA under varying numbers of experts (N ) across multiple architectures. StableTTA consistently outperforms TTA under MixUp and CutMix data augmentations.",
+      "page": 15,
+      "index": 2,
+      "width": 414,
+      "height": 329
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04552v1/fig-003.webp",
+      "caption": "Figure 1: Top: Milestone comparison. We show that StableTTA+MobileNetV3 significantly outperforms the base ViT in terms of accuracy (+11.75% top-1), memory usage (-97% parameters), and computational cost (-89.1% GFLOPs). Bottom: General comparison. StableTTA improves baseline models by 11-33% in top-1 accuracy, with 34 models achieving more than 95% accuracy. The proposed method yields consistent and significant improvements across all evaluated models.",
+      "page": 2,
+      "index": 3,
+      "width": 815,
+      "height": 446
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04552v1/fig-004.webp",
+      "caption": "Table 1: Comparison with popular ImageNet-1K classification benchmarks. We compare baseline performance with our proposed StableTTA, reporting model size, computational cost, and significant improvements in top-1 and top-5 validation accuracy.",
+      "page": 7,
+      "index": 4,
+      "width": 806,
+      "height": 1035
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04552v1/fig-005.webp",
+      "caption": "Figure 5: Monte Carlo simulation. The conflict probability increases as Var(z) grows. In this simulation, we consider distributions: {z ∼ N (µ, σI) | µ ∈ {(1, 0.9), (1, 0.7), (1, 0.5)}, σ ∈ [0.05, 0.25]}. The solid curves show Monte Carlo estimates of the relationship between σ and P(ŷlogit ̸= ŷhard), while the dashed curves correspond to the theoretical (asymptotic) predictions. The empirical and theoretical results are closely matched.",
+      "page": 13,
+      "index": 5,
+      "width": 818,
+      "height": 478
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04552v1/fig-006.webp",
+      "caption": "Figure 3: Efficiency–Accuracy Trade-offs. Comparison of baseline (blue) and StableTTA (red) across parameters (left), peak GFLOPs in series mode (middle), and total GFLOPs in parallel mode (right). Series mode processes images sequentially, while parallel mode processes augmented inputs simultaneously. StableTTA improves accuracy while maintaining favorable efficiency, enabling lightweight models to outperform larger ones.",
+      "page": 8,
+      "index": 6,
+      "width": 837,
+      "height": 1155
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04552v1/fig-007.webp",
+      "caption": "Figure 2: Limitations of Ensemble Methods and Conflicts in Aggregation Strategies. (a) Limitations: Illustration of model averaging and test-time augmentation (TTA) in image classification. Both methods significantly increase inference-time computational cost while providing only marginal improvements in accuracy. (b) Conflict: Given branch logits {z(i) | i = 1, 2, 3}, probabilities p(i) = softmax(z(i)), and predictions ŷ(i) = argmaxp(i), different aggregation strategies can produce inconsistent results. In this example, logit averaging predicts class ŷlogit = 1, soft voting predicts class ŷsoft = 2, and hard voting predicts class ŷhard = 3. (c) Explanation: When the logits (z(1), z(2), . . .) are sparsely distributed in space, the conflict ŷlogit ̸= ŷsoft ̸= ŷhard is more likely to occur due to the nonlinearity and non-bijective nature of the softmax function. In contrast, when the logits are more densely clustered, such conflicts are less likely.",
+      "page": 4,
+      "index": 7,
+      "width": 818,
+      "height": 229
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04552v1/fig-008.webp",
+      "caption": "Figure 4: (a) TTA (with our augmentation) vs. StableTTA. (b) StableTTA is robust to K and mainly affected by N , but disabling logit processing (K = C) will significantly reduce top-1 accuracy.",
+      "page": 9,
+      "index": 8,
+      "width": 817,
+      "height": 192
+    }
+  ]
+}

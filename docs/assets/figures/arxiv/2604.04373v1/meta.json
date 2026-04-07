@@ -1,0 +1,94 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.04373v1/fig-001.webp",
+      "caption": "Figure 4: Experience Scaling Behavior via Memory Consolidation. We evaluate experience memory consolidation across varying memory sizes. The red dashed line indicates full memory baseline performance. Memory consolidation achieves a sweet spot at intermediate sizes.",
+      "page": 6,
+      "index": 1,
+      "width": 777,
+      "height": 505
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04373v1/fig-002.webp",
+      "caption": "Figure 1: Experience-Augmented Agent. The agent accumulates experience from past interactions, decocts it into effective context for improved inference at test time, i.e., distilling lessons from experience, organizing the experience memory, and finally retrieving salient information from it.",
+      "page": 2,
+      "index": 2,
+      "width": 766,
+      "height": 213
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04373v1/fig-003.webp",
+      "caption": "Figure 5: Empirical validation of Proposition 4.1. Figure (a)’s strong linear correlation confirms that Ĥ(Y | X = x, C = c) tightly predicts the expected output length up to a constant. Figure (b) shows that relevant context (retrieved lessons) yields higher information gain than random context.",
+      "page": 7,
+      "index": 3,
+      "width": 755,
+      "height": 271
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04373v1/fig-004.webp",
+      "caption": "Figure 6: Correlation between Context Quality and Performance Improvement. (a) The relationship between the context quality score and the improvement measured in ∆avg m(x). The positive Pearson correlation indicates that higher-quality contexts tend to yield larger performance gains. (b) Pearson correlation as the coefficient λ varies. The correlation peaks around λ = 0.6, suggesting that balancing relevance and diversity leads to the most informative contexts.",
+      "page": 7,
+      "index": 4,
+      "width": 763,
+      "height": 271
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04373v1/fig-005.webp",
+      "caption": "Figure 9: Visualization of Concept Tree (Math Reasoning & SWE). (a) Hierarchical concept tree constructed from 13,381 experience records on the math reasoning task. The tree organizes memories into 17 broad topics and 256 concrete concept groups via two levels of embedding-based clustering, with segment widths proportional to the number of records in each cluster. For visual clarity, only the four largest leaf clusters per root category are shown individually, and the remaining leaves are merged. (b) Hierarchical concept tree constructed from 579 experience records on the SWE task. The tree organizes memories into 8 broad topics and 38 concrete concept groups.",
+      "page": 23,
+      "index": 5,
+      "width": 811,
+      "height": 569
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04373v1/fig-006.webp",
+      "caption": "Figure 10: Hierarchical Concept Tree vs. Lesson Retrieval Performance comparing the hierarchical concept tree against Top-K lesson retrieval and vanilla baselines.",
+      "page": 23,
+      "index": 6,
+      "width": 816,
+      "height": 322
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04373v1/fig-007.webp",
+      "caption": "Figure 2: Raw Experience vs. Distilled Lesson as Context. Both context construction approaches significantly outperform the vanilla agent without context. Raw experience is slightly stronger for mathematical reasoning, while distilled lessons yield better performance in agentic tasks (WebShop & SWE), where trajectory-level observations are noisier and distillation helps.",
+      "page": 4,
+      "index": 7,
+      "width": 818,
+      "height": 217
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04373v1/fig-008.webp",
+      "caption": "Figure 11: Analysis Results on GPT-OSS-20B (WebShop). The overall trends are consistent with the main results in Section 3. (a) Distilled lessons provide more effective context than raw experience. (b) Memory consolidation shows a sweet spot at intermediate memory sizes.",
+      "page": 24,
+      "index": 8,
+      "width": 827,
+      "height": 288
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04373v1/fig-009.webp",
+      "caption": "Figure 8: Hierarchical Concept Tree vs. Lesson Retrieval (a) Performance comparing the hierarchical concept tree against Top-K lesson retrieval and vanilla baselines. (b) Concept group diversity comparison: concept tree achieves greater leaf-node coverage than Top-K lesson retrieval.",
+      "page": 9,
+      "index": 9,
+      "width": 799,
+      "height": 265
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04373v1/fig-010.webp",
+      "caption": "Figure 7: Visualization of Concept Tree (WebShop). Hierarchical concept tree constructed from 1,135 experience records on WebShop task. The tree organizes standard lesson-based memory entries into 8 broad topics and 44 concrete concept groups via hierarchical clustering. Each leaf node contains a collection of lessons, with leaf segment widths proportional to the number of records.",
+      "page": 9,
+      "index": 10,
+      "width": 732,
+      "height": 210
+    },
+    {
+      "url": "assets/figures/arxiv/2604.04373v1/fig-011.webp",
+      "caption": "Figure 3: Scaling Behavior. Agent’s performance as a function of input context length when increasing K in Top-K retrieval. Distilled lessons achieve better performance with fewer input tokens and remain more robust as context grows. In contrast, raw experience can degrade when the prompt becomes excessively long and noisy. Overall, lesson distillation acts as an effective context compression mechanism that extracts the essential information from experience.",
+      "page": 5,
+      "index": 11,
+      "width": 818,
+      "height": 218
+    }
+  ]
+}
