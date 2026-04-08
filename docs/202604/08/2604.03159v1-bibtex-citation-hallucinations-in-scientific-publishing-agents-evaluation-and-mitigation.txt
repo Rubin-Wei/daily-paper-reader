@@ -1,0 +1,1032 @@
+Title: BibTeX Citation Hallucinations in Scientific Publishing Agents: Evaluation and Mitigation
+
+URL Source: https://arxiv.org/pdf/2604.03159v1
+
+Published Time: Mon, 06 Apr 2026 00:57:04 GMT
+
+Number of Pages: 37
+
+Markdown Content:
+Preprint. Under review. 
+
+# BibTeX Citation Hallucinations in Scientific Publishing Agents: Evaluation and Mitigation 
+
+Delip Rao ∗
+
+University of Pennsylvania 
+
+delip@seas.upenn.edu 
+
+Chris Callison-Burch 
+
+University of Pennsylvania 
+
+ccb@seas.upenn.edu 
+
+## Abstract 
+
+Large language models with web search are increasingly used in scientific publishing agents, yet they still produce BibTeX entries with pervasive field-level errors. Prior evaluations tested base models without search, which does not reflect current practice. We construct a benchmark of 931 papers across four scientific domains and three citation tiers—popular, low-citation, and recent post-cutoff—designed to disentangle parametric memory from search dependence, with version-aware ground truth that ac-counts for multiple citable versions of the same paper. Three search-enabled frontier models (GPT-5, Claude Sonnet-4.6, Gemini-3 Flash) generate Bib-TeX entries scored on nine fields and a six-way error taxonomy, producing approximately 23,000 field-level observations. Overall accuracy is 83.6%, but only 50.9% of entries are fully correct; accuracy drops 27.7 percentage points from popular to recent papers, revealing heavy reliance on para-metric memory even when search is available. Field-error co-occurrence analysis identifies two distinct failure modes: wholesale entry substitution (identity fields fail together) and isolated field error. We evaluate clibib , an open-source tool for deterministic BibTeX retrieval from the Zotero Trans-lation Server with CrossRef as a fallback, as a mitigation mechanism. In a two-stage integration where baseline entries are revised against authorita-tive records, accuracy rises by +8.0 pp to 91.5%, fully correct entries rise from 50.9% to 78.3%, and the regression rate is only 0.8%. An ablation comparing single-stage and two-stage integration shows that separating search from revision yields larger gains and lower regression (0.8% vs. 4.8%), demonstrating that integration architecture matters independently of model capability. We release the 931-paper benchmark, nine-field error taxonomy, and the clibib retrieval tool to support evaluation and mitiga-tion of citation hallucinations in LLM-based scientific writing. 
+
+## 1 Introduction 
+
+Bibliographic metadata is one of the few categories of LLM output that can be verified against authoritative external records. A DOI either resolves to the correct paper or it does not; an author list either matches the published byline or it does not. When models fabricate or corrupt BibTeX fields, the errors propagate into manuscripts, reference lists, and downstream citation analyses. Unlike free-text hallucination, where ground truth is often ambiguous, every field in a BibTeX entry has a deterministic correct value recorded in publisher databases. Prior work reports hallucination rates of 14–95% in LLM-generated citations. Walters & Wilder (2023) found 18–55% fabrication rates in GPT-3.5 and GPT-4 literature reviews; Chelli et al. (2024) reported DOI accuracy of only 16–20% in medical citation generation; Aljamaan et al. (2024) showed that retrieval-augmented tools substantially outperform standalone LLMs on a weighted accuracy score; and Xu et al. (2026) documented 14–95% hallucination rates across 13 models. These studies share a critical limitation: they evaluate base models 
+
+> ∗
+
+Corresponding author 
+
+1
+
+> arXiv:2604.03159v1 [cs.DL] 3 Apr 2026
+
+Preprint. Under review. without web search, or rely on manual post-hoc verification. Researchers in practice use frontier models with native search tools enabled—ChatGPT with web search, Claude with web search, Gemini with search grounding—yet no prior study systematically evaluates BibTeX accuracy under these conditions. Agents built on large language models now automate scientific workflows from literature review to manuscript preparation (Gridach et al., 2025; Schmidgall et al., 2025), and cita-tion errors in these pipelines propagate directly into published manuscripts. We address this gap with a controlled benchmark spanning four scientific domains and three citation tiers—popular, low-citation, and recent post-cutoff—designed to disentangle parametric memory from search dependence. The tier structure tests this directly: if search tools fully compensated for knowledge gaps, accuracy would be uniform across tiers. In practice, we find a sharp gradient from popular to recent papers. This shows that models rely heavily on parametric memory even when search is available. Across three frontier models evaluated with their native search tools enabled, field-level accuracy is moderate but fully correct entries remain uncommon, and field-error co-occurrence analysis identifies two distinct failure modes: wholesale entry substitution, where identity fields (author, title, venue) fail together, and isolated field error, where individual fields contain formatting or numerical mistakes. Because these errors stem from the generative process itself, a reliable mitigation must bypass LLM-based metadata construction entirely. We develop and evaluate clibib , an open-source Python tool that fetches authoritative BibTeX from the Zotero Translation Server via deterministic identifier resolution. Given a DOI, arXiv ID, or other persistent identifier, clibib returns the publisher-deposited record without model involvement. We compare two integration architectures—a single-stage tool loop and a two-stage pipeline that separates search from revision—and find that the latter yields substantially larger gains with lower regression, demonstrating that how a tool is integrated matters independently of model capability. Our contributions are: 1. A benchmark of 931 papers spanning four scientific domains and three citation tiers, with version-aware ground truth that recognizes multiple citable versions of the same work (arXiv preprint, proceedings, journal). 2. A systematic evaluation of three search-enabled frontier models producing ∼23,000 field-level observations scored on a six-way error taxonomy. Overall field accuracy reaches 83.6%, yet only 50.9% of entries are fully correct; accuracy falls 27.7 percentage points (pp) from popular to recent papers. Co-occurrence analysis reveals structurally distinct failure modes (Section 4). 3. clibib , an open-source deterministic retrieval tool evaluated as a post-hoc mitigation. Two-stage integration raises field accuracy by +8.0 pp and fully correct entries to 78.3%, with a 0.8% regression rate. An ablation separating search from revision shows that integration architecture, not just model capability, drives these gains (Section 5). 
+
+## 2 Related Work 
+
+Citation hallucination—where LLMs fabricate references or corrupt bibliographic metadata— has been studied along three axes: measuring fabrication rates, analyzing field-level accu-racy, and developing mitigation tools. We give a brief overview here; Appendix A provides a comprehensive survey. LLMs fabricate plausible but fictitious references at rates ranging from 18% to 95% depend-ing on the model and elicitation method (Alkaissi & McFarlane, 2023; Walters & Wilder, 2023; Xu et al., 2026). Among real citations, title is consistently the most accurate field while DOI is the worst; numerical metadata (volume, pages) are error-prone across all models (Chelli et al., 2024; Szeider, 2026). Niimi (2025) found a log-linear correlation between citation count and accuracy, suggesting a memorization threshold tied to training-data redundancy. Ansari (2026) showed that hallucinated citations in NeurIPS 2025 papers universally exhibit compound failures across multiple fields. 2Preprint. Under review. Cross-study comparison is hampered by methodological fragmentation: studies use differ-ent elicitation strategies, field sets (3 to 7+), and hallucination definitions (binary, threshold-based, weighted composites, categorical) (Walters & Wilder, 2023; Chelli et al., 2024; Al-jamaan et al., 2024; Szeider, 2026). No standardized benchmark existed before CiteAudit (Yuan et al., 2026), which itself checks only six fields. Mitigation approaches converge on bypassing LLM parametric memory through retrieval-augmented (Lewis et al., 2021) or tool-augmented (Nakano et al., 2022) generation. Systems such as CiteAudit, CheckIfExist (Abbonato, 2026), and BibAgent (Li et al., 2026) ground citations in authoritative databases, consistently reducing both fabrication and field-level errors. Our clibib builds on this insight by fetching authoritative BibTeX entries from the Zotero Translation Server. 
+
+## 3 Methodology 
+
+We evaluate BibTeX generation quality under ecologically valid conditions by prompting three frontier LLMs with natural-language paper descriptions and comparing the generated entries against multi-source ground truth. The pipeline has four stages: task formulation and prompt construction (§3.1), paper selection across four domains and three citation tiers (§3.3), ground truth construction from authoritative bibliographic databases (§3.4), and a two-stage evaluation combining deterministic field matching with LLM-as-judge adjudication (§3.6). 
+
+3.1 Task formulation 
+
+We adopt a known-item retrieval elicitation strategy with natural-language descriptions (KR-nat). Each prompt takes the form: 
+
+Give me the BibTeX for {description }. Return the BibTeX entry inside <bibtex></bibtex> tags. 
+
+where {description } is a natural-language reference to a specific paper, constructed from its metadata. For papers with three or more authors, the description follows the pattern “Title ” by First Author et al.; for two authors, “ Title ” by Author 1 and Author 2; for a single author, “ Title ” by Author. Author names use the display form from the OpenAlex record without normalization. The description deliberately omits structured metadata—DOI, year, venue, and volume—to mirror how researchers naturally refer to papers in conversation or when asking an assistant for a citation. This design occupies a specific point in the elicitation design space identified in prior work. Open-ended generation (Walters & Wilder, 2023; Chelli et al., 2024) asks models to produce reference lists from scratch, conflating retrieval failures with compositional errors. Szeider (2026) tested known-item retrieval with obfuscated citations at varying difficulty levels, but their descriptions were deliberately degraded (e.g., paraphrased titles, omitted authors) to stress-test retrieval. Our KR-nat descriptions are neither degraded nor enriched: they provide the minimal information a researcher would typically supply—title and first author—without the structured identifiers that would allow simple database lookup. The interaction is single-turn: one prompt, one response, with no follow-up or correction. We request the BibTeX entry inside XML-style <bibtex> tags to enable deterministic extraction from the response without heuristic parsing. Each of the 931 papers is queried once per model, yielding 2,793 generated BibTeX entries across three models. 
+
+3.2 Models and search configuration 
+
+We evaluate three frontier LLMs, each with its vendor-provided web search capability enabled. Table 1 summarizes the models and their search configurations. We select one model per major provider to cover the range of search tool architectures currently available: OpenAI’s tool-call-based web search, Anthropic’s beta web search tool, and Google’s search grounding. 3Preprint. Under review. Table 1: Model configurations for BibTeX generation. All models use single-turn prompting with search tools force-enabled and a maximum output length of 8,192 tokens. GPT-5 does not expose a temperature parameter; Claude Sonnet 4.6 and Gemini 3 Flash use temperature 1.0.               
+
+> Model API model ID Search mechanism Cutoff
+> GPT-5 gpt-5-2025-08-07 web search (Responses API) Oct 2024 Claude Sonnet 4.6 claude-sonnet-4-6 web search 20250305 (beta) Aug 2025 Gemini 3 Flash gemini-3-flash-preview Google Search grounding Jan 2025 Cutoff dates are vendor-reported knowledge cutoffs—the dates through which parametric knowledge is stated to be most reliable. Anthropic additionally reports a broader training data cutoff of January 2026 for Claude Sonnet 4.6; we report the stricter knowledge cutoff. These dates are self-reported and may not precisely bound what a model has seen.
+
+Each vendor exposes search differently. OpenAI’s Responses API accepts a web search 
+
+tool with configurable search context size (set to “high”); the response interleaves 
+
+web search call items containing the search queries and source URLs with the generated text. Anthropic’s beta API accepts a web search 20250305 tool type; the response contains 
+
+web search tool result blocks with source URLs, though the API does not expose the underlying search queries. Google’s Generative AI API accepts a GoogleSearch grounding tool; the response includes grounding metadata with search queries and source URIs. We use native vendor APIs rather than a unified wrapper because each search tool config-uration requires vendor-specific API features (OpenAI’s Responses API, Anthropic’s beta endpoint, Google’s grounding tool type) that abstraction layers do not support. Genera-tion uses no system prompt—only the KR-nat user message. Responses are cached per model and prompt (SHA-256 keyed) to support resumable runs, and output files are written atomically to prevent corruption from interrupted executions. 
+
+3.3 Paper selection 
+
+We select papers across four domains chosen for their diversity in publication norms, meta-data conventions, and database coverage: Artificial Intelligence (AI), Medicine, Materials Science, and Quantum Computing. AI and Quantum Computing span both conferences and journals; Medicine and Materials Science are journal-dominated. For each domain we select 10 venues (Table 2), yielding 40 venues total. Papers are sampled from the OpenAlex API and stratified into three citation tiers designed to probe different model capabilities: 
+
+Popular (100 per domain). The highest-cited papers published 2010–2022, sorted by 
+
+cited by count descending. Median citation counts range from 500 (Quantum Computing) to 3,567 (Medicine). These papers are likely present in training data and test parametric memory .
+
+Low-citation (100 per domain). Papers at or below the 25th-percentile citation count for their venue, published 2015–2025 (exact range varies by domain; see Table 3). Median citation counts are 0–6 across domains. These papers are less likely memorized, so models must rely on search to retrieve accurate metadata. 
+
+Recent (50 per domain). Papers published in 2025–2026, targeting the period after vendor-reported knowledge cutoffs (Table 1). Median citation count is 0 across three of four domains. Models are unlikely to have these papers in parametric memory; this tier provides a search-dependent test .Quotas are allocated proportionally across venues within each domain, with a floor guar-antee to ensure venue coverage. After deduplication across tiers, initial sampling yielded 997 papers. AI falls short of 250 because NAACL has limited coverage in OpenAlex for 4Preprint. Under review. Table 2: Venues per domain. Venues marked with † require topic filtering (quantum computing or materials chemistry subsets of broader journals).        
+
+> Domain Venues
+> AI NeurIPS, ICML, ICLR, ACL, EMNLP, CVPR, AAAI, NAACL, JMLR, TACL Medicine NEJM, The Lancet, JAMA, BMJ, Nature Medicine, Ann. Internal Med., PLOS Medicine, Lancet Digital Health, J. Clinical Oncology, Circulation Materials Nature Materials, Adv. Materials, Science ACS Nano, Nano Letters, Chem. Materials, Acta Materialia, Adv. Energy Materials, Materials Today, JACS †, npj Comp. Mat. Quantum PRL †, Nature Physics, PRX Quantum, Comp. Quantum, npj Quantum Info., Phys. Rev. A, Quantum Sci. Tech., Nature Comms. †,IEEE Trans. QE, New J. Physics †
+
+Table 3: Paper statistics by domain and citation tier after quality filtering. Med. cit. is the median cited by count . DOI column reports coverage rate.                                                        
+
+> Domain Tier nMed. cit. Years DOI
+> AI Popular 96 1,437 2010–2022 70% Low-citation 90 12015–2024 82% Recent 49 22 2025–2026 100% Medicine Popular 100 3,567 2010–2022 100% Low-citation 93 02015–2024 100% Recent 45 02026 100% MatSci Popular 100 2,577 2010–2020 100% Low-citation 88 72015–2025 100% Recent 49 02026 100% QuantComp Popular 97 500 2010–2022 100% Low-citation 76 42015–2025 100% Recent 48 02026 100%
+> Total 931 95%
+
+the low-citation year range. For the AI recent tier, we expanded the year range to include 2025 because most AI conference proceedings for 2026 were not yet indexed at the time of sampling (March 2026). Because knowledge cutoffs vary across models (Table 1), some AI-domain 2025 papers fall within Claude Sonnet 4.6’s knowledge window (August 2025 cutoff) but remain post-cutoff for GPT-5 (October 2024) and Gemini 3 Flash (January 2025). However, a post-hoc check suggests this overlap does not confound results: field-level accuracy drops from 2025 to 2026 AI papers for all three models, including GPT-5 (59.7% 
+
+→ 34.6%), whose October 2024 cutoff predates all papers in this tier. The uniform drop indicates that the 2025–2026 gap reflects search indexing recency rather than parametric memory. After ground truth construction and a quality audit (Section 3.4), 66 non-research items were removed (per-domain: AI −12, Medicine −12, Materials Science −13, Quantum Computing 
+
+−29), yielding a final dataset of 931 papers (Table 3). Figure 1 shows the final dataset composition after quality filtering. Figure 2 confirms that the three tiers are well-separated in citation count, spanning five orders of magnitude. 5Preprint. Under review. AI Medicine Mat. Sci. Quant. Comp.   
+
+> 0
+> 20
+> 40
+> 60
+> 80
+> 100
+> Number of papers
+> 96
+> 100
+> 100
+> 97
+> 90
+> 93
+> 88
+> 76
+> 49
+> 45
+> 49
+> 48
+> Popular Low-citation Recent
+
+Figure 1: Paper counts by domain and citation tier after quality filtering. Each domain initially targeted 100 popular, 100 low-citation, and 50 recent papers; final counts reflect removal of 66 non-research items during the data quality audit. Popular Low-citation Recent    
+
+> 1
+> 10
+> 100
+> 1,000
+> 10,000
+> Cited-by count
+> Domain
+> AI Medicine Mat. Sci. Quant. Comp.
+
+Figure 2: Distribution of cited-by counts across citation tiers (log scale). Popular papers have median citations of 500–3,567; low-citation papers cluster near 0–7; recent papers are predominantly uncited. The clear separation confirms that the tiers probe distinct regions of model familiarity. 
+
+3.4 Ground truth construction 
+
+Ground truth construction was applied to all 997 initially sampled papers; the quality filtering that reduces the dataset to 931 papers is described at the end of this section. Evaluating BibTeX accuracy requires ground truth that accounts for version multiplicity: a single paper may have an arXiv preprint, conference proceedings, and journal version, each with legitimately different BibTeX representations. A generated entry citing the arXiv version of a paper that also appeared at a conference is not hallucinated—it cites a different version. Our ground truth construction pipeline discovers all citable versions of each paper, fetches authoritative BibTeX for each, and cross-validates against domain-specific databases. 
+
+Version discovery. Each paper’s OpenAlex record includes a locations array listing all known hosting locations with source type metadata. We classify each location into one of six version types using URL and source-type heuristics: (1) URLs containing arxiv.org map to 
+
+arxiv ; (2) sources typed as “conference” map to proceedings ; (3) sources typed as “journal” 6Preprint. Under review. Table 4: Version landscape of the 997 papers. Columns report the number of papers with at least one version of the given type. Multi-ver. counts papers with more than one fetchable version (i.e., both a published venue version and an arXiv preprint). Total ver. is the sum of all fetchable versions across papers. 
+
+Domain n Proc. Journal arXiv Multi-ver. Total ver. 
+
+AI 247 218 29 5 5 (2.0%) 252 Medicine 250 0 250 1 1 (0.4%) 251 MatSci 250 0 250 16 16 (6.4%) 266 QuantComp 250 0 250 112 112 (44.8%) 362 
+
+Total 997 218 779 134 134 (13.4%) 1,131 0 20 40 60 80 100      
+
+> Percentage of papers
+> AI
+> Medicine
+> Mat. Sci.
+> Quant. Comp.
+> 213 29
+> 249
+> 234
+> 138 112
+> Proceedings only Journal only Journal + arXiv Proceedings + arXiv
+
+Figure 3: Version composition of papers by domain. Each bar shows the proportion of papers in each version combination. Quantum Computing has the highest multi-version rate (44.8%), driven by the physics preprint culture. AI is proceedings-dominated (86.2%), while Medicine and Materials Science are almost entirely journal-only. map to journal ; and the remaining three types—PubMed/PMC mirrors, repositories, and other locations—are excluded from BibTeX retrieval because they are mirrors rather than distinct citable versions. Within each type, we deduplicate by preferring the location with a DOI-style URL. Table 4 summarizes the resulting version landscape. The version composition varies sub-stantially across domains. Artificial intelligence papers are dominated by conference pro-ceedings (86.2%), consistent with CS publication culture, while the other three domains are journal-based. Quantum Computing has the richest multi-version landscape: 44.8% of papers have both journal and arXiv versions, consistent with the strong preprint culture in physics. Materials Science falls in between (6.4% multi-version), and Medicine is almost entirely single-version. Overall, the 997 papers yield 1,131 fetchable versions (avg. 1.13 per paper). Figure 3 shows the version composition per domain. Multi-version papers are particularly important for evaluation because they are where version confusion errors—a model mixing fields from different versions—can arise. 
+
+BibTeX retrieval. For each fetchable version, we query clibib , which resolves identifiers through the Zotero Translation Server. The query priority is: (1) the paper’s DOI for journal and proceedings versions, (2) the version-specific landing page URL for arXiv versions or papers lacking DOIs, and (3) the paper title as a fallback, with title-match validation requiring ≥0.85 token overlap to prevent false matches. Returned BibTeX is parsed with 
+
+bibtexparser to extract structured fields (entry type, citation key, and all key–value pairs). Rate limiting is enforced at 2 requests per second. Of the 1,131 fetchable versions, 955 (84.4%) returned valid BibTeX, 122 (10.8%) returned no results, and 54 medicine papers had title mismatches on fallback queries (Figure 4). The highest success rates are in Quantum Computing (96.7%) and Materials Science (95.5%); Medicine is lowest (49.4%) because many journal articles are behind paywalls that Zotero cannot resolve. This lower retrieval rate does not translate to lower ground-truth fidelity for medicine: PubMed, queried via the NCBI E-utilities API, provides authoritative metadata for biomedical literature and 7Preprint. Under review. AI Medicine Mat. Sci. Quant. Comp. 
+
+0
+
+25 
+
+50 
+
+75 
+
+100     
+
+> % of versions
+> 227
+> 124
+> 254 350
+> 25
+> 73
+> 12 12
+> 54
+> Success Not found Title mismatch
+
+Figure 4: BibTeX retrieval outcomes by domain. Quantum Computing and Materials Science achieve >95% success. Medicine’s lower rate reflects paywalled journal articles that Zotero cannot resolve, with many title-mismatch failures on fallback queries. AI                            
+
+> Medicine
+> Mat. Sci.
+> Quant. Comp.
+> DOI
+> Title
+> Author
+> Year
+> Journal
+> Booktitle
+> Volume
+> Number
+> Pages
+> 81 100 100 100
+> 100 100 100 100
+> 100 99 100 100
+> 100 100 100 100
+> 13 100 100 100
+> 81 ------
+> 78 87 81 84
+> 66 72 73 66
+> 74 76 97 84
+> 0
+> 20
+> 40
+> 60
+> 80
+> 100
+> % of papers
+
+Figure 5: Canonical field coverage by domain (percentage of papers with a resolved value). Core fields (DOI, title, author, year) exceed 80% in all domains except Medicine. Booktitle is concentrated in AI (conference proceedings); journal dominates the other three domains. Medicine has the lowest coverage due to its lower BibTeX retrieval rate. fills the gap left by Zotero for 148 of 250 medicine papers (Section 3.6). Papers where all query strategies fail are marked as not found ; BibTeX parse failures retain the raw string for manual inspection. 
+
+Cross-validation. We cross-validate clibib results against domain-specific authoritative databases. For AI and Quantum Computing papers (497 total), we query the DBLP API with the paper title, accept matches at ≥0.85 title token overlap, and compare venue, year, pages, and author fields against the clibib result, flagging discrepancies. The DBLP query matched 216 of 247 AI papers (87.4%) but only 22 of 250 Quantum Computing papers (8.8%), because DBLP focuses on computer science venues rather than physics journals. For Medicine papers (250 total), we query PubMed via the NCBI E-utilities API using the DOI and compare journal, year, volume, pages, and author fields; PubMed matched 148 papers (59.2%). Materials Science has no single domain-specific authoritative database and relies on clibib results alone. Each cross-validation record stores the match status, parsed fields, and field-level discrepancies. 8Preprint. Under review. 
+
+Canonical field resolution. After collecting BibTeX from all sources, we resolve one canonical value per field using priority rules: DOI from OpenAlex (most authoritative); title from Zotero (best capitalization); author and venue from DBLP (CS domains) or PubMed (Medicine), falling back to Zotero; year by majority vote across sources; and volume, issue, and pages from the published version, preferring journal over proceedings over arXiv. Each canonical field records its provenance source. Of the 997 papers, 975 (97.8%) have at least one canonical field resolved; the remaining 22 papers lacked any fetchable BibTeX across all sources. Figure 5 shows the field-level coverage per domain. 
+
+Venue synonym table. We construct a venue synonym table mapping each of the 40 venues to its known name variants—abbreviations, full names, and naming conventions observed across Zotero, DBLP, and PubMed. The table covers 141 name variants total (avg. 3.5 per venue) and is used during field-level evaluation (Section 3.6) to normalize venue name comparisons. Of the 2,793 venue evaluations, 99 (3.5%) were escalated to Stage 2 after failing synonym-table lookup. Only 5 of these were partial formatting mismatches (e.g., “BMJ: British Medical Journal” vs. the canonical “BMJ”); the remaining 94 were genuinely incorrect venues. The dominant patterns are preprint-vs-published substitutions (“arXiv preprint arXiv:1802.03268” for a paper published at ICML), confusable sibling journals within the same publisher family (“JCO Oncology Practice” vs. “Journal of Clinical Oncology”), and cross-venue substitutions within the same subfield (“Physical Review A” vs. “Physical Review Letters”). These cases reflect model errors rather than normalization gaps: the synonym table resolves formatting variation effectively, while the Stage 2 LLM judge handles the remaining semantic distinctions. 
+
+Quality filtering. The dataset reduction from 997 to 931 papers occurred in two stages. During ground truth reconstruction, 20 papers were removed because their metadata could not be reliably resolved: year mismatches between OpenAlex and authoritative sources, misclassified entry types (e.g., conference abstracts indexed as full papers), and journal frontispieces or editorials indexed as research articles. A subsequent quality audit removed 46 additional items: proceedings volumes mistakenly included as individual papers (AI), corrections and errata (Medicine, Materials Science), Nature Physics news blurbs misclassified as quantum computing research, and off-topic papers that passed OpenAlex topic filtering in broad-scope physics journals. The 931 papers retained after filtering form the seed dataset for all subsequent generation and evaluation. All tables and figures in Section 3.3 report post-filtering counts; the version landscape and retrieval statistics above describe the pipeline as run on the initial 997 papers. 
+
+3.5 Error taxonomy 
+
+We consider 10 BibTeX field slots per entry: entry type , entry key , author , title , year ,
+
+venue (journal or booktitle), volume , number , pages , and doi . Because entry key is always labeled X (citation keys are arbitrary), nine fields are evaluable per entry. Each field is independently classified into one of six labels: • C (Correct): Value matches ground truth after normalization, against any version. • M (Missing): Field absent from generated entry but present in ground truth. • F (Fabricated): Value has no verifiable source—invented content. • P (Partially correct): Meaningful overlap with ground truth but not exact (e.g., truncated author list, abbreviated venue name). • S (Substituted): Value traces to a real but incorrect source—a different paper or an incorrect version’s field. • X (Not applicable): Field not present in ground truth for this entry type (e.g., volume 
+
+for a preprint). entry key is always X because citation keys are arbitrary. The distinction between F and S matters for diagnosis: fabricated values indicate generation from noise; substituted values indicate retrieval of the wrong record. The distinction between M and X avoids penalizing omission of fields that have no ground-truth value. 9Preprint. Under review. Not all fields apply to all entry types. For @inproceedings , volume and number are typically not applicable. For @misc entries, volume , number , and pages are typically not applicable. A field is labeled X when it is either inapplicable for the entry type or absent from all ground-truth versions. 
+
+3.6 Evaluation pipeline 
+
+The evaluation pipeline assigns labels to all 25,137 field-level observations (2,793 entries × 9fields) in two automated stages, with a human spot-check as a third stage. 
+
+Stage 1: Deterministic classification. Stage 1 applies rule-based matching to assign C, M, or X labels. First, entry key fields receive X unconditionally. Next, fields inapplicable to the generated entry type and absent from all ground-truth versions receive X. Fields absent from the generated BibTeX but present in any ground-truth version receive M. For remaining fields, we apply per-field normalization before comparison: author names are compared by first-author last name (case-insensitive, diacritics stripped); titles are lowercased with LaTeX commands and braces removed; venues are resolved through the 141-variant synonym table; DOIs are lowercased with URL prefixes stripped; pages are normalized to start--end 
+
+format; years require exact 4-digit match. A field is labeled C if its normalized value matches any ground-truth version. Unresolved fields pass to Stage 2. Stage 1 resolved 93.6% of evaluable fields (21,631 of 23,103 fields excluding X), producing only C and M labels. The resolution rate was consistent across models: Gemini 3 Flash 94.7%, Claude Sonnet 4.6 94.2%, GPT-5 92.0%. 
+
+Stage 2: LLM-as-judge. The 1,472 fields not resolved by Stage 1 require fuzzy matching to distinguish partial matches, substitutions, and fabrications. We use Gemini 3.1 Flash Lite ( gemini-3.1-flash-lite-preview ) as the judge model via the autorubric framework 1.This model was chosen for its low cost and because it is a different model variant from the Gemini 3 Flash system under evaluation. We acknowledge the vendor overlap: the judge and one evaluated system are both Google models. Three factors mitigate bias concern: (a) Flash Lite is a distinct, smaller model variant with different training and capabilities than Flash; (b) human validation yields κ = 0.67–0.84 (Section 6.4), showing no systematic favoring of Gemini entries; and (c) Stage 2 resolves only 6.4% of evaluable fields (1,472/23,103)—93.6% receive deterministic Stage 1 labels where no LLM judgment is involved. Triangulating with an alternate-vendor judge is a natural extension for future work. Each pending field is evaluated against two binary criteria: (1) partial match —does the generated value have meaningful overlap with any ground-truth version? (2) different paper —does the value clearly come from a different work? The verdict mapping is: partial match MET → P; partial match UNMET with different paper MET → S; both UNMET → F. All 1,472 pending fields were resolved with zero failures. Appendix B reproduces the full criteria definitions, verdict mapping, and borderline examples from the human validation. 
+
+Stage 3: Human spot-check. To validate Stage 2 labels, we draw a stratified sample of 521 fields (15% of the 3,476 Stage 2 pool) for independent human re-annotation. Stratification is by label (P/S/F) and field type (9 fields), with a minimum of 2 items per stratum, yielding 24 of 27 possible strata (3 strata have zero Stage 2 instances: no field was labeled S for 
+
+entry type , number , or year ). The sample spans all three experimental conditions—baseline (228), single-stage clibib (175), and two-stage (118)—and is shuffled with sequential IDs to blind the annotator to condition ordering. A human annotator labels each field P, S, or F using the same two-question decision procedure as the autorubric: (1) meaningful overlap with any ground-truth value? If yes, P. (2) If no, clearly from a different paper? If yes, S; otherwise F. Raw agreement between the LLM judge and the human annotator is 80.4% (419/521); Cohen’s κ = 0.67. Two systematic patterns— entry type classification 
+
+> 1https://autorubric.org
+
+10 Preprint. Under review. Table 5: Per-field accuracy (% C of evaluable fields) by model. Fields ordered by overall accuracy. Entry key excluded (always X).                                             
+
+> Field GPT-5 Claude 4.6 Gemini 3 Fl. All
+> entry type 90.3 86.1 96.9 91.1 author 93.5 86.0 93.9 91.1 year 87.4 83.1 94.4 88.3 venue 84.8 83.4 94.7 87.6 volume 74.8 82.4 92.6 83.3 title 78.5 78.1 85.3 80.6 pages 75.0 75.9 81.7 77.5 doi 75.2 72.8 78.6 75.5 number 65.6 72.5 77.8 72.0
+> Overall 81.4 80.4 88.9 83.6
+
+Table 6: Author-field accuracy under increasingly strict matching criteria. The baseline evaluation matches only the first author’s last name; stricter criteria require all authors’ last names to match. The 11.1 pp drop from first-author to set matching reflects truncated author lists and name-normalization artifacts rather than wholesale substitution (see text). Brackets denote 95% bootstrap confidence intervals.                   
+
+> Matching criterion GPT-5 Claude Sonnet 4.6 Gemini 3 Flash All First-author last name 93.1 [91.3, 94.6] 85.6 [83.4, 87.8] 93.4 [91.7, 95.1] 90.7 [89.6, 91.7] All last names (set) 82.3 [79.8, 84.6] 76.6 [73.9, 79.2] 80.0 [77.4, 82.6] 79.6 [78.1, 81.1] All last names (ordered) 82.3 [79.8, 84.6] 76.4 [73.6, 79.1] 79.9 [77.3, 82.5] 79.5 [78.0, 81.0]
+> ∆(first-author
+
+→ set) −10.8 −9.0 −13.4 −11.1 
+
+and preprint-vs-published DOI versioning—account for most disagreements; excluding 
+
+entry type raises κ to 0.77. Details are in Section 6.4. 
+
+## 4 Results 
+
+We evaluate 2,793 generated BibTeX entries across 9 fields each, yielding 25,137 field-level observations. After excluding 2,034 not-applicable (X) fields, 23,103 evaluable fields remain. Overall, 83.6% of evaluable fields are correct (C), 10.1% are missing (M), 1.8% are fabricated (F), 3.5% are partially correct (P), and 1.0% are substituted (S). Approximately half of entries (50.9%) have all evaluable fields correct. 
+
+4.1 Overall error rates 
+
+Table 5 presents per-field accuracy across models. Author and entry type are the most accurate fields (91.1% each), followed by year (88.3%). Number (72.0%) and DOI (75.5%) are the least accurate, consistent with prior findings that numerical metadata fields are error-prone (Walters & Wilder, 2023; Chelli et al., 2024). Title accuracy (80.6%) is moderate: our Stage 1 normalization compares titles after removing LaTeX formatting, braces, and case differences, and many generated titles still differ from ground truth in minor ways that are classified as partial at Stage 2. Figure 6 shows the full error-type distribution per field. Missing values dominate for number (24.9%) and DOI (16.0%), reflecting that models frequently omit these fields. Fabrication is highest for pages (4.5%) and entry type (3.7%). Partial matches concentrate in title (13.9%), where minor formatting differences account for most non-correct labels. 
+
+Sensitivity to author matching stringency. The baseline evaluation matches authors by first-author last name only (§3.6), a deliberately lenient criterion congruent with the elicitation prompt, which provides the title and first author. Table 6 reports accuracy 11 Preprint. Under review. Correct                                           
+
+> Missing
+> Fabricated
+> Partial
+> Substituted
+> Entry type
+> Author
+> Title
+> Year
+> Venue
+> Volume
+> Number
+> Pages
+> DOI
+> 91.1 5.0 3.7 0.2 0.0
+> 91.1 5.0 0.7 2.4 0.7
+> 80.6 5.0 0.2 13.9 0.3
+> 88.3 5.5 1.7 4.5 0.0
+> 87.6 8.8 0.8 0.2 2.6
+> 83.3 13.7 2.6 0.3 0.1
+> 72.0 24.9 2.4 0.7 0.0
+> 77.5 12.6 4.5 4.6 0.8
+> 75.5 16.0 0.2 3.9 4.5
+> n=2787
+> n=2781
+> n=2793
+> n=2793
+> n=2748
+> n=2301
+> n=1929
+> n=2313
+> n=2658
+> 025 50 75 100
+> % Correct
+> 010 20
+> % Error
+
+Figure 6: Error-type distribution per field (all models combined). Each row shows the fraction of evaluable fields receiving each label. Author, entry type, and year have the highest correct rates; number and DOI are most error-prone. Entry type Author Title Year Venue Volume Number Pages DOI   
+
+> 0
+> 20
+> 40
+> 60
+> 80
+> 100
+> Accuracy (% correct)
+> GPT-5 Claude Sonnet 4.6 Gemini 3 Flash
+
+Figure 7: Per-field accuracy by model. Gemini 3 Flash leads on all nine fields; GPT-5 and Claude are competitive on author and pages. under stricter criteria. Requiring all authors’ last names to match as a set reduces accuracy from 90.7% to 79.6% ( −11.1 pp), with consistent drops across models (9.0–13.4 pp) and tiers: popular 97.0% →87.4%, low-citation 89.6% →77.0%, recent 79.8% →68.2%. Ordered matching barely differs from set matching (79.5% vs. 79.6%), confirming that models preserve author order when they recover the correct names. Among the 310 entries that lose their correct label under set matching, truncation is the dominant failure mode (33%): the model finds the right paper but omits co-authors or emits an abbreviated list. A further 27% reflect name-normalization artifacts—formatting differences in multi-word surnames, LaTeX accent encoding, or prefix placement (e.g., “ ´OS ´eaghdha” vs. “S ´eaghdha, Diarmuid ´O”)—rather than genuinely incorrect authors. The remaining 40% are split between entries with extra authors not in the ground truth (17%) and true substitutions where the last names have low overlap (23%). These results confirm that first-author matching inflates reported author accuracy; the gap is driven primarily by co-author completeness rather than retrieval of the wrong paper. 
+
+4.2 Cross-model comparison 
+
+Gemini 3 Flash leads overall (88.9%), followed by GPT-5 (81.4%) and Claude Sonnet 4.6 (80.4%)—a spread of 8.5 percentage points. Their error profiles differ. Figure 7 shows per-field accuracy by model. 12 Preprint. Under review. GPT-5    
+
+> (n=1433)
+> Claude Sonnet 4.6
+> (n=1511)
+> Gemini 3 Flash
+> (n=855)
+> 0
+> 20
+> 40
+> 60
+> 80
+> 100
+> % of errors
+> 56.8%
+> 70.4%
+> 52.6%
+> 12.0%
+> 22.9%
+> 15.6%
+> 29.8%
+> Missing Fabricated Partial Substituted
+
+Figure 8: Error composition by model (excluding correct and not-applicable fields). Missing is the dominant error type for all models. Claude has the highest missing rate; GPT-5 has the highest fabrication rate. AI Medicine Mat. Sci. Quant. Comp.       
+
+> 0
+> 20
+> 40
+> 60
+> 80
+> Accuracy (% correct)  75 75
+> 88 88 87
+> 69
+> 82
+> 85
+> 88 89 91
+> 87
+> GPT-5 Claude Sonnet 4.6 Gemini 3 Flash
+
+Figure 9: Per-domain accuracy by model. Medicine is the hardest domain; materials science and quantum computing are easiest. The per-field gap is largest for entry type (96.9% vs. 90.3% GPT-5), venue (94.7% vs. 84.8%), and volume (92.6% vs. 82.4%). Claude Sonnet 4.6 and Gemini achieve similar rates of fully correct entries (53.0% and 53.6%, respectively) despite an 8.5 pp gap in field-level accuracy; GPT-5 achieves 46.1%. The error composition differs: GPT-5 has the highest fabrication rate (2.2% of evaluable fields), Claude has the highest missing rate (13.8%), and Gemini has the lowest error rates across all categories. Figure 8 shows the error-type composition per model. Paired bootstrap tests (1,000 resamples) confirm that all pairwise model differences are statistically significant at the field level ( p < 0.001). At the entry level, McNemar’s test finds GPT-5 vs. Gemini marginally significant ( p = 0.048), while GPT-5 vs. Claude ( p = 0.054) and Claude vs. Gemini ( p = 0.77) are not significant. 
+
+4.3 Cross-domain variation 
+
+Domain effects are moderate (Figure 9). Materials science and quantum computing achieve the highest accuracy (86.8% each), followed by AI (83.1%). Medicine is the hardest domain at 77.7%—roughly 9 percentage points below the leaders. The medicine gap reflects higher missing-field and partial-match rates, particularly for volume, number, and pages, where biomedical journal metadata is variable across databases. 13 Preprint. Under review. Popular Low-citation Recent    
+
+> 0
+> 20
+> 40
+> 60
+> 80
+> 100
+> Accuracy (% correct)
+> 91.7
+> 81.4
+> 56.9
+> 93.4
+> 77.8
+> 54.7
+> 93.1
+> 86.8 83.4
+> GPT-5 Claude Sonnet 4.6 Gemini 3 Flash
+
+Figure 10: Field-level accuracy by citation tier and model with 95% bootstrap confidence intervals. Popular papers achieve 92.7%; recent (post-cutoff) papers drop to 65.0%. Table 7: Accuracy by citation tier and model. Field-level: % of evaluable fields labeled C. Fully correct: % of entries with all evaluable fields correct. 95% bootstrap CIs in brackets (2,000 cluster-resampled iterations). 
+
+Tier Model Field-level Fully correct 
+
+Popular GPT-5 91.7 [90.3, 92.9] 60.3 [55.7, 65.4] Claude 4.6 93.4 [92.1, 94.6] 68.2 [63.6, 72.5] Gemini 3 Fl. 93.1 [91.6, 94.4] 64.1 [59.3, 68.7] 
+
+Pooled 92.7 [91.6, 93.7] —Low-citation GPT-5 81.4 [78.6, 84.1] 42.7 [37.2, 47.8] Claude 4.6 77.8 [74.3, 81.3] 49.0 [43.8, 54.2] Gemini 3 Fl. 86.8 [84.2, 89.1] 49.6 [44.4, 55.0] 
+
+Pooled 82.0 [79.7, 84.1] —Recent GPT-5 56.9 [51.7, 62.1] 23.0 [17.3, 29.3] Claude 4.6 54.7 [48.4, 60.9] 28.8 [22.5, 35.1] Gemini 3 Fl. 83.4 [80.2, 86.2] 39.3 [32.5, 46.6] 
+
+Pooled 65.0 [61.5, 68.7] —
+
+All Pooled 83.6 —
+
+Gemini 3 Flash leads in all four domains, with the largest margin in medicine (88.8% vs. GPT-5’s 75.5%, a 13.3 pp gap) and narrower leads elsewhere (e.g., 88.2% vs. Claude’s 86.5% in AI). GPT-5 leads the non-Gemini models in materials science (87.6%) and quantum computing (87.8%). 
+
+4.4 Citation tier effects 
+
+Citation tier has the largest effect of any variable we examine (Figure 10, Table 7). Popular papers (high-citation, 2010–2022) achieve 92.7% field-level accuracy [91.6, 93.7], low-citation papers (bottom 25th percentile, 2015–2025) drop to 82.0% [79.7, 84.1], and recent papers (2025–2026, post-training-cutoff) fall to 65.0% [61.5, 68.7]. The popular-to-recent gap is 27.7 pp. Fully correct entry rates follow the same gradient: 60.3–68.2% for popular, 42.7– 49.6% for low-citation, and 23.0–39.3% for recent (Table 7). This pattern is consistent with a parametric memory advantage: popular papers are well-represented in training data and can be generated from memory even without search. Recent papers require the model to find and correctly parse search results for a paper it has never seen, and the 65% accuracy rate shows that search-augmented generation produces partially correct BibTeX for post-cutoff content but falls well short of the 92.7% achieved for well-known papers. Per-model popular-to-recent gaps range from 9.7 pp (Gemini) to 14 Preprint. Under review. Table 8: Per-field accuracy (% C) by citation tier, pooled across models. 95% bootstrap CIs in brackets. ∆ is the popular-to-recent drop in percentage points. 
+
+Field Popular Low-cit. Recent ∆
+
+Entry type 99.4 [99.0, 99.7] 92.0 [90.2, 93.9] 72.4 [68.4, 76.3] −27.0 Author 97.3 [95.8, 98.6] 90.4 [88.0, 92.6] 79.8 [75.6, 83.8] −17.5 Title 90.6 [88.0, 93.0] 74.4 [70.4, 78.2] 71.6 [66.5, 76.4] −19.0 Year 98.7 [97.9, 99.4] 88.3 [85.8, 90.6] 67.0 [62.5, 71.6] −31.7 Venue 97.4 [96.0, 98.6] 88.0 [85.6, 90.4] 67.0 [62.3, 72.1] −30.4 Volume 89.8 [87.1, 92.2] 82.5 [79.8, 85.3] 57.2 [50.6, 63.4] −32.6 Number 74.1 [70.6, 77.5] 71.5 [68.2, 74.9] 59.3 [51.9, 67.4] −14.8 Pages 93.2 [90.7, 95.5] 74.9 [71.1, 78.9] 41.4 [34.9, 48.1] −51.8 DOI 90.0 [87.4, 92.4] 73.0 [69.1, 76.7] 52.2 [47.1, 57.4] −37.8 
+
+Overall 92.7 82.0 65.0 −27.7 GPT-5 Claude Sonnet 4.6 Gemini 3 Flash  
+
+> 0
+> 20
+> 40
+> 60
+> 80
+> Accuracy (% correct)
+> 81.2
+> n=882
+> 80.5
+> n=930
+> 91.0
+> n=909
+> 85.1
+> n=49
+> 0.0
+> (n=1)
+> 0.0
+> (n=22)
+> Search invoked No search
+
+Figure 11: Accuracy conditioned on search invocation, by model. GPT-5 achieves 85.1% without search on 49 entries (predominantly popular papers). Gemini and Claude without search produce all-Missing fields (0% accuracy); these 22 and 1 entries, respectively, are included in all analyses. 38.7 pp (Claude); Gemini’s narrow gap is consistent with stronger search grounding: it maintains 83.4% [80.2, 86.2] even on post-cutoff papers. The popular-to-low-citation drop (92.7% to 82.0%) is moderate, suggesting that even obscure papers from the training-data era can be partially retrieved from memory or found via search. The low-citation-to-recent drop (82.0% to 65.0%) is where search capability degrades most. Table 8 breaks out the tier effect by field. Pages degrades most ( −51.8 pp), followed by DOI ( −37.8 pp) and volume ( −32.6 pp); these structured metadata fields are hardest to reconstruct from search results. Number shows the smallest drop ( −14.8 pp), though its baseline accuracy is already low (74.1%). Author is the most robust to recency ( −17.5 pp), likely because author names are prominent in search results. 
+
+4.5 Search invocation and telemetry 
+
+Search tools are invoked for 97.4% of entries overall: Claude Sonnet 4.6 searches on 99.9% of queries, Gemini 3 Flash on 97.6%, and GPT-5 on 94.7%. When search is invoked, field-level accuracy is 84.2% (Figure 11). 
+
+Search depth varies widely across models. The number of sources consulted per entry dif-fers by an order of magnitude. GPT-5 retrieves a median of 50 sources per entry (mean 68.2, range 2–372), reflecting its iterative tool-call architecture that issues multiple web queries per prompt. Claude Sonnet 4.6 consults a median of 10 sources (mean 13.0), and Gemini 3 Flash 15 Preprint. Under review. Entry type                                                                         
+
+> Author
+> Title
+> Year
+> Venue
+> Volume
+> Number
+> Pages
+> DOI
+> Target field (Y)
+> Entry type
+> Author
+> Title
+> Year
+> Venue
+> Volume
+> Number
+> Pages
+> DOI
+> Conditioning field (X)
+> 1.00 0.67 0.66 0.94 0.96 0.54 0.32 0.66 0.99
+> 0.67 1.00 0.71 0.74 0.77 0.41 0.32 0.53 0.81
+> 0.30 0.33 1.00 0.38 0.42 0.30 0.24 0.50 0.55
+> 0.71 0.56 0.62 1.00 0.87 0.54 0.34 0.64 0.91
+> 0.70 0.56 0.66 0.83 1.00 0.62 0.42 0.69 0.98
+> 0.35 0.26 0.42 0.46 0.55 1.00 0.78 0.53 0.72
+> 0.15 0.15 0.24 0.21 0.27 0.55 1.00 0.30 0.42
+> 0.31 0.25 0.52 0.40 0.45 0.39 0.31 1.00 0.63
+> 0.38 0.31 0.45 0.45 0.51 0.43 0.35 0.50 1.00
+> Conditional co-error probability: P(Y error | X error)
+> 0.0
+> 0.2
+> 0.4
+> 0.6
+> 0.8
+> 1.0
+> P(col error | row error)
+
+Figure 12: Conditional co-error probability matrix. Cell (i, j) shows P(field j is wrong |
+
+field i is wrong ). Entry type, author, and year errors strongly predict venue and DOI errors (0.74–0.91), consistent with wholesale entry substitution. retrieves a median of 8 sources (mean 7.6). For all three models, source counts increase for harder tiers: GPT-5’s median rises from 30 (popular) to 64–66 (low-citation/recent); Claude’s median rises from 10 to 13. These differences reflect each vendor’s search implementation rather than a configuration choice. 2
+
+Conditional accuracy. The association between search and accuracy varies by model (Figure 11). GPT-5 without search achieves 85.1% accuracy on 49 entries, 48 of which are popular papers that the model selectively chose not to search, consistent with strong parametric memory for well-known bibliographic metadata. Gemini 3 Flash without search (22 entries) and Claude Sonnet 4.6 without search (1 entry) produce outputs where every evaluable field is labeled Missing—the models return text that yields no parseable BibTeX. These 23 entries are retained in all analyses with 0% field-level accuracy; excluding them does not change any reported aggregate. 
+
+Tier-level patterns. Search invocation varies by tier. For popular papers, GPT-5 skips search on 12.2% of entries, relying on parametric memory for well-known papers. For recent papers, all three models invoke search on >97% of entries, yet accuracy remains at 65%. The bottleneck is not whether models search but how effectively they use search results for unfamiliar papers. 
+
+4.6 Field-error co-occurrence 
+
+Figure 12 shows the full conditional co-error probability matrix across all 9 evaluable fields. The matrix is asymmetric: P(title wrong | author wrong ) = 0.71, but P(author wrong |
+
+title wrong ) = 0.33. This asymmetry reveals two distinct error modes. The first mode is wholesale entry substitution : when the model retrieves metadata for a completely different paper, multiple fields are wrong simultaneously. Author errors predict title errors (0.71), year errors (0.74), and venue errors (0.77). Year errors predict venue errors (0.87) and DOI errors (0.91). Venue errors predict DOI errors (0.98). These elevated conditional probabilities indicate that identity fields (author, year, venue) form a tightly 
+
+2Because vendor APIs expose search as an opaque tool, we cannot determine whether BibTeX fields were transcribed from a retrieved page or reconstructed from parametric memory after search. The “last mile” failure pattern—correctly locating a paper but incorrectly reporting its metadata—is discussed in Section 6. Resolving grounded-versus-reconstructed attribution would require output-provenance tracing, which no current API supports. 
+
+16 Preprint. Under review. coupled error cluster: when one is wrong, the others are almost always wrong too, signaling retrieval of the wrong paper entirely. The second mode is isolated field error : title errors often occur without author errors (P(author wrong | title wrong ) = 0.33), reflecting minor formatting differences (capitaliza-tion, LaTeX escaping) that are classified as partial without affecting other fields. Volume and number errors co-occur at high rates (0.55–0.78), consistent with metadata fields that are jointly specified in a single publication record. These two modes have distinct practical implications. The identity-field cluster means that checking just three fields—author, venue, and year—is sufficient to detect wholesale entry substitution; if all three match, the remaining fields are unlikely to reflect a different paper. Ansari (2026) report a similar pattern: 100% of hallucinated citations in NeurIPS 2025 papers exhibited compound failure modes. The modes also require different mitigation strategies: wholesale entry substitution demands external database lookup (e.g., DBLP or Crossref) to identify the correct paper, while isolated field errors such as title casing or volume/number discrepancies can often be resolved by normalization heuristics alone. This two-mode structure directly motivates the design of clibib (Section 5), which combines authoritative database lookup with field-level correction. To quantify the prevalence of each mode, we classify the 1,372 entries with at least one error into three categories based on their field-level labels: wholesale substitution (≥3 S-labeled fields), isolated field error (1–2 error fields), and mixed (remaining entries with 3+ errors but fewer than 3 substitutions). Isolated errors dominate: 895 entries (65.2% of erroneous entries), compared to 14 wholesale substitutions (1.0%) and 463 mixed-error entries (33.7%). Wholesale substitution is concentrated in medicine and low-citation papers (11 of 14 cases), where models encounter unfamiliar papers outside their parametric memory. The clibib correction rate differs sharply by mode: 57.9% of isolated-error entries become fully correct after two-stage augmentation, compared to 14.3% for wholesale substitutions. This asymmetry is expected—an authoritative database lookup can fix a wrong volume number but cannot recover from retrieving the wrong paper entirely when the database also lacks the target entry. Appendix C presents concrete examples of each mode. 
+
+## 5 clibib as Mitigation 
+
+The results in Section 4 establish that search-enabled models produce field-level errors across all conditions. Prior work (Section 2) suggests that grounding generation in authoritative databases can reduce such errors. We evaluate this hypothesis by providing clibib , a tool that fetches verified BibTeX from the Zotero Translation Server (which aggregates CrossRef, DBLP, PubMed, and other authoritative sources), as an additional callable tool during generation. 
+
+5.1 System description 
+
+clibib is a Python CLI tool and LLM agent skill that provides a unified interface to the Zotero Translation Server. 3 Given a query—a DOI, arXiv ID, ISBN, PMID, paper title, or URL—it classifies the input type and routes it to the appropriate endpoint. Identifier-based queries (DOIs, arXiv IDs) resolve deterministically through the server’s backend databases; free-text title queries trigger an ambiguous search and return the best match. URLs are normalized before lookup: arXiv PDF and HTML links are converted to abstract URLs, 
+
+alphaxiv.org links are mapped to arxiv.org , and HuggingFace paper links are resolved to their underlying arXiv entries. The tool comprises approximately 230 lines of Python with two runtime dependencies ( requests and python-dotenv ), is released under an MIT license on PyPI, and ships as an agentskills.io -compatible skill for integration into LLM agent platforms. The property that enables hallucination mitigation is deterministic resolution : when a DOI, arXiv ID, ISBN, or PMID is provided, the Zotero Translation Server returns exactly one 
+
+> 3https://github.com/zotero/translation-server
+
+17 Preprint. Under review. record without any search ranking or LLM involvement. No model generates or reconstructs the metadata; the returned BibTeX reflects publisher-deposited records from CrossRef, DBLP, PubMed, and other authoritative sources. For free-text title queries, the server returns a candidate set, which clibib ranks using token-level Jaccard similarity with a substring tiebreaker. When the server returns no candidates, a CrossRef API fallback provides additional coverage. Internally, clibib routes queries through two Zotero Translation Server endpoints. URL queries (including normalized arXiv, alphaxiv, and HuggingFace links) are sent to the server’s /web endpoint, which scrapes the target page and extracts structured metadata. All other queries—DOIs, arXiv IDs, ISBNs, PMIDs, and free-text titles—are sent to the 
+
+/search endpoint, which resolves identifiers against the server’s backend databases (Cross-Ref, DBLP, PubMed, and others). DOI-style URLs are an exception: the DOI is extracted from the URL and rerouted to /search for deterministic resolution rather than page scrap-ing. When /search returns an empty response, clibib falls back to the CrossRef API (api.crossref.org/works ), querying with the original text and retrieving up to 10 candi-dates. When either endpoint returns multiple candidates (an HTTP 300 response from Zotero, or multiple CrossRef hits), clibib ranks them by token-level Jaccard similarity between the query and each candidate’s title, with a substring-match tiebreaker, and selects the top-ranked candidate. If only one candidate is returned, it is accepted without ranking. In all cases, the resolved metadata is returned as Zotero JSON items, which clibib converts to BibTeX via the server’s /export endpoint. The output fields depend on what the upstream database deposited; clibib performs no field synthesis or inference beyond sanitizing the citation key to alphanumeric characters. This design has both strengths and limitations. Deterministic resolution, multi-identifier support, and broad coverage via the Zotero Translation Server’s aggregation of multiple databases make clibib effective for filling missing fields and replacing fabricated values. However, title-based search remains unreliable—CrossRef and Zotero frequently return incomplete or ambiguous matches—and coverage is limited to indexed databases (9.5% of lookups during ground truth construction returned not found ). The base tool provides no field-level comparison scoring and no batch mode, relying on the calling model to integrate the returned BibTeX with its own output. 
+
+5.2 Mitigation protocol 
+
+We evaluate two integration architectures that differ in how the model interacts with clibib :a single-stage tool loop (Algorithm 1) and a two-stage revision pipeline (Algorithm 2). 
+
+Single-stage integration (GPT-5 and Claude). The clibib lookup function is registered alongside the native web search tool. The prompt instructs the model to: (1) search the web using the paper description to find its DOI or URL, (2) inspect the top results to identify the best match, (3) call clibib lookup with the DOI or URL, and (4) return the database result. The model drives the tool loop: it decides which query to send to clibib , interprets the response (including not found errors and title-mismatch warnings), and produces the final BibTeX. The loop runs for up to 3 tool rounds; if the model has not produced a final response after 3 rounds, a forced completion call with only web search (no clibib lookup )elicits a text response. Google’s API does not allow GoogleSearch grounding and function declarations in the same request, so Gemini is excluded from the single-stage condition. 
+
+Two-stage integration (all models). Because the single-stage approach excludes Gemini, we also evaluate a two-stage architecture that applies uniformly to all three models (Algo-rithm 2). Phase 1 uses each model’s existing baseline output (generated with web search but without clibib ). Phase 2 performs a client-side clibib lookup using the paper’s URL, DOI, or title (in that priority order) and validates the result with a title-match gate: both titles are lowercased, tokenized to alphanumeric words, and filtered to remove single-character tokens and common stopwords; Jaccard similarity on the resulting token sets must reach 
+
+≥ 0.3 to proceed. If the lookup succeeds and the title validates, the model receives a revision prompt (Appendix D) containing both entries and applies field-by-field reconciliation. 18 Preprint. Under review. 
+
+Algorithm 1 Single-stage clibib integration 
+
+Require: Paper description d, model M ∈ { GPT-5, Claude }
+
+Ensure: BibTeX entry b 
+
+> 1:
+
+tools ← [WEB SEARCH , C LIBIB LOOKUP ] 
+
+> 2:
+
+prompt ← RENDER PROMPT (d) ▷ KR-nat + clibib instructions  
+
+> 3:
+
+messages ← [prompt ] 
+
+> 4:
+
+for round = 1 to 3 do  
+
+> 5:
+
+response ← M.G ENERATE (messages , tools ) 
+
+> 6:
+
+if response contains text (no pending tool calls) then  
+
+> 7:
+
+return EXTRACT BIB TEX(response ) 
+
+> 8:
+
+end if  
+
+> 9:
+
+for each tool call c in response do  
+
+> 10:
+
+if c.name = CLIBIB LOOKUP then  
+
+> 11:
+
+r ← CLIBIB LOOKUP (c.query ) ▷ Returns BibTeX or not found  
+
+> 12:
+
+Append (c, r) to messages  
+
+> 13:
+
+end if  
+
+> 14:
+
+end for  
+
+> 15:
+
+end for  
+
+> 16:
+
+response ← M.G ENERATE (messages , [WEB SEARCH ]) ▷ Force text  
+
+> 17:
+
+return EXTRACT BIB TEX(response )
+
+Algorithm 2 Two-stage clibib integration 
+
+Require: Paper metadata p, baseline BibTeX bbase , model M
+
+Ensure: Revised BibTeX b 
+
+> 1:
+
+q ← p.url ∥ p.doi ∥ p.title ▷ Priority order  
+
+> 2:
+
+if q is empty then  
+
+> 3:
+
+return bbase ▷ No query available  
+
+> 4:
+
+end if  
+
+> 5:
+
+r ← CLIBIB LOOKUP (q) 
+
+> 6:
+
+if r.status = not found then  
+
+> 7:
+
+return bbase  
+
+> 8:
+
+end if  
+
+> 9:
+
+J ← JACCARD SIMILARITY (q, r.title ) 
+
+> 10:
+
+if J < 0.3 then  
+
+> 11:
+
+return bbase ▷ Title mismatch – wrong paper  
+
+> 12:
+
+end if  
+
+> 13:
+
+prompt ← REVISION PROMPT (bbase , r.bibtex ) 
+
+> 14:
+
+b ← M.G ENERATE (prompt , tools = ∅) ▷ No tools, single turn  
+
+> 15:
+
+return EXTRACT BIB TEX(b)
+
+Reconciliation logic. The revision prompt (Listing 1) implements asymmetric field-level reconciliation. The model compares the titles of the two entries to determine whether they refer to the same paper, tolerating LaTeX markup differences. When titles match, the model replaces all standard bibliographic fields—authors, title, year, venue, volume, number, pages, and DOI—with the database values, retaining the baseline value only for fields the database entry lacks entirely. When titles do not match (the database returned a different paper), the model preserves the baseline entry unchanged. This asymmetry reflects the design principle that publisher-deposited metadata is authoritative for structured fields. The model’s web-search-derived entry serves as a fallback for fields outside database coverage. All clibib-augmented entries are evaluated through the identical Stage 1 + Stage 2 pipeline described in Section 3.6. 19 Preprint. Under review. Table 9: Correction rates by original error type (GPT-5 and Claude only). Correction = baseline error that becomes C with single-stage clibib augmentation.                   
+
+> Error type Baseline errors Corrected Rate (%)
+> Missing (M) 1,877 924 49.2 Partial (P) 564 268 47.5 Fabricated (F) 315 57 18.1 Substituted (S) 188 28 14.9
+> All errors 2,944 1,277 43.4
+
+5.3 Mitigation results 
+
+We re-generated all entries for GPT-5 and Claude Sonnet 4.6 with clibib lookup available as an in-context tool (1,862 entries total). Models invoked the tool on 98.5% of entries, with lookup success rates of 89.7% (GPT-5) and 87.9% (Claude). We exclude Gemini 3 Flash from the single-stage evaluation due to API constraints (§5.2); Gemini appears only in the two-stage comparison (Section 5.4). 
+
+Overall accuracy. Single-stage clibib augmentation raised aggregate accuracy from 80.9% to 85.3% (+4.4 pp), with GPT-5 improving by +5.3 pp (81.4% to 86.7%) and Claude Sonnet 4.6 by +3.6 pp (80.4% to 84.0%) (Figure 15). The tool corrected 43.4% of baseline errors (1,277 of 2,944) while introducing regressions on 4.8% of previously correct fields (592 of 12,458). 
+
+Per-model effects. GPT-5 corrected 47.0% of errors with a 4.3% regression rate, and Claude corrected 40.0% with a 5.3% regression rate. The fraction of fully correct entries rose from 46.1% to 69.2% for GPT-5 and from 53.0% to 70.4% for Claude. 
+
+Per-field effects. Figure 13 shows accuracy changes by field. Number shows the largest gain (+19.1 pp), followed by volume (+9.0 pp), pages (+7.9 pp), and doi (+7.2 pp). Title 
+
+(+1.6 pp), year (+0.9 pp), author (+0.4 pp), and venue (+0.1 pp) show modest improvements; 
+
+entry type is essentially unchanged ( −0.1 pp). The largest gains occur in structured numeric fields where authoritative database lookups provide unambiguous values. 
+
+Correction by error type. Table 9 shows correction rates stratified by the original error label. Missing fields (M) had the highest correction rate (49.2%): clibib supplied metadata for fields the model omitted entirely. Partially correct fields (P) were corrected at 47.5%. Fabricated fields (F) and substituted fields (S) were corrected at lower rates (18.1% and 14.9%), because these errors often involve the wholesale entry substitution identified in Section 4.6—clibib cannot fix this when the lookup query itself targets the wrong paper (Figure 14). 
+
+Domain and tier effects. AI showed the largest domain-level gain (+8.7 pp, from 80.6% to 89.3%), followed by medicine (+5.6 pp, from 72.1% to 77.8%) and quantum computing (+2.8 pp, from 86.6% to 89.4%). Materials science showed a modest gain (+0.8 pp, from 84.6% to 85.4%). Among tiers, low-citation papers showed the largest improvement (+7.4 pp, from 79.6% to 87.0%), followed by recent papers (+4.5 pp, from 55.8% to 60.4%) and popular papers (+1.8 pp, from 92.5% to 94.3%). The smaller gain for popular papers reflects their already-high baseline accuracy. 
+
+Lookup coverage and failure modes. Table 10 reports clibib lookup coverage across models, domains, and citation tiers. Of 2,617 individual clibib lookup calls, 88.9% returned a valid BibTeX entry and 11.1% returned not found . Coverage varies more across domains than across models: quantum computing lookups succeed at 97.2%, materials science at 93.4%, and medicine at 87.5%. AI has the lowest success rate (81.8%). The higher not found 
+
+rate in AI reflects the prevalence of workshop papers and preprints that lack DOIs or 20 Preprint. Under review. Table 10: clibib lookup coverage by model, domain, and citation tier (single-stage, GPT-5 and Claude only). “Lookups” counts individual clibib lookup calls; “Success” is the fraction that returned a valid BibTeX entry; “Not found” is the fraction with no match in any backend database. 
+
+Condition Lookups Success (%) Not found (%) Overall 2,617 88.9 11.1 GPT-5 1,432 89.7 10.3 Claude Sonnet 4.6 1,185 87.9 12.1 AI 864 81.8 18.2 Medicine 642 87.5 12.5 Mat. Sci. 577 93.4 6.6 Quant. Comp. 534 97.2 2.8 Popular 1,071 89.4 10.6 Low-citation 935 90.8 9.2 Recent 611 85.3 14.7 Entry type       
+
+> Author
+> Title
+> Year
+> Venue
+> Volume
+> Number
+> Pages
+> DOI
+> 0
+> 20
+> 40
+> 60
+> 80
+> 100
+> Accuracy (% correct)  -0.1 +0.4
+> +1.6
+> +0.9 +0.1 +9.0 +19.1
+> +7.9 +7.2
+> Baseline clibib
+
+Figure 13: Per-field accuracy before (baseline) and after single-stage clibib -augmented generation (GPT-5 and Claude only). Annotations show the net change in percentage points. 
+
+Number (+19.1 pp), volume (+9.0 pp), and pages (+7.9 pp) show the largest gains. are not yet indexed in CrossRef or DBLP. Among tiers, recent papers show the highest 
+
+not found rate (14.7%) compared with popular (10.6%) and low-citation (9.2%), consistent with indexing lag for newly published work. When clibib returns not found , the model retains its original web-search-derived BibTeX unchanged—a no-op fallback that preserves baseline accuracy but forgoes the correction opportunity. At the entry level, 97.9% of entries had at least one successful lookup, meaning only 2.1% of entries received no authoritative data at all. Residual errors after clibib augmentation fall into two categories: (1) the coverage gap just described, which limits clibib’s reach for recent and niche publications; and (2) substitution errors, where the model retrieved the wrong paper entirely (§4.6), which remain largely uncorrected as noted above. Regression rates nonetheless remain modest (§5.3). 
+
+5.4 Ablation: single-stage vs. two-stage integration 
+
+The single-stage evaluation (Section 5.3) covers GPT-5 and Claude only (Gemini excluded per §5.2). To compare all three models under a uniform architecture, we apply a two-stage approach: each model’s baseline entry is revised against a client-side clibib lookup using the same revision prompt (Section 5.2). This also lets us compare the single-stage tool loop (GPT-5 and Claude) against the two-stage revision approach on the same models. 
+
+Two-stage results. Table 11 compares the three conditions. Two-stage integration raises overall accuracy to 91.5% (+8.0 pp over baseline), correcting 52.3% of baseline errors with a 21 Preprint. Under review. Missing Fabricated Partial Substituted  
+
+> 0
+> 10
+> 20
+> 30
+> 40
+> 50
+> 60
+> 70
+> Correction rate (%)
+> 57.9
+> 22.1
+> 44.5
+> 15.1
+> 42.6
+> 13.3
+> 51.7
+> 14.5
+> GPT-5 Claude Sonnet 4.6
+
+Figure 14: Correction rate by original error type, per model (single-stage clibib , GPT-5 and Claude only). Missing fields are corrected most often (49.2% overall). GPT-5 shows the highest correction rates for missing and partial errors. GPT-5 Claude Sonnet 4.6    
+
+> 0
+> 20
+> 40
+> 60
+> 80
+> Accuracy (% correct)
+> 81.4 80.4
+> 86.7 84.0
+> Baseline clibib
+
+Figure 15: Overall accuracy (percentage of evaluable fields labeled C) before and after single-stage clibib augmentation (GPT-5 and Claude only). Both models improve: GPT-5 by +5.3 pp and Claude by +3.6 pp. regression rate of only 0.8%. The fraction of fully correct entries rises from 50.9% (baseline) to 78.3%. 
+
+Two-stage integration outperforms single-stage across models. Two-stage integration improves all three models over baseline. GPT-5 reaches 92.5% (+11.1 pp over baseline, +5.8 pp over single-stage), and Claude reaches 87.2% (+6.8 pp over baseline, +3.2 pp over single-stage). Gemini, which cannot use single-stage integration, achieves 94.9% (+6.0 pp over baseline) through the two-stage approach alone. McNemar’s tests confirm that single-stage vs. two-stage differences are statistically significant for GPT-5 and Claude ( p < 10 −4). The two-stage approach also produces substantially fewer regressions. Single-stage regres-sion rates are 4.3% (GPT-5) and 5.3% (Claude); two-stage regression rates are 1.0%, 0.4%, and 1.0% for GPT-5, Claude, and Gemini respectively. The revision prompt’s focused task— compare two BibTeX entries field by field—avoids overloading the model with concurrent search and revision. 
+
+Correction patterns differ by model. Per-model analysis on GPT-5 and Claude—the two models with results under all three conditions—reveals distinct correction profiles 22 Preprint. Under review. Table 11: Field-level accuracy (%) by model and integration strategy. Single-stage = clibib 
+
+as in-context tool; two-stage = baseline entry revised against clibib result. ∆ columns show gain over baseline in percentage points. Gemini has no single-stage result because its API does not support combining search grounding with function declarations. 
+
+Model Baseline Single ∆ Two-st. ∆
+
+GPT-5 81.4 86.7 +5.3 92.5 +11.1 Claude Sonnet 4.6 80.4 84.0 +3.6 87.2 +6.8 Gemini 3 Flash 88.9 — 94.9 +6.0 
+
+All 83.6 — 91.5 +8.0 Fabricated Missing Partial Substituted      
+
+> 0
+> 20
+> 40
+> 60
+> 80
+> Correction rate (%)
+> +22.1
+> +11.7
+> +19.2
+> +42.0
+> GPT-5
+> Fabricated Missing Partial Substituted
+> +32.2 -10.4
+> +3.4
+> +2.9
+> Claude Sonnet 4.6
+> Single-stage Two-stage
+
+Figure 16: Per-error-type correction rates for single-stage vs. two-stage integration, by model. GPT-5 shows a consistent two-stage advantage across all error types; Claude shows a reversal for missing fields ( ∆ = −10.4 pp), where single-stage corrects more effectively. (Figure 16). GPT-5 shows a consistent two-stage advantage across all four error types: substituted errors see the largest gain (+42.0 pp, from 15.1% to 57.1%), followed by fabricated (+22.1 pp), partial (+19.2 pp), and missing (+11.7 pp). Claude shows a two-stage advantage for fabricated errors (+32.2 pp) but a reversal for missing fields: single-stage corrects 42.6% of missing fields compared to 32.2% for two-stage ( ∆ = −10.4 pp). The single-stage tool loop can proactively query clibib to fill gaps in the generated entry, while the two-stage revision prompt focuses on correcting existing fields rather than adding absent ones. 
+
+Strategy agreement and disagreement. We compare single-stage and two-stage labels on the same 15,402 evaluable fields for GPT-5 and Claude (Figure 17). The two strategies assign the same label in 88.3% of cases. When they disagree, two-stage wins 2.4 × more often than single-stage (7.6% vs. 3.1% of fields). Among the 482 fields where only single-stage is correct, 78.8% of the two-stage errors are missing-field labels, consistent with the revision prompt’s tendency to omit fields rather than fabricate them. Among the 1,084 fields where both strategies err, 86.3% share the same error type—shared failure modes from hard-to-retrieve papers rather than independent mistakes. The full label transition matrix (Figure 18) confirms that the dominant off-diagonal flow is between C and M in both directions: 630 fields transition from single-stage M to two-stage C (corrections); 380 transition from single-stage C to two-stage M (regressions to missing). 
+
+## 6 Discussion 
+
+6.1 Search-enabled models: better but not solved 
+
+Web search improves BibTeX generation, but a large residual gap remains. With search tools enabled, overall field-level accuracy reaches 83.6% (substantially better than the 5–82% ranges reported in base-model evaluations (Walters & Wilder, 2023; Chelli et al., 2024; Xu 23 Preprint. Under review. Both correct Single-stage   
+
+> wins
+> Two-stage
+> wins
+> Both wrong
+> 0
+> 20
+> 40
+> 60
+> 80
+> Fields (%)
+> N=6483
+> N=191
+> N=640
+> N=387
+> N=6178
+> N=291
+> N=535 N=697
+> GPT-5 Claude Sonnet 4.6
+
+Figure 17: Concordance and discordance between single-stage and two-stage integration on 15,402 evaluable fields (GPT-5 and Claude). Two-stage wins 2.4 × more often than single-stage when the strategies disagree. C F M P S                     
+
+> Two-stage label
+> C
+> F
+> M
+> P
+> S
+> Single-stage label
+> 12661 21 380 73 8
+> 201 123 27 10 14
+> 630 11 544 86
+> 190 225 197 1
+> 154 14 26 472 10 0
+> 10 1
+> 10 2
+> 10 3
+> 10 4
+
+Figure 18: Label transition matrix between single-stage (rows) and two-stage (columns) integration, aggregated over GPT-5 and Claude. The dominant off-diagonal transitions involve missing (M) labels: 630 fields are corrected from M to C by two-stage; 380 regress from C to M. Log-scale coloring accommodates the C →C cell (12,661). et al., 2026)), yet fewer than half of entries have all fields correct. The 27.7 pp gap between popular papers (92.7%) and recent post-cutoff papers (65.0%) indicates heavy reliance on parametric memory even when search tools are available. When that memory is absent, accuracy degrades sharply. Search invocation alone does not guarantee correct output. Models invoked search on 97.4% of entries, yet accuracy among those entries was only 84.2%. A common pattern is that the model locates the right paper but reconstructs BibTeX from memory rather than transcribing the retrieved metadata. This transcription failure—correctly finding a paper but incorrectly reporting its fields—accounts for a substantial fraction of partial and fabricated errors. 
+
+6.2 Why clibib works and where it falls short 
+
+The correction rates in Section 5.3 follow a clear pattern: clibib is most effective for errors that stem from missing information or imprecise recall, and least effective when the model retrieved the wrong paper entirely (Table 9). Missing and partially correct fields are corrected at roughly equal rates. Both involve the right paper with incomplete metadata—exactly the scenario where an authoritative database lookup supplies unambiguous values. Fabricated 24 Preprint. Under review. GPT-5 Claude Sonnet 4.6 Gemini 3 Flash     
+
+> 0
+> 20
+> 40
+> 60
+> 80
+> 100
+> Accuracy (% correct)
+> +5.3
+> +11.1
+> +3.6 +6.8
+> +6.8 +6.0
+> Baseline Single-stage Two-phase
+
+Figure 19: Field-level accuracy by model and integration strategy (baseline, single-stage 
+
+clibib , two-stage clibib ). Single-stage results are shown for GPT-5 and Claude only; Gemini lacks single-stage support. Two-stage integration improves all three models over baseline. Entry Type        
+
+> Author
+> Title
+> Year
+> Venue
+> Volume
+> Number
+> Pages
+> DOI
+> 0
+> 20
+> 40
+> 60
+> 80
+> 100
+> Accuracy (% correct)
+> +2.3 +1.5
+> +3.0
+> +4.8 +5.2 +10.8 +22.1 +13.0 +14.9
+> Baseline Two-phase
+
+Figure 20: Per-field accuracy before (baseline) and after two-stage clibib revision, averaged across all three models. Number (+22.1 pp), doi (+14.9 pp), and pages (+13.0 pp) show the largest gains. and substituted fields resist correction because the lookup query inherits the model’s original confusion about which paper was intended. The two-stage ablation (Section 5.4) confirms that integration architecture matters indepen-dently of model capability. For GPT-5, two-stage integration raises accuracy from 86.7% (single-stage) to 92.5% (+5.8 pp); Claude similarly benefits (+3.2 pp over single-stage). Gem-ini, which cannot use single-stage integration due to API constraints, reaches 94.9% (+6.0 pp over baseline) through two-stage integration alone. The focused revision prompt also cor-rects fabricated and substituted errors at roughly double the single-stage rate, because it avoids overloading the model with concurrent search and revision tasks. Compared with other mitigation approaches, clibib occupies a distinct design point. Un-mediated database export (Szeider, 2026) achieves the highest reported single-system accu-racy (see Section 6.3 for a detailed comparison) but requires the user to identify the correct database entry manually. BibAgent (Li et al., 2026) and CiteGuard (Choi et al., 2026) use retrieval-augmented verification against source documents, which addresses attribution accuracy but not metadata correctness. clibib provides deterministic metadata retrieval as a tool the model can invoke during generation, and so combines the coverage of database export with the convenience of in-context tool use. Lookup coverage is the primary bottleneck (Table 10). The domain disparity—near-complete coverage in quantum computing versus substantially lower coverage in AI—traces to the prevalence of workshop papers and preprints that lack indexed DOIs or DBLP entries. The same indexing lag explains why recent papers are the hardest tier to correct: when 
+
+clibib cannot find a record, the model’s original BibTeX is retained unchanged, forgoing the correction opportunity. Expanding the set of backend databases beyond DBLP and CrossRef would directly address this gap. 25 Preprint. Under review. Fabricated Partial Substituted Missing    
+
+> 0
+> 20
+> 40
+> 60
+> 80
+> Correction rate (%)
+> 44.2
+> 63.7
+> 57.1
+> 69.5
+> 45.5
+> 55.1
+> 17.4
+> 32.2
+> 53.1
+> 71.4
+> 55.8 56.9
+> GPT-5 Claude Sonnet 4.6 Gemini 3 Flash
+
+Figure 21: Two-stage correction rate by original error type, per model. GPT-5 shows the highest correction rates for partial and missing errors; Gemini corrects partial errors most effectively (71.4%). 
+
+Ground-truth independence. Because clibib queries the Zotero Translation Server—the same infrastructure used to construct our ground truth—one might worry that mitigation gains reflect circular convergence on a shared source rather than genuine correction. We test this by restricting the comparison to the three domains where independent cross-validation was performed (Section 3.4): AI and quantum computing against DBLP, medicine against PubMed (694 papers, 75% of the dataset). Cross-validation match rates varied substantially across databases (Section 3.4), so this subset includes both independently verified and Zotero-only papers within each domain. On this subset, the two-stage mitigation delta is larger than on the full dataset: +9.8 pp field-level accuracy (vs. +8.0 pp overall) and +32.2 pp fully correct entries (vs. +27.4 pp overall). Single-stage integration (GPT-5 and Claude) shows the same pattern: +5.7 pp on this subset vs. +4.4 pp overall. Conversely, materials science—the one domain without any independent cross-validation—shows the smallest gains (+2.8 pp field-level, +13.4 pp fully correct), likely because DBLP and CrossRef have weaker coverage of materials science journals, reducing clibib ’s retrieval success. If circularity were inflating the mitigation effect, the Zotero-only domain should show larger 
+
+gains, not smaller; the observed pattern is the opposite of what the circularity hypothesis predicts. 
+
+6.3 Comparison with prior work 
+
+Our field-level findings are broadly consistent with the cross-study pattern identified in prior work: titles are the most accurate field, DOIs the least, and numerical fields (volume, number, pages) are error-prone. Walters & Wilder (2023) reported 94–97% title accuracy; we observe 80.6%. Chelli et al. (2024) reported 16–20% DOI accuracy; we observe 75.5%, a substantial improvement attributable to search tools. Aljamaan et al. (2024) found that standalone LLMs scored at the maximum hallucination level on their weighted Reference Hallucination Score, while retrieval-augmented tools scored near zero—a pattern corroborated by the large gap between our search-enabled baselines and the non-search results reported in earlier work. Unlike these prior studies, our evaluation is version-aware: ground truth accommodates preprint-to-published metadata changes, reducing false negatives for fields such as venue, volume, and pages that shift across versions. Niimi (2025) found a log-linear correlation ( r = 0.75) between citation count and metadata accuracy, with a memorization threshold near 1,000 citations. Our citation-tier stratification provides converging evidence under search-enabled conditions: popular papers (median citations > 1 ,000) achieve the highest fully correct rates, while recent and low-citation papers degrade sharply—consistent with Niimi’s redundancy-driven account, though web search partially compensates for lower parametric familiarity. 26 Preprint. Under review. Table 12: Per-field inter-annotator agreement between the LLM judge and human annotator on 521 Stage 2 fields. Fields are ordered by descending κ. † marks fields with systematic disagreement patterns (see text).                                        
+
+> Field nAgreement (%) κ
+> year 56 100.0 1.000 number 27 92.6 0.816 author 37 89.2 0.798 pages 65 81.5 0.674 title 157 96.8 0.536 volume 29 79.3 0.461 venue 35 80.0 0.426 doi †76 61.8 0.217 entry type †39 5.1 0.000 All fields 521 80.4 0.671 Excl. entry type 482 86.5 0.772 Excl. entry type & doi 406 91.1 0.838
+
+The comparison with Szeider (2026) is instructive. Szeider’s unmediated DBLP export achieves 82.7% perfect entries (all fields correct); our baseline search-enabled models achieve 50.9%. This gap reflects the fundamental difference between deterministic database export and LLM-mediated generation. With two-stage clibib augmentation, our models reach 78.3% fully correct entries, narrowing this gap substantially. The architecture of the LLM– database interaction also matters: our ablation shows that separating retrieval from revision (two-stage) reduces regression to 0.8%, compared with 4.8% for single-pass tool loops where the model interleaves search and generation. This reinforces Szeider’s finding that how the model accesses authoritative data—not just which data source is used—determines output quality. More broadly, fully deterministic pipelines that resolve a known DOI through the Cross-Ref API to publisher-deposited metadata can achieve near-perfect field accuracy for DOI-bearing papers. However, these pipelines require a structured identifier as input, which is unavailable in the knowledge-retrieval scenario we study: users provide natural-language descriptions, not DOIs or arXiv IDs. clibib occupies a middle ground, accepting natural-language queries and resolving them to authoritative records via the Zotero Translation Server (which queries CrossRef and DBLP); a direct comparison isolating each upstream data source is future work. Boudourides (2026) frames bibliographic errors as instances of structural hallucination : sys-tematic distortion of relational architecture that remains invisible to sentence-level fluency checks. Without retrieval tools, gpt-4.1-mini achieved DOI F1 = 0.01 and omitted 91.9% of ground-truth citations; our search-enabled models achieve 75.5% DOI accuracy, confirming that retrieval substantially closes this gap. Field-level metadata errors—particularly in DOIs and venue identifiers—propagate into citation networks, corrupting link structure and distorting downstream bibliometric analyses. Our results support Boudourides’ call for pre-ingestion verification when LLM-generated bibliographic records enter scholarly infrastructure. 
+
+6.4 Human validation of LLM judge labels 
+
+A stratified sample of 521 fields (15% of the Stage 2 pool) was independently re-annotated by a human judge using the same two-question decision procedure as the autorubric. Overall agreement is 80.4% (419/521) with Cohen’s κ = 0.67, below the 0.70 threshold commonly used as a benchmark for substantial agreement. However, the deficit is driven by two systematic patterns rather than random noise. Table 12 shows per-field κ values. The 3 × 3confusion matrix (LLM rows × human columns) is: F →(98, 44, 16); P →(1, 252, 12); S →(13, 16, 69). 27 Preprint. Under review. The two systematic patterns are as follows. First, entry type : the LLM judge labels all type mismatches (e.g., misc vs. article or inproceedings ) as fabrications (F). By contrast, the human annotator applies the guideline that semantically related entry types constitute partial matches (P). This accounts for 37 of 39 entry type items. Second, doi : the LLM judge labels preprint-vs-published DOI pairs (e.g., an arXiv DOI vs. the published proceedings DOI for the same paper) as substitutions (S). The human annotator, by contrast, recognizes these as version variants of the same work and labels them P. This pattern accounts for 29 of 76 doi disagreements. Together, these two patterns explain 66 of the 102 total disagreements. Excluding entry type alone raises κ to 0.77; excluding both entry type and doi yields 
+
+κ = 0.84, indicating strong agreement on the remaining seven fields. The direction of disagreement is conservative: the LLM judge over-labels F and under-labels P relative to the human annotator. Reported error rates are therefore pessimistic lower bounds on true accuracy. A sensitivity analysis replacing LLM labels with human labels on the 521-field sample shifts aggregate field-level accuracy by less than 0.2 percentage points; the disagreements have negligible impact on the paper’s conclusions. As a stronger test, restricting evaluation to the 94.1% of fields resolved deterministically by Stage 1 (exact string or normalized match, requiring no LLM judgment) yields uniformly higher accuracy but preserves all model rankings, indicating that no comparative finding in this paper depends on the LLM judge. 
+
+## 7 Conclusion 
+
+Search-enabled LLMs produce BibTeX entries that are better than those from base models, but still far from reliable: roughly half of the entries in our benchmark contain at least one field-level error, and deterministic verification against authoritative databases is the most effective correction strategy we evaluated. Our benchmark isolates the conditions under which errors arise (Section 4). The dominant factor is paper recency, not domain or model choice: all three frontier models degrade sharply on post-cutoff papers; search retrieval compensates for parametric gaps, but only partially. The co-occurrence analysis (Section 4.6) further reveals that errors are not uni-formly distributed across fields—identity fields (author, venue, year) tend to fail together in wholesale entry substitutions. Content fields (title, pages) fail independently. This struc-tural distinction has a practical consequence: a lightweight check of three identity fields is sufficient to catch the most damaging error mode. The mitigation evaluation (Section 5.3) demonstrates that routing LLM output through a deterministic retrieval layer produces substantial accuracy gains with minimal regression. The two-stage ablation (Section 5.4) adds a more nuanced lesson: how a tool is integrated matters, not just whether it is integrated. Separating authoritative retrieval from LLM-based revision avoids the instruction-following failures that degrade single-pass tool loops. This decoupling of retrieval from revision likely generalizes to other settings where LLMs must incorporate structured external evidence. These findings lead to a direct recommendation: LLM-generated BibTeX entries should be verified against authoritative databases before use, whether through in-context tool aug-mentation, direct database export, or post-hoc validation. Models should not be trusted to produce publication-ready bibliographic metadata from parametric memory or unstructured search results alone. Several open problems remain. Database coverage gaps limit mitigation effectiveness for recent and niche publications; expanding backend coverage and improving fallback strategies (e.g., fuzzy matching across multiple registries) would extend the reach of de-terministic approaches. Model compliance with tool-use instructions remains inconsistent, particularly under single-pass integration; understanding why models selectively ignore retrieved evidence is an open question for tool-augmented generation more broadly. Finally, standardizing BibTeX evaluation methodology—field sets, error taxonomies, and ground truth construction—would enable more direct comparison across future studies and help the community converge on shared baselines for citation quality. 28 Preprint. Under review. 
+
+## Acknowledgments 
+
+This research was developed with funding from the Defense Advanced Research Projects Agency’s (DARPA) SciFy program (Agreement No. HR00112520300). The views expressed are those of the author and do not reflect the official policy or position of the Department of Defense or the U.S. Government. 
+
+## Limitations 
+
+Several limitations constrain the generalizability of our findings. We test a single elicitation strategy (known-item retrieval with natural-language descriptions); open-ended generation or structured queries may produce different error profiles. Our benchmark covers four scientific domains; fields with different publication norms (law, humanities, social sciences) may behave differently. We evaluate three models at a single point in time; both models and search tools evolve rapidly, and our results represent a temporal snapshot. Ground truth coverage depends on OpenAlex, DBLP, PubMed, and the Zotero Translation Server; papers outside these databases cannot be fully verified, and approximately 11% of clibib 
+
+lookups returned not found . Domain-level comparisons should be interpreted with the caveat that ground-truth provenance varies by domain: AI and Quantum Computing rely primarily on DBLP and Zotero, Medicine on PubMed, and Materials Science on Zotero alone. Because clibib and the ground truth both draw on the Zotero Translation Server, a circularity concern arises; a restricted-subset analysis on independently verified papers finds that mitigation gains are not inflated (see “Ground-truth independence” in Section 6.2). The autorubric Stage 2 evaluation introduces its own error; human validation yields κ = 0.67 overall (0.84 excluding two systematic patterns), with disagreements in the conservative direction (Section 6.4). We use vendor-recommended temperature settings (GPT-5: no temperature parameter; Claude and Gemini: T = 1.0), which introduces stochastic variation; results at T = 0 may differ for Claude and Gemini. Our primary author evaluation matches on first-author last name only; a stricter all-author criterion reduces author accuracy by 11.1 pp (Table 6), largely due to truncated co-author lists. Our evaluation covers English-language venues; extending normalization to non-Latin scripts and multilingual metadata is future work. We do not compare against purpose-built reference verification tools such as CheckIfExist or pure CrossRef export pipelines. clibib queries CrossRef and DBLP through the Zotero Translation Server, making it partially comparable, but a direct ablation isolating each data source is future work. 
+
+## Ethics Statement 
+
+This study evaluates commercially available LLMs on a bibliographic generation task using publicly available paper metadata. No human subjects were involved; the human validation component used annotations by the authors on model-generated outputs. All seed papers were drawn from public bibliographic databases (OpenAlex, DBLP, PubMed), and the generated BibTeX entries contain no private or sensitive information. We release our evaluation code and dataset to support reproducibility. A potential dual-use concern is that detailed error taxonomies could help bad actors generate more convincing fake references. We judge this risk to be low: the fabrication patterns we document are already widely known, and our mitigation tool ( clibib ) directly counteracts them. The net effect of this work is to make citation hallucinations easier to detect and correct, not easier to produce. 
+
+## Generative AI Use Disclosure 
+
+The authors acknowledge the use of LLMs in the preparation of this manuscript. Specifically, the authors used Gemini-Pro 3.0 and Claude Sonnet 4.5 to proofread the drafts, make plots, and provide light rewrites. In all such cases, the corresponding author has manually reviewed the output for its accuracy. In the spirit of dogfooding, we used clibib to create 29 Preprint. Under review. all bibtex entries for this paper. The entries were manually reviewed for accuracy and relevance. 
+
+## Appendix A Extended Related Work 
+
+A.1 Citation hallucination in LLM outputs 
+
+Hallucination in large language models—generating fluent text unsupported by training data or grounding sources—is well documented (Ji et al., 2023; Huang et al., 2024). Cita-tion hallucination is a specific instance: fabricated or corrupted references propagate into manuscripts and downstream citation analyses. When an LLM produces a bibliographic reference, two distinct failure modes arise: the model may fabricate a reference to a paper that does not exist, or it may cite a real paper with corrupted metadata (wrong authors, title, year, venue, DOI, or other fields). Both modes undermine the reliability of LLM-assisted scientific writing. Early documentation of the problem focused on fabrication rates. Alkaissi & McFarlane (2023) reported that ChatGPT generates plausible-looking but entirely fictitious references. Agrawal et al. (2024) studied hallucinated citations across domains and models. More recently, Xu et al. (2026) benchmarked 13 LLMs on citation generation, finding hallucination rates between 14% and 95% across vendors with no consistent relationship between batch size and hallucination rate. Sakai et al. (2026) identified nearly 300 published papers contain-ing at least one hallucinated citation—most published in 2025—and proposed an OCR-based detection method. Ansari (2026) analyzed 100 hallucinated citations across 53 NeurIPS 2025 papers, finding that 66% were total fabrications and 100% exhibited compound failure modes where multiple fields were simultaneously incorrect. Their taxonomy distinguishes total fabrication, partial attribute corruption, identifier hijacking, placeholder hallucination, and semantic hallucination. 
+
+A.2 Field-level accuracy of LLM-generated bibliographic records 
+
+Studies of field-level accuracy differ along two axes: how citations are elicited and how errors are evaluated. Three data collection approaches have emerged: (a) open-ended generation, where an LLM is prompted to produce reference lists from scratch; (b) known-item retrieval, where the LLM is given an obfuscated description of a specific paper and asked to recover the full citation; and (c) verification of existing or synthetic citations against authoritative databases. Evaluation methods diverge correspondingly—per-field error rates, weighted composite scores, categorical classification, and binary existence checks—making cross-study comparison difficult. Three studies adopt the open-ended generation approach. Walters & Wilder (2023) con-ducted the first systematic field-level study, prompting GPT-3.5 and GPT-4 to generate literature reviews across 42 multidisciplinary topics, then verifying the resulting 636 cita-tions against Google Scholar, PubMed, Scopus, WorldCat, and other databases. Fabrication rates were 55% for GPT-3.5 and 18% for GPT-4. Among non-fabricated citations, numeri-cal fields were most error-prone: volume/issue/pages were incorrect 34% of the time for GPT-3.5 and 13% for GPT-4, while dates showed 22% and 16% error rates respectively. Title accuracy was highest (94–97% correct). Chelli et al. (2024) prompted GPT-3.5, GPT-4, and Bard to generate references matching inclusion criteria for 11 systematic reviews in ortho-pedic surgery and related fields, using PubMed as ground truth. They defined a reference as hallucinated if two or more of three core fields—title, first author, year—were incorrect, a threshold that conflates partial corruption with fabrication. Title and journal accuracy exceeded 96% for non-hallucinated papers, but DOI accuracy was 16–20%. Aljamaan et al. (2024) developed a weighted Reference Hallucination Score (RHS) across 7 fields (4 major, 3 minor), with weights determined via Delphi consensus among librarians and physicians. They tested 6 systems including retrieval-augmented tools (Elicit, SciSpace); standalone LLMs scored at the maximum hallucination level, while retrieval-augmented tools scored 30 Preprint. Under review. near zero. The variation across these three studies is instructive: Walters uses post-hoc multi-database verification with binary fabricated/real judgments; Chelli thresholds on 2-of-3 core fields against PubMed; Aljamaan applies a Delphi-weighted composite score. Each captures different aspects of the same underlying problem. Szeider (2026) adopted a different elicitation strategy: known-item retrieval with obfuscated citations at varying difficulty levels. Rather than asking the model to generate references, they provided descriptions of 104 known DBLP papers and tested whether Claude Sonnet 4.5 could recover correct BibTeX entries under three configurations—web search only, DBLP-mediated, and DBLP-unmediated. Evaluation used a 6-way categorical scheme (perfect match, wrong paper, not found, incomplete metadata, incomplete author, corrupted metadata) rather than per-field error rates. Unmediated database export achieved 82.7% perfect match versus 28.2% for the web baseline. The mediated approach eliminated metadata corruption but still dropped DOI, volume, and pages 36.5% of the time because the LLM reconstructed entries from memory rather than copying verbatim. This is the only study testing architectural design choices rather than comparing models. A third group of studies evaluates citations through verification rather than generation-then-checking. Algaba et al. (2024) checked binary existence via Semantic Scholar fuzzy matching, finding that 12–36% of references generated by GPT-4, GPT-4o, and Claude 3.5 Sonnet did not correspond to any indexed paper. Their primary contribution is distribu-tional: generated references had a median citation count 1,326 higher than actual references, quantifying how LLMs amplify the Matthew effect. Chern et al. (2023) verified only three fields—title, authors, and year—via Google Scholar lookup as one component of a broader factuality framework, reporting 82.3% of LLM-generated citations as non-factual and that tool-augmented verification with GPT-4 achieved 95.24 F1 at detection. Yuan et al. (2026) introduced CiteAudit, a controlled perturbation benchmark with 9,442 citation instances where hallucinations are generated through targeted edits (keyword substitution, author perturbation, venue/year changes). Their multi-agent verification system achieved 0.903 F1 on real-world hallucinated citations, while general-purpose LLMs degraded to 0.331 F1 or below. These three studies differ fundamentally from the first group: they measure existence, factuality, or detection accuracy rather than per-field error rates across a comprehensive field set. Across these studies, title is consistently the most accurate field when the cited paper exists, and DOI is consistently the worst—often fabricated or omitted entirely. Numerical metadata (volume, pages, issue) are error-prone across all models. Two recent studies extend these findings along complementary axes. Niimi (2025) generated 100 bibliographic records across 20 computer science domains with GPT-4.1 and found a strong log-linear correlation ( r =
+
+0.75) between citation count and metadata accuracy: papers with fewer than ∼100 citations were predominantly hallucinated, while those exceeding ∼1 ,000 citations were recalled near-verbatim, suggesting a memorization threshold tied to training-data redundancy. Boudourides (2026) introduced the concept of structural hallucination —systematic distortion of relational architecture invisible to sentence-level metrics—and evaluated gpt-4.1-mini on 50 COVID-19 publications against Dimensions.ai metadata. DOI reconstruction achieved F1 
+
+= 0.01, and 91.9% of ground-truth citations were omitted entirely, illustrating that without retrieval tools, LLMs fail to reconstruct bibliographic structure. Methodological fragmentation further limits cross-study comparison. There is no agreed-upon minimal field set: studies evaluate 3 to 7+ fields with different inclusion criteria. Hallucination definitions range from binary fabricated/real (Walters & Wilder, 2023) to 2-of-3-field thresholds (Chelli et al., 2024) to weighted composite scores (Aljamaan et al., 2024) to 6-way categorical schemes (Szeider, 2026). Ground truth sources vary from post-hoc database search to pre-defined authoritative records to Delphi expert consensus. No standardized benchmark existed before CiteAudit (Yuan et al., 2026), and even CiteAudit checks only six fields, omitting volume and pages. Reported accuracy numbers are not directly comparable without normalizing for these differences. 31 Preprint. Under review. 
+
+A.3 Mitigation approaches 
+
+Retrieval-augmented generation (Lewis et al., 2021) and tool-augmented generation (Nakano et al., 2022) offer general strategies for grounding LLM outputs in external knowl-edge. Several systems have adapted these strategies specifically for citation accuracy. On the verification side, the FacTool and CiteAudit systems discussed in Section A.2 double as mitigation tools; CiteAudit’s architecture is particularly relevant here because it cascades through memory lookup, web search, and a dedicated scholar agent, providing resilience when any single source fails. CheckIfExist (Abbonato, 2026) validates bibliographic entries against CrossRef, Semantic Scholar, and OpenAlex using a multi-stage matching algorithm with cascading fallback. On the generation side, BibAgent (Li et al., 2026) constructs a benchmark of miscitation cases and uses retrieval-augmented “evidence committees” to verify claims against source documents. CiteLLM (Hong et al., 2026) generates context-aware queries and retrieves candidate papers with full-text semantic analysis, achieving 87.5% precision. CiteGuard (Choi et al., 2026) uses retrieval-augmented validation with full-text snippet retrieval to ground citation attribution. As shown in Section A.2, Szeider’s unmediated export approach eliminates metadata corruption entirely by bypassing the LLM during BibTeX construction. All of these approaches bypass LLM parametric memory for bibliographic record construc-tion. Grounding in authoritative databases, whether through retrieval augmentation, tool use, or direct export, consistently reduces both fabrication and field-level errors. Our work builds on this insight with clibib , which fetches authoritative BibTeX entries from the Zotero Translation Server to detect and correct hallucinated citations. 
+
+## B LLM-as-judge rubric and borderline examples 
+
+Stage 2 of the evaluation pipeline (Section 3.6) uses an LLM judge to classify the 1,472 fields that Stage 1 could not resolve deterministically. The judge evaluates each field against two binary criteria via the autorubric framework (Nair, 2026), using Gemini 3.1 Flash Lite with structured output constrained to MET /UNMET /CANNOT ASSESS per criterion. This section documents the full criteria definitions, verdict mapping, and borderline cases identified during human validation. 
+
+B.1 Criteria definitions Criterion 1: partial match . “Does the generated value partially match any ground-truth version?” The criterion is MET if there is meaningful overlap between the generated value and at least one ground-truth value. Examples of partial matches include: a truncated or reordered author list that shares most authors with the ground truth; an abbreviated or slightly different venue name referring to the same venue (e.g., “Proc. NeurIPS” vs. “Ad-vances in Neural Information Processing Systems”); a title with minor wording differences, a missing subtitle, or formatting artifacts; a page range that overlaps or is a subset of the ground truth; a year off by one due to publication lag; or minor formatting differences in a DOI (e.g., URL prefix vs. bare identifier). The criterion is UNMET if the generated value has no meaningful overlap with any ground-truth version—the values refer to entirely different content or are fabricated with no recognizable connection to the ground truth. 
+
+Criterion 2: different paper . “Does the generated value appear to come from a com-pletely different paper than the ground truth?” The criterion is MET if the value clearly refers to a different work. Indicators include: author names sharing no overlap with any ground-truth version; a title describing a different topic or method; a DOI resolving to a different paper; a venue/year combination inconsistent with all ground-truth versions (e.g., “ICML 2020” vs. “NeurIPS 2017”); or volume/number/pages from a different journal issue. The criterion is UNMET if the value could plausibly refer to the same paper, even if imprecise or partially wrong. When uncertain, the conservative default is UNMET —a value is flagged as different-paper only when there is clear evidence of substitution. 32 Preprint. Under review. 
+
+B.2 Verdict mapping 
+
+The two criterion verdicts are combined into a single field label (P/S/F) according to Table 13. The priority logic is: (1) if partial match is MET , the label is always P; (2) otherwise, if different paper is MET , the label is S; (3) otherwise, the label is F. CANNOT ASSESS is treated conservatively as UNMET , except that evidence of substitution ( different paper 
+
+> MET
+
+) overrides uncertainty about partial match. Table 13: Verdict mapping from binary criteria to field labels.                 
+
+> partial match different paper Label
+> MET any P
+> UNMET MET S
+> UNMET UNMET F
+> UNMET CANNOT ASSESS F
+> CANNOT ASSESS MET S
+> CANNOT ASSESS UNMET F
+> CANNOT ASSESS CANNOT ASSESS F
+
+B.3 Few-shot examples in the judge prompt 
+
+The judge prompt includes three few-shot examples to calibrate the criteria: 1. Partial match (author). Generated: “Vaswani, A. et al.”; ground truth: “Vaswani, Ashish and Shazeer, Noam and Parmar, Niki . . . and Polosukhin, Illia.” The first author overlaps but co-authors are truncated. Verdict: partial match MET ,
+
+different paper UNMET → P. 2. Substitution (venue). Generated: “ICML 2020”; ground truth: “Advances in Neural Information Processing Systems (NeurIPS) 2017.” Different conference and differ-ent year indicate a value from a different paper. Verdict: partial match UNMET ,
+
+different paper MET → S. 3. Fabrication (DOI). Generated: “10.1234/fake.5678”; ground truth: “10.1038/s41586-020-1234-5.” No structural overlap; the registrant code “1234” does not exist. The value appears invented rather than drawn from another real paper. Verdict: 
+
+partial match UNMET , different paper UNMET → F. 
+
+B.4 Borderline cases from human validation 
+
+Human validation of 521 Stage 2 fields (Section 6.4) identified two systematic disagreement patterns between the LLM judge and the human annotator. These account for 66 of 102 total disagreements (64.7%). 
+
+Entry-type mismatches (F vs. P). The LLM judge labeled all entry-type mismatches as fabrications (F), treating any type difference as invented content. The human annotator labeled them as partial matches (P), reasoning that semantically related BibTeX types for the same paper—e.g., misc vs. article , or misc vs. inproceedings —reflect an imprecise but not fabricated classification. This pattern accounts for 37 of the 44 F →P disagreements. For example, a generated misc entry for a paper whose ground truth is article was labeled F by the judge (no textual overlap between the type strings) but P by the human (the paper exists, and misc is a common catch-all type in BibTeX). 
+
+Preprint-vs-published DOI versioning (S vs. P). When a generated DOI points to an arXiv preprint (e.g., 10.48550/arXiv.2510.16227 ) and the ground truth contains the pub-lished version’s DOI (e.g., 10.1162/TACL.a.611 ), the LLM judge labeled the mismatch as a substitution (S)—the structurally different registrant prefixes led it to conclude the value came from a different paper. The human annotator labeled these as partial 33 Preprint. Under review. Table 14: Representative examples of the two failure modes. Wholesale substitution : GPT-5 returns a coherent but wrong paper by the same first author, same year, same disease—a plausible near-miss. Isolated field error : Gemini 3 Flash identifies the correct paper but fabricates a page range offset by exactly 9 pages.                                  
+
+> Mode Field Generated Ground truth Label
+> Wholesale substitution (GPT-5, medicine, low-citation) title Clinical implications of intravesical re-currence after radical nephroureterec-tomy. . . Impact of relapse site on oncological outcomes after radical nephroureterec-tomy. . . Svenue International Journal of Urology Journal of Clinical Oncology Svolume 23 34 Fnumber 52 suppl Fpages 378–384 426–426 Fdoi 10.1111/iju.13054 10.1200/jco.2016.34.2 suppl.426 S
+> Isolated field error (Gemini 3 Flash, AI, popular) title Learning to Discover Social Circles in Ego Networks Learning to Discover Social Circles in Ego Networks Cauthor Julian McAuley, Jure Leskovec Julian J. McAuley, Jure Leskovec Cyear 2012 2012 Cvenue Advances in Neural Information Pro-cessing Systems 25 Advances in Neural Information Pro-cessing Systems 25 Cpages 539–547 548–556 F
+
+matches (P), recognizing that a preprint DOI and its corresponding published DOI re-fer to the same underlying work. This pattern also extends to other preprint servers: e.g., a ChemRxiv DOI ( 10.26434/chemrxiv-2025-90rl2 ) vs. its published journal DOI (10.1021/acs.chemmater.5c02918 ). Conversely, a small number of cases show the opposite error: DOIs with similar prefixes (e.g., two 10.1002/adma.* identifiers) were labeled P by the judge but S by the human, because the suffixes resolved to different papers despite the shared registrant. 
+
+## C Failure mode examples 
+
+Table 14 shows one representative entry for each of the two error modes identified in Section 4.6. The wholesale-substitution entry illustrates this mode clearly: GPT-5 returned metadata for a real paper by the same first author (Yamashita), in the same disease area (upper urinary tract urothelial carcinoma), published the same year (2016)—but in the wrong journal. The generated volume, number, and pages are internally consistent with the substituted journal rather than the ground truth, indicating that the model retrieved a coherent but incorrect record. The isolated-error entry illustrates the opposite pattern: Gemini correctly identified a well-known NeurIPS 2012 paper, matched all identity fields, but fabricated a page range offset by exactly 9 pages (the correct page span). This near-miss pattern, where the page count is correct but the starting page is wrong, is characteristic of parametric memory that encodes document length but not exact position within proceedings. 
+
+## D Two-stage revision prompt 
+
+Listing 1 reproduces the revision prompt used in Phase 2 of the two-stage integration (Algorithm 2, Section 5.2). The same prompt is used for all three models. The placeholders 
+
+{generated bibtex } and {clibib bibtex } are filled with the model’s baseline output and the clibib lookup result, respectively. 34 Preprint. Under review. Listing 1: Two-stage revision prompt template. 
+
+> You previously generated a BibTeX entry via web search. An authoritative database lookup (querying DBLP and CrossRef) returned a verified entry. Compare the titles of both entries carefully. If the database entry is for the SAME paper ( titles match modulo latex markups), replace your values with the database values for: authors, title, year, venue/booktitle/journal, volume, number, pages, and DOI. Only keep your original value for a field if the database entry is missing that field entirely. If the database entry appears to be for a DIFFERENT paper (titles do not match), keep your original entry unchanged. Return the final BibTeX inside <bibtex></bibtex> tags. Your generated BibTeX: {generated_bibtex} BibTeX from database lookup: {clibib_bibtex}
+
+## References 
+
+Diletta Abbonato. CheckIfExist: Detecting Citation Hallucinations in the Era of AI-Generated Content, January 2026. URL http://arxiv.org/abs/2602.15871 .arXiv:2602.15871. Ayush Agrawal, Mirac Suzgun, Lester Mackey, and Adam Tauman Kalai. Do Language Models Know When They’re Hallucinating References?, March 2024. URL http://arxiv. org/abs/2305.18248 . arXiv:2305.18248. Andres Algaba, Carmen Mazijn, Vincent Holst, Floriano Tori, Sylvia Wenmackers, and Vin-cent Ginis. Large Language Models Reflect Human Citation Patterns with a Heightened Citation Bias, August 2024. URL http://arxiv.org/abs/2405.15739 . arXiv:2405.15739. Fadi Aljamaan, Mohamad-Hani Temsah, Ibraheem Altamimi, Ayman Al-Eyadhy, Amr Jamal, Khalid Alhasan, Tamer A Mesallam, Mohamed Farahat, and Khalid H Malki. Reference Hallucination Score for Medical Artificial Intelligence Chatbots: Development and Usability Study. JMIR Medical Informatics , 12:e54345, July 2024. ISSN 2291-9694. doi: 10.2196/54345. URL https://medinform.jmir.org/2024/1/e54345 .Hussam Alkaissi and Samy I McFarlane. Artificial Hallucinations in ChatGPT: Implications in Scientific Writing. Cureus , February 2023. doi: 10.7759/cureus.35179. URL https://www.cureus.com/articles/ 138667-artificial-hallucinations-in-chatgpt-implications-in-scientific-writing .Samar Ansari. Compound Deception in Elite Peer Review: A Failure Mode Taxonomy of 100 Fabricated Citations at NeurIPS 2025, February 2026. URL http://arxiv.org/abs/ 2602.05930 . arXiv:2602.05930. Moses Boudourides. Structural Hallucination in Large Language Models: A Network-Based Evaluation of Knowledge Organization and Citation Integrity, 2026. URL https: //arxiv.org/abs/2603.01341 .Mika ¨el Chelli, Jules Descamps, Vincent Lavou ´e, Christophe Trojani, Michel Azar, Marcel Deckert, Jean-Luc Raynier, Gilles Clowez, Pascal Boileau, and Caroline Ruetsch-Chelli. Hallucination Rates and Reference Accuracy of ChatGPT and Bard for Systematic Reviews: Comparative Analysis. Journal of Medical Internet Research , 26:e53164, May 2024. doi: 10.2196/53164. URL https://www.jmir.org/2024/1/e53164 .I.-Chun Chern, Steffi Chern, Shiqi Chen, Weizhe Yuan, Kehua Feng, Chunting Zhou, Junxian He, Graham Neubig, and Pengfei Liu. FacTool: Factuality Detection in Generative AI – A Tool Augmented Framework for Multi-Task and Multi-Domain Scenarios, July 2023. URL 
+
+http://arxiv.org/abs/2307.13528 . arXiv:2307.13528. 35 Preprint. Under review. Yee Man Choi, Xuehang Guo, Yi R. Fung, and Qingyun Wang. CiteGuard: Faithful Citation Attribution for LLMs via Retrieval-Augmented Validation, January 2026. URL http: //arxiv.org/abs/2510.17853 . arXiv:2510.17853. Mourad Gridach, Jay Nanavati, Christina Mack, Khaldoun Zine El Abidine, and Lenon Mendes. Agentic AI for Scientific Discovery: A Survey of Progress, Challenges, and Future Directions. In Proceedings of the Thirteenth International Conference on Learning Representations , 2025. URL https://openreview.net/forum?id=TyCYakX9BD .Mengze Hong, Di Jiang, Chen Jason Zhang, Zichang Guo, Yawen Li, Jun Chen, Shaobo Cui, and Zhiyang Su. CiteLLM: An Agentic Platform for Trustworthy Scientific Reference Discovery, February 2026. URL http://arxiv.org/abs/2602.23075 . arXiv:2602.23075. Lei Huang, Weijiang Yu, Weitao Ma, Weihong Zhong, Zhangyin Feng, Haotian Wang, Qianglong Chen, Weihua Peng, Xiaocheng Feng, Bing Qin, and Ting Liu. A Survey on Hallucination in Large Language Models: Principles, Taxonomy, Challenges, and Open Questions, November 2024. URL http://arxiv.org/abs/2311.05232 . arXiv:2311.05232. Ziwei Ji, Nayeon Lee, Rita Frieske, Tiezheng Yu, Dan Su, Yan Xu, Etsuko Ishii, Ye Jin Bang, Andrea Madotto, and Pascale Fung. Survey of Hallucination in Natural Language Generation. ACM Computing Surveys , 55(12):1–38, December 2023. doi: 10.1145/3571730. URL https://dl.acm.org/doi/10.1145/3571730 .Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Heinrich K ¨uttler, Mike Lewis, Wen-tau Yih, Tim Rockt ¨aschel, Sebastian Riedel, and Douwe Kiela. Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks, April 2021. URL http://arxiv.org/abs/2005.11401 . arXiv:2005.11401. Peiran Li, Fangzhou Lin, Shuo Xing, Xiang Zheng, Xi Hong, Siyuan Yang, Jiashuo Sun, Zhengzhong Tu, and Chaoqun Ni. BibAgent: An Agentic Framework for Traceable Miscitation Detection in Scientific Literature, January 2026. URL http://arxiv.org/abs/ 2601.16993 . arXiv:2601.16993. Delip Rao Nair. autorubric: LLM-as-a-judge with weighted rubric criteria. arXiv preprint arXiv:2603.00077 , 2026. Reiichiro Nakano, Jacob Hilton, Suchir Balaji, Jeff Wu, Long Ouyang, Christina Kim, Christo-pher Hesse, Shantanu Jain, Vineet Kosaraju, William Saunders, Xu Jiang, Karl Cobbe, Tyna Eloundou, Gretchen Krueger, Kevin Button, Matthew Knight, Benjamin Chess, and John Schulman. WebGPT: Browser-assisted question-answering with human feedback, June 2022. URL http://arxiv.org/abs/2112.09332 . arXiv:2112.09332. Junichiro Niimi. Hallucinations in Bibliographic Recommendation: Citation Frequency as a Proxy for Training Data Redundancy, 2025. URL https://arxiv.org/abs/2510.25378 .Yusuke Sakai, Hidetaka Kamigaito, and Taro Watanabe. HalluCitation Matters: Revealing the Impact of Hallucinated References with 300 Hallucinated Papers in ACL Conferences, January 2026. URL http://arxiv.org/abs/2601.18724 . arXiv:2601.18724. Samuel Schmidgall, Yusheng Su, Ze Wang, Ximeng Sun, Jialian Wu, Xiaodong Yu, Jiang Liu, Michael Moor, Zicheng Liu, and Emad Barsoum. Agent Laboratory: Using LLM Agents as Research Assistants. In Findings of the Association for Computational Linguistics: EMNLP 2025 , pp. 5977–6043, Suzhou, China, 2025. Association for Computational Lin-guistics. doi: 10.18653/v1/2025.findings-emnlp.320. URL https://aclanthology.org/ 2025.findings-emnlp.320 .Stefan Szeider. Unmediated AI-Assisted Scholarly Citations, February 2026. URL http: //arxiv.org/abs/2602.01686 . arXiv:2602.01686. William H. Walters and Esther Isabelle Wilder. Fabrication and errors in the bibliographic ci-tations generated by ChatGPT. Scientific Reports , 13(1):14045, September 2023. doi: 10.1038/ s41598-023-41032-5. URL https://www.nature.com/articles/s41598-023-41032-5 .36 Preprint. Under review. Zuyao Xu, Yuqi Qiu, Lu Sun, FaSheng Miao, Fubin Wu, Xinyi Wang, Xiang Li, Haozhe Lu, ZhengZe Zhang, Yuxin Hu, Jialu Li, Jin Luo, Feng Zhang, Rui Luo, Xinran Liu, Yingxian Li, and Jiaji Liu. GhostCite: A Large-Scale Analysis of Citation Validity in the Age of Large Language Models, February 2026. URL http://arxiv.org/abs/2602.06718 .arXiv:2602.06718. Zhengqing Yuan, Kaiwen Shi, Zheyuan Zhang, Lichao Sun, Nitesh V. Chawla, and Yanfang Ye. CiteAudit: You Cited It, But Did You Read It? A Benchmark for Verifying Scientific References in the LLM Era, February 2026. URL http://arxiv.org/abs/2602.23452 .arXiv:2602.23452. 37

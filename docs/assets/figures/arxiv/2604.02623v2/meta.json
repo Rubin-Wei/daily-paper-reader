@@ -1,0 +1,94 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.02623v2/fig-001.webp",
+      "caption": "Table 1: Attack Success Rate (ASRB, %) across models and attack strategies.4 Frustration Exploitation attacks shown with and without Chaos Monkey environmental stress. Best results per model in bold.",
+      "page": 6,
+      "index": 1,
+      "width": 598,
+      "height": 202
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02623v2/fig-002.webp",
+      "caption": "Table 2: Task Success Rate (TSR) and average steps during clean trajectories and Task B under Frustration Exploitation Condition. Chaos Monkey roughly doubles the number of steps required while reducing TSR for most models.",
+      "page": 6,
+      "index": 2,
+      "width": 664,
+      "height": 202
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02623v2/fig-003.webp",
+      "caption": "Table 7: Full non-pseudo experiment results (no Chaos Monkey). ASRA measures premature attack triggers during Task A. Near-zero ASRA across all configurations confirms attack stealth.",
+      "page": 21,
+      "index": 3,
+      "width": 664,
+      "height": 284
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02623v2/fig-004.webp",
+      "caption": "Table 8: ASRB (%) by attack direction for best-performing attack strategy per model. R→C = Reddit→Classifieds, R→S = Reddit→Shopping, S→R = Shopping→Reddit",
+      "page": 21,
+      "index": 4,
+      "width": 636,
+      "height": 327
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02623v2/fig-005.webp",
+      "caption": "Figure 2: Message structure for a full-history agent with cross-task memory. Memory from Task A (shown in red) is injected as conversation history before Task B observations.",
+      "page": 14,
+      "index": 5,
+      "width": 829,
+      "height": 444
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02623v2/fig-006.webp",
+      "caption": "Figure 1: Overview of the cross-task memory poisoning attack. During Task A, the agent interacts with a web environment containing attacker-injected content. The agent’s trajectory, including the malicious instructions, is stored in Memory. When the agent later executes a semantically related Task B, the poisoned memory is retrieved and the embedded instructions trigger malicious behavior.",
+      "page": 3,
+      "index": 6,
+      "width": 702,
+      "height": 362
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02623v2/fig-007.webp",
+      "caption": "Table 9: Long context recall test results for the Authority Framing attack configuration. Recall Rate measures whether the model can locate the hidden instruction pattern. URL Match Rate measures whether the extracted URL matches the expected attack URL.",
+      "page": 23,
+      "index": 7,
+      "width": 823,
+      "height": 226
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02623v2/fig-008.webp",
+      "caption": "Table 4: Comparison of agent & memory security benchmarks. Interactive Env: uses live/sandboxed web environment (vs. offline datasets). Cross-session: tests attack persistence across sessions/tasks.",
+      "page": 8,
+      "index": 8,
+      "width": 794,
+      "height": 245
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02623v2/fig-009.webp",
+      "caption": "Table 5: Design of eTAMP attack variants for the raw trajectory memory setting. All variants embed a conditional instruction designed to remain dormant until triggered by a future task. The injected prompt follows the structure: [importance signal] + [condition] + [attack goal].",
+      "page": 17,
+      "index": 9,
+      "width": 880,
+      "height": 504
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02623v2/fig-010.webp",
+      "caption": "Figure 3: Three-step attack flow illustrating how malicious instructions injected during Task A persist in memory and activate during a semantically related Task B.",
+      "page": 17,
+      "index": 10,
+      "width": 829,
+      "height": 379
+    },
+    {
+      "url": "assets/figures/arxiv/2604.02623v2/fig-011.webp",
+      "caption": "Table 6: Comparison of pseudo vs. non-pseudo experiments (no Chaos Monkey). Nonpseudo experiments have PR < 100% because the agent may not visit the poisoned page. ASRB — PR provides a fair comparison.",
+      "page": 20,
+      "index": 11,
+      "width": 790,
+      "height": 306
+    }
+  ]
+}
