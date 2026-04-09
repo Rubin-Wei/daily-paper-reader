@@ -1,0 +1,86 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.05549v1/fig-001.webp",
+      "caption": "Figure 3: An illustration of the JailAgent red-teaming workflow, together with example architectures and functionalities of the three agents. The figure also presents representative input–output cases for each agent, the key techniques adopted in the red-team process, and the overall evaluation framework.",
+      "page": 15,
+      "index": 1,
+      "width": 939,
+      "height": 648
+    },
+    {
+      "url": "assets/figures/arxiv/2604.05549v1/fig-002.webp",
+      "caption": "Table 1: Experimental results of different jailbreak methods on ReAct-UALA built upon various LLM cores. “ALL” denotes the weighted average of the five metrics across the three datasets.",
+      "page": 7,
+      "index": 2,
+      "width": 941,
+      "height": 538
+    },
+    {
+      "url": "assets/figures/arxiv/2604.05549v1/fig-003.webp",
+      "caption": "Table 2: Experimental results of different jailbreak methods on EHRAgent built upon various LLM cores.",
+      "page": 7,
+      "index": 3,
+      "width": 941,
+      "height": 484
+    },
+    {
+      "url": "assets/figures/arxiv/2604.05549v1/fig-004.webp",
+      "caption": "Figure 4: We demonstrate the effectiveness of the Joint Optimization module in optimizing the trigger. From left to right, the first image shows the case without Joint Optimization, the middle two images show the application of Lpar(E) + Lclu(E) and Lsep(E) + Lmar(E), and the final image illustrates the complete Joint Optimization.",
+      "page": 18,
+      "index": 4,
+      "width": 937,
+      "height": 217
+    },
+    {
+      "url": "assets/figures/arxiv/2604.05549v1/fig-005.webp",
+      "caption": "Table 4: Performance impact of progressive component removal (20%–80%) across agents and datasets.",
+      "page": 8,
+      "index": 5,
+      "width": 941,
+      "height": 213
+    },
+    {
+      "url": "assets/figures/arxiv/2604.05549v1/fig-006.webp",
+      "caption": "Table 3: Ablation results under different experimental settings across agents and datasets.",
+      "page": 8,
+      "index": 6,
+      "width": 941,
+      "height": 378
+    },
+    {
+      "url": "assets/figures/arxiv/2604.05549v1/fig-007.webp",
+      "caption": "Figure 1: The overall architecture of JailAgent demonstrates the complete process of the jailbreak.",
+      "page": 4,
+      "index": 7,
+      "width": 946,
+      "height": 492
+    },
+    {
+      "url": "assets/figures/arxiv/2604.05549v1/fig-008.webp",
+      "caption": "Table 8: Experimental results of different jailbreak methods on VideoAgent built upon various LLM cores.",
+      "page": 17,
+      "index": 8,
+      "width": 906,
+      "height": 607
+    },
+    {
+      "url": "assets/figures/arxiv/2604.05549v1/fig-009.webp",
+      "caption": "Figure 2: Comparison of ASR Success Cases between JailAgent and AgentPoison on VideoAgent, where option 0 is the correct answer to the question, and bold text represents the model’s reasoning process.",
+      "page": 9,
+      "index": 9,
+      "width": 936,
+      "height": 715
+    },
+    {
+      "url": "assets/figures/arxiv/2604.05549v1/fig-010.webp",
+      "caption": "Table 6: Hyperparameter configuration used across all modules in JailAgent framework.",
+      "page": 16,
+      "index": 10,
+      "width": 565,
+      "height": 321
+    }
+  ]
+}

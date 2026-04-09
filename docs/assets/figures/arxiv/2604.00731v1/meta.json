@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.00731v1/fig-001.webp",
+      "caption": "Figure 3: Screenshot showing the Web Topics annotation interface",
+      "page": 6,
+      "index": 1,
+      "width": 979,
+      "height": 1081
+    },
+    {
+      "url": "assets/figures/arxiv/2604.00731v1/fig-002.webp",
+      "caption": "Figure 6: System-level correlation between human and semi-synthetic relevance judgments for MRR@10. Each point represents one of the 11 retrieval systems. The dashed diagonal line indicates perfect agreement. The strong alignment confirms that the proposed framework preserves system ranking consistency",
+      "page": 11,
+      "index": 2,
+      "width": 979,
+      "height": 979
+    },
+    {
+      "url": "assets/figures/arxiv/2604.00731v1/fig-003.webp",
+      "caption": "Figure 4: Screenshot showing the Web Interface for human relevance assessment",
+      "page": 7,
+      "index": 3,
+      "width": 979,
+      "height": 812
+    },
+    {
+      "url": "assets/figures/arxiv/2604.00731v1/fig-004.webp",
+      "caption": "Figure 5: Screenshot showing the Web Topics annotation interface",
+      "page": 10,
+      "index": 4,
+      "width": 979,
+      "height": 738
+    },
+    {
+      "url": "assets/figures/arxiv/2604.00731v1/fig-005.webp",
+      "caption": "Table 1: Detailed summary of the dataset used in this study, including their sizes and feature characteristics.",
+      "page": 8,
+      "index": 5,
+      "width": 977,
+      "height": 514
+    },
+    {
+      "url": "assets/figures/arxiv/2604.00731v1/fig-006.webp",
+      "caption": "Figure 1: 5 phase methodology for building semi-synthetic test collection",
+      "page": 4,
+      "index": 6,
+      "width": 786,
+      "height": 1273
+    },
+    {
+      "url": "assets/figures/arxiv/2604.00731v1/fig-007.webp",
+      "caption": "Table 2: Impact of pooling and re-ranking strategies on top-10 retrieval effectiveness.",
+      "page": 9,
+      "index": 7,
+      "width": 652,
+      "height": 189
+    },
+    {
+      "url": "assets/figures/arxiv/2604.00731v1/fig-008.webp",
+      "caption": "Figure 2: Side-by-Side Display of Original Algerian Arabic Legal Text and Its English Translation from the Algerian Official Gazette (Issue 71, 10 November 2004, Page 12)",
+      "page": 5,
+      "index": 8,
+      "width": 979,
+      "height": 512
+    }
+  ]
+}
